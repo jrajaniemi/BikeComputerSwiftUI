@@ -14,6 +14,14 @@
 		4AA2DEED2C4AC3AE0065448C /* BikeComputerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEEC2C4AC3AE0065448C /* BikeComputerTests.swift */; };
 		4AA2DEF72C4AC3AE0065448C /* BikeComputerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEF62C4AC3AE0065448C /* BikeComputerUITests.swift */; };
 		4AA2DEF92C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */; };
+		4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */; };
+		4AABFE5E2C4DA30D00CCFBDB /* Univers LT 45 Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */; };
+		4AABFE5F2C4DA30E00CCFBDB /* Univers LT 45 Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */; };
+		4AABFE602C4DA30F00CCFBDB /* Univers LT 45 Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */; };
+		4AABFE612C4DA31300CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
+		4AABFE622C4DA31400CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
+		4AABFE632C4DA31500CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
+		4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABFE662C4E762200CCFBDB /* RouteManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +52,12 @@
 		4AA2DEF22C4AC3AE0065448C /* BikeComputerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BikeComputerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AA2DEF62C4AC3AE0065448C /* BikeComputerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerUITests.swift; sourceTree = "<group>"; };
 		4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers LT 45 Light.ttf"; sourceTree = "<group>"; };
+		4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers LT 75 Black.ttf"; sourceTree = "<group>"; };
+		4AABFE5A2C4D417D00CCFBDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		4AABFE5D2C4D957B00CCFBDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		4AABFE662C4E762200CCFBDB /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,10 +108,14 @@
 		4AA2DEDA2C4AC3AC0065448C /* BikeComputer */ = {
 			isa = PBXGroup;
 			children = (
+				4AABFE5A2C4D417D00CCFBDB /* Info.plist */,
 				4AA2DEDB2C4AC3AC0065448C /* BikeComputerApp.swift */,
 				4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */,
+				4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */,
 				4AA2DEDF2C4AC3AE0065448C /* Assets.xcassets */,
+				4AABFE572C4D410300CCFBDB /* fonts */,
 				4AA2DEE12C4AC3AE0065448C /* Preview Content */,
+				4AABFE662C4E762200CCFBDB /* RouteManager.swift */,
 			);
 			path = BikeComputer;
 			sourceTree = "<group>";
@@ -113,6 +131,7 @@
 		4AA2DEEB2C4AC3AE0065448C /* BikeComputerTests */ = {
 			isa = PBXGroup;
 			children = (
+				4AABFE5D2C4D957B00CCFBDB /* Info.plist */,
 				4AA2DEEC2C4AC3AE0065448C /* BikeComputerTests.swift */,
 			);
 			path = BikeComputerTests;
@@ -125,6 +144,16 @@
 				4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */,
 			);
 			path = BikeComputerUITests;
+			sourceTree = "<group>";
+		};
+		4AABFE572C4D410300CCFBDB /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */,
+				4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */,
+			);
+			name = fonts;
+			path = ../fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -231,6 +260,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AABFE612C4DA31300CCFBDB /* Univers LT 75 Black.ttf in Resources */,
+				4AABFE5E2C4DA30D00CCFBDB /* Univers LT 45 Light.ttf in Resources */,
 				4AA2DEE32C4AC3AE0065448C /* Preview Assets.xcassets in Resources */,
 				4AA2DEE02C4AC3AE0065448C /* Assets.xcassets in Resources */,
 			);
@@ -240,6 +271,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AABFE622C4DA31400CCFBDB /* Univers LT 75 Black.ttf in Resources */,
+				4AABFE5F2C4DA30E00CCFBDB /* Univers LT 45 Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -247,6 +280,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AABFE632C4DA31500CCFBDB /* Univers LT 75 Black.ttf in Resources */,
+				4AABFE602C4DA30F00CCFBDB /* Univers LT 45 Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +292,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */,
 				4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */,
 				4AA2DEDC2C4AC3AC0065448C /* BikeComputerApp.swift in Sources */,
+				4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,8 +459,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BikeComputer/Preview Content\"";
+				DEVELOPMENT_TEAM = RK8VM8DD98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BikeComputer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app requires your location data at all times to provide GPS features even in the background.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -434,7 +476,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jussi.rajaniemi.BikeComputer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -450,8 +492,13 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"BikeComputer/Preview Content\"";
+				DEVELOPMENT_TEAM = RK8VM8DD98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BikeComputer/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app requires your location data at all times to provide GPS features even in the background.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -462,7 +509,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputer;
+				PRODUCT_BUNDLE_IDENTIFIER = com.jussi.rajaniemi.BikeComputer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -477,7 +524,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RK8VM8DD98;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BikeComputerTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerTests;
@@ -496,7 +549,13 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RK8VM8DD98;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BikeComputerTests/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
+				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerTests;
@@ -514,6 +573,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RK8VM8DD98;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerUITests;
@@ -531,6 +591,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = RK8VM8DD98;
 				GENERATE_INFOPLIST_FILE = YES;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerUITests;

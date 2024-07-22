@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct BikeComputerApp: App {
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
