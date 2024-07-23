@@ -40,10 +40,16 @@ class RouteManager: ObservableObject {
     @Published var routeLength: Int = 0
     @Published var lastFive: [RoutePoint] = []
     @Published var totalDistance: Double = 0.0
+    @Published var odometer: Double
 
     private var lastRoute: Route?
-
     private let fileManager = FileManager.default
+    private let userDefaults = UserDefaults.standard
+    private let odometerKey = "odometer"
+    
+    init() {
+        self.odometer = userDefaults.double(forKey: odometerKey)
+    }
     
     func formattedDateString(from date: Date) -> String {
         let formatter = DateFormatter()
@@ -66,6 +72,7 @@ class RouteManager: ObservableObject {
         currentRoute?.endDate = Date()
         saveCurrentRoute()
         lastRoute = currentRoute
+        updateOdometer()
         currentRoute = nil
     }
     
@@ -122,5 +129,11 @@ class RouteManager: ObservableObject {
         let startLocation = CLLocation(latitude: start.latitude, longitude: start.longitude)
         let endLocation = CLLocation(latitude: end.latitude, longitude: end.longitude)
         return startLocation.distance(from: endLocation) // Distance in meters
+    }
+    
+    private func updateOdometer() {
+        odometer += totalDistance
+        userDefaults.set(odometer, forKey: odometerKey)
+        print("Odometer updated: \(odometer) meters")
     }
 }

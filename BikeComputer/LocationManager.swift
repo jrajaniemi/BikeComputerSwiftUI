@@ -9,7 +9,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let routeManager = RouteManager()
 
     let HEADING_FILTER = 10
-    let DISTANCE_FILTER = 2
+    let DISTANCE_FILTER = 20
     
     private var lastUpdate: Date?
     private var lastHeading: Double = -1
@@ -36,7 +36,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
        
         // Asetetaan distanceFilter esimerkiksi 50 metriin, jotta sijaintia päivitetään vain,
         // kun käyttäjä on liikkunut vähintään 50 metriä
-        // manager.distanceFilter = CLLocationDistance(self.DISTANCE_FILTER)
+        manager.distanceFilter = CLLocationDistance(self.DISTANCE_FILTER)
         
         self.stopLocationUpdates()
     }
@@ -116,6 +116,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
         if isTracking == true && speed > 0 {
             routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
+        }
+        if speed <= 20/3.6 {
+            manager.distanceFilter = CLLocationDistance(10)
+            manager.headingFilter =  CLLocationDegrees(10)
+        } else        if speed > 20/3.6 {
+            manager.distanceFilter = CLLocationDistance(25)
+            manager.headingFilter =  CLLocationDegrees(15)
+        } else if speed > 100/3.6 {
+            manager.distanceFilter = CLLocationDistance(500)
+            manager.headingFilter =  CLLocationDegrees(20)
+
         }
     }
     

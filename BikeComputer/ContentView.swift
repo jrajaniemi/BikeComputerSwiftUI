@@ -125,23 +125,30 @@ struct ContentView: View {
                         Text("\(locationManager.routeManager.totalDistance, specifier: "%.0f") m ")
                             .font(.custom("Univers LT 45 Light", size: 32))
                             .multilineTextAlignment(.center)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 2 / 12)
+                            .frame(width: geometry.size.width, height: geometry.size.height * 1 / 12)
                             .background(Color(hex: "#212121"))
                             .foregroundColor(.white)
                     } else {
                         Text("\(locationManager.routeManager.totalDistance/1000, specifier: "%.2f") km ")
                             .font(.custom("Univers LT 45 Light", size: 24))
                             .multilineTextAlignment(.center)
-                            .frame(width: geometry.size.width, height: geometry.size.height * 2 / 32)
+                            .frame(width: geometry.size.width, height: geometry.size.height * 1 / 32)
                             .background(Color(hex: "#212121"))
                             .foregroundColor(.white)
                     }
+                    
+                    Text("\(locationManager.routeManager.odometer/1000, specifier: "%.1f") km")
+                        .font(.custom("Univers LT 45 Light", size: 18))
+                        .multilineTextAlignment(.center)
+                        .frame(width: geometry.size.width, height: geometry.size.height * 1 / 12)
+                        .background(Color(hex: "#212121"))
+                        .foregroundColor(.white)
                     
                     Text("\(latitudeText), \(longitudeText)")
                         .font(.custom("Univers LT 45 Light", size: 18))
                         .multilineTextAlignment(.center)
                         .frame(width: geometry.size.width, height: geometry.size.height * 1 / 12)
-                        .background(Color(hex: "#212121"))
+                        .background(Color(hex: "#0033A0"))
                         .foregroundColor(.white)
                     
                     Button(action: {
