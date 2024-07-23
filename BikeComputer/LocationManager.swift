@@ -117,16 +117,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         if isTracking == true && speed > 0 {
             routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
         }
-        if speed <= 20/3.6 {
-            manager.distanceFilter = CLLocationDistance(10)
-            manager.headingFilter =  CLLocationDegrees(10)
-        } else        if speed > 20/3.6 {
-            manager.distanceFilter = CLLocationDistance(25)
-            manager.headingFilter =  CLLocationDegrees(15)
-        } else if speed > 100/3.6 {
+        if speed > 80/3.6 {
             manager.distanceFilter = CLLocationDistance(500)
-            manager.headingFilter =  CLLocationDegrees(20)
+            manager.headingFilter =  CLLocationDegrees(5)
+        } else if speed > 20/3.6 {
+            manager.distanceFilter = CLLocationDistance(50)
+            manager.headingFilter =  CLLocationDegrees(15)
 
+        } else {
+            manager.distanceFilter = CLLocationDistance(10)
+            manager.headingFilter =  CLLocationDegrees(20)
         }
     }
     
@@ -137,7 +137,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     // Determine if we should update the location based on the time interval and speed
     private func shouldUpdateLocation(timeInterval: TimeInterval, speed: CLLocationSpeed) -> Bool {
-        if abs(timeInterval) > 30 || (abs(timeInterval) > 10 && speed < 5.56) { // speed < 20 km/h (5.56 m/s)
+        if abs(timeInterval) > 20 || (abs(timeInterval) > 10 && speed < 20/3.6) { // speed < 20 km/h (5.56 m/s)
             return true
         }
         return false
