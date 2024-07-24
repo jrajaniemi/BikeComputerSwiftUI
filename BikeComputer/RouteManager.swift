@@ -1,12 +1,5 @@
-//
-//  RouteManager.swift
-//  BikeComputer
-//
-//  Created by Jussi Rajaniemi on 22.7.2024.
-//
 import Foundation
 import CoreLocation
-
 
 struct RoutePoint: Codable {
     let speed: Double
@@ -15,6 +8,15 @@ struct RoutePoint: Codable {
     let longitude: Double
     let latitude: Double
     let timestamp: Date
+    
+    init(speed: Double, heading: Double, altitude: Double, longitude: Double, latitude: Double, timestamp: Date) {
+        self.speed = Double(round(10 * speed) / 10) // Pyöristetään 1 desimaaliin
+        self.heading = Double(round(100 * heading) / 100) // Pyöristetään 2 desimaaliin
+        self.altitude = Double(round(10 * altitude) / 10) // Pyöristetään 1 desimaaliin
+        self.longitude = Double(round(100000 * longitude) / 100000) // Pyöristetään 5 desimaaliin
+        self.latitude = Double(round(100000 * latitude) / 100000) // Pyöristetään 5 desimaaliin
+        self.timestamp = timestamp
+    }
 }
 
 struct Route: Codable, Identifiable {
@@ -41,6 +43,7 @@ class RouteManager: ObservableObject {
     @Published var lastFive: [RoutePoint] = []
     @Published var totalDistance: Double = 0.0
     @Published var odometer: Double
+    @Published var routes: [Route] = []
 
     private var lastRoute: Route?
     private let fileManager = FileManager.default
@@ -49,6 +52,7 @@ class RouteManager: ObservableObject {
     
     init() {
         self.odometer = userDefaults.double(forKey: odometerKey)
+        loadRoutes()
     }
     
     func formattedDateString(from date: Date) -> String {
@@ -74,19 +78,18 @@ class RouteManager: ObservableObject {
         lastRoute = currentRoute
         updateOdometer()
         currentRoute = nil
+        loadRoutes()  // Reload routes after saving
     }
     
     func addRoutePoint(speed: Double, heading: Double, altitude: Double, longitude: Double, latitude: Double) {
         guard var route = currentRoute else { return }
         let newPoint = RoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude, timestamp: Date())
-        // print(newPoint)
         
         // Calculate distance from the last point to the new point
         if let lastPoint = route.points.last {
             let distance = calculateDistance(from: lastPoint, to: newPoint)
             totalDistance += distance
         }
-        
         
         route.points.append(newPoint)
         currentRoute = route
@@ -98,15 +101,47 @@ class RouteManager: ObservableObject {
         let count = route.points.count
         if count >= 5 {
             let lastFive = Array(route.points[(count-5)...(count-1)])
-            print("Last five points: \(lastFive)")
             return lastFive
         } else {
-            print("All points: \(route.points)")
             return route.points
         }
     }
 
-    private func saveCurrentRoute() {
+    func loadRoutes() {
+        let directory = getDocumentsDirectory()
+        do {
+            let fileUrls = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+            let jsonFiles = fileUrls.filter { $0.pathExtension == "json" }
+            var loadedRoutes = [Route]()
+            
+            for fileUrl in jsonFiles {
+                let data = try Data(contentsOf: fileUrl)
+                let decoder = JSONDecoder()
+                let route = try decoder.decode(Route.self, from: data)
+                loadedRoutes.append(route)
+            }
+            
+            DispatchQueue.main.async {
+                self.routes = loadedRoutes
+            }
+        } catch {
+            print("Failed to load routes: \(error.localizedDescription)")
+        }
+    }
+
+    func deleteRoute(route: Route) {
+        let url = getDocumentsDirectory().appendingPathComponent("\(route.id).json")
+        do {
+            try fileManager.removeItem(at: url)
+            DispatchQueue.main.async {
+                self.routes.removeAll { $0.id == route.id }
+            }
+        } catch {
+            print("Failed to delete route: \(error.localizedDescription)")
+        }
+    }
+
+    func saveCurrentRoute() {
         guard let route = currentRoute else { return }
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
@@ -115,7 +150,6 @@ class RouteManager: ObservableObject {
             let url = getDocumentsDirectory().appendingPathComponent("\(route.id).json")
             try data.write(to: url)
             print("Route saved to: \(url.path)")
-
         } catch {
             print("Failed to save route: \(error.localizedDescription)")
         }
@@ -134,6 +168,7 @@ class RouteManager: ObservableObject {
     private func updateOdometer() {
         odometer += totalDistance
         userDefaults.set(odometer, forKey: odometerKey)
+        totalDistance = 0;
         print("Odometer updated: \(odometer) meters")
     }
 }

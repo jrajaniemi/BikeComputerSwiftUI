@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A92EF502C50759C005083C5 /* SpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF4F2C50759B005083C5 /* SpeedView.swift */; };
+		4A92EF522C5075C5005083C5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF512C5075C5005083C5 /* SettingsView.swift */; };
+		4A92EF542C507714005083C5 /* PreviewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF532C507714005083C5 /* PreviewLocationManager.swift */; };
+		4A92EF562C50772F005083C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF552C50772F005083C5 /* Extensions.swift */; };
+		4A92EF5A2C51A3CE005083C5 /* RouteMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF592C51A3CE005083C5 /* RouteMapView.swift */; };
 		4AA2DEDC2C4AC3AC0065448C /* BikeComputerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDB2C4AC3AC0065448C /* BikeComputerApp.swift */; };
 		4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */; };
 		4AA2DEE02C4AC3AE0065448C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDF2C4AC3AE0065448C /* Assets.xcassets */; };
@@ -22,6 +27,8 @@
 		4AABFE622C4DA31400CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
 		4AABFE632C4DA31500CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
 		4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABFE662C4E762200CCFBDB /* RouteManager.swift */; };
+		4AAE43162C4FDFC6000DC321 /* BatteryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */; };
+		4AAE43182C5051A9000DC321 /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43172C5051A9000DC321 /* RoutesView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +49,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A92EF4F2C50759B005083C5 /* SpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedView.swift; sourceTree = "<group>"; };
+		4A92EF512C5075C5005083C5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4A92EF532C507714005083C5 /* PreviewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationManager.swift; sourceTree = "<group>"; };
+		4A92EF552C50772F005083C5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		4A92EF592C51A3CE005083C5 /* RouteMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapView.swift; sourceTree = "<group>"; };
 		4AA2DED82C4AC3AC0065448C /* BikeComputer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeComputer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AA2DEDB2C4AC3AC0065448C /* BikeComputerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerApp.swift; sourceTree = "<group>"; };
 		4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,6 +70,8 @@
 		4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4AABFE5D2C4D957B00CCFBDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4AABFE662C4E762200CCFBDB /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
+		4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryManager.swift; sourceTree = "<group>"; };
+		4AAE43172C5051A9000DC321 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,11 +125,18 @@
 				4AABFE5A2C4D417D00CCFBDB /* Info.plist */,
 				4AA2DEDB2C4AC3AC0065448C /* BikeComputerApp.swift */,
 				4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */,
+				4A92EF4F2C50759B005083C5 /* SpeedView.swift */,
+				4A92EF512C5075C5005083C5 /* SettingsView.swift */,
+				4A92EF532C507714005083C5 /* PreviewLocationManager.swift */,
+				4A92EF552C50772F005083C5 /* Extensions.swift */,
 				4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */,
+				4AABFE662C4E762200CCFBDB /* RouteManager.swift */,
+				4AAE43172C5051A9000DC321 /* RoutesView.swift */,
+				4A92EF592C51A3CE005083C5 /* RouteMapView.swift */,
+				4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */,
 				4AA2DEDF2C4AC3AE0065448C /* Assets.xcassets */,
 				4AABFE572C4D410300CCFBDB /* fonts */,
 				4AA2DEE12C4AC3AE0065448C /* Preview Content */,
-				4AABFE662C4E762200CCFBDB /* RouteManager.swift */,
 			);
 			path = BikeComputer;
 			sourceTree = "<group>";
@@ -292,9 +313,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A92EF502C50759C005083C5 /* SpeedView.swift in Sources */,
+				4A92EF522C5075C5005083C5 /* SettingsView.swift in Sources */,
 				4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */,
 				4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */,
 				4AA2DEDC2C4AC3AC0065448C /* BikeComputerApp.swift in Sources */,
+				4A92EF562C50772F005083C5 /* Extensions.swift in Sources */,
+				4A92EF5A2C51A3CE005083C5 /* RouteMapView.swift in Sources */,
+				4AAE43162C4FDFC6000DC321 /* BatteryManager.swift in Sources */,
+				4AAE43182C5051A9000DC321 /* RoutesView.swift in Sources */,
+				4A92EF542C507714005083C5 /* PreviewLocationManager.swift in Sources */,
 				4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
