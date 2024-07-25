@@ -23,7 +23,7 @@ struct SettingsView: View {
                     Text("Battery Level: \(batteryManager.batteryLevel * 100, specifier: "%.0f") %")
                     Text("Is charging: \(batteryManager.isCharging ? "Yes" : "No")")
                     Text("Speed class: \(locationManager.currentSpeedClass)")
-                    Text("Speed: \(locationManager.speed) km/h")
+                    Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
                 }
             }
             .navigationTitle("Settings")

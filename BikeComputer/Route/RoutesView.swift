@@ -1,15 +1,22 @@
+import SwiftUI
 import CoreLocation
 import MapKit
-import SwiftUI
 
 struct RoutesView: View {
     @ObservedObject var locationManager: LocationManager
-    @State private var selectedMapType: MKMapType = .satelliteFlyover // Karttapohjan valinta
+    @Binding var selectedRoute: Route? // Sitova muuttuja valitulle reitille
+    @State private var selectedMapType: MapStyle = .imagery(elevation: .realistic)
+    @StateObject private var calculator = SunriseSunsetCalculator()
+    @StateObject private var themeManager = ThemeManager.shared
+
+    private func printRoute() {
+        print(locationManager.routeManager.routes)
+    }
 
     private func calculateTotalDistance(for route: Route) -> Double {
         var totalDistance = 0.0
         if route.points.count > 1 {
-            for i in 1 ..< route.points.count {
+            for i in 1..<route.points.count {
                 let previousPoint = route.points[i - 1]
                 let currentPoint = route.points[i]
                 totalDistance += calculateDistance(from: previousPoint, to: currentPoint)
@@ -42,43 +49,39 @@ struct RoutesView: View {
     var body: some View {
         NavigationView {
             VStack {
-                Picker("Select Map Type", selection: $selectedMapType) {
-                    Text("Standard").tag(MKMapType.standard)
-                    Text("Satellite").tag(MKMapType.satellite)
-                    Text("Hybrid").tag(MKMapType.hybrid)
-                    Text("Satellite Flyover").tag(MKMapType.satelliteFlyover)
-                    Text("Hybrid Flyover").tag(MKMapType.hybridFlyover)
-                    Text("Muted Standard").tag(MKMapType.mutedStandard)
-                }
-                .pickerStyle(SegmentedPickerStyle())
-                .padding()
                 List {
                     ForEach(locationManager.routeManager.routes.sorted(by: { $0.startDate > $1.startDate })) { route in
-                        NavigationLink(destination: RouteMapView(route: route, mapType: selectedMapType)) {
-                            VStack(alignment: .leading) {
-                                Text(route.name)
-                                    .font(.headline)
-                                Text("Distance: \(calculateTotalDistance(for: route) / 1000, specifier: "%.2f") km")
-                                    .font(.subheadline)
-                                Text("Average Speed: \(calculateAverageSpeed(for: route), specifier: "%.2f") km/h")
-                                    .font(.subheadline)
-                                Text("End Time: \(formattedDateString(from: route.endDate))")
-                                    .font(.subheadline)
+                        Button(action: {
+                            selectedRoute = route
+                        }) {
+                            HStack(spacing: 0) {
+                                VStack(alignment: .leading) {
+                                    Text(route.name)
+                                        .font(.headline)
+                                    Text("Distance: \(calculateTotalDistance(for: route) / 1000, specifier: "%.2f") km")
+                                        .font(.subheadline)
+                                    Text("Average Speed: \(calculateAverageSpeed(for: route), specifier: "%.2f") km/h")
+                                        .font(.subheadline)
+                                    Text("End Time: \(formattedDateString(from: route.endDate))")
+                                        .font(.subheadline)
+                                }
+                                Spacer()
+                                Image(systemName: "chevron.right")
+                                    .foregroundColor(.gray)
                             }
                         }
                     }
                     .onDelete(perform: deleteRoute)
                 }
-                .navigationTitle("Routes Information")
+                
                 .refreshable {
                     locationManager.routeManager.loadRoutes()
+                    printRoute()
                 }
-                .toolbar {
-#if os(iOS)
-                    EditButton()
-#endif
-                }
+                
             }
+            .navigationTitle("Routes Information")
+            .toolbarBackground(Color.themeBackground)
         }
     }
     
@@ -91,5 +94,5 @@ struct RoutesView: View {
 }
 
 #Preview {
-    RoutesView(locationManager: PreviewLocationManager())
+    RoutesView(locationManager: PreviewLocationManager(), selectedRoute: .constant(nil))
 }

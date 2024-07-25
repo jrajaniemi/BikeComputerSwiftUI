@@ -1,7 +1,8 @@
 import Foundation
 import CoreLocation
 
-struct RoutePoint: Codable {
+struct RoutePoint: Codable, Identifiable {
+    var id = UUID() // Lisää identifioiva ominaisuus
     let speed: Double
     let heading: Double
     let altitude: Double
@@ -44,7 +45,9 @@ class RouteManager: ObservableObject {
     @Published var totalDistance: Double = 0.0
     @Published var odometer: Double
     @Published var routes: [Route] = []
-
+    @Published var showingAlert = false
+    @Published var alertMessage = ""
+    
     private var lastRoute: Route?
     private let fileManager = FileManager.default
     private let userDefaults = UserDefaults.standard
@@ -73,6 +76,12 @@ class RouteManager: ObservableObject {
     }
     
     func endCurrentRoute() {
+        guard let route = currentRoute, !route.points.isEmpty else {
+            alertMessage = "No points in current route to end."
+            showingAlert = true
+            currentRoute = nil
+            return
+        }
         currentRoute?.endDate = Date()
         saveCurrentRoute()
         lastRoute = currentRoute
@@ -115,10 +124,27 @@ class RouteManager: ObservableObject {
             var loadedRoutes = [Route]()
             
             for fileUrl in jsonFiles {
-                let data = try Data(contentsOf: fileUrl)
-                let decoder = JSONDecoder()
-                let route = try decoder.decode(Route.self, from: data)
-                loadedRoutes.append(route)
+                do {
+                    var data = try Data(contentsOf: fileUrl)
+                    var jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
+                    
+                    // Päivitetään JSON-objekti lisäämällä puuttuva id-kenttä RoutePoint-rakenteeseen
+                    if var points = jsonObject?["points"] as? [[String: Any]] {
+                        for i in 0..<points.count {
+                            points[i]["id"] = UUID().uuidString
+                        }
+                        jsonObject?["points"] = points
+                    }
+                    
+                    // Konvertoidaan päivitetty JSON-objekti takaisin Data-muotoon
+                    data = try JSONSerialization.data(withJSONObject: jsonObject ?? [:], options: .prettyPrinted)
+                    
+                    let decoder = JSONDecoder()
+                    let route = try decoder.decode(Route.self, from: data)
+                    loadedRoutes.append(route)
+                } catch {
+                    print("Failed to decode route from \(fileUrl): \(error.localizedDescription)")
+                }
             }
             
             DispatchQueue.main.async {
@@ -128,6 +154,7 @@ class RouteManager: ObservableObject {
             print("Failed to load routes: \(error.localizedDescription)")
         }
     }
+
 
     func deleteRoute(route: Route) {
         let url = getDocumentsDirectory().appendingPathComponent("\(route.id).json")
@@ -142,7 +169,11 @@ class RouteManager: ObservableObject {
     }
 
     func saveCurrentRoute() {
-        guard let route = currentRoute else { return }
+        guard let route = currentRoute, !route.points.isEmpty else {
+            alertMessage = "No points in current route to save."
+            showingAlert = true
+            return
+        }
         let encoder = JSONEncoder()
         encoder.outputFormatting = .prettyPrinted
         do {
