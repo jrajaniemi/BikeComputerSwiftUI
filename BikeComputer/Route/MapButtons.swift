@@ -7,21 +7,7 @@ struct MapButtons: View {
     var lastPoint: CLLocationCoordinate2D
     @Binding var selectedRoute: Route?
     @Binding var position: MapCameraPosition
-    @StateObject private var calculator = SunriseSunsetCalculator()
-    @StateObject private var themeManager = ThemeManager.shared
-    
-    func search(for query: String) {
-        let request = MKLocalSearch.Request()
-        request.naturalLanguageQuery = query
-        request.resultTypes = .pointOfInterest
-        request.region = MKCoordinateRegion(center: lastPoint, span: MKCoordinateSpan(latitudeDelta: 0.0125, longitudeDelta: 0.0125))
-        
-        Task {
-            let search = MKLocalSearch(request: request)
-            let response = try? await search.start()
-            searchResults = response?.mapItems ?? []
-        }
-    }
+    @Environment(\.colorScheme) var colorScheme
     
     var body: some View {
         HStack(spacing: 40) {
@@ -30,7 +16,7 @@ struct MapButtons: View {
             } label: {
                 Label("Back", systemImage: "arrow.backward.circle.fill")
                     .font(.title)
-                    .foregroundColor(Color.themeForeground)
+                    .foregroundColor(Color.white)
             }
             .buttonStyle(.bordered)
             
@@ -41,7 +27,7 @@ struct MapButtons: View {
                     .font(.title)
             }
             .buttonStyle(.bordered)
-            .foregroundColor(Color.themeForeground)
+            .foregroundColor(.white)
 
         }
         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)

@@ -6,8 +6,7 @@ struct RoutesView: View {
     @ObservedObject var locationManager: LocationManager
     @Binding var selectedRoute: Route? // Sitova muuttuja valitulle reitille
     @State private var selectedMapType: MapStyle = .imagery(elevation: .realistic)
-    @StateObject private var calculator = SunriseSunsetCalculator()
-    @StateObject private var themeManager = ThemeManager.shared
+    @Environment(\.colorScheme) var colorScheme
 
     private func printRoute() {
         print(locationManager.routeManager.routes)
@@ -81,7 +80,7 @@ struct RoutesView: View {
                 
             }
             .navigationTitle("Routes Information")
-            .toolbarBackground(Color.themeBackground)
+            .toolbarBackground(colorScheme == .dark ? Color.black: Color.white)
         }
     }
     

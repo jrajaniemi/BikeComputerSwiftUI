@@ -38,18 +38,9 @@ extension Route {
     }
 }
 
-extension Color {
-    static var themeBackground: Color {
-        return ThemeManager.shared.currentTheme == .light ? Color.white : Color.black
-    }
-
-    static var themeForeground: Color {
-        return ThemeManager.shared.currentTheme == .light ? Color.black : Color.white
-    }
-
-    static var themeMidGray: Color {
-        return ThemeManager.shared.currentTheme == .light ? Color(red: 80/255, green: 80/255, blue: 80/255) : Color(red: 180/255, green: 180/255, blue: 180/255)
+extension Array where Element == RoutePoint {
+    func coordinates() -> [CLLocationCoordinate2D] {
+        return self.map { CLLocationCoordinate2D(latitude: $0.latitude, longitude: $0.longitude) }
     }
 }
-
 

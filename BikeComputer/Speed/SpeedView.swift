@@ -2,9 +2,6 @@ import CoreLocation
 import SwiftUI
 
 struct SpeedView: View {
-    @StateObject private var calculator = SunriseSunsetCalculator()
-    @StateObject private var themeManager = ThemeManager.shared
-    
     @ObservedObject var locationManager: LocationManager
     @Binding var isRecording: Bool
     @Binding var routeName: String
@@ -16,6 +13,9 @@ struct SpeedView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
 
+    @Environment(\.colorScheme) var colorScheme
+
+    
     private let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -50,23 +50,23 @@ struct SpeedView: View {
                         .font(.custom("Univers LT 45 Light", size: 32))
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 6 / 12)
-                .background(Color.themeBackground)
-                .foregroundColor(Color.themeForeground)
+                .background(colorScheme == .dark ? Color.black: Color.white)
+                .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
                     
                 HStack(spacing: 0) {
                     Text("\(locationManager.heading, specifier: "%.0f")°")
                         .font(.custom("Univers LT 75 Black", size: 48))
                         .frame(width: geometry.size.width / 2, height: geometry.size.height * 3 / 12)
-                        .background(Color.themeBackground)
-                        .foregroundColor(Color.themeForeground)
+                        .background(colorScheme == .dark ? Color.black: Color.white)
+                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
                         
                     let altitudeFontSize: Int = locationManager.altitude < 10000 ? 48 : 40
                         
                     Text("\(locationManager.altitude, specifier: "%.0f") m")
                         .font(.custom("Univers LT 45 Light", size: CGFloat(altitudeFontSize)))
                         .frame(width: geometry.size.width / 2, height: geometry.size.height * 3 / 12)
-                        .background(Color.themeBackground)
-                        .foregroundColor(Color.themeForeground)
+                        .background(colorScheme == .dark ? Color.black: Color.white)
+                        .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
                 }
 
                 VStack(spacing: 0) {
@@ -85,8 +85,8 @@ struct SpeedView: View {
                         .multilineTextAlignment(.center)
                 }
                 .frame(width: geometry.size.width, height: geometry.size.height * 2 / 12)
-                .background(Color.themeBackground)
-                .foregroundColor(Color.themeForeground)
+                .background(colorScheme == .dark ? Color.black: Color.white)
+                .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
                     
                 Button(action: {
                     isRecording.toggle()
@@ -109,9 +109,9 @@ struct SpeedView: View {
                         .font(.custom("Univers LT 75 Black", size: 24))
                 }
                 .frame(width: geometry.size.width / 2, height: geometry.size.height * 0.8 / 12)
-                .background(Color.themeBackground)
-                .foregroundColor(Color.themeForeground)
-                .border(Color.gray, width: 3)
+                .background(colorScheme == .dark ? Color.black: Color.white)
+                .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                .border(Color.gray , width: 3)
                 .alert(isPresented: $showingAlert) {
                     Alert(
                         title: Text("Route Error"),
@@ -124,8 +124,8 @@ struct SpeedView: View {
                 routeName = "Default Route"
                 routeDescription = "Description of the route"
             }
-            .background(Color.themeBackground)
+            .background(colorScheme == .dark ? Color.black: Color.white)
         }
-        .background(Color.themeBackground)
+        .background(colorScheme == .dark ? Color.black: Color.white)
     }
 }

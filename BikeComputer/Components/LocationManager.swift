@@ -1,7 +1,7 @@
-import Foundation
+import Combine
 import CoreLocation
 import CoreMotion
-import Combine
+import Foundation
 
 // LocationManager to handle GPS updates
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -9,8 +9,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let motionManager = CMMotionManager()
     let routeManager = RouteManager()
     
-    private var lastUpdate: Date = Date()
-    private var headingLastUpdate: Date = Date()
+    private var lastUpdate: Date = .init()
+    private var headingLastUpdate: Date = .init()
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
     private let updateInterval: TimeInterval = 1 // Päivitys 1 kertaa sekunnissa
@@ -43,21 +43,21 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         manager.requestAlwaysAuthorization() // Pyydetään lupaa käyttää sijaintia, kun sovellus on käytössä
         
         // Asetetaan heading-päivityksen kynnysarvoksi 5 astetta (default on 1 astetta)
-        manager.headingFilter = CLLocationDegrees(self.HF)
+        manager.headingFilter = CLLocationDegrees(HF)
        
         // Asetetaan sijaintipäivityksen tarkkuudeksi karkeampi taso
         manager.desiredAccuracy = kCLLocationAccuracyBest
        
         // Asetetaan distanceFilter esimerkiksi 50 metriin, jotta sijaintia päivitetään vain,
         // kun käyttäjä on liikkunut vähintään 50 metriä
-        manager.distanceFilter = CLLocationDistance(self.DF)
+        manager.distanceFilter = CLLocationDistance(DF)
         
-        self.stopLocationUpdates()
+        stopLocationUpdates()
         
         // Observe battery changes
         BatteryManager.shared.$batteryLevel
             .combineLatest(BatteryManager.shared.$isCharging)
-            .sink { [weak self] (batteryLevel, isCharging) in
+            .sink { [weak self] batteryLevel, isCharging in
                 self?.updateFilters(batteryLevel: batteryLevel, isCharging: isCharging)
             }
             .store(in: &cancellables)
@@ -104,12 +104,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func updateFilters(batteryLevel: Float, isCharging: Bool) {
+#if DEBUG
         print("updateFilters called with batteryLevel: \(batteryLevel), isCharging: \(isCharging)")
+#endif
         
         var distanceFilter: CLLocationDistance
         var headingFilter: CLLocationDegrees
         
-        if isCharging || batteryLevel > 0.8 {
+        if isCharging || batteryLevel > 0.5 {
             distanceFilter = 0
             headingFilter = 3
         } else {
@@ -127,11 +129,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 distanceFilter = 2500
                 headingFilter = 2
             case .stationary:
-                distanceFilter = 0
-                headingFilter = 3
+                distanceFilter = 10
+                headingFilter = 5
             }
             
-            if batteryLevel < 0.5 {
+            if batteryLevel < 0.25 {
                 distanceFilter *= 1.3
                 headingFilter *= 1.3
             }
@@ -142,9 +144,10 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         manager.distanceFilter = distanceFilter
         manager.headingFilter = headingFilter
-        
+#if DEBUG
         print("Updated filters based on speed: \(speed) km/h, battery level: \(batteryLevel), isCharging: \(isCharging)")
         print("Distance Filter: \(distanceFilter), Heading Filter: \(headingFilter)")
+#endif
     }
     
     // Muut metodit pysyvät ennallaan
@@ -165,17 +168,25 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         case .authorizedWhenInUse, .authorizedAlways:
             startLocationUpdates()
         case .denied, .restricted:
+#if DEBUG
             print("Location services are denied or restricted")
+#endif
         case .notDetermined:
+#if DEBUG
             print("Location services are not determined")
+#endif
         @unknown default:
+#if DEBUG
             print("Unknown authorization status")
+#endif
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {
+#if DEBUG
             print("No locations available")
+#endif
             return
         }
         
@@ -190,7 +201,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             latitude = location.coordinate.latitude
             accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
             // routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
-            addRoutePoint();
+            addRoutePoint()
         }
     }
     
@@ -198,10 +209,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         let currentTime = Date()
         let timeSince = abs(currentTime.timeIntervalSince(headingLastUpdate))
         // print("timeSince \(timeSince)")
-        if  timeSince < updateInterval {
+        if timeSince < updateInterval {
             return
         }
-        
         
         let roundedNewHeading = round(newHeading.trueHeading * 100000) / 100000
         let roundedLastHeading = round(lastHeading * 100000) / 100000
@@ -211,8 +221,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             heading = roundedNewHeading
             lastHeading = roundedNewHeading
             headingLastUpdate = Date()
+#if DEBUG
             print("Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange)")
-
+#endif
             // Päivitetään myös sijainti, nopeus ja korkeus
             if let location = manager.location {
                 speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
@@ -229,12 +240,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         // print("LocationsUpdate: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
 
         if isTracking == true && speed > 0 {
+#if DEBUG
             print("Route point added: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
+#endif
             routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+#if DEBUG
         if let clError = error as? CLError {
             switch clError.code {
             case .denied:
@@ -249,11 +263,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         } else {
             print("Location error: \(error.localizedDescription)")
         }
+#endif
     }
 
-    
     private func shouldUpdateLocation(timeInterval: TimeInterval, speed: CLLocationSpeed) -> Bool {
-        if abs(timeInterval) > 20 || (abs(timeInterval) > 10 && speed < 20/3.6) { // speed < 20 km/h (5.56 m/s)
+        if abs(timeInterval) > 15 || (abs(timeInterval) > 10 && speed < 20 / 3.6) { // speed < 20 km/h (5.56 m/s)
             return true
         }
         return false

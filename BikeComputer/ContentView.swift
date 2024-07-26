@@ -10,8 +10,7 @@ struct ContentView: View {
     @State private var lastFivePoints: [RoutePoint] = []
     @State private var showRouteView: Bool = false
     @State private var selectedRoute: Route? // Uusi muuttuja valitulle reitille
-    @StateObject private var calculator = SunriseSunsetCalculator()
-    @StateObject private var themeManager = ThemeManager.shared
+    @Environment(\.colorScheme) var colorScheme
     
     init(locationManager: LocationManager = LocationManager()) {
         _locationManager = StateObject(wrappedValue: locationManager)
@@ -38,11 +37,13 @@ struct ContentView: View {
                         Text("Settings")
                     }
             }
-            .background(Color.themeBackground)
-            .accentColor(Color.themeForeground)
+            .background(colorScheme == .dark ? Color.black: Color.white)
+            .accentColor(colorScheme == .dark ? Color.white: Color.black)
             .onAppear {
                 UITabBar.appearance().unselectedItemTintColor = UIColor.gray
             }
+            .toolbarBackground(colorScheme == .dark ? Color.black: Color.white)
+
 
             if let route = selectedRoute {
                 NavigationView {
@@ -53,8 +54,8 @@ struct ContentView: View {
                 }
                 .navigationViewStyle(StackNavigationViewStyle())
                 .transition(.move(edge: .bottom))
-                .background(Color.themeBackground)
-                .foregroundColor(Color.themeForeground)
+                .background(colorScheme == .dark ? Color.black: Color.white)
+                .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
                 .zIndex(1)
             }
         }

@@ -7,14 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A36211F2C53D7B4008169E5 /* CubicSpline.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A36211E2C53D7B4008169E5 /* CubicSpline.swift */; };
 		4A92EF502C50759C005083C5 /* SpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF4F2C50759B005083C5 /* SpeedView.swift */; };
 		4A92EF522C5075C5005083C5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF512C5075C5005083C5 /* SettingsView.swift */; };
 		4A92EF542C507714005083C5 /* PreviewLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF532C507714005083C5 /* PreviewLocationManager.swift */; };
 		4A92EF562C50772F005083C5 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF552C50772F005083C5 /* Extensions.swift */; };
 		4A92EF5C2C51B52F005083C5 /* RouteMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF5B2C51B52F005083C5 /* RouteMapView.swift */; };
 		4A92EF5E2C52450B005083C5 /* MapButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF5D2C52450B005083C5 /* MapButtons.swift */; };
-		4A92EF642C52C422005083C5 /* SunriseSunsetCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF632C52C422005083C5 /* SunriseSunsetCalculator.swift */; };
-		4A92EF662C52C707005083C5 /* ThemeManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF652C52C707005083C5 /* ThemeManager.swift */; };
 		4AA2DEDC2C4AC3AC0065448C /* BikeComputerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDB2C4AC3AC0065448C /* BikeComputerApp.swift */; };
 		4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */; };
 		4AA2DEE02C4AC3AE0065448C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDF2C4AC3AE0065448C /* Assets.xcassets */; };
@@ -52,14 +51,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A36211E2C53D7B4008169E5 /* CubicSpline.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubicSpline.swift; sourceTree = "<group>"; };
 		4A92EF4F2C50759B005083C5 /* SpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedView.swift; sourceTree = "<group>"; };
 		4A92EF512C5075C5005083C5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4A92EF532C507714005083C5 /* PreviewLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewLocationManager.swift; sourceTree = "<group>"; };
 		4A92EF552C50772F005083C5 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		4A92EF5B2C51B52F005083C5 /* RouteMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapView.swift; sourceTree = "<group>"; };
 		4A92EF5D2C52450B005083C5 /* MapButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapButtons.swift; sourceTree = "<group>"; };
-		4A92EF632C52C422005083C5 /* SunriseSunsetCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SunriseSunsetCalculator.swift; sourceTree = "<group>"; };
-		4A92EF652C52C707005083C5 /* ThemeManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeManager.swift; sourceTree = "<group>"; };
 		4AA2DED82C4AC3AC0065448C /* BikeComputer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BikeComputer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AA2DEDB2C4AC3AC0065448C /* BikeComputerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerApp.swift; sourceTree = "<group>"; };
 		4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -113,8 +111,7 @@
 				4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */,
 				4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */,
 				4A92EF552C50772F005083C5 /* Extensions.swift */,
-				4A92EF632C52C422005083C5 /* SunriseSunsetCalculator.swift */,
-				4A92EF652C52C707005083C5 /* ThemeManager.swift */,
+				4A36211E2C53D7B4008169E5 /* CubicSpline.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -357,17 +354,16 @@
 				4A92EF502C50759C005083C5 /* SpeedView.swift in Sources */,
 				4A92EF522C5075C5005083C5 /* SettingsView.swift in Sources */,
 				4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */,
+				4A36211F2C53D7B4008169E5 /* CubicSpline.swift in Sources */,
 				4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */,
 				4AA2DEDC2C4AC3AC0065448C /* BikeComputerApp.swift in Sources */,
 				4A92EF562C50772F005083C5 /* Extensions.swift in Sources */,
 				4A92EF5C2C51B52F005083C5 /* RouteMapView.swift in Sources */,
 				4AAE43162C4FDFC6000DC321 /* BatteryManager.swift in Sources */,
-				4A92EF642C52C422005083C5 /* SunriseSunsetCalculator.swift in Sources */,
 				4A92EF5E2C52450B005083C5 /* MapButtons.swift in Sources */,
 				4AAE43182C5051A9000DC321 /* RoutesView.swift in Sources */,
 				4A92EF542C507714005083C5 /* PreviewLocationManager.swift in Sources */,
 				4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */,
-				4A92EF662C52C707005083C5 /* ThemeManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -530,13 +526,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"BikeComputer/Preview Content\"";
 				DEVELOPMENT_TEAM = RK8VM8DD98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BikeComputer/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "BIKE App";
+				INFOPLIST_KEY_CFBundleDisplayName = "BIKE App Computer";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show speed, heading and altitude even when the app is in the background.";
@@ -545,13 +541,18 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jussi.rajaniemi.BIKEAppComputer;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jussi.rajaniemi.BikeAppComputer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -565,13 +566,13 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_ASSET_PATHS = "\"BikeComputer/Preview Content\"";
 				DEVELOPMENT_TEAM = RK8VM8DD98;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = BikeComputer/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "BIKE App";
+				INFOPLIST_KEY_CFBundleDisplayName = "BIKE App Computer";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.sports";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show speed, heading and altitude even when the app is in the background.";
@@ -580,13 +581,18 @@
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.jussi.rajaniemi.BIKEAppComputer;
+				MARKETING_VERSION = 0.1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = jussi.rajaniemi.BikeAppComputer;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;

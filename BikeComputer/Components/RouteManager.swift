@@ -1,5 +1,5 @@
-import Foundation
 import CoreLocation
+import Foundation
 
 struct RoutePoint: Codable, Identifiable {
     var id = UUID() // Lisää identifioiva ominaisuus
@@ -87,7 +87,7 @@ class RouteManager: ObservableObject {
         lastRoute = currentRoute
         updateOdometer()
         currentRoute = nil
-        loadRoutes()  // Reload routes after saving
+        loadRoutes() // Reload routes after saving
     }
     
     func addRoutePoint(speed: Double, heading: Double, altitude: Double, longitude: Double, latitude: Double) {
@@ -109,7 +109,7 @@ class RouteManager: ObservableObject {
         guard let route = lastRoute else { return [] }
         let count = route.points.count
         if count >= 5 {
-            let lastFive = Array(route.points[(count-5)...(count-1)])
+            let lastFive = Array(route.points[(count-5) ... (count-1)])
             return lastFive
         } else {
             return route.points
@@ -117,44 +117,70 @@ class RouteManager: ObservableObject {
     }
 
     func loadRoutes() {
+        // showAllFilesAndFolders()
         let directory = getDocumentsDirectory()
+#if DEBUG
+        print("Loading routes from directory: \(directory)")
+#endif
         do {
             let fileUrls = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+#if DEBUG
+            print("Found files: \(fileUrls)")
+#endif
             let jsonFiles = fileUrls.filter { $0.pathExtension == "json" }
+#if DEBUG
+            print("Filtered JSON files: \(jsonFiles)")
+#endif
             var loadedRoutes = [Route]()
             
             for fileUrl in jsonFiles {
                 do {
-                    var data = try Data(contentsOf: fileUrl)
+                    let data = try Data(contentsOf: fileUrl)
+#if DEBUG
+                    print("Loaded data from \(fileUrl)")
+#endif
                     var jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
-                    
+#if DEBUG
+                    print("Parsed JSON object: \(jsonObject ?? [:])")
+#endif
                     // Päivitetään JSON-objekti lisäämällä puuttuva id-kenttä RoutePoint-rakenteeseen
                     if var points = jsonObject?["points"] as? [[String: Any]] {
-                        for i in 0..<points.count {
+                        for i in 0 ..< points.count {
                             points[i]["id"] = UUID().uuidString
                         }
                         jsonObject?["points"] = points
                     }
                     
                     // Konvertoidaan päivitetty JSON-objekti takaisin Data-muotoon
-                    data = try JSONSerialization.data(withJSONObject: jsonObject ?? [:], options: .prettyPrinted)
-                    
+                    let updatedData = try JSONSerialization.data(withJSONObject: jsonObject ?? [:], options: .prettyPrinted)
+#if DEBUG
+                    print("Updated JSON data: \(String(data: updatedData, encoding: .utf8) ?? "")")
+#endif
                     let decoder = JSONDecoder()
-                    let route = try decoder.decode(Route.self, from: data)
+                    let route = try decoder.decode(Route.self, from: updatedData)
                     loadedRoutes.append(route)
+#if DEBUG
+                    print("Successfully decoded route: \(route)")
+#endif
                 } catch {
+#if DEBUG
                     print("Failed to decode route from \(fileUrl): \(error.localizedDescription)")
+#endif
                 }
             }
             
             DispatchQueue.main.async {
                 self.routes = loadedRoutes
+#if DEBUG
+                // print("Routes successfully loaded: \(self.routes)")
+#endif
             }
         } catch {
+#if DEBUG
             print("Failed to load routes: \(error.localizedDescription)")
+#endif
         }
     }
-
 
     func deleteRoute(route: Route) {
         let url = getDocumentsDirectory().appendingPathComponent("\(route.id).json")
@@ -164,7 +190,9 @@ class RouteManager: ObservableObject {
                 self.routes.removeAll { $0.id == route.id }
             }
         } catch {
+#if DEBUG
             print("Failed to delete route: \(error.localizedDescription)")
+#endif
         }
     }
 
@@ -180,9 +208,13 @@ class RouteManager: ObservableObject {
             let data = try encoder.encode(route)
             let url = getDocumentsDirectory().appendingPathComponent("\(route.id).json")
             try data.write(to: url)
+#if DEBUG
             print("Route saved to: \(url.path)")
+#endif
         } catch {
+#if DEBUG
             print("Failed to save route: \(error.localizedDescription)")
+#endif
         }
     }
     
@@ -199,7 +231,26 @@ class RouteManager: ObservableObject {
     private func updateOdometer() {
         odometer += totalDistance
         userDefaults.set(odometer, forKey: odometerKey)
-        totalDistance = 0;
+        totalDistance = 0
+#if DEBUG
         print("Odometer updated: \(odometer) meters")
+#endif
+    }
+    
+    func showAllFilesAndFolders() {
+        let directory = getDocumentsDirectory()
+        do {
+            let fileUrls = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
+#if DEBUG
+            print("Files and folders in directory: \(directory.path)")
+#endif
+            for fileUrl in fileUrls {
+                print(fileUrl.lastPathComponent)
+            }
+        } catch {
+#if DEBUG
+            print("Failed to list files and folders: \(error.localizedDescription)")
+#endif
+        }
     }
 }
