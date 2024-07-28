@@ -2,6 +2,7 @@ import Combine
 import CoreLocation
 import CoreMotion
 import Foundation
+import SwiftUI
 
 // LocationManager to handle GPS updates
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
@@ -16,14 +17,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private let updateInterval: TimeInterval = 1 // Päivitys 1 kertaa sekunnissa
 
     var HF = 3
-    var DF = 0
+    var DF = 1
     var currentSpeedClass: SpeedClass = .stationary
 
     enum SpeedClass {
         case stationary
         case walking
+        case running
         case cycling
-        case car
+        case riding
         case flying
     }
 
@@ -31,12 +33,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
     // Published properties to update UI
     @Published var speed: Double = 0.0
+    @Published var imperialSpeed: Double = 0.0
     @Published var heading: Double = 0.0
     @Published var altitude: Double = 0.0
+    @Published var imperialAltitude: Double = 0.0
     @Published var accuracyDescription: String = "Unknown"
     @Published var longitude: Double = 0.0
     @Published var latitude: Double = 0.0
     
+    @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
+
     override init() {
         super.init()
         manager.delegate = self
@@ -45,12 +51,18 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         // Asetetaan heading-päivityksen kynnysarvoksi 5 astetta (default on 1 astetta)
         manager.headingFilter = CLLocationDegrees(HF)
        
-        // Asetetaan sijaintipäivityksen tarkkuudeksi karkeampi taso
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-       
         // Asetetaan distanceFilter esimerkiksi 50 metriin, jotta sijaintia päivitetään vain,
         // kun käyttäjä on liikkunut vähintään 50 metriä
         manager.distanceFilter = CLLocationDistance(DF)
+       
+        // Asetetaan sijaintipäivityksen tarkkuudeksi karkeampi taso
+        manager.desiredAccuracy = kCLLocationAccuracyBest
+        #if DEBUG
+        print("desiredAccuracy \(manager.desiredAccuracy)")
+        #endif
+        
+        manager.allowsBackgroundLocationUpdates = true
+        
         
         stopLocationUpdates()
         
@@ -87,10 +99,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         switch newSpeed {
         case 0.01..<6:
             newSpeedClass = .walking
-        case 6..<40:
+        case 6..<14:
+            newSpeedClass = .running
+        case 14..<40:
             newSpeedClass = .cycling
         case 40..<180:
-            newSpeedClass = .car
+            newSpeedClass = .riding
         case 180...:
             newSpeedClass = .flying
         default:
@@ -105,37 +119,50 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private func updateFilters(batteryLevel: Float, isCharging: Bool) {
 #if DEBUG
-        print("updateFilters called with batteryLevel: \(batteryLevel), isCharging: \(isCharging)")
+        print("updateFilters called with batteryLevel: \(batteryLevel), isCharging: \(isCharging), batteryThreshold: \(batteryThreshold)")
 #endif
         
         var distanceFilter: CLLocationDistance
         var headingFilter: CLLocationDegrees
+        var desiredAccuracy: CLLocationAccuracy
+        var pausesLocationUpdatesAutomatically = false
         
-        if isCharging || batteryLevel > 0.5 {
-            distanceFilter = 0
+        if isCharging || batteryLevel > Float(batteryThreshold / 100) {
+            distanceFilter = 3
             headingFilter = 3
+            desiredAccuracy = kCLLocationAccuracyBestForNavigation
         } else {
+            desiredAccuracy = kCLLocationAccuracyBest
+            pausesLocationUpdatesAutomatically = true
             switch currentSpeedClass {
             case .walking:
                 distanceFilter = 17
                 headingFilter = 25
+            case .running:
+                distanceFilter = 34
+                headingFilter = 15
             case .cycling:
-                distanceFilter = 42
+                distanceFilter = 68
                 headingFilter = 10
-            case .car:
+            case .riding:
                 distanceFilter = 250
                 headingFilter = 5
+                desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             case .flying:
                 distanceFilter = 2500
                 headingFilter = 2
+                desiredAccuracy = kCLLocationAccuracyHundredMeters
+                pausesLocationUpdatesAutomatically = false
             case .stationary:
                 distanceFilter = 10
                 headingFilter = 5
             }
+
             
             if batteryLevel < 0.25 {
-                distanceFilter *= 1.3
-                headingFilter *= 1.3
+                distanceFilter *= 1.5
+                headingFilter *= 1.5
+                desiredAccuracy = kCLLocationAccuracyHundredMeters
             }
         }
         
@@ -144,6 +171,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         manager.distanceFilter = distanceFilter
         manager.headingFilter = headingFilter
+        manager.desiredAccuracy = desiredAccuracy
+        manager.pausesLocationUpdatesAutomatically = pausesLocationUpdatesAutomatically
 #if DEBUG
         print("Updated filters based on speed: \(speed) km/h, battery level: \(batteryLevel), isCharging: \(isCharging)")
         print("Distance Filter: \(distanceFilter), Heading Filter: \(headingFilter)")
@@ -196,6 +225,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         if shouldUpdateLocation(timeInterval: timeInterval, speed: location.speed) {
             lastUpdate = now
             speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
+            imperialSpeed = speed/1.6093
             altitude = location.altitude
             longitude = location.coordinate.longitude
             latitude = location.coordinate.latitude
@@ -227,7 +257,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             // Päivitetään myös sijainti, nopeus ja korkeus
             if let location = manager.location {
                 speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
+                imperialSpeed = speed/1.6093
                 altitude = location.altitude
+                imperialAltitude = altitude * 3.2808
                 longitude = location.coordinate.longitude
                 latitude = location.coordinate.latitude
                 accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)

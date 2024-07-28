@@ -6,6 +6,7 @@ struct RoutesView: View {
     @ObservedObject var locationManager: LocationManager
     @Binding var selectedRoute: Route? // Sitova muuttuja valitulle reitille
     @State private var selectedMapType: MapStyle = .imagery(elevation: .realistic)
+    
     @Environment(\.colorScheme) var colorScheme
 
     private func printRoute() {
@@ -37,12 +38,12 @@ struct RoutesView: View {
         return totalDistance / totalTime * 3.6 // Convert to km/h
     }
     
-    private func formattedDateString(from date: Date?) -> String {
-        guard let date = date else { return "N/A" }
-        let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .short
-        return formatter.string(from: date)
+    private func formattedElapsedTime(for route: Route) -> String {
+        guard let endDate = route.endDate else { return "N/A" }
+        let totalTime = endDate.timeIntervalSince(route.startDate)
+        let formatter = DateComponentsFormatter()
+        formatter.unitsStyle = .abbreviated
+        return formatter.string(from: totalTime) ?? "N/A"
     }
     
     var body: some View {
@@ -53,16 +54,19 @@ struct RoutesView: View {
                         Button(action: {
                             selectedRoute = route
                         }) {
-                            HStack(spacing: 0) {
-                                VStack(alignment: .leading) {
+                            HStack {
+                                VStack {
                                     Text(route.name)
                                         .font(.headline)
-                                    Text("Distance: \(calculateTotalDistance(for: route) / 1000, specifier: "%.2f") km")
-                                        .font(.subheadline)
-                                    Text("Average Speed: \(calculateAverageSpeed(for: route), specifier: "%.2f") km/h")
-                                        .font(.subheadline)
-                                    Text("End Time: \(formattedDateString(from: route.endDate))")
-                                        .font(.subheadline)
+                                    HStack {
+                                        Image(systemName: "map")
+                                        Text("\(calculateTotalDistance(for: route) / 1000, specifier: "%.2f") km")
+                                        Image(systemName: "gauge")
+                                        Text("\(calculateAverageSpeed(for: route), specifier: "%.1f") km/h")
+                                        Image(systemName: "stopwatch")
+                                        Text("\(formattedElapsedTime(for: route))")
+                                            
+                                    }.font(.caption2)
                                 }
                                 Spacer()
                                 Image(systemName: "chevron.right")
@@ -80,13 +84,14 @@ struct RoutesView: View {
                 
             }
             .navigationTitle("Routes Information")
-            .toolbarBackground(colorScheme == .dark ? Color.black: Color.white)
+            .toolbarBackground(colorScheme == .dark ? Color.black : Color.white)
         }
     }
     
     func deleteRoute(offsets: IndexSet) {
         for index in offsets {
-            let route = locationManager.routeManager.routes[index]
+            let sortedRoutes = locationManager.routeManager.routes.sorted(by: { $0.startDate > $1.startDate })
+            let route = sortedRoutes[index]
             locationManager.routeManager.deleteRoute(route: route)
         }
     }

@@ -14,6 +14,7 @@ struct SpeedView: View {
     @State private var alertMessage = ""
 
     @Environment(\.colorScheme) var colorScheme
+    @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
 
     
     private let numberFormatter: NumberFormatter = {
@@ -36,11 +37,9 @@ struct SpeedView: View {
         GeometryReader { geometry in
             VStack(spacing: 0) {
                 VStack(spacing: 0) {
-                    let speedText = locationManager.speed < 100 ?
-                        speedFormatter.string(from: NSNumber(value: locationManager.speed)) ?? "0.0" :
-                        String(format: "%.0f", locationManager.speed)
+                    let speedText = locationManager.speed < 50 ? speedFormatter.string(from: NSNumber(value: locationManager.speed)) ?? "0.0" : String(format: "%.0f", locationManager.speed)
                         
-                    let speedFontSize: Int = locationManager.speed < 100 ? 132 : 116
+                    let speedFontSize: Int = locationManager.speed < 100 ? 130 : 116
                         
                     Text(speedText)
                         .font(.custom("Univers LT 75 Black", size: CGFloat(speedFontSize)))

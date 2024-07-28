@@ -1,5 +1,6 @@
 import CoreLocation
 import Foundation
+import Combine
 
 struct RoutePoint: Codable, Identifiable {
     var id = UUID() // Lisää identifioiva ominaisuus
@@ -42,8 +43,14 @@ class RouteManager: ObservableObject {
     @Published var currentRoute: Route?
     @Published var routeLength: Int = 0
     @Published var lastFive: [RoutePoint] = []
-    @Published var totalDistance: Double = 0.0
-    @Published var odometer: Double
+    @Published var totalDistance: Double = 0.0 {
+        didSet { imperialTotalDistance = totalDistance / 1.60934 }
+    }
+    @Published var imperialTotalDistance: Double = 0.0
+    @Published var odometer: Double = 0.0 {
+        didSet { imperialOdometer = odometer / 1.60934 }
+    }
+    @Published var imperialOdometer: Double = 0.0
     @Published var routes: [Route] = []
     @Published var showingAlert = false
     @Published var alertMessage = ""
@@ -125,13 +132,14 @@ class RouteManager: ObservableObject {
         do {
             let fileUrls = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
 #if DEBUG
-            print("Found files: \(fileUrls)")
+            // print("Found files: \(fileUrls)")
 #endif
             let jsonFiles = fileUrls.filter { $0.pathExtension == "json" }
 #if DEBUG
-            print("Filtered JSON files: \(jsonFiles)")
+            // print("Filtered JSON files: \(jsonFiles)")
 #endif
             var loadedRoutes = [Route]()
+
             
             for fileUrl in jsonFiles {
                 do {
@@ -141,7 +149,7 @@ class RouteManager: ObservableObject {
 #endif
                     var jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
 #if DEBUG
-                    print("Parsed JSON object: \(jsonObject ?? [:])")
+                    // print("Parsed JSON object: \(jsonObject ?? [:])")
 #endif
                     // Päivitetään JSON-objekti lisäämällä puuttuva id-kenttä RoutePoint-rakenteeseen
                     if var points = jsonObject?["points"] as? [[String: Any]] {
@@ -160,7 +168,7 @@ class RouteManager: ObservableObject {
                     let route = try decoder.decode(Route.self, from: updatedData)
                     loadedRoutes.append(route)
 #if DEBUG
-                    print("Successfully decoded route: \(route)")
+                    print("Successfully decoded route: \(route.name)")
 #endif
                 } catch {
 #if DEBUG
@@ -173,6 +181,7 @@ class RouteManager: ObservableObject {
                 self.routes = loadedRoutes
 #if DEBUG
                 // print("Routes successfully loaded: \(self.routes)")
+                print(self.routes.count)
 #endif
             }
         } catch {
