@@ -11,6 +11,27 @@
 		4A311B312C558E9800A576B8 /* RouteMapView_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A311B302C558E9800A576B8 /* RouteMapView_Previews.swift */; };
 		4A311B332C55993E00A576B8 /* BezierInterpolatePoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A311B322C55993E00A576B8 /* BezierInterpolatePoints.swift */; };
 		4A311B372C56AD8D00A576B8 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4A311B362C56AD8D00A576B8 /* Config.xcconfig */; };
+		4A34AC422C57B0FA0098EDE1 /* Orbitron-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC412C57B0FA0098EDE1 /* Orbitron-VariableFont_wght.ttf */; };
+		4A34AC552C57B10D0098EDE1 /* Barlow-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC432C57B10B0098EDE1 /* Barlow-ExtraBold.ttf */; };
+		4A34AC562C57B10D0098EDE1 /* Barlow-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC442C57B10C0098EDE1 /* Barlow-LightItalic.ttf */; };
+		4A34AC572C57B10D0098EDE1 /* Barlow-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC452C57B10C0098EDE1 /* Barlow-BoldItalic.ttf */; };
+		4A34AC582C57B10D0098EDE1 /* Barlow-MediumItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC462C57B10C0098EDE1 /* Barlow-MediumItalic.ttf */; };
+		4A34AC592C57B10D0098EDE1 /* Barlow-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC472C57B10C0098EDE1 /* Barlow-Medium.ttf */; };
+		4A34AC5A2C57B10D0098EDE1 /* Barlow-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC482C57B10C0098EDE1 /* Barlow-Light.ttf */; };
+		4A34AC5B2C57B10D0098EDE1 /* Barlow-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC492C57B10C0098EDE1 /* Barlow-Black.ttf */; };
+		4A34AC5C2C57B10D0098EDE1 /* Barlow-ExtraLightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC4A2C57B10C0098EDE1 /* Barlow-ExtraLightItalic.ttf */; };
+		4A34AC5D2C57B10D0098EDE1 /* Barlow-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC4B2C57B10C0098EDE1 /* Barlow-Regular.ttf */; };
+		4A34AC5E2C57B10D0098EDE1 /* Barlow-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC4C2C57B10C0098EDE1 /* Barlow-ExtraBoldItalic.ttf */; };
+		4A34AC5F2C57B10D0098EDE1 /* Barlow-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC4D2C57B10C0098EDE1 /* Barlow-ExtraLight.ttf */; };
+		4A34AC602C57B10D0098EDE1 /* Barlow-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC4E2C57B10C0098EDE1 /* Barlow-Italic.ttf */; };
+		4A34AC612C57B10D0098EDE1 /* Barlow-BlackItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC4F2C57B10D0098EDE1 /* Barlow-BlackItalic.ttf */; };
+		4A34AC622C57B10D0098EDE1 /* Barlow-ThinItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC502C57B10D0098EDE1 /* Barlow-ThinItalic.ttf */; };
+		4A34AC632C57B10D0098EDE1 /* Barlow-SemiBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC512C57B10D0098EDE1 /* Barlow-SemiBoldItalic.ttf */; };
+		4A34AC642C57B10D0098EDE1 /* Barlow-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC522C57B10D0098EDE1 /* Barlow-Bold.ttf */; };
+		4A34AC652C57B10D0098EDE1 /* Barlow-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC532C57B10D0098EDE1 /* Barlow-SemiBold.ttf */; };
+		4A34AC662C57B10D0098EDE1 /* Barlow-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC542C57B10D0098EDE1 /* Barlow-Thin.ttf */; };
+		4A34AC692C57B11C0098EDE1 /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC672C57B11B0098EDE1 /* Univers LT 75 Black.ttf */; };
+		4A34AC6A2C57B11C0098EDE1 /* Univers LT 45 Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4A34AC682C57B11C0098EDE1 /* Univers LT 45 Light.ttf */; };
 		4A92EF502C50759C005083C5 /* SpeedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF4F2C50759B005083C5 /* SpeedView.swift */; };
 		4A92EF522C5075C5005083C5 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF512C5075C5005083C5 /* SettingsView.swift */; };
 		4A92EF542C507714005083C5 /* Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A92EF532C507714005083C5 /* Previews.swift */; };
@@ -25,15 +46,11 @@
 		4AA2DEF72C4AC3AE0065448C /* BikeComputerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEF62C4AC3AE0065448C /* BikeComputerUITests.swift */; };
 		4AA2DEF92C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */; };
 		4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */; };
-		4AABFE5E2C4DA30D00CCFBDB /* Univers LT 45 Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */; };
-		4AABFE5F2C4DA30E00CCFBDB /* Univers LT 45 Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */; };
-		4AABFE602C4DA30F00CCFBDB /* Univers LT 45 Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */; };
-		4AABFE612C4DA31300CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
-		4AABFE622C4DA31400CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
-		4AABFE632C4DA31500CCFBDB /* Univers LT 75 Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */; };
 		4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABFE662C4E762200CCFBDB /* RouteManager.swift */; };
 		4AAE43162C4FDFC6000DC321 /* BatteryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */; };
 		4AAE43182C5051A9000DC321 /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43172C5051A9000DC321 /* RoutesView.swift */; };
+		4AF97DC92C57731A00D5EE36 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DC82C57731A00D5EE36 /* Documentation.docc */; };
+		4AF97DCB2C57850F00D5EE36 /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +75,27 @@
 		4A311B302C558E9800A576B8 /* RouteMapView_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapView_Previews.swift; sourceTree = "<group>"; };
 		4A311B322C55993E00A576B8 /* BezierInterpolatePoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierInterpolatePoints.swift; sourceTree = "<group>"; };
 		4A311B362C56AD8D00A576B8 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
+		4A34AC412C57B0FA0098EDE1 /* Orbitron-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Orbitron-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		4A34AC432C57B10B0098EDE1 /* Barlow-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ExtraBold.ttf"; sourceTree = "<group>"; };
+		4A34AC442C57B10C0098EDE1 /* Barlow-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-LightItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC452C57B10C0098EDE1 /* Barlow-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-BoldItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC462C57B10C0098EDE1 /* Barlow-MediumItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-MediumItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC472C57B10C0098EDE1 /* Barlow-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Medium.ttf"; sourceTree = "<group>"; };
+		4A34AC482C57B10C0098EDE1 /* Barlow-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Light.ttf"; sourceTree = "<group>"; };
+		4A34AC492C57B10C0098EDE1 /* Barlow-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Black.ttf"; sourceTree = "<group>"; };
+		4A34AC4A2C57B10C0098EDE1 /* Barlow-ExtraLightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC4B2C57B10C0098EDE1 /* Barlow-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Regular.ttf"; sourceTree = "<group>"; };
+		4A34AC4C2C57B10C0098EDE1 /* Barlow-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC4D2C57B10C0098EDE1 /* Barlow-ExtraLight.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ExtraLight.ttf"; sourceTree = "<group>"; };
+		4A34AC4E2C57B10C0098EDE1 /* Barlow-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Italic.ttf"; sourceTree = "<group>"; };
+		4A34AC4F2C57B10D0098EDE1 /* Barlow-BlackItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-BlackItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC502C57B10D0098EDE1 /* Barlow-ThinItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-ThinItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC512C57B10D0098EDE1 /* Barlow-SemiBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		4A34AC522C57B10D0098EDE1 /* Barlow-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Bold.ttf"; sourceTree = "<group>"; };
+		4A34AC532C57B10D0098EDE1 /* Barlow-SemiBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-SemiBold.ttf"; sourceTree = "<group>"; };
+		4A34AC542C57B10D0098EDE1 /* Barlow-Thin.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Barlow-Thin.ttf"; sourceTree = "<group>"; };
+		4A34AC672C57B11B0098EDE1 /* Univers LT 75 Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers LT 75 Black.ttf"; sourceTree = "<group>"; };
+		4A34AC682C57B11C0098EDE1 /* Univers LT 45 Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers LT 45 Light.ttf"; sourceTree = "<group>"; };
 		4A92EF4F2C50759B005083C5 /* SpeedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeedView.swift; sourceTree = "<group>"; };
 		4A92EF512C5075C5005083C5 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4A92EF532C507714005083C5 /* Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Previews.swift; sourceTree = "<group>"; };
@@ -74,14 +112,15 @@
 		4AA2DEF22C4AC3AE0065448C /* BikeComputerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BikeComputerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AA2DEF62C4AC3AE0065448C /* BikeComputerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerUITests.swift; sourceTree = "<group>"; };
 		4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers LT 45 Light.ttf"; sourceTree = "<group>"; };
-		4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Univers LT 75 Black.ttf"; sourceTree = "<group>"; };
 		4AABFE5A2C4D417D00CCFBDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4AABFE5D2C4D957B00CCFBDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4AABFE662C4E762200CCFBDB /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryManager.swift; sourceTree = "<group>"; };
 		4AAE43172C5051A9000DC321 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
+		4AF97DC72C57661400D5EE36 /* UpdataBuildBumberScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UpdataBuildBumberScript.sh; sourceTree = "<group>"; };
+		4AF97DC82C57731A00D5EE36 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
+		4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,6 +148,34 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A34AC402C57B0320098EDE1 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				4A34AC682C57B11C0098EDE1 /* Univers LT 45 Light.ttf */,
+				4A34AC672C57B11B0098EDE1 /* Univers LT 75 Black.ttf */,
+				4A34AC492C57B10C0098EDE1 /* Barlow-Black.ttf */,
+				4A34AC4F2C57B10D0098EDE1 /* Barlow-BlackItalic.ttf */,
+				4A34AC522C57B10D0098EDE1 /* Barlow-Bold.ttf */,
+				4A34AC452C57B10C0098EDE1 /* Barlow-BoldItalic.ttf */,
+				4A34AC432C57B10B0098EDE1 /* Barlow-ExtraBold.ttf */,
+				4A34AC4C2C57B10C0098EDE1 /* Barlow-ExtraBoldItalic.ttf */,
+				4A34AC4D2C57B10C0098EDE1 /* Barlow-ExtraLight.ttf */,
+				4A34AC4A2C57B10C0098EDE1 /* Barlow-ExtraLightItalic.ttf */,
+				4A34AC4E2C57B10C0098EDE1 /* Barlow-Italic.ttf */,
+				4A34AC482C57B10C0098EDE1 /* Barlow-Light.ttf */,
+				4A34AC442C57B10C0098EDE1 /* Barlow-LightItalic.ttf */,
+				4A34AC472C57B10C0098EDE1 /* Barlow-Medium.ttf */,
+				4A34AC462C57B10C0098EDE1 /* Barlow-MediumItalic.ttf */,
+				4A34AC4B2C57B10C0098EDE1 /* Barlow-Regular.ttf */,
+				4A34AC532C57B10D0098EDE1 /* Barlow-SemiBold.ttf */,
+				4A34AC512C57B10D0098EDE1 /* Barlow-SemiBoldItalic.ttf */,
+				4A34AC542C57B10D0098EDE1 /* Barlow-Thin.ttf */,
+				4A34AC502C57B10D0098EDE1 /* Barlow-ThinItalic.ttf */,
+				4A34AC412C57B0FA0098EDE1 /* Orbitron-VariableFont_wght.ttf */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		4A92EF5F2C52C342005083C5 /* Components */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +219,9 @@
 		4AA2DECF2C4AC3AC0065448C = {
 			isa = PBXGroup;
 			children = (
+				4AF97DC82C57731A00D5EE36 /* Documentation.docc */,
+				4AF97DC72C57661400D5EE36 /* UpdataBuildBumberScript.sh */,
+				4A311B362C56AD8D00A576B8 /* Config.xcconfig */,
 				4AA2DEDA2C4AC3AC0065448C /* BikeComputer */,
 				4AA2DEEB2C4AC3AE0065448C /* BikeComputerTests */,
 				4AA2DEF52C4AC3AE0065448C /* BikeComputerUITests */,
@@ -172,7 +242,7 @@
 		4AA2DEDA2C4AC3AC0065448C /* BikeComputer */ = {
 			isa = PBXGroup;
 			children = (
-				4A311B362C56AD8D00A576B8 /* Config.xcconfig */,
+				4A34AC402C57B0320098EDE1 /* fonts */,
 				4A92EF622C52C3B9005083C5 /* Settings */,
 				4A92EF612C52C38E005083C5 /* Speed */,
 				4A92EF602C52C358005083C5 /* Route */,
@@ -181,7 +251,6 @@
 				4AA2DEDB2C4AC3AC0065448C /* BikeComputerApp.swift */,
 				4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */,
 				4AA2DEDF2C4AC3AE0065448C /* Assets.xcassets */,
-				4AABFE572C4D410300CCFBDB /* fonts */,
 				4AA2DEE12C4AC3AE0065448C /* Preview Content */,
 			);
 			path = BikeComputer;
@@ -201,6 +270,7 @@
 				4AABFE5D2C4D957B00CCFBDB /* Info.plist */,
 				4AA2DEEC2C4AC3AE0065448C /* BikeComputerTests.swift */,
 				4A311B2E2C557C4900A576B8 /* RouteMapTests.swift */,
+				4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */,
 			);
 			path = BikeComputerTests;
 			sourceTree = "<group>";
@@ -214,16 +284,6 @@
 			path = BikeComputerUITests;
 			sourceTree = "<group>";
 		};
-		4AABFE572C4D410300CCFBDB /* fonts */ = {
-			isa = PBXGroup;
-			children = (
-				4AABFE582C4D415B00CCFBDB /* Univers LT 45 Light.ttf */,
-				4AABFE592C4D415B00CCFBDB /* Univers LT 75 Black.ttf */,
-			);
-			name = fonts;
-			path = ../fonts;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -231,7 +291,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 4AA2DEFC2C4AC3AE0065448C /* Build configuration list for PBXNativeTarget "BikeComputer" */;
 			buildPhases = (
-				4A311B342C56A82B00A576B8 /* ShellScript */,
 				4AA2DED42C4AC3AC0065448C /* Sources */,
 				4AA2DED52C4AC3AC0065448C /* Frameworks */,
 				4AA2DED62C4AC3AC0065448C /* Resources */,
@@ -329,10 +388,29 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AABFE612C4DA31300CCFBDB /* Univers LT 75 Black.ttf in Resources */,
+				4A34AC6A2C57B11C0098EDE1 /* Univers LT 45 Light.ttf in Resources */,
+				4A34AC562C57B10D0098EDE1 /* Barlow-LightItalic.ttf in Resources */,
+				4A34AC592C57B10D0098EDE1 /* Barlow-Medium.ttf in Resources */,
+				4A34AC422C57B0FA0098EDE1 /* Orbitron-VariableFont_wght.ttf in Resources */,
+				4A34AC5E2C57B10D0098EDE1 /* Barlow-ExtraBoldItalic.ttf in Resources */,
 				4A311B372C56AD8D00A576B8 /* Config.xcconfig in Resources */,
-				4AABFE5E2C4DA30D00CCFBDB /* Univers LT 45 Light.ttf in Resources */,
+				4A34AC692C57B11C0098EDE1 /* Univers LT 75 Black.ttf in Resources */,
+				4A34AC5F2C57B10D0098EDE1 /* Barlow-ExtraLight.ttf in Resources */,
+				4A34AC662C57B10D0098EDE1 /* Barlow-Thin.ttf in Resources */,
+				4A34AC5D2C57B10D0098EDE1 /* Barlow-Regular.ttf in Resources */,
+				4A34AC612C57B10D0098EDE1 /* Barlow-BlackItalic.ttf in Resources */,
+				4A34AC622C57B10D0098EDE1 /* Barlow-ThinItalic.ttf in Resources */,
+				4A34AC602C57B10D0098EDE1 /* Barlow-Italic.ttf in Resources */,
 				4AA2DEE32C4AC3AE0065448C /* Preview Assets.xcassets in Resources */,
+				4A34AC572C57B10D0098EDE1 /* Barlow-BoldItalic.ttf in Resources */,
+				4A34AC5A2C57B10D0098EDE1 /* Barlow-Light.ttf in Resources */,
+				4A34AC632C57B10D0098EDE1 /* Barlow-SemiBoldItalic.ttf in Resources */,
+				4A34AC552C57B10D0098EDE1 /* Barlow-ExtraBold.ttf in Resources */,
+				4A34AC582C57B10D0098EDE1 /* Barlow-MediumItalic.ttf in Resources */,
+				4A34AC642C57B10D0098EDE1 /* Barlow-Bold.ttf in Resources */,
+				4A34AC5C2C57B10D0098EDE1 /* Barlow-ExtraLightItalic.ttf in Resources */,
+				4A34AC5B2C57B10D0098EDE1 /* Barlow-Black.ttf in Resources */,
+				4A34AC652C57B10D0098EDE1 /* Barlow-SemiBold.ttf in Resources */,
 				4AA2DEE02C4AC3AE0065448C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,8 +419,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AABFE622C4DA31400CCFBDB /* Univers LT 75 Black.ttf in Resources */,
-				4AABFE5F2C4DA30E00CCFBDB /* Univers LT 45 Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,33 +426,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AABFE632C4DA31500CCFBDB /* Univers LT 75 Black.ttf in Resources */,
-				4AABFE602C4DA30F00CCFBDB /* Univers LT 45 Light.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		4A311B342C56A82B00A576B8 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "#!/bin/bash\n# This script is designed to increment the build number consistently across all\n# targets.\n\n# Navigating to the 'carbonwatchuk' directory inside the source root.\ncd \"$SRCROOT/$PRODUCT_NAME\"\n\n# Get the current date in the format \"YYYYMMDD\".\ncurrent_date=$(date \"+%Y%m%d\")\n\n# Parse the 'Config.xcconfig' file to retrieve the previous build number. \n# The 'awk' command is used to find the line containing \"BUILD_NUMBER\"\n# and the 'tr' command is used to remove any spaces.\nprevious_build_number=$(awk -F \"=\" '/BUILD_NUMBER/ {print $2}' Config.xcconfig | tr -d ' ')\n\n# Extract the date part and the counter part from the previous build number.\nprevious_date=\"${previous_build_number:0:8}\"\ncounter=\"${previous_build_number:8}\"\n\n# If the current date matches the date from the previous build number, \n# increment the counter. Otherwise, reset the counter to 1.\nnew_counter=$((current_date == previous_date ? counter + 1 : 1))\n\n# Combine the current date and the new counter to create the new build number.\nnew_build_number=\"${current_date}${new_counter}\"\n\n# Use 'sed' command to replace the previous build number with the new build \n# number in the 'Config.xcconfig' file.\nsed -i -e \"/BUILD_NUMBER =/ s/= .*/= $new_build_number/\" Config.xcconfig\n\n# Remove the backup file created by 'sed' command.\nrm -f Config.xcconfig-e\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		4AA2DED42C4AC3AC0065448C /* Sources */ = {
@@ -396,6 +449,7 @@
 				4A92EF5E2C52450B005083C5 /* MapButtons.swift in Sources */,
 				4AAE43182C5051A9000DC321 /* RoutesView.swift in Sources */,
 				4A92EF542C507714005083C5 /* Previews.swift in Sources */,
+				4AF97DC92C57731A00D5EE36 /* Documentation.docc in Sources */,
 				4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -404,6 +458,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF97DCB2C57850F00D5EE36 /* LocationManagerTests.swift in Sources */,
 				4A311B2F2C557C4900A576B8 /* RouteMapTests.swift in Sources */,
 				4AA2DEED2C4AC3AE0065448C /* BikeComputerTests.swift in Sources */,
 			);
@@ -436,6 +491,7 @@
 /* Begin XCBuildConfiguration section */
 		4AA2DEFA2C4AC3AE0065448C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A311B362C56AD8D00A576B8 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -499,6 +555,7 @@
 		};
 		4AA2DEFB2C4AC3AE0065448C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A311B362C56AD8D00A576B8 /* Config.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -555,7 +612,6 @@
 		};
 		4AA2DEFD2C4AC3AE0065448C /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A311B362C56AD8D00A576B8 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -596,7 +652,6 @@
 		};
 		4AA2DEFE2C4AC3AE0065448C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4A311B362C56AD8D00A576B8 /* Config.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

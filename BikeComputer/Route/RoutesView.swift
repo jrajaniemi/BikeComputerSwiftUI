@@ -9,10 +9,11 @@ struct RoutesView: View {
     
     @Environment(\.colorScheme) var colorScheme
 
+    #if DEBUG
     private func printRoute() {
         print(locationManager.routeManager.routes)
     }
-
+    #endif
     private func calculateTotalDistance(for route: Route) -> Double {
         var totalDistance = 0.0
         if route.points.count > 1 {
@@ -55,9 +56,9 @@ struct RoutesView: View {
                             selectedRoute = route
                         }) {
                             HStack {
-                                VStack {
+                                VStack(alignment: .leading) {
                                     Text(route.name)
-                                        .font(.headline)
+                                        .font(.body)
                                     HStack {
                                         Image(systemName: "map")
                                         Text("\(calculateTotalDistance(for: route) / 1000, specifier: "%.2f") km")
@@ -76,11 +77,13 @@ struct RoutesView: View {
                     }
                     .onDelete(perform: deleteRoute)
                 }
-                
                 .refreshable {
                     locationManager.routeManager.loadRoutes()
-                    printRoute()
+                    #if DEBUG
+                    // printRoute()
+                    #endif
                 }
+                .listStyle(GroupedListStyle())
                 
             }
             .navigationTitle("Routes Information")

@@ -13,7 +13,9 @@ struct RouteMapView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-
+        let gradient = Gradient(colors: [.green, .orange, .orange, .orange, .orange, .orange, .red])
+        let stroke = StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round)
+        
         Map(position: $position, interactionModes: .all) {
             if let startPoint = CLLocationCoordinate2D.startPoint(from: route) {
                 Annotation("Start point", coordinate: startPoint, anchor: .bottom) {
@@ -26,13 +28,15 @@ struct RouteMapView: View {
                             .padding(5)
                     }
                 }
-                .annotationTitles(.hidden)
+                .annotationTitles(.automatic)
             }
             
             if let selectedRoute = selectedRoute {
                 let coordinates = selectedRoute.polyline.coordinates
 
                 MapPolyline(coordinates: coordinates, contourStyle: MapPolyline.ContourStyle.geodesic)
+                    .stroke(gradient, style: stroke)
+                    /*
                     .stroke(
                         colorScheme == .dark ? Color(hex: "#ff9d1e") : Color(hex: "#ffc375"),
                         style: StrokeStyle(
@@ -41,6 +45,7 @@ struct RouteMapView: View {
                             miterLimit: 4
                         )
                     )
+                     */
                     
             }
             

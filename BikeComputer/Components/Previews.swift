@@ -3,7 +3,7 @@ import CoreLocation
 class PreviewLocationManager: LocationManager {
     override init() {
         super.init()
-        self.speed = 6.9
+        self.speed = 126.9
         self.heading = 145.0
         self.altitude = 16
         self.latitude = 60.1699

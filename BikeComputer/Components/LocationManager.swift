@@ -11,6 +11,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let routeManager = RouteManager()
     
     private var lastUpdate: Date = .init()
+    private var lastSpeedUpdate: Date = Date()
     private var headingLastUpdate: Date = .init()
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
@@ -142,11 +143,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 distanceFilter = 34
                 headingFilter = 15
             case .cycling:
-                distanceFilter = 68
-                headingFilter = 10
+                distanceFilter = 60
+                headingFilter = 6
             case .riding:
-                distanceFilter = 250
-                headingFilter = 5
+                distanceFilter = 200
+                headingFilter = 4
                 desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             case .flying:
                 distanceFilter = 2500
@@ -221,16 +222,22 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         let now = Date()
         let timeInterval = now.timeIntervalSince(lastUpdate)
+        let speedTimeInterval = now.timeIntervalSince(lastSpeedUpdate)
+        
+        if speedTimeInterval > 1 {
+            speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
+            imperialSpeed = speed/1.6093
+        }
+        
         // print("timeInterval", timeInterval)
         if shouldUpdateLocation(timeInterval: timeInterval, speed: location.speed) {
             lastUpdate = now
-            speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
-            imperialSpeed = speed/1.6093
+
             altitude = location.altitude
             longitude = location.coordinate.longitude
             latitude = location.coordinate.latitude
             accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
-            // routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
+            routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
             addRoutePoint()
         }
     }

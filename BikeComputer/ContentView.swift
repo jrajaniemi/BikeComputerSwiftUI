@@ -45,6 +45,8 @@ struct ContentView: View {
             .toolbarBackground(colorScheme == .dark ? Color.black: Color.white)
 
 
+
+
             if let route = selectedRoute {
                 NavigationView {
                     FullScreenRouteMapView(route: route, mapType: .imagery(elevation: .realistic),  selectedRoute: $selectedRoute)

@@ -15,7 +15,7 @@ struct SettingsView: View {
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "N/A"
         return "Version \(version) Build (\(build))"
     }
-    
+
     var body: some View {
         NavigationView {
             Form {
@@ -27,15 +27,15 @@ struct SettingsView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
-                
+
                 Section(header: Text("Battery Threshold")) {
                     Text("Battery Threshold: \(Int(batteryThreshold))%")
-                    Slider(value: $batteryThreshold, in: 40...100, step: 1) {
+                    Slider(value: $batteryThreshold, in: 40 ... 100, step: 1) {
                         Text("Battery Threshold")
                     }
                     .accessibilityValue(Text("\(Int(batteryThreshold))%"))
                 }
-                
+
                 Section(header: Text("Unit Preference")) {
                     Picker("Units", selection: $unitPreference) {
                         Text("km/h").tag(0)
@@ -43,23 +43,23 @@ struct SettingsView: View {
                     }
                     .pickerStyle(SegmentedPickerStyle())
                 }
-                
+
                 Section(header: Text("About")) {
                     Text(appVersion)
                 }
-                
-#if DEBUG
-Section(header: Text("Parameters")) {
-    Text("Heading Filter: \(locationManager.HF)")
-    Text("Distance Filter: \(locationManager.DF)")
-    Text("Battery Level: \(batteryManager.batteryLevel * 100, specifier: "%.0f") %")
-    Text("Is charging: \(batteryManager.isCharging ? "Yes" : "No")")
-    Text("Speed class: \(locationManager.currentSpeedClass)")
-    Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
-    Text("Desired Accuracy: \(locationManager.manager.desiredAccuracy)")
-    Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? "Yes" : "No")")
- }
-#endif
+
+                #if DEBUG
+                Section(header: Text("Parameters")) {
+                    Text("Heading Filter: \(locationManager.HF)")
+                    Text("Distance Filter: \(locationManager.DF)")
+                    Text("Battery Level: \(batteryManager.batteryLevel * 100, specifier: "%.0f") %")
+                    Text("Is charging: \(batteryManager.isCharging ? "Yes" : "No")")
+                    Text("Speed class: \(locationManager.currentSpeedClass)")
+                    Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
+                    Text("Desired Accuracy: \(locationManager.manager.desiredAccuracy)")
+                    Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? "Yes" : "No")")
+                }
+                #endif
             }
             .navigationTitle("Settings")
             .background(colorScheme == .dark ? Color.black : Color.white)
