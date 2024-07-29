@@ -1,0 +1,32 @@
+{
+  "source": "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/RoutesView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Routes Information"
+      },
+      {
+        "comment": "",
+        "key": "%.2f mi"
+      },
+      {
+        "comment": "",
+        "key": "%.1f mph"
+      },
+      {
+        "comment": "",
+        "key": "%@"
+      },
+      {
+        "comment": "",
+        "key": "%.2f km"
+      },
+      {
+        "comment": "",
+        "key": "%.1f km/h"
+      }
+    ]
+  },
+  "version": 1
+}

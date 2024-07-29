@@ -1,0 +1,64 @@
+{
+  "source": "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Settings/SettingsView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Settings"
+      },
+      {
+        "comment": "",
+        "key": "Color Scheme"
+      },
+      {
+        "comment": "",
+        "key": "Battery Threshold"
+      },
+      {
+        "comment": "",
+        "key": "Unit Preference"
+      },
+      {
+        "comment": "",
+        "key": "About"
+      },
+      {
+        "comment": "",
+        "key": "Appearance"
+      },
+      {
+        "comment": "",
+        "key": "System"
+      },
+      {
+        "comment": "",
+        "key": "Light"
+      },
+      {
+        "comment": "",
+        "key": "Dark"
+      },
+      {
+        "comment": "",
+        "key": "Battery Threshold: %lld%%"
+      },
+      {
+        "comment": "",
+        "key": "%lld%%"
+      },
+      {
+        "comment": "",
+        "key": "Units"
+      },
+      {
+        "comment": "",
+        "key": "km/h"
+      },
+      {
+        "comment": "",
+        "key": "mph"
+      }
+    ]
+  },
+  "version": 1
+}

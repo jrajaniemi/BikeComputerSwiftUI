@@ -43,14 +43,20 @@ class RouteManager: ObservableObject {
     @Published var currentRoute: Route?
     @Published var routeLength: Int = 0
     @Published var lastFive: [RoutePoint] = []
+    // TotalDistance = meters
+    //imperialTotalDistance = feets
     @Published var totalDistance: Double = 0.0 {
-        didSet { imperialTotalDistance = totalDistance / 1.60934 }
+        didSet { imperialTotalDistance = totalDistance * 3.2808 }
     }
     @Published var imperialTotalDistance: Double = 0.0
+    
+    // odometer = meters
+    // imperialOdometer = feets
     @Published var odometer: Double = 0.0 {
-        didSet { imperialOdometer = odometer / 1.60934 }
+        didSet { imperialOdometer = odometer * 3.2808 }
     }
     @Published var imperialOdometer: Double = 0.0
+    
     @Published var routes: [Route] = []
     @Published var showingAlert = false
     @Published var alertMessage = ""

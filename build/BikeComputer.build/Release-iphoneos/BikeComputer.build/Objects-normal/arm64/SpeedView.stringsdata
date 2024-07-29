@@ -1,0 +1,60 @@
+{
+  "source": "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Speed/SpeedView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "mph"
+      },
+      {
+        "comment": "",
+        "key": "km/h"
+      },
+      {
+        "comment": "",
+        "key": "%.0f°"
+      },
+      {
+        "comment": "",
+        "key": "%.0f ft"
+      },
+      {
+        "comment": "",
+        "key": "%.0f m"
+      },
+      {
+        "comment": "",
+        "key": "%.2f mi"
+      },
+      {
+        "comment": "",
+        "key": "%.1f mi"
+      },
+      {
+        "comment": "",
+        "key": "%.2f km"
+      },
+      {
+        "comment": "",
+        "key": "%.1f km"
+      },
+      {
+        "comment": "",
+        "key": "STOP"
+      },
+      {
+        "comment": "",
+        "key": "RECORD"
+      },
+      {
+        "comment": "",
+        "key": "Route Error"
+      },
+      {
+        "comment": "",
+        "key": "OK"
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,85 @@
+{
+  "" : {
+    "const-values" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputer-master.swiftconstvalues",
+    "dependencies" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputer-master.d",
+    "diagnostics" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputer-master.dia",
+    "emit-module-dependencies" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputer-master-emit-module.d",
+    "emit-module-diagnostics" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputer-master-emit-module.dia",
+    "swift-dependencies" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputer-master.swiftdeps"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/BikeComputerApp.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputerApp.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputerApp.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BikeComputerApp.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/BatteryManager.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BatteryManager.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BatteryManager.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BatteryManager.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/Extensions.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/Extensions.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/Extensions.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/Extensions.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/LocationManager.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/LocationManager.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/LocationManager.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/LocationManager.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/Previews.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/Previews.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/Previews.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/Previews.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/RouteManager.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteManager.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteManager.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteManager.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/ContentView.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/ContentView.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/ContentView.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/ContentView.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/BezierInterpolatePoints.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BezierInterpolatePoints.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BezierInterpolatePoints.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/BezierInterpolatePoints.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/MapButtons.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/MapButtons.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/MapButtons.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/MapButtons.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/RouteMapView_Previews.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteMapView_Previews.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteMapView_Previews.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteMapView_Previews.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/RouteMapView.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteMapView.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteMapView.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RouteMapView.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/RoutesView.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RoutesView.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RoutesView.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/RoutesView.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Settings/SettingsView.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/SettingsView.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/SettingsView.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/SettingsView.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Speed/SpeedView.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/SpeedView.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/SpeedView.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/SpeedView.o"
+  },
+  "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/DerivedSources/GeneratedAssetSymbols.swift" : {
+    "index-unit-output-path" : "/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/GeneratedAssetSymbols.o",
+    "llvm-bc" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/GeneratedAssetSymbols.bc",
+    "object" : "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/Objects-normal/arm64/GeneratedAssetSymbols.o"
+  }
+}

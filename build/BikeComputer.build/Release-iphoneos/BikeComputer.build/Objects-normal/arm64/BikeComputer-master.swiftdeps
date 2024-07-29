@@ -1,0 +1,21 @@
+version: "Apple Swift version 5.10 (swiftlang-5.10.0.13 clang-1500.3.9.4)"
+options: "21becdf2c05a8854ba62150c3f2195344988bce471fc56a1a5d83ea1a9c1de82"
+build_start_time: [1722270447, 653006000]
+build_end_time: [1722270464, 619248000]
+inputs:
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/BikeComputerApp.swift": [1721986480, 511922001]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/BatteryManager.swift": [1721985449, 272429445]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/Extensions.swift": [1722000277, 771569206]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/LocationManager.swift": [1722268503, 7443358]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/Previews.swift": [1722253022, 760572714]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Components/RouteManager.swift": [1722268502, 989019466]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/ContentView.swift": [1722253135, 496423062]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/BezierInterpolatePoints.swift": [1722117385, 258130963]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/MapButtons.swift": [1722007656, 678270844]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/RouteMapView.swift": [1722242471, 160390229]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/RouteMapView_Previews.swift": [1722111865, 750176266]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/RoutesView.swift": [1722269077, 536054]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Settings/SettingsView.swift": [1722249937, 584555369]
+  "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Speed/SpeedView.swift": [1722268608, 855693644]
+  ? "/Users/jussi/git/BikeComputerSwiftUI/build/BikeComputer.build/Release-iphoneos/BikeComputer.build/DerivedSources/GeneratedAssetSymbols.swift"
+  : [1722270447, 616678231]

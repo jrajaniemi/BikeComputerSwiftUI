@@ -1,0 +1,16 @@
+{
+  "source": "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/Route/MapButtons.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Back"
+      },
+      {
+        "comment": "",
+        "key": "User Location"
+      }
+    ]
+  },
+  "version": 1
+}

@@ -1,0 +1,20 @@
+{
+  "source": "/Users/jussi/git/BikeComputerSwiftUI/BikeComputer/ContentView.swift",
+  "tables": {
+    "Localizable": [
+      {
+        "comment": "",
+        "key": "Computer"
+      },
+      {
+        "comment": "",
+        "key": "Routes"
+      },
+      {
+        "comment": "",
+        "key": "Settings"
+      }
+    ]
+  },
+  "version": 1
+}

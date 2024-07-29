@@ -14,13 +14,15 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 
 ## What's ne in version 0.1.3
 
-Healt App support
+* Healt App support
+* Auto-odometer
 
 ## What's new in version 0.1.2
 
-- Imperial numbers support
-- Auto-odometer
-- Bigger trip font
+* Support for the British Imperial System
+* More space for the odometer reading, using a larger font
+* A new, more readable Barlow font
+
 
 ## What's new in version 0.1.1
 

@@ -33,11 +33,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var isTracking: Bool = false
 
     // Published properties to update UI
-    @Published var speed: Double = 0.0
-    @Published var imperialSpeed: Double = 0.0
-    @Published var heading: Double = 0.0
-    @Published var altitude: Double = 0.0
-    @Published var imperialAltitude: Double = 0.0
+    @Published var speed: Double = 0.0              // km/h
+    @Published var imperialSpeed: Double = 0.0      // mph
+    @Published var heading: Double = 0.0            // degree
+    @Published var altitude: Double = 0.0           // meters
+    @Published var imperialAltitude: Double = 0.0   // feet
     @Published var accuracyDescription: String = "Unknown"
     @Published var longitude: Double = 0.0
     @Published var latitude: Double = 0.0
@@ -226,6 +226,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         if speedTimeInterval > 1 {
             speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
+            if(speed < 0.3) { speed = 0 }
             imperialSpeed = speed/1.6093
         }
         

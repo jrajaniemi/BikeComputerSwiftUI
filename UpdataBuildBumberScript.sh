@@ -31,7 +31,7 @@ else
 fi
 echo "Uusi laskuri: $new_counter"
 
-new_build_number="${current_date}$(printf "%02d" "$new_counter")"
+new_build_number="${current_date}${new_counter}"
 echo "Uusi build-numero: $new_build_number"
 
 sed -i '' -e "/BUILD_NUMBER =/ s/= .*/= $new_build_number/" Config.xcconfig
@@ -43,4 +43,11 @@ else
     exit 1
 fi
 
+echo "Siivotaan projektikansio"
 xcodebuild clean
+
+echo "Tehdään käännös"
+xcodebuild build
+
+echo "Arkistoidaan"
+xcodebuild archive

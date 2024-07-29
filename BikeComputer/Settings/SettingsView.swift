@@ -48,18 +48,18 @@ struct SettingsView: View {
                     Text(appVersion)
                 }
 
-                #if DEBUG
-                Section(header: Text("Parameters")) {
-                    Text("Heading Filter: \(locationManager.HF)")
-                    Text("Distance Filter: \(locationManager.DF)")
-                    Text("Battery Level: \(batteryManager.batteryLevel * 100, specifier: "%.0f") %")
-                    Text("Is charging: \(batteryManager.isCharging ? "Yes" : "No")")
-                    Text("Speed class: \(locationManager.currentSpeedClass)")
-                    Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
-                    Text("Desired Accuracy: \(locationManager.manager.desiredAccuracy)")
-                    Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? "Yes" : "No")")
-                }
-                #endif
+#if DEBUG
+Section(header: Text("Parameters")) {
+    Text("Heading Filter: \(locationManager.HF)")
+    Text("Distance Filter: \(locationManager.DF)")
+    Text("Battery Level: \(batteryManager.batteryLevel * 100, specifier: "%.0f") %")
+    Text("Is charging: \(batteryManager.isCharging ? "Yes" : "No")")
+    Text("Speed class: \(locationManager.currentSpeedClass)")
+    Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
+    Text("Desired Accuracy: \(locationManager.manager.desiredAccuracy)")
+    Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? "Yes" : "No")")
+}
+#endif
             }
             .navigationTitle("Settings")
             .background(colorScheme == .dark ? Color.black : Color.white)
