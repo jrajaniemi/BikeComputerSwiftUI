@@ -7,21 +7,41 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 Bike App Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer. The super simple interface offers two colour themes: Black/White and White/Black. The app allows you to record your route, which is saved on your phone. You can review your route after the ride is complete. This app has no adverts, paywalls, or additional features, so you can just ride! 
 
 
-## What's new in version 0.2.0
+## What's new in version 0.3.0
 
 - Canvas route
 - Photo-support
 
-## What's ne in version 0.1.3
+## What's ne in version 0.2.
 
 * Healt App support
 * Auto-odometer
+
+## ## What's new in version 0.1.3
+
+* More reliable speed and altitude updates
 
 ## What's new in version 0.1.2
 
 * Support for the British Imperial System
 * More space for the odometer reading, using a larger font
 * A new, more readable Barlow font
+
+We're excited to bring you the latest update to Bike App Computer! Here are the new features and improvements in this version:
+
+Support for the British Imperial System
+
+We have added full support for the British Imperial System. Now you can view your cycling stats in miles per hours, miles, and feets, providing greater flexibility and convenience for our users in regions that use these units.
+
+Enhanced Odometer Display
+
+We've increased the space allocated for the odometer reading and updated it to a larger font size. This enhancement ensures that you can easily read your distance traveled at a glance, even while on the move.
+
+New and Improved Font
+
+Introducing the Barlow font! We've updated the app with a new, more readable font to improve your overall user experience. The Barlow font is clean, modern, and designed to make your on-screen text clearer and more pleasant to read.
+
+Update now and enjoy these new features and improvements. Thank you for choosing Bike App Computer!
 
 
 ## What's new in version 0.1.1
@@ -31,6 +51,6 @@ We are excited to introduce a new feature in the Bike App Computer: battery cons
 
 ## Fonts
 
-The Univers® typeface family is one of the most prolific grotesque sans-serif typefaces of the century. Like Helvetica®, Univers is based on 1898‘s Akzidenz-Grotesk. However, Univers is unique in that the design lacks superfluous features of any type, creating a design that is versatile and distinctive without being obstrusive. Adrian Frutiger began work on Univers in 1954, completing his design in 1957. The Univers type family has grown to 44 different weights and styles, some of which include Cyrillic characters.
+Barlow is a slightly rounded, low-contrast, grotesk type family. Drawing from the visual style of the California public, Barlow shares qualities with the state's car plates, highway signs, busses, and trains.
 
-Te
+The Barlow project is led by Jeremy Tribby, a designer based in San Francisco, USA. To contribute, see github.com/jpt/barlow

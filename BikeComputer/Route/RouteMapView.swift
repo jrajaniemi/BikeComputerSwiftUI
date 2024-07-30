@@ -13,7 +13,7 @@ struct RouteMapView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        let gradient = Gradient(colors: [.green, .orange, .orange, .orange, .orange, .orange, .red])
+        let gradient = Gradient(colors: [.green, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .red])
         let stroke = StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round)
         
         Map(position: $position, interactionModes: .all) {

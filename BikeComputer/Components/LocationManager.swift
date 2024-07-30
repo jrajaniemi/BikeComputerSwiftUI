@@ -6,7 +6,7 @@ import SwiftUI
 
 // LocationManager to handle GPS updates
 class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
-    let manager = CLLocationManager() // Muutettu `private` -> `internal`
+    let manager = CLLocationManager()
     let motionManager = CMMotionManager()
     let routeManager = RouteManager()
     
@@ -15,7 +15,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var headingLastUpdate: Date = .init()
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
-    private let updateInterval: TimeInterval = 1 // Päivitys 1 kertaa sekunnissa
+    private let updateInterval: TimeInterval = 10 // Päivitys 1 kertaa sekunnissa
 
     var HF = 3
     var DF = 1
@@ -29,45 +29,46 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         case riding
         case flying
     }
+    
+    enum PowerSavingMode {
+        case off
+        case normal
+        case max
+    }
 
     var isTracking: Bool = false
 
     // Published properties to update UI
-    @Published var speed: Double = 0.0              // km/h
-    @Published var imperialSpeed: Double = 0.0      // mph
-    @Published var heading: Double = 0.0            // degree
-    @Published var altitude: Double = 0.0           // meters
-    @Published var imperialAltitude: Double = 0.0   // feet
+    @Published var speed: Double = 0.0 {
+        didSet { imperialSpeed = speed / 1.6093 }
+    }
+    @Published var imperialSpeed: Double = 0.0
+    @Published var heading: Double = 0.0
+    @Published var altitude: Double = 0.0 {
+        didSet { imperialAltitude = altitude * 3.2808 }
+    }
+    @Published var imperialAltitude: Double = 0.0
+        
     @Published var accuracyDescription: String = "Unknown"
     @Published var longitude: Double = 0.0
     @Published var latitude: Double = 0.0
+    @Published var powerSavingMode: PowerSavingMode = .off
     
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
+
+    private var speedUpdateTimer: Timer?
 
     override init() {
         super.init()
         manager.delegate = self
-        manager.requestAlwaysAuthorization() // Pyydetään lupaa käyttää sijaintia, kun sovellus on käytössä
+        manager.requestAlwaysAuthorization()
         
-        // Asetetaan heading-päivityksen kynnysarvoksi 5 astetta (default on 1 astetta)
         manager.headingFilter = CLLocationDegrees(HF)
-       
-        // Asetetaan distanceFilter esimerkiksi 50 metriin, jotta sijaintia päivitetään vain,
-        // kun käyttäjä on liikkunut vähintään 50 metriä
         manager.distanceFilter = CLLocationDistance(DF)
-       
-        // Asetetaan sijaintipäivityksen tarkkuudeksi karkeampi taso
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        #if DEBUG
-        print("desiredAccuracy \(manager.desiredAccuracy)")
-        #endif
         
         manager.allowsBackgroundLocationUpdates = true
         
-        
-        stopLocationUpdates()
-        
-        // Observe battery changes
         BatteryManager.shared.$batteryLevel
             .combineLatest(BatteryManager.shared.$isCharging)
             .sink { [weak self] batteryLevel, isCharging in
@@ -75,30 +76,40 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
             .store(in: &cancellables)
         
-        // Observe speed changes
         $speed
             .sink { [weak self] newSpeed in
                 self?.checkSpeedClassChange(newSpeed)
             }
             .store(in: &cancellables)
+        
+        startSpeedUpdateTimer()
+    }
+
+    deinit {
+        speedUpdateTimer?.invalidate()
     }
     
-    /*  Defaults
-     *  Walking = 6 km/h = 1,67 m/s = 17 m per 10 sek
-     *      DF = 17, HF = 25
-     *  Cycling = 15 km/h = 4,17 m/s = 42 m per 10 sek
-     *      DF = 42, HF = 10
-     *  Riding car = 80 km/h = 22,2 m/s 222 m per 10 sek
-     *      DF = 250, HF = 5
-     *  Flying = 850 km/h = 236 m/s = 2,4 km per 10 sek
-     *      DF, 2500, HF = 1
-     */
+    private func startSpeedUpdateTimer() {
+        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+            self?.updateSpeed()
+        }
+    }
     
+    private func updateSpeed() {
+        guard let location = manager.location else { return }
+        speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
+        if speed < 0.3 { speed = 0 }
+        altitude = location.altitude
+#if DEBUG
+        print("\(Date()) Timer update: \(speed) : \(altitude)")
+#endif
+    }
+
     private func checkSpeedClassChange(_ newSpeed: Double) {
         let newSpeedClass: SpeedClass
         
         switch newSpeed {
-        case 0.01..<6:
+        case 1..<6:
             newSpeedClass = .walking
         case 6..<14:
             newSpeedClass = .running
@@ -129,41 +140,44 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         var pausesLocationUpdatesAutomatically = false
         
         if isCharging || batteryLevel > Float(batteryThreshold / 100) {
-            distanceFilter = 3
+            distanceFilter = 0
             headingFilter = 3
             desiredAccuracy = kCLLocationAccuracyBestForNavigation
+            powerSavingMode = .off
         } else {
+            powerSavingMode = .normal
             desiredAccuracy = kCLLocationAccuracyBest
-            pausesLocationUpdatesAutomatically = true
             switch currentSpeedClass {
             case .walking:
-                distanceFilter = 17
+                distanceFilter = 0
                 headingFilter = 25
             case .running:
-                distanceFilter = 34
+                distanceFilter = 1
                 headingFilter = 15
             case .cycling:
-                distanceFilter = 60
+                distanceFilter = 10
                 headingFilter = 6
             case .riding:
-                distanceFilter = 200
+                distanceFilter = 40
                 headingFilter = 4
                 desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             case .flying:
                 distanceFilter = 2500
                 headingFilter = 2
                 desiredAccuracy = kCLLocationAccuracyHundredMeters
-                pausesLocationUpdatesAutomatically = false
             case .stationary:
-                distanceFilter = 10
+                distanceFilter = 0
                 headingFilter = 5
             }
 
-            
             if batteryLevel < 0.25 {
+                powerSavingMode = .max
                 distanceFilter *= 1.5
                 headingFilter *= 1.5
                 desiredAccuracy = kCLLocationAccuracyHundredMeters
+                if(speed < 400) {
+                    pausesLocationUpdatesAutomatically = true
+                }
             }
         }
         
@@ -180,17 +194,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 #endif
     }
     
-    // Muut metodit pysyvät ennallaan
     func startLocationUpdates() {
-        manager.startUpdatingLocation()
-        manager.startUpdatingHeading()
-        // print("Location and heading updates started")
+        DispatchQueue.global().async { [weak self] in
+            self?.manager.startUpdatingLocation()
+            self?.manager.startUpdatingHeading()
+        }
     }
     
     func stopLocationUpdates() {
         manager.stopUpdatingLocation()
         manager.stopUpdatingHeading()
-        // print("Location and heading updates stopped")
     }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -222,31 +235,28 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         
         let now = Date()
         let timeInterval = now.timeIntervalSince(lastUpdate)
-        let speedTimeInterval = now.timeIntervalSince(lastSpeedUpdate)
         
-        if speedTimeInterval > 1 {
-            speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
-            if(speed < 0.3) { speed = 0 }
-            imperialSpeed = speed/1.6093
-        }
+        speed = max(location.speed, 0) * 3.6
         
-        // print("timeInterval", timeInterval)
         if shouldUpdateLocation(timeInterval: timeInterval, speed: location.speed) {
             lastUpdate = now
-
+            speed = max(location.speed, 0) * 3.6
             altitude = location.altitude
             longitude = location.coordinate.longitude
             latitude = location.coordinate.latitude
             accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
             routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
             addRoutePoint()
+#if DEBUG
+            print("\(Date()) Location updated: \(speed):\(currentSpeedClass) -  \(latitude), \(longitude) = \(altitude)")
+#endif
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading) {
         let currentTime = Date()
         let timeSince = abs(currentTime.timeIntervalSince(headingLastUpdate))
-        // print("timeSince \(timeSince)")
+        
         if timeSince < updateInterval {
             return
         }
@@ -260,14 +270,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             lastHeading = roundedNewHeading
             headingLastUpdate = Date()
 #if DEBUG
-            print("Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange)")
+            print("\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange)")
 #endif
-            // Päivitetään myös sijainti, nopeus ja korkeus
+            
             if let location = manager.location {
-                speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
-                imperialSpeed = speed/1.6093
+                speed = max(location.speed, 0) * 3.6
                 altitude = location.altitude
-                imperialAltitude = altitude * 3.2808
                 longitude = location.coordinate.longitude
                 latitude = location.coordinate.latitude
                 accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
@@ -277,8 +285,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     func addRoutePoint() {
-        // print("LocationsUpdate: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
-
         if isTracking == true && speed > 0 {
 #if DEBUG
             print("Route point added: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
@@ -307,7 +313,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     private func shouldUpdateLocation(timeInterval: TimeInterval, speed: CLLocationSpeed) -> Bool {
-        if abs(timeInterval) > 15 || (abs(timeInterval) > 10 && speed < 20 / 3.6) { // speed < 20 km/h (5.56 m/s)
+        if abs(timeInterval) > 30 || (abs(timeInterval) > 15 && speed < 20 / 3.6) {
             return true
         }
         return false
@@ -323,7 +329,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             return "High"
         case 10...20:
             return "Medium"
-        case 20...50:
+        case 20...100:
             return "Low"
         default:
             return "Very Low"

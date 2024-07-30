@@ -133,7 +133,7 @@ class RouteManager: ObservableObject {
         // showAllFilesAndFolders()
         let directory = getDocumentsDirectory()
 #if DEBUG
-        print("Loading routes from directory: \(directory)")
+        // print("Loading routes from directory: \(directory)")
 #endif
         do {
             let fileUrls = try fileManager.contentsOfDirectory(at: directory, includingPropertiesForKeys: nil)
@@ -151,7 +151,7 @@ class RouteManager: ObservableObject {
                 do {
                     let data = try Data(contentsOf: fileUrl)
 #if DEBUG
-                    print("Loaded data from \(fileUrl)")
+                    // print("Loaded data from \(fileUrl)")
 #endif
                     var jsonObject = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any]
 #if DEBUG
@@ -168,13 +168,13 @@ class RouteManager: ObservableObject {
                     // Konvertoidaan päivitetty JSON-objekti takaisin Data-muotoon
                     let updatedData = try JSONSerialization.data(withJSONObject: jsonObject ?? [:], options: .prettyPrinted)
 #if DEBUG
-                    print("Updated JSON data: \(String(data: updatedData, encoding: .utf8) ?? "")")
+                    // print("Updated JSON data: \(String(data: updatedData, encoding: .utf8) ?? "")")
 #endif
                     let decoder = JSONDecoder()
                     let route = try decoder.decode(Route.self, from: updatedData)
                     loadedRoutes.append(route)
 #if DEBUG
-                    print("Successfully decoded route: \(route.name)")
+                    // print("Successfully decoded route: \(route.name)")
 #endif
                 } catch {
 #if DEBUG
