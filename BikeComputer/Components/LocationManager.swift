@@ -90,7 +90,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func startSpeedUpdateTimer() {
-        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: 7.0, repeats: true) { [weak self] _ in
             self?.updateSpeed()
         }
     }
@@ -98,7 +98,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private func updateSpeed() {
         guard let location = manager.location else { return }
         speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
-        if speed < 0.3 { speed = 0 }
+        if speed < 0.35 { speed = 0 }
         altitude = location.altitude
 #if DEBUG
         print("\(Date()) Timer update: \(speed) : \(altitude)")
@@ -150,15 +150,15 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             switch currentSpeedClass {
             case .walking:
                 distanceFilter = 0
-                headingFilter = 25
+                headingFilter = 10
             case .running:
                 distanceFilter = 1
-                headingFilter = 15
+                headingFilter = 8
             case .cycling:
                 distanceFilter = 10
                 headingFilter = 6
             case .riding:
-                distanceFilter = 40
+                distanceFilter = 30
                 headingFilter = 4
                 desiredAccuracy = kCLLocationAccuracyNearestTenMeters
             case .flying:
@@ -313,7 +313,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     private func shouldUpdateLocation(timeInterval: TimeInterval, speed: CLLocationSpeed) -> Bool {
-        if abs(timeInterval) > 30 || (abs(timeInterval) > 15 && speed < 20 / 3.6) {
+        if abs(timeInterval) > 30 || (abs(timeInterval) > 10 && speed < 30 / 3.6) {
             return true
         }
         return false
