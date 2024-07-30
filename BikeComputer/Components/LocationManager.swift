@@ -16,7 +16,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
     private let updateInterval: TimeInterval = 10 // Päivitys 1 kertaa sekunnissa
-
+    private let zeroSpeed = 0.1111      // 0.1111 m/s = 0.4 km/h
+    
     var HF = 3
     var DF = 1
     var currentSpeedClass: SpeedClass = .stationary
@@ -97,8 +98,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private func updateSpeed() {
         guard let location = manager.location else { return }
-        speed = max(location.speed, 0) * 3.6 // Convert speed from m/s to km/h
-        if speed < 0.35 { speed = 0 }
+        speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
         altitude = location.altitude
 #if DEBUG
         print("\(Date()) Timer update: \(speed) : \(altitude)")
@@ -236,11 +236,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         let now = Date()
         let timeInterval = now.timeIntervalSince(lastUpdate)
         
-        speed = max(location.speed, 0) * 3.6
+        speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
         
         if shouldUpdateLocation(timeInterval: timeInterval, speed: location.speed) {
             lastUpdate = now
-            speed = max(location.speed, 0) * 3.6
+            speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
             altitude = location.altitude
             longitude = location.coordinate.longitude
             latitude = location.coordinate.latitude
@@ -274,7 +274,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 #endif
             
             if let location = manager.location {
-                speed = max(location.speed, 0) * 3.6
+                speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
+
                 altitude = location.altitude
                 longitude = location.coordinate.longitude
                 latitude = location.coordinate.latitude

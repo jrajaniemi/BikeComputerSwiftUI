@@ -30,7 +30,7 @@ struct SpeedTextView: View {
     var body: some View {
         if unitPreference == 1 {
             VStack(spacing: 0) {
-                Text(imperialSpeed < 40 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
+                Text(imperialSpeed < 30 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
                     .font(.custom("Barlow-Black", size: speedFontSize))
                     .multilineTextAlignment(.center)
                 
@@ -39,7 +39,7 @@ struct SpeedTextView: View {
             }
         } else {
             VStack(spacing: 0) {
-                Text(speed < 50 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
+                Text(speed < 40 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
                     .font(.custom("Barlow-Black", size: speedFontSize))
                     .multilineTextAlignment(.center)
                 
