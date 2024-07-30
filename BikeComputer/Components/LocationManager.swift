@@ -98,7 +98,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     
     private func updateSpeed() {
         guard let location = manager.location else { return }
-        speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
+        // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
+        speed = max(location.speed, 0) * 3.6
+        
         altitude = location.altitude
 #if DEBUG
         print("\(Date()) Timer update: \(speed) : \(altitude)")
@@ -236,11 +238,12 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         let now = Date()
         let timeInterval = now.timeIntervalSince(lastUpdate)
         
-        speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
-        
+        // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
+        speed = max(location.speed, 0) * 3.6
         if shouldUpdateLocation(timeInterval: timeInterval, speed: location.speed) {
             lastUpdate = now
-            speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
+            // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
+            speed = max(location.speed, 0) * 3.6
             altitude = location.altitude
             longitude = location.coordinate.longitude
             latitude = location.coordinate.latitude
@@ -274,8 +277,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 #endif
             
             if let location = manager.location {
-                speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
-
+                // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
+                speed = max(location.speed, 0) * 3.6
                 altitude = location.altitude
                 longitude = location.coordinate.longitude
                 latitude = location.coordinate.latitude
