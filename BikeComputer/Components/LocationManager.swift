@@ -15,8 +15,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var headingLastUpdate: Date = .init()
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
-    private let updateInterval: TimeInterval = 1 // Päivitys 1 kertaa sekunnissa
-    private let zeroSpeed = 0.1111      // 0.1111 m/s = 0.4 km/h
+    private let updateInterval: TimeInterval = 1            // Päivitys 1 kertaa sekunnissa
+    private var updateSpeedTime:Double = 5.0                    // Päivitys 5 sekunnin välein
     
     var HF = 3
     var DF = 1
@@ -91,7 +91,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func startSpeedUpdateTimer() {
-        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
+        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: updateSpeedTime, repeats: true) { [weak self] _ in
             self?.updateSpeed()
         }
     }
@@ -142,6 +142,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         var pausesLocationUpdatesAutomatically = false
         
         if isCharging || batteryLevel > Float(batteryThreshold / 100) {
+            updateSpeedTime = 5.0
             distanceFilter = 0
             headingFilter = 3
             desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -149,6 +150,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         } else {
             powerSavingMode = .normal
             desiredAccuracy = kCLLocationAccuracyBest
+            updateSpeedTime = 7.5
             switch currentSpeedClass {
             case .walking:
                 distanceFilter = 0
@@ -173,6 +175,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             }
 
             if batteryLevel < 0.25 {
+                updateSpeedTime = 10
                 powerSavingMode = .max
                 distanceFilter *= 1.5
                 headingFilter *= 1.5
@@ -317,7 +320,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
 
     private func shouldUpdateLocation(timeInterval: TimeInterval, speed: CLLocationSpeed) -> Bool {
-        if abs(timeInterval) > 30 || (abs(timeInterval) > 10 && speed < 30 / 3.6) {
+        if abs(timeInterval) > (updateSpeedTime*3) || (abs(timeInterval) > (updateSpeedTime*2) && speed < 30 / 3.6) {
             return true
         }
         return false

@@ -1,4 +1,5 @@
 import CoreLocation
+import MapKit
 
 func cubicBezierInterpolatePoints(routePoints: [RoutePoint], steps: Int = 4) -> [CLLocationCoordinate2D] {
 #if DEBUG

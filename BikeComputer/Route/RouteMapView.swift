@@ -36,16 +36,6 @@ struct RouteMapView: View {
 
                 MapPolyline(coordinates: coordinates, contourStyle: MapPolyline.ContourStyle.geodesic)
                     .stroke(gradient, style: stroke)
-                    /*
-                    .stroke(
-                        colorScheme == .dark ? Color(hex: "#ff9d1e") : Color(hex: "#ffc375"),
-                        style: StrokeStyle(
-                            lineWidth: 6,
-                            lineJoin: .round,
-                            miterLimit: 4
-                        )
-                    )
-                     */
                     
             }
             
