@@ -20,6 +20,7 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 ## ## What's new in version 0.1.3
 
 * More reliable speed and altitude updates
+* New heading driven route point make better routes
 
 ## What's new in version 0.1.2
 

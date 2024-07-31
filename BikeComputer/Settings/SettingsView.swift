@@ -122,9 +122,11 @@ struct DebugParametersView: View {
             Text("Heading Filter: \(locationManager.HF)")
             Text("Distance Filter: \(locationManager.DF)")
             Text("Battery Level: \(batteryManager.batteryLevel * 100, specifier: "%.0f") %")
+            Text("Is Idle Timer Disabled: \(batteryManager.isIdleTimerDisabled) ")
             Text("Speed class: \(locationManager.currentSpeedClass)")
             Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
             Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? "Yes" : "No")")
+            Text("Lat, Lon: \(locationManager.latitude, specifier: "%.4f") \(locationManager.longitude, specifier: "%.4f")")
         }
     }
 }

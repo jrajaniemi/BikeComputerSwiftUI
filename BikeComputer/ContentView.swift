@@ -11,7 +11,7 @@ struct ContentView: View {
     @State private var showRouteView: Bool = false
     @State private var selectedRoute: Route? // Uusi muuttuja valitulle reitille
     @Environment(\.colorScheme) var colorScheme
-    
+
     init(locationManager: LocationManager = LocationManager()) {
         _locationManager = StateObject(wrappedValue: locationManager)
     }

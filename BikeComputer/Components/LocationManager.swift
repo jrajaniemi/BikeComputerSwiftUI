@@ -15,7 +15,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var headingLastUpdate: Date = .init()
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
-    private let updateInterval: TimeInterval = 10 // Päivitys 1 kertaa sekunnissa
+    private let updateInterval: TimeInterval = 1 // Päivitys 1 kertaa sekunnissa
     private let zeroSpeed = 0.1111      // 0.1111 m/s = 0.4 km/h
     
     var HF = 3
@@ -91,7 +91,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func startSpeedUpdateTimer() {
-        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: 7.0, repeats: true) { [weak self] _ in
+        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: 10.0, repeats: true) { [weak self] _ in
             self?.updateSpeed()
         }
     }
@@ -152,13 +152,13 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             switch currentSpeedClass {
             case .walking:
                 distanceFilter = 0
-                headingFilter = 10
+                headingFilter = 20
             case .running:
                 distanceFilter = 1
-                headingFilter = 8
+                headingFilter = 15
             case .cycling:
                 distanceFilter = 10
-                headingFilter = 6
+                headingFilter = 10
             case .riding:
                 distanceFilter = 30
                 headingFilter = 4
@@ -273,7 +273,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             lastHeading = roundedNewHeading
             headingLastUpdate = Date()
 #if DEBUG
-            print("\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange)")
+            print("\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange), \(HF)")
 #endif
             
             if let location = manager.location {

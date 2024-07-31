@@ -179,6 +179,7 @@ struct SpeedView: View {
     @State private var alertMessage = ""
 
     @Environment(\.colorScheme) var colorScheme
+
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
     
     var body: some View {
@@ -233,7 +234,10 @@ struct SpeedView: View {
             }
             .background(colorScheme == .dark ? Color.black : Color.white)
         }
+
     }
+
+
     
     func listAllFonts() {
         /*
