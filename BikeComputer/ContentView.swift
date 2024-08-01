@@ -30,6 +30,13 @@ struct ContentView: View {
                         Image(systemName: "map")
                         Text("Routes")
                     }
+                
+                MyPosition(locationManager: locationManager)
+                    .tabItem {
+                        Image(systemName: "paperplane.fill")
+                        Text("Position")
+                    }
+
 
                 SettingsView(locationManager: locationManager)
                     .tabItem {
@@ -43,8 +50,6 @@ struct ContentView: View {
                 UITabBar.appearance().unselectedItemTintColor = UIColor.gray
             }
             .toolbarBackground(colorScheme == .dark ? Color.black: Color.white)
-
-
 
 
             if let route = selectedRoute {

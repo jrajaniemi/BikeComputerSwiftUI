@@ -1,5 +1,9 @@
 import SwiftUI
 
+
+/// A view for managing and presenting settings within the app.
+///
+/// This view provides user-configurable settings for color schemes, battery thresholds, unit preferences, and displays additional information about the app version. It integrates with the system's color scheme to provide a consistent user experience.
 struct SettingsView: View {
     @ObservedObject var locationManager: LocationManager
     @ObservedObject var batteryManager = BatteryManager.shared
@@ -9,7 +13,7 @@ struct SettingsView: View {
 
     @Environment(\.colorScheme) var colorScheme
 
-    // Hae versionumero Info.plist-tiedostosta
+    /// Retrieves the application version and build number from Info.plist.
     var appVersion: String {
         let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String ?? "N/A"
         let build = Bundle.main.infoDictionary?["CFBundleVersion"] as? String ?? "N/A"
@@ -54,6 +58,9 @@ struct SettingsView: View {
     return SettingsView(locationManager: locationManager)
 }
 
+/// Provides a user interface for selecting the preferred color scheme.
+///
+/// This view uses `@AppStorage` to persist the selected color scheme across app launches.
 struct ColorSchemeView: View {
     @AppStorage("selectedColorScheme") private var selectedColorScheme: Int = 0
     var body: some View {
@@ -68,6 +75,9 @@ struct ColorSchemeView: View {
     }
 }
 
+/// Allows users to set a battery threshold for notifications.
+///
+/// `@AppStorage` is used to persist the threshold value. Slider provides real-time adjustment of the threshold.
 struct BatteryThresholdView: View {
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
     var body: some View {
@@ -81,6 +91,9 @@ struct BatteryThresholdView: View {
     }
 }
 
+/// Provides a picker to choose between kilometers per hour and miles per hour.
+///
+/// Uses `@AppStorage` to save the user's unit preference.
 struct UnitPreferenceView: View {
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h, 1 for mph
 
@@ -95,6 +108,9 @@ struct UnitPreferenceView: View {
     }
 }
 
+/// Displays various parameters related to the device's location and battery settings.
+///
+/// This view dynamically updates to show the current power saving mode, charging status, and location accuracy.
 struct ParametersView: View {
     @ObservedObject var locationManager: LocationManager
     @ObservedObject var batteryManager = BatteryManager.shared
@@ -114,10 +130,14 @@ struct ParametersView: View {
     }
 }
 
+/// Provides debugging information that is only available in debug builds.
+///
+/// Displays settings that are typically only of interest during development, such as internal state and configurations.
 struct DebugParametersView: View {
     @ObservedObject var locationManager: LocationManager
     @ObservedObject var batteryManager = BatteryManager.shared
     var body: some View {
+        #if DEBUG
         Section(header: Text("Debug parameters")) {
             Text("Heading Filter: \(locationManager.HF)")
             Text("Distance Filter: \(locationManager.DF)")
@@ -128,5 +148,6 @@ struct DebugParametersView: View {
             Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? "Yes" : "No")")
             Text("Lat, Lon: \(locationManager.latitude, specifier: "%.4f") \(locationManager.longitude, specifier: "%.4f")")
         }
+        #endif
     }
 }

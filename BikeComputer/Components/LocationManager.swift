@@ -15,8 +15,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var headingLastUpdate: Date = .init()
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
-    private let updateInterval: TimeInterval = 1            // Päivitys 1 kertaa sekunnissa
-    private var updateSpeedTime:Double = 5.0                    // Päivitys 5 sekunnin välein
+    private let updateInterval: TimeInterval = 1                // Päivitys n kertaa sekunnissa
+    private var updateSpeedTime:Double = 4.0                    // Päivitys n sekunnin välein
+    private var updateSpeedoMeterTime:Double = 4.0              // Päivitys n sekunnin välein
     
     var HF = 3
     var DF = 1
@@ -49,11 +50,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         didSet { imperialAltitude = altitude * 3.2808 }
     }
     @Published var imperialAltitude: Double = 0.0
-        
     @Published var accuracyDescription: String = "Unknown"
     @Published var longitude: Double = 0.0
     @Published var latitude: Double = 0.0
     @Published var powerSavingMode: PowerSavingMode = .off
+    @Published var currentUserLocation: CLLocationCoordinate2D?
     
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
 
@@ -84,6 +85,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             .store(in: &cancellables)
         
         startSpeedUpdateTimer()
+        
     }
 
     deinit {
@@ -91,7 +93,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func startSpeedUpdateTimer() {
-        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: updateSpeedTime, repeats: true) { [weak self] _ in
+        speedUpdateTimer = Timer.scheduledTimer(withTimeInterval: updateSpeedoMeterTime, repeats: true) { [weak self] _ in
             self?.updateSpeed()
         }
     }
@@ -107,6 +109,44 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 #endif
     }
 
+    private func startMotionManager() {
+        if motionManager.isAccelerometerAvailable {
+            motionManager.accelerometerUpdateInterval = 0.25
+            motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { [weak self] (data, error) in
+                guard let weakSelf = self else { return }
+                if let acceleration = data?.acceleration {
+                    let totalAcceleration = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
+                    
+                    if totalAcceleration > 4 {
+                        weakSelf.updateSpeedoMeterTime = 0.5
+#if DEBUG
+                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(totalAcceleration)")
+#endif
+                    } else if totalAcceleration > 3 {
+                        weakSelf.updateSpeedoMeterTime = 1.0
+#if DEBUG
+                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(totalAcceleration)")
+#endif
+                    } else if totalAcceleration > 2 {
+                        weakSelf.updateSpeedoMeterTime = 2.0
+#if DEBUG
+                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(totalAcceleration)")
+#endif
+                    } else {
+                        weakSelf.updateSpeedoMeterTime = 4.0
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+    func stopMotionManager() {
+        if motionManager.isAccelerometerActive {
+            motionManager.stopAccelerometerUpdates()
+        }
+    }
+    
     private func checkSpeedClassChange(_ newSpeed: Double) {
         let newSpeedClass: SpeedClass
         
@@ -147,7 +187,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             headingFilter = 3
             desiredAccuracy = kCLLocationAccuracyBestForNavigation
             powerSavingMode = .off
+            startMotionManager()
         } else {
+            stopMotionManager()
             powerSavingMode = .normal
             desiredAccuracy = kCLLocationAccuracyBest
             updateSpeedTime = 7.5
@@ -194,6 +236,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         manager.desiredAccuracy = desiredAccuracy
         manager.pausesLocationUpdatesAutomatically = pausesLocationUpdatesAutomatically
 #if DEBUG
+        
         print("Updated filters based on speed: \(speed) km/h, battery level: \(batteryLevel), isCharging: \(isCharging)")
         print("Distance Filter: \(distanceFilter), Heading Filter: \(headingFilter)")
 #endif
@@ -238,6 +281,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             return
         }
         
+        currentUserLocation = location.coordinate
         let now = Date()
         let timeInterval = now.timeIntervalSince(lastUpdate)
         

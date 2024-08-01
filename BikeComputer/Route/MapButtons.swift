@@ -28,6 +28,15 @@ struct MapButtons: View {
             }
             .buttonStyle(.bordered)
             .foregroundColor(.white)
+            
+            Button {
+                
+            }  label: {
+                Label("Simulator", systemImage: "play.circle.fill")
+                    .font(.title)
+            }
+            .buttonStyle(.bordered)
+            .foregroundColor(.white)
 
         }
         .padding(/*@START_MENU_TOKEN@*/.all/*@END_MENU_TOKEN@*/)

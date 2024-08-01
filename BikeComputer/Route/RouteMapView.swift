@@ -24,7 +24,7 @@ struct RouteMapView: View {
                             .fill(colorScheme == .dark ? Color.black : Color.white)
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 5)
-                        Image(systemName: "bicycle.circle")
+                        Image(systemName: "mappin.and.ellipse")
                             .padding(5)
                     }
                 }
@@ -47,7 +47,7 @@ struct RouteMapView: View {
                             .fill(colorScheme == .dark ? Color.black : Color.white)
                         RoundedRectangle(cornerRadius: 5)
                             .stroke(colorScheme == .dark ? Color.white : Color.black, lineWidth: 5)
-                        Image(systemName: "bicycle.circle.fill")
+                        Image(systemName: "flag.circle.fill")
                             .padding(5)
                     }
                 }
