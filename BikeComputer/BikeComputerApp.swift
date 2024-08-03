@@ -18,6 +18,7 @@ struct BikeComputerApp: App {
         }
         
     }
+    
     private func colorScheme() -> ColorScheme? {
         switch selectedColorScheme {
         case 1:

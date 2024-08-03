@@ -28,25 +28,27 @@ struct SpeedTextView: View {
     
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
     var body: some View {
-        if unitPreference == 1 {
-            VStack(spacing: 0) {
-                Text(imperialSpeed < 30 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
-                    .font(.custom("Barlow-Black", size: speedFontSize))
-                    .multilineTextAlignment(.center)
+            
+            if unitPreference == 1 {
+                VStack(spacing: 0) {
+                    Text(imperialSpeed < 30 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
+                        .font(.custom("Barlow-Black", size: speedFontSize))
+                        .multilineTextAlignment(.center)
+                    
+                    Text("mph")
+                        .font(.custom("Barlow-ExtraLight", size: 32))
+                }
                 
-                Text("mph")
-                    .font(.custom("Barlow-ExtraLight", size: 32))
+            } else {
+                VStack(spacing: 0) {
+                    Text(speed < 40 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
+                        .font(.custom("Barlow-Black", size: speedFontSize))
+                        .multilineTextAlignment(.center)
+                    
+                    Text("km/h")
+                        .font(.custom("Barlow-ExtraLight", size: 32))
+                }
             }
-        } else {
-            VStack(spacing: 0) {
-                Text(speed < 40 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
-                    .font(.custom("Barlow-Black", size: speedFontSize))
-                    .multilineTextAlignment(.center)
-                
-                Text("km/h")
-                    .font(.custom("Barlow-ExtraLight", size: 32))
-            }
-        }
     }
 }
 
@@ -184,57 +186,64 @@ struct SpeedView: View {
     
     var body: some View {
         GeometryReader { geometry in
-            VStack(spacing: 0) {
-                SpeedTextView(
-                    speed: locationManager.speed,
-                    imperialSpeed: locationManager.imperialSpeed,
-                    speedFontSize: locationManager.speed < 100 ? 136 : 120
-                )
-                .frame(width: geometry.size.width, height: geometry.size.height * 6 / 12)
+            ZStack {
+                VStack(spacing: 0) {
+                    SpeedTextView(
+                        speed: locationManager.speed,
+                        imperialSpeed: locationManager.imperialSpeed,
+                        speedFontSize: locationManager.speed < 100 ? 136 : 120
+                    )
+                    .frame(width: geometry.size.width, height: geometry.size.height * 6 / 12)
+                    .background(colorScheme == .dark ? Color.black : Color.white)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    
+                    HeadingAndAltitudeView(
+                        heading: locationManager.heading,
+                        altitude: locationManager.altitude,
+                        imperialAltitude: locationManager.imperialAltitude,
+                        altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40
+                    )
+                    .frame(height: geometry.size.height * 2 / 12)
+                    .background(colorScheme == .dark ? Color.black : Color.white)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    
+                    DistanceView(
+                        totalDistance: locationManager.routeManager.totalDistance,
+                        odometer: locationManager.routeManager.odometer,
+                        imperialTotalDistance: locationManager.routeManager.imperialTotalDistance,
+                        imperialOdometer: locationManager.routeManager.imperialOdometer
+                    )
+                    .frame(height: geometry.size.height * 3 / 12)
+                    .background(colorScheme == .dark ? Color.black : Color.white)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    
+                    RecordButtonView(
+                        isRecording: $isRecording,
+                        locationManager: locationManager,
+                        routeName: routeName,
+                        routeDescription: routeDescription,
+                        showingAlert: $showingAlert,
+                        alertMessage: $alertMessage
+                    )
+                    .frame(width: geometry.size.width / 2, height: geometry.size.height * 0.8 / 12)
+                    .background(colorScheme == .dark ? Color.black : Color.white)
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    .border(Color.gray, width: 3)
+                }
+                .onAppear {
+                    routeName = "Default Route"
+                    routeDescription = "Description of the route"
+                    // listAllFonts()
+                }
                 .background(colorScheme == .dark ? Color.black : Color.white)
-                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 
-                HeadingAndAltitudeView(
-                    heading: locationManager.heading,
-                    altitude: locationManager.altitude,
-                    imperialAltitude: locationManager.imperialAltitude,
-                    altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40
-                )
-                .frame(height: geometry.size.height * 2 / 12)
-                .background(colorScheme == .dark ? Color.black : Color.white)
-                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                Text("BIKE App Computer")
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    .position(x: 100, y:20)
+                    .font(.custom("Barlow-SemiBold", size: 14))
                 
-                DistanceView(
-                    totalDistance: locationManager.routeManager.totalDistance,
-                    odometer: locationManager.routeManager.odometer,
-                    imperialTotalDistance: locationManager.routeManager.imperialTotalDistance,
-                    imperialOdometer: locationManager.routeManager.imperialOdometer
-                )
-                .frame(height: geometry.size.height * 3 / 12)
-                .background(colorScheme == .dark ? Color.black : Color.white)
-                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                
-                RecordButtonView(
-                    isRecording: $isRecording,
-                    locationManager: locationManager,
-                    routeName: routeName,
-                    routeDescription: routeDescription,
-                    showingAlert: $showingAlert,
-                    alertMessage: $alertMessage
-                )
-                .frame(width: geometry.size.width / 2, height: geometry.size.height * 0.8 / 12)
-                .background(colorScheme == .dark ? Color.black : Color.white)
-                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                .border(Color.gray, width: 3)
             }
-            .onAppear {
-                routeName = "Default Route"
-                routeDescription = "Description of the route"
-                // listAllFonts()
-            }
-            .background(colorScheme == .dark ? Color.black : Color.white)
         }
-
     }
 
 

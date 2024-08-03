@@ -44,3 +44,18 @@ extension Array where Element == RoutePoint {
     }
 }
 
+extension View {
+    func bikeShadow() -> some View {
+        self
+            .shadow(color: Color.black, radius: 25, x: 1, y: 3)
+            .padding(10)
+    }
+    
+    func routeDetails() -> some View {
+        self
+            .font(.custom("Barlow-Bold", size: 16))
+            .frame(maxWidth: .infinity, alignment: .center)
+            .background(Color(.black.opacity( 0.6)))
+
+    }
+}

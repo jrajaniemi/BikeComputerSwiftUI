@@ -17,7 +17,13 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 * Healt App support
 * Auto-odometer
 
-## ## What's new in version 0.1.3
+## What's new in version 0.1.5
+
+* My Position view show user current position on the map (beta)
+* Route Simulator feature
+* Screenshot from route
+
+## What's new in version 0.1.3
 
 * More reliable speed and altitude updates
 * New heading driven route point make better routes

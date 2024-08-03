@@ -51,15 +51,14 @@ struct ContentView: View {
             }
             .toolbarBackground(colorScheme == .dark ? Color.black: Color.white)
 
-
             if let route = selectedRoute {
-                NavigationView {
+                NavigationStack {
                     FullScreenRouteMapView(route: route, mapType: .imagery(elevation: .realistic),  selectedRoute: $selectedRoute)
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationBarHidden(true)
-                        .ignoresSafeArea(edges: .all)
+                        //.ignoresSafeArea(edges: .all)
                 }
-                .navigationViewStyle(StackNavigationViewStyle())
+                // .navigationViewStyle(StackNavigationViewStyle())
                 .transition(.move(edge: .bottom))
                 .background(colorScheme == .dark ? Color.black: Color.white)
                 .foregroundColor(colorScheme == .dark ? Color.white: Color.black)

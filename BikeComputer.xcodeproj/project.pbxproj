@@ -50,6 +50,8 @@
 		4AAE43162C4FDFC6000DC321 /* BatteryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */; };
 		4AAE43182C5051A9000DC321 /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43172C5051A9000DC321 /* RoutesView.swift */; };
 		4AC46AB12C5AA66C0085CE5C /* MyPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */; };
+		4AE358A72C5D0C410007AC65 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE358A62C5D0C410007AC65 /* helpers.swift */; };
+		4AE358E72C5E675F0007AC65 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */; };
 		4AF97DC92C57731A00D5EE36 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DC82C57731A00D5EE36 /* Documentation.docc */; };
 		4AF97DCB2C57850F00D5EE36 /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */; };
 /* End PBXBuildFile section */
@@ -120,7 +122,8 @@
 		4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryManager.swift; sourceTree = "<group>"; };
 		4AAE43172C5051A9000DC321 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
 		4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPosition.swift; sourceTree = "<group>"; };
-		4AF97DC72C57661400D5EE36 /* UpdataBuildBumberScript.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; path = UpdataBuildBumberScript.sh; sourceTree = "<group>"; };
+		4AE358A62C5D0C410007AC65 /* helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
+		4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
 		4AF97DC82C57731A00D5EE36 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 		4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -186,6 +189,8 @@
 				4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */,
 				4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */,
 				4A92EF552C50772F005083C5 /* Extensions.swift */,
+				4AE358A62C5D0C410007AC65 /* helpers.swift */,
+				4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -222,7 +227,6 @@
 			isa = PBXGroup;
 			children = (
 				4AF97DC82C57731A00D5EE36 /* Documentation.docc */,
-				4AF97DC72C57661400D5EE36 /* UpdataBuildBumberScript.sh */,
 				4A311B362C56AD8D00A576B8 /* Config.xcconfig */,
 				4AA2DEDA2C4AC3AC0065448C /* BikeComputer */,
 				4AA2DEEB2C4AC3AE0065448C /* BikeComputerTests */,
@@ -244,7 +248,6 @@
 		4AA2DEDA2C4AC3AC0065448C /* BikeComputer */ = {
 			isa = PBXGroup;
 			children = (
-				4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */,
 				4AC46AAF2C5AA6510085CE5C /* MyPosition */,
 				4A34AC402C57B0320098EDE1 /* fonts */,
 				4A92EF622C52C3B9005083C5 /* Settings */,
@@ -291,6 +294,7 @@
 		4AC46AAF2C5AA6510085CE5C /* MyPosition */ = {
 			isa = PBXGroup;
 			children = (
+				4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */,
 			);
 			path = MyPosition;
 			sourceTree = "<group>";
@@ -450,9 +454,11 @@
 				4A311B312C558E9800A576B8 /* RouteMapView_Previews.swift in Sources */,
 				4A92EF502C50759C005083C5 /* SpeedView.swift in Sources */,
 				4A92EF522C5075C5005083C5 /* SettingsView.swift in Sources */,
+				4AE358A72C5D0C410007AC65 /* helpers.swift in Sources */,
 				4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */,
 				4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */,
 				4AA2DEDC2C4AC3AC0065448C /* BikeComputerApp.swift in Sources */,
+				4AE358E72C5E675F0007AC65 /* ScreenshotHelper.swift in Sources */,
 				4AC46AB12C5AA66C0085CE5C /* MyPosition.swift in Sources */,
 				4A92EF562C50772F005083C5 /* Extensions.swift in Sources */,
 				4A92EF5C2C51B52F005083C5 /* RouteMapView.swift in Sources */,
@@ -640,6 +646,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show speed, heading and altitude even when the app is in the background.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show speed, heading and altitude.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -680,6 +687,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show speed, heading and altitude even when the app is in the background.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show speed, heading and altitude.";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
