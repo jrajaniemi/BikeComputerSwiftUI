@@ -53,7 +53,7 @@ struct ContentView: View {
 
             if let route = selectedRoute {
                 NavigationStack {
-                    FullScreenRouteMapView(route: route, mapType: .imagery(elevation: .realistic),  selectedRoute: $selectedRoute)
+                    FullScreenRouteMapView(route: route, mapType: .hybrid(elevation: .realistic),  selectedRoute: $selectedRoute)
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationBarHidden(true)
                         //.ignoresSafeArea(edges: .all)

@@ -5,7 +5,7 @@ import UIKit
 
 struct RouteMapView: View {
     var route: Route
-    var mapType: MapStyle = .imagery(elevation: .flat)
+    var mapType: MapStyle = .hybrid(elevation: .flat)
 
     @Binding var selectedRoute: Route?
     @State private var searchResults: [MKMapItem] = []
@@ -21,7 +21,9 @@ struct RouteMapView: View {
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
 
     private func takeScreenshot() {
+#if DEBUG
         print("takeScreenshot() pressed")
+#endif
         hideMapButtons = true
         NotificationCenter.default.post(name: Notification.Name("takeScreenshot"), object: nil)
     }
@@ -184,6 +186,7 @@ struct RouteMapView: View {
                     }
                     .padding(10)
                     .routeDetails()
+                    .background(colorScheme == .dark ? Color.black.opacity(0.6) : Color.white.opacity(0.65))
                     .onTapGesture {
                         showDetails.toggle()
                     }
@@ -213,7 +216,7 @@ struct RouteMapView: View {
 
 struct FullScreenRouteMapView: View {
     var route: Route
-    var mapType: MapStyle = .imagery(elevation: .realistic)
+    var mapType: MapStyle = .hybrid(elevation: .realistic)
 
     @Binding var selectedRoute: Route? // Sitova muuttuja karttanäkymän sulkemiseen
 

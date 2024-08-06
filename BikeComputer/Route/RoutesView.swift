@@ -5,7 +5,7 @@ import MapKit
 struct RoutesView: View {
     @ObservedObject var locationManager: LocationManager
     @Binding var selectedRoute: Route? // Sitova muuttuja valitulle reitille
-    @State private var selectedMapType: MapStyle = .imagery(elevation: .realistic)
+    @State private var selectedMapType: MapStyle = .hybrid(elevation: .flat)
     
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles

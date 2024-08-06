@@ -17,6 +17,12 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 * Healt App support
 * Auto-odometer
 
+## What's new in version 0.1.6
+
+* Added Localization support for Arabic, Catalan, Chinese, Croatian, Danish, Dutch, Finnish, French, German, Greek, Hebrew, Hungarian, Italian, Japanese, Korean, Norwegian, Portugese, Spanish, Swahili, Swedish, Thai, Turkish and Ukrainian.
+* New main dashboar, where Record-button is move from bottom to center of screen
+* New record indicator, which show that recordig is on
+
 ## What's new in version 0.1.5
 
 * My Position view show user current position on the map (beta)

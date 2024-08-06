@@ -16,9 +16,8 @@ struct BikeComputerApp: App {
             ContentView()
                 .preferredColorScheme(colorScheme())
         }
-        
     }
-    
+
     private func colorScheme() -> ColorScheme? {
         switch selectedColorScheme {
         case 1:
@@ -28,4 +27,5 @@ struct BikeComputerApp: App {
         default:
             return nil
         }
-    }}
+    }
+}

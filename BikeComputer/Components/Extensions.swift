@@ -55,7 +55,6 @@ extension View {
         self
             .font(.custom("Barlow-Bold", size: 16))
             .frame(maxWidth: .infinity, alignment: .center)
-            .background(Color(.black.opacity( 0.6)))
 
     }
 }

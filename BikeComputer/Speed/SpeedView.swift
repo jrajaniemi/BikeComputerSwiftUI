@@ -28,27 +28,26 @@ struct SpeedTextView: View {
     
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
     var body: some View {
-            
-            if unitPreference == 1 {
-                VStack(spacing: 0) {
-                    Text(imperialSpeed < 30 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
-                        .font(.custom("Barlow-Black", size: speedFontSize))
-                        .multilineTextAlignment(.center)
+        if unitPreference == 1 {
+            VStack(spacing: 0) {
+                Text(imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
+                    .font(.custom("Barlow-Black", size: speedFontSize))
+                    .multilineTextAlignment(.center)
                     
-                    Text("mph")
-                        .font(.custom("Barlow-ExtraLight", size: 32))
-                }
-                
-            } else {
-                VStack(spacing: 0) {
-                    Text(speed < 40 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
-                        .font(.custom("Barlow-Black", size: speedFontSize))
-                        .multilineTextAlignment(.center)
-                    
-                    Text("km/h")
-                        .font(.custom("Barlow-ExtraLight", size: 32))
-                }
+                Text("mph")
+                    .font(.custom("Barlow-ExtraLight", size: 32))
             }
+                
+        } else {
+            VStack(spacing: 0) {
+                Text(speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
+                    .font(.custom("Barlow-Black", size: speedFontSize))
+                    .multilineTextAlignment(.center)
+                    
+                Text("km/h")
+                    .font(.custom("Barlow-ExtraLight", size: 32))
+            }
+        }
     }
 }
 
@@ -99,11 +98,11 @@ struct DistanceView: View {
             if unitPreference == 1 {
                 if imperialTotalDistance < 5280 {
                     Text("\(imperialTotalDistance, specifier: "%.0f") ft")
-                        .font(.custom("Barlow-SemiBold", size: 36))
+                        .font(.custom("Barlow-SemiBold", size: 40))
                         .multilineTextAlignment(.center)
                 } else {
                     Text("\(imperialTotalDistance / 5280, specifier: "%.2f") mi")
-                        .font(.custom("Barlow-SemiBold", size: 36))
+                        .font(.custom("Barlow-SemiBold", size: 40))
                         .multilineTextAlignment(.center)
                 }
                 Text("\(imperialOdometer / 5280, specifier: "%.1f") mi")
@@ -112,11 +111,11 @@ struct DistanceView: View {
             } else {
                 if totalDistance < 1000 {
                     Text("\(totalDistance, specifier: "%.0f") m")
-                        .font(.custom("Barlow-SemiBold", size: 36))
+                        .font(.custom("Barlow-SemiBold", size: 40))
                         .multilineTextAlignment(.center)
                 } else {
                     Text("\(totalDistance / 1000, specifier: "%.2f") km")
-                        .font(.custom("Barlow-SemiBold", size: 36))
+                        .font(.custom("Barlow-SemiBold", size: 40))
                         .multilineTextAlignment(.center)
                 }
                 Text("\(odometer / 1000, specifier: "%.1f") km")
@@ -135,7 +134,7 @@ struct RecordButtonView: View {
     var routeDescription: String
     @Binding var showingAlert: Bool
     @Binding var alertMessage: String
-    
+
     var body: some View {
         Button(action: {
             isRecording.toggle()
@@ -148,6 +147,7 @@ struct RecordButtonView: View {
                     alertMessage = "No points in current route to save."
                     showingAlert = true
                     isRecording = false
+                    locationManager.routeManager.totalDistance = 0
                 } else {
                     locationManager.routeManager.endCurrentRoute()
                     locationManager.isTracking = false
@@ -179,10 +179,21 @@ struct SpeedView: View {
     
     @State private var showingAlert = false
     @State private var alertMessage = ""
-
+    @State private var animationCount = 0
+    
     @Environment(\.colorScheme) var colorScheme
+    @AppStorage("autoRecord") private var autoRecord: Int = 0 // 0 for manual, 1 for auto
 
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
+    
+    private func startRecording() {
+        if !isRecording {
+            isRecording = true
+            locationManager.routeManager.startNewRoute(name: routeName, description: routeDescription)
+            locationManager.startLocationUpdates()
+            locationManager.isTracking = true
+        }
+    }
     
     var body: some View {
         GeometryReader { geometry in
@@ -191,7 +202,7 @@ struct SpeedView: View {
                     SpeedTextView(
                         speed: locationManager.speed,
                         imperialSpeed: locationManager.imperialSpeed,
-                        speedFontSize: locationManager.speed < 100 ? 136 : 120
+                        speedFontSize: locationManager.speed < 100 ? 140 : 130
                     )
                     .frame(width: geometry.size.width, height: geometry.size.height * 6 / 12)
                     .background(colorScheme == .dark ? Color.black : Color.white)
@@ -203,7 +214,7 @@ struct SpeedView: View {
                         imperialAltitude: locationManager.imperialAltitude,
                         altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40
                     )
-                    .frame(height: geometry.size.height * 2 / 12)
+                    .frame(height: geometry.size.height * 3 / 12)
                     .background(colorScheme == .dark ? Color.black : Color.white)
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
@@ -216,46 +227,68 @@ struct SpeedView: View {
                     .frame(height: geometry.size.height * 3 / 12)
                     .background(colorScheme == .dark ? Color.black : Color.white)
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                    
-                    RecordButtonView(
-                        isRecording: $isRecording,
-                        locationManager: locationManager,
-                        routeName: routeName,
-                        routeDescription: routeDescription,
-                        showingAlert: $showingAlert,
-                        alertMessage: $alertMessage
-                    )
-                    .frame(width: geometry.size.width / 2, height: geometry.size.height * 0.8 / 12)
-                    .background(colorScheme == .dark ? Color.black : Color.white)
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                    .border(Color.gray, width: 3)
                 }
                 .onAppear {
                     routeName = "Default Route"
                     routeDescription = "Description of the route"
-                    // listAllFonts()
+
+                    if autoRecord == 1 {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            startRecording()
+                        }
+                    }
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
                 
                 Text("BIKE App Computer")
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                    .position(x: 100, y:20)
-                    .font(.custom("Barlow-SemiBold", size: 14))
+                    .position(x: 80, y: 25)
+                    .font(.custom("Barlow-SemiBold", size: 10))
                 
+                
+                RecordButtonView(
+                    isRecording: $isRecording,
+                    locationManager: locationManager,
+                    routeName: routeName,
+                    routeDescription: routeDescription,
+                    showingAlert: $showingAlert,
+                    alertMessage: $alertMessage
+                )
+                .frame(width: geometry.size.width / 2, height: geometry.size.height * 1 / 12)
+                .background(colorScheme == .dark ? Color(hex: "#333333") : Color(hex: "#eeeeee"))
+                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                .cornerRadius(geometry.size.height * 1 / 24)
+                
+                if isRecording == true {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            
+                            Image(systemName: "record.circle")
+                                .symbolEffect(.bounce.wholeSymbol, value: animationCount)
+                                .foregroundColor(.red)
+                                .font(.title)
+                                .frame(width: 55, height: 55, alignment: .center)
+                            
+                                // .breathe
+                        }
+                             
+                        
+                        Spacer()
+                    }
+                }
             }
         }
     }
 
-
-    
     func listAllFonts() {
         /*
-        for family in UIFont.familyNames.sorted() {
-            print("Family: \(family)")
-            for name in UIFont.fontNames(forFamilyName: family) {
-                print("  Font: \(name)")
-            }
-        }
-         */
+         for family in UIFont.familyNames.sorted() {
+             print("Family: \(family)")
+             for name in UIFont.fontNames(forFamilyName: family) {
+                 print("  Font: \(name)")
+             }
+         }
+          */
     }
 }

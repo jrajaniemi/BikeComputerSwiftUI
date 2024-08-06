@@ -89,8 +89,11 @@ struct MyPosition: View {
     }
 
     private func updatePositionToUserLocation() {
-        if locationManager.currentUserLocation {
+        if let userLocation = locationManager.currentUserLocation {
             position = .userLocation(followsHeading: true, fallback: position)
+#if DEBUG
+            print("\(userLocation)")
+#endif
         }
     }
 }

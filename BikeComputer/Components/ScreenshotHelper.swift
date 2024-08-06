@@ -12,11 +12,13 @@ struct ScreenshotHelper: UIViewRepresentable {
         }
 
         @objc func captureScreenshot() {
+#if DEBUG
             print("captureScreenshot() called")
+#endif
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                   let window = windowScene.windows.first,
                   let rootView = window.rootViewController?.view else {
-                print("Root view not found")
+
                 return
             }
 
@@ -30,9 +32,11 @@ struct ScreenshotHelper: UIViewRepresentable {
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
             }, completionHandler: { success, error in
                 if success {
+#if DEBUG
                     print("Screenshot saved to Photos")
+#endif
                 } else if let error = error {
-                    print("Error saving screenshot: \(error.localizedDescription)")
+
                 }
             })
         }

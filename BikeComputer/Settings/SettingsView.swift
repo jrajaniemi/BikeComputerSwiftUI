@@ -10,7 +10,7 @@ struct SettingsView: View {
     @AppStorage("selectedColorScheme") private var selectedColorScheme: Int = 0
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h, 1 for mph
-
+    @AppStorage("autoRecord") private var autoRecord: Int = 0   // 0 = off, 1 = auto start when, BAC Start
     @Environment(\.colorScheme) var colorScheme
 
     /// Retrieves the application version and build number from Info.plist.
@@ -63,6 +63,8 @@ struct SettingsView: View {
 /// This view uses `@AppStorage` to persist the selected color scheme across app launches.
 struct ColorSchemeView: View {
     @AppStorage("selectedColorScheme") private var selectedColorScheme: Int = 0
+    @AppStorage("autoRecord") private var autoRecord: Int = 0   // 0 = off, 1 = auto start when, BAC Start
+
     var body: some View {
         Section(header: Text("Color Scheme")) {
             Picker("Appearance", selection: $selectedColorScheme) {
