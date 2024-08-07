@@ -411,6 +411,14 @@
 				"uk-UA",
 				sw,
 				th,
+				cs,
+				pl,
+				ro,
+				sk,
+				sq,
+				et,
+				ga,
+				ha,
 			);
 			mainGroup = 4AA2DECF2C4AC3AC0065448C;
 			productRefGroup = 4AA2DED92C4AC3AC0065448C /* Products */;

@@ -180,18 +180,22 @@ struct SpeedView: View {
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var animationCount = 0
-    
+    @State private var autoRecordCount: Int = 0 // Autorecord not never started
+    @State private var autoRecordTimer: Timer?
+
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("autoRecord") private var autoRecord: Int = 0 // 0 for manual, 1 for auto
-
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
-    
+
     private func startRecording() {
         if !isRecording {
             isRecording = true
             locationManager.routeManager.startNewRoute(name: routeName, description: routeDescription)
             locationManager.startLocationUpdates()
             locationManager.isTracking = true
+            autoRecordTimer?.invalidate()
+            autoRecordTimer = nil
+            autoRecordCount += 1
         }
     }
     
@@ -232,10 +236,8 @@ struct SpeedView: View {
                     routeName = "Default Route"
                     routeDescription = "Description of the route"
 
-                    if autoRecord == 1 {
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                            startRecording()
-                        }
+                    if autoRecord == 1 && autoRecordCount == 0 {
+                        startAutoRecordTimer()
                     }
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
@@ -244,7 +246,6 @@ struct SpeedView: View {
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     .position(x: 80, y: 25)
                     .font(.custom("Barlow-SemiBold", size: 10))
-                
                 
                 RecordButtonView(
                     isRecording: $isRecording,
@@ -270,13 +271,31 @@ struct SpeedView: View {
                                 .font(.title)
                                 .frame(width: 55, height: 55, alignment: .center)
                             
-                                // .breathe
+                            // .breathe
                         }
                              
-                        
                         Spacer()
                     }
                 }
+            }
+        }
+    }
+    
+    private func startAutoRecordTimer() {
+        autoRecordTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+            self.shouldStartRecording()
+        }
+    }
+           
+    private func shouldStartRecording() {
+        if locationManager.speed > 0.2 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                startRecording()
+                autoRecordCount += 1
+                #if DEBUG
+                    print("AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+                #endif
+
             }
         }
     }

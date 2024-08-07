@@ -1,6 +1,5 @@
 import SwiftUI
 
-
 /// A view for managing and presenting settings within the app.
 ///
 /// This view provides user-configurable settings for color schemes, battery thresholds, unit preferences, and displays additional information about the app version. It integrates with the system's color scheme to provide a consistent user experience.
@@ -28,7 +27,9 @@ struct SettingsView: View {
                 BatteryThresholdView()
 
                 UnitPreferenceView()
-                
+
+                AutoRecordView()
+
                 ParametersView(locationManager: locationManager, batteryManager: batteryManager)
 
                 Section(header: Text("About")) {
@@ -63,7 +64,6 @@ struct SettingsView: View {
 /// This view uses `@AppStorage` to persist the selected color scheme across app launches.
 struct ColorSchemeView: View {
     @AppStorage("selectedColorScheme") private var selectedColorScheme: Int = 0
-    @AppStorage("autoRecord") private var autoRecord: Int = 0   // 0 = off, 1 = auto start when, BAC Start
 
     var body: some View {
         Section(header: Text("Color Scheme")) {
@@ -110,6 +110,23 @@ struct UnitPreferenceView: View {
     }
 }
 
+/// Provides a user interface for enabling or disabling auto record.
+///
+/// This view uses `@AppStorage` to persist the auto record setting across app launches.
+struct AutoRecordView: View {
+    @AppStorage("autoRecord") private var autoRecord: Int = 0
+
+    var body: some View {
+        Section(header: Text("Auto Record (Beta)")) {
+            Picker("Auto Record", selection: $autoRecord) {
+                Text("Off").tag(0)
+                Text("On").tag(1)
+            }
+            .pickerStyle(SegmentedPickerStyle())
+        }
+    }
+}
+
 /// Displays various parameters related to the device's location and battery settings.
 ///
 /// This view dynamically updates to show the current power saving mode, charging status, and location accuracy.
@@ -127,7 +144,6 @@ struct ParametersView: View {
             }
             Text("Is charging: \(batteryManager.isCharging ? "Yes" : "No")")
             Text("Desired Accuracy: \(locationManager.accuracyDescription)")
-            
         }
     }
 }

@@ -295,7 +295,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             longitude = location.coordinate.longitude
             latitude = location.coordinate.latitude
             accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
-            routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
+            // routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
             addRoutePoint()
 #if DEBUG
             print("\(Date()) Location updated: \(speed):\(currentSpeedClass) -  \(latitude), \(longitude) = \(altitude)")
@@ -319,9 +319,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             heading = roundedNewHeading
             lastHeading = roundedNewHeading
             headingLastUpdate = Date()
-#if DEBUG
-            print("\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange), \(HF)")
-#endif
+
             
             if let location = manager.location {
                 // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
@@ -331,6 +329,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 latitude = location.coordinate.latitude
                 accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
                 addRoutePoint()
+#if DEBUG
+            print("\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange), \(HF)")
+#endif
             }
         }
     }
