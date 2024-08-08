@@ -123,8 +123,8 @@ struct AutoRecordView: View {
                 Text("On").tag(1)
             }
             .pickerStyle(SegmentedPickerStyle())
-            .onChange(of: autoRecord) { newValue in
-                print("autoRecord updated to: \(newValue)")
+            .onChange(of: autoRecord) {
+                print("autoRecord updated to: \(autoRecord)")
             }
         }
         .onAppear {

@@ -213,15 +213,18 @@ struct SpeedView: View {
     @Binding var lastFivePoints: [RoutePoint]
     @Binding var showRouteView: Bool
     
+    @Environment(\.colorScheme) var colorScheme
+    @AppStorage("autoRecord") private var storedAutoRecord: Int = 0 // 0 for manual, 1 for auto
+    @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
+
+    
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var animationCount = 0
     @State private var autoRecordCount: Int = 0 // Autorecord not never started
     @State private var autoRecordTimer: Timer?
+    @State private var autoRecord: Int = 0
 
-    @Environment(\.colorScheme) var colorScheme
-    @AppStorage("autoRecord") private var autoRecord: Int = 0 // 0 for manual, 1 for auto
-    @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
 
     private func startRecording() {
         if !isRecording {
@@ -268,10 +271,15 @@ struct SpeedView: View {
                 .onAppear {
                     routeName = "Default Route"
                     routeDescription = "Description of the route"
-
+                    print("onAppear - autoRecord: \(autoRecord),  \(autoRecordCount)")
+                    
                     if autoRecord == 1 && autoRecordCount == 0 {
                         startAutoRecordTimer()
                     }
+                }
+                .onChange(of: storedAutoRecord) {
+                    autoRecord = storedAutoRecord
+                    print("onChange - autoRecord updated: \(autoRecord)")
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
                 
@@ -326,6 +334,9 @@ struct SpeedView: View {
     
     /// Determines if recording should start based on the current speed.
     private func shouldStartRecording() {
+#if DEBUG
+                print("shouldStartRecording - AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+#endif
         if locationManager.speed > 0.2 && autoRecord == 1 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
                 autoRecordTimer?.invalidate()
@@ -335,6 +346,7 @@ struct SpeedView: View {
 #if DEBUG
                 print("shouldStartRecording / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
 #endif
+                
             }
         }
     }
