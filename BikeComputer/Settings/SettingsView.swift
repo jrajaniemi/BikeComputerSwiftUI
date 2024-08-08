@@ -139,10 +139,17 @@ struct ParametersView: View {
                 Text("Power saving mode: Off")
             } else if(locationManager.powerSavingMode == .normal) {
                 Text("Power saving mode: Normal")
-            } else {
+            } else if(locationManager.powerSavingMode == .max) {
                 Text("Power saving mode: Maximum")
+            } else {
+                Text("Power saving mode: Unknown")
             }
-            Text("Is charging: \(batteryManager.isCharging ? "Yes" : "No")")
+            
+            if(batteryManager.isCharging) {
+                Text("Is charging: yes")
+            } else {
+                Text("Is charging: no")
+            }
             Text("Desired Accuracy: \(locationManager.accuracyDescription)")
         }
     }
@@ -163,7 +170,7 @@ struct DebugParametersView: View {
             Text("Is Idle Timer Disabled: \(batteryManager.isIdleTimerDisabled) ")
             Text("Speed class: \(locationManager.currentSpeedClass)")
             Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
-            Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? "Yes" : "No")")
+            Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? String(localized:"Yes") : String(localized:"No"))")
             Text("Lat, Lon: \(locationManager.latitude, specifier: "%.4f") \(locationManager.longitude, specifier: "%.4f")")
         }
         #endif

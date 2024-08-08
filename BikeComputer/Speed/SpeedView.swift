@@ -1,8 +1,9 @@
 import CoreLocation
 import SwiftUI
 
-// Formatter-luokka
+/// A class containing formatter instances for number and speed formatting.
 class Formatters {
+    /// Number formatter with decimal style, maximum fraction digits set to 5, and decimal separator as "."
     static let numberFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -10,7 +11,8 @@ class Formatters {
         formatter.decimalSeparator = "."
         return formatter
     }()
-    
+
+    /// Speed formatter with decimal style, maximum fraction digits set to 1, and decimal separator as "."
     static let speedFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
@@ -20,7 +22,12 @@ class Formatters {
     }()
 }
 
-// SpeedTextView
+/// A SwiftUI view that displays speed information.
+///
+/// - Parameters:
+///   - speed: The speed in kilometers per hour.
+///   - imperialSpeed: The speed in miles per hour.
+///   - speedFontSize: The font size for the speed text.
 struct SpeedTextView: View {
     var speed: Double
     var imperialSpeed: Double
@@ -51,7 +58,13 @@ struct SpeedTextView: View {
     }
 }
 
-// HeadingAndAltitudeView
+/// A SwiftUI view that displays heading and altitude information.
+///
+/// - Parameters:
+///   - heading: The heading in degrees.
+///   - altitude: The altitude in meters.
+///   - imperialAltitude: The altitude in feet.
+///   - altitudeFontSize: The font size for the altitude text.
 struct HeadingAndAltitudeView: View {
     var heading: Double
     var altitude: Double
@@ -84,7 +97,13 @@ struct HeadingAndAltitudeView: View {
     }
 }
 
-// DistanceView
+/// A SwiftUI view that displays distance information.
+///
+/// - Parameters:
+///   - totalDistance: The total distance in meters.
+///   - odometer: The odometer reading in meters.
+///   - imperialTotalDistance: The total distance in feet.
+///   - imperialOdometer: The odometer reading in feet.
 struct DistanceView: View {
     var totalDistance: Double
     var odometer: Double
@@ -126,7 +145,15 @@ struct DistanceView: View {
     }
 }
 
-// RecordButtonView
+/// A SwiftUI view that displays a button to start or stop recording a route.
+///
+/// - Parameters:
+///   - isRecording: A binding to a Boolean value indicating whether recording is in progress.
+///   - locationManager: The location manager responsible for tracking the route.
+///   - routeName: The name of the route.
+///   - routeDescription: The description of the route.
+///   - showingAlert: A binding to a Boolean value indicating whether an alert should be shown.
+///   - alertMessage: A binding to a string that contains the alert message.
 struct RecordButtonView: View {
     @Binding var isRecording: Bool
     @ObservedObject var locationManager: LocationManager
@@ -167,7 +194,16 @@ struct RecordButtonView: View {
     }
 }
 
-// Pääasiallinen SpeedView
+/// The main view that displays speed, heading, altitude, and distance information, and allows starting and stopping route recording.
+///
+/// - Parameters:
+///   - locationManager: The location manager responsible for tracking the route.
+///   - isRecording: A binding to a Boolean value indicating whether recording is in progress.
+///   - routeName: A binding to a string containing the name of the route.
+///   - routeDescription: A binding to a string containing the description of the route.
+///   - displayLastFivePoints: A binding to a Boolean value indicating whether to display the last five points of the route.
+///   - lastFivePoints: A binding to an array of the last five points of the route.
+///   - showRouteView: A binding to a Boolean value indicating whether to show the route view.
 struct SpeedView: View {
     @ObservedObject var locationManager: LocationManager
     @Binding var isRecording: Bool
@@ -281,12 +317,14 @@ struct SpeedView: View {
         }
     }
     
+    /// Starts the auto-record timer.
     private func startAutoRecordTimer() {
         autoRecordTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
             self.shouldStartRecording()
         }
     }
-           
+    
+    /// Determines if recording should start based on the current speed.
     private func shouldStartRecording() {
         if locationManager.speed > 0.2 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
@@ -295,11 +333,11 @@ struct SpeedView: View {
                 #if DEBUG
                     print("AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
                 #endif
-
             }
         }
     }
 
+    /// Lists all available fonts in the console.
     func listAllFonts() {
         /*
          for family in UIFont.familyNames.sorted() {

@@ -20,9 +20,12 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 ## What's new in version 0.1.7
 
 * Added Localization support for 22 new languages: Albanian, Bulgarian, Czech, Estonian, Hindi, Indonesian, Irish, Kurdish, Latvian, Lithuanian, Malay, Maltese, Polish, Punjabi, Quechua, Romanian, Russian, Serbian, Slovak, Slovenian, Urdu, Vietnamese
+* New auto-record beta feature, which start GPS-tracking always when app startup
+
+### Fixed bugs
+
 * The color bug in the routa map-view has been fixed
 * The odometer bug in tracking has been fixed
-* New auto-record beta feature, which start GPS-tracking always when app startup
 
 ## What's new in version 0.1.6
 

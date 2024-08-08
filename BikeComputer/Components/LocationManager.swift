@@ -50,7 +50,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         didSet { imperialAltitude = altitude * 3.2808 }
     }
     @Published var imperialAltitude: Double = 0.0
-    @Published var accuracyDescription: String = "Unknown"
+    @Published var accuracyDescription: String = String(localized:"Unknown", comment: "When accuracy is unkown")
     @Published var longitude: Double = 0.0
     @Published var latitude: Double = 0.0
     @Published var powerSavingMode: PowerSavingMode = .off
@@ -374,17 +374,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private func getAccuracyDescription(horizontalAccuracy: CLLocationAccuracy) -> String {
         switch horizontalAccuracy {
         case _ where horizontalAccuracy < 0:
-            return "Invalid"
+            return  String(localized: "Invalid", comment: "Accuracy is invalid")
         case 0...5:
-            return "Very High"
+            return String(localized: "Very High", comment: "Accuracy is very high")
         case 5...10:
-            return "High"
+            return String(localized: "High", comment: "Accuracy is high")
         case 10...20:
-            return "Medium"
+            return String(localized: "Medium", comment: "Accuracy is medium")
         case 20...100:
-            return "Low"
+            return String(localized: "Low", comment: "Accuracy is low")
         default:
-            return "Very Low"
+            return String(localized: "Very Low", comment: "Accuracy is very low")
         }
     }
 }
