@@ -229,9 +229,6 @@ struct SpeedView: View {
             locationManager.routeManager.startNewRoute(name: routeName, description: routeDescription)
             locationManager.startLocationUpdates()
             locationManager.isTracking = true
-            autoRecordTimer?.invalidate()
-            autoRecordTimer = nil
-            autoRecordCount += 1
         }
     }
     
@@ -320,19 +317,24 @@ struct SpeedView: View {
     /// Starts the auto-record timer.
     private func startAutoRecordTimer() {
         autoRecordTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
+#if DEBUG
+                print("startAutoRecordTimer / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+#endif
             self.shouldStartRecording()
         }
     }
     
     /// Determines if recording should start based on the current speed.
     private func shouldStartRecording() {
-        if locationManager.speed > 0.2 {
+        if locationManager.speed > 0.2 && autoRecord == 1 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                startRecording()
+                autoRecordTimer?.invalidate()
+                autoRecordTimer = nil
                 autoRecordCount += 1
-                #if DEBUG
-                    print("AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
-                #endif
+                startRecording()
+#if DEBUG
+                print("shouldStartRecording / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+#endif
             }
         }
     }

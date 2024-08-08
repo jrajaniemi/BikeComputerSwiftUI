@@ -123,6 +123,14 @@ struct AutoRecordView: View {
                 Text("On").tag(1)
             }
             .pickerStyle(SegmentedPickerStyle())
+            .onChange(of: autoRecord) { newValue in
+                print("autoRecord updated to: \(newValue)")
+            }
+        }
+        .onAppear {
+            let storedValue = UserDefaults.standard.integer(forKey: "autoRecord")
+            print("Stored autoRecord value in UserDefaults: \(storedValue)")
+            print("Initial autoRecord value: \(autoRecord)")
         }
     }
 }
