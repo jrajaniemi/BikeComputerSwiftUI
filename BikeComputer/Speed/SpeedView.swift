@@ -271,8 +271,10 @@ struct SpeedView: View {
                 .onAppear {
                     routeName = "Default Route"
                     routeDescription = "Description of the route"
-                    print("onAppear - autoRecord: \(autoRecord),  \(autoRecordCount)")
                     
+                    autoRecord = storedAutoRecord
+                    
+                    print("onAppear - autoRecord: \(autoRecord),  \(autoRecordCount)")
                     if autoRecord == 1 && autoRecordCount == 0 {
                         startAutoRecordTimer()
                     }
@@ -323,6 +325,9 @@ struct SpeedView: View {
     }
     
     /// Starts the auto-record timer.
+    ///
+    /// The timer checks every 10 seconds if the speed exceeds a threshold
+    /// and starts recording automatically if conditions are met.
     private func startAutoRecordTimer() {
         autoRecordTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
 #if DEBUG
@@ -333,12 +338,15 @@ struct SpeedView: View {
     }
     
     /// Determines if recording should start based on the current speed.
+    ///
+    /// If the current Speedclass is not stationary and autoRecord is enabled, recording starts
+    /// after a n-second delay. The timer is then invalidated.
     private func shouldStartRecording() {
 #if DEBUG
                 print("shouldStartRecording - AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
 #endif
-        if locationManager.speed > 0.2 && autoRecord == 1 {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+        if locationManager.currentSpeedClass != .stationary && autoRecord == 1 {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 autoRecordTimer?.invalidate()
                 autoRecordTimer = nil
                 autoRecordCount += 1

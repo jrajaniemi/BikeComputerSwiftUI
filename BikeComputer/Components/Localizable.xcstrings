@@ -4032,6 +4032,7 @@
       }
     },
     "Allows Background Location Updates: %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5272,6 +5273,316 @@
         }
       }
     },
+    "Auto Record Information" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات التسجيل التلقائي"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Информация за автоматичен запис"
+          }
+        },
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informació d'enregistrament automàtic"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automaticky zaznamenávat informace"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autooptagelsesinformation"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische Aufzeichnungsinformationen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πληροφορίες Αυτόματης Καταγραφής"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Record Information"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información de Grabación Automática"
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automaatne salvestusteave"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automaattinen tallennusinformaatio"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informations d'Enregistrement Automatique"
+          }
+        },
+        "ga" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eolas Taifead Uathoibríoch"
+          }
+        },
+        "ga-IE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eolas Auto Taifeadta"
+          }
+        },
+        "ha" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bayani Rikodi Na'ura"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "מידע על הקלטה אוטומטית"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ऑटो रिकॉर्ड जानकारी"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatski zapisi informacija"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatikus rögzítés információk"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informasi Catatan Otomatis"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni Registrazione Automatica"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動記録情報"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자동 기록 정보"
+          }
+        },
+        "ku" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agahdaniya Tomaça Avtomatik"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatinė įrašo informacija"
+          }
+        },
+        "lv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automātiskā ieraksta informācija"
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maklumat Rekod Auto"
+          }
+        },
+        "mt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazzjoni dwar ir-Rekord Awtomatiku"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatisk opptaksinformasjon"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatische opname-informatie"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਆਟੋ ਰਿਕਾਰਡ ਜਾਣਕਾਰੀ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatyczne Nagrywanie Informacji"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gravação Automática de Informações"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações de Gravação Automática"
+          }
+        },
+        "qu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Record Información"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informații înregistrare automată"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Авто запись информации"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatické záznamy informácií"
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Samodejne snemanje informacij"
+          }
+        },
+        "sq" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacioni i Regjistrimit Automatik"
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatsko Snimanje Informacija"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autoinspelningsinformation"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatiskt Spela In Information"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "บันทึกข้อมูลอัตโนมัติ"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatik Kayıt Bilgisi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto Record Information"
+          }
+        },
+        "uk-UA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Автоматичний запис інформації"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "خودکار ریکارڈ معلومات"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thông tin ghi tự động"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动记录信息"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動記錄資訊"
+          }
+        }
+      }
+    },
     "Back" : {
       "comment" : "MapButtons",
       "extractionState" : "manual",
@@ -5585,6 +5896,7 @@
       }
     },
     "Battery Level: %.0f %%" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -6205,6 +6517,316 @@
         }
       }
     },
+    "Battery Threshold Information" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "معلومات عتبة البطارية"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Информация за прага на батерията"
+          }
+        },
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informació Llindar de la Bateria"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informace o prahu baterie"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batterigrænseinformation"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batterieschwelleninformation"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Πληροφορίες Κατωφλίου Μπαταρίας"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battery Threshold Information"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Información del Umbral de Batería"
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aku läve info"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akun Kynnystiedot"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informations sur le seuil de la batterie"
+          }
+        },
+        "ga" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eolas Tairseach Ceallraí"
+          }
+        },
+        "ga-IE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eolas Tairsí Ceallraí"
+          }
+        },
+        "ha" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baturi Thrisho Labarai"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "מידע על סף הסוללה"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "बैटरी थ्रेशोल्ड सूचना"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacije o pragu baterije"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akkukynnyksen tiedot"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informasi Ambang Baterai"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazioni sulla soglia della batteria"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バッテリーしきい値情報"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "배터리 임계값 정보"
+          }
+        },
+        "ku" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zanyariya Berdêla Batereyê"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baterijos slenksčio informacija"
+          }
+        },
+        "lv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akumulatora sliekšņa informācija"
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Maklumat Ambang Bateri"
+          }
+        },
+        "mt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informazzjoni dwar il-Limitu tal-Batterija"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batteriterskelinformasjon"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batterijdrempelinformatie"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਬੈਟਰੀ ਥ੍ਰੈਸ਼ਹੋਲਡ ਜਾਣਕਾਰੀ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacje o progu baterii"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informações sobre o Limite da Bateria"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informação de Limite da Bateria"
+          }
+        },
+        "qu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bateria Umbral Información"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informații prag baterie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Информация о пороге батареи"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informácie o prahovej hodnote batérie"
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacije o pragu za baterijo"
+          }
+        },
+        "sq" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacioni për Pragun e Baterisë"
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informacije o pragu baterije"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batterigränsinformation"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kiwango cha Betri Taarifa"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ข้อมูลเกณฑ์แบตเตอรี่"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pil Eşiği Bilgisi"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battery Threshold Info"
+          }
+        },
+        "uk-UA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Інформація про поріг акумулятора"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بیٹری کی حد کی معلومات"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thông tin Ngưỡng Pin"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "电池阈值信息"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "電池門檻資訊"
+          }
+        }
+      }
+    },
     "Battery Threshold: %lld%%" : {
       "localizations" : {
         "ar" : {
@@ -6821,6 +7443,316 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "BIKE App Computer"
+          }
+        }
+      }
+    },
+    "Close" : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اغلق"
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Затвори"
+          }
+        },
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tanca"
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zavřít"
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Luk"
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Κλείσε"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerrar"
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sulge"
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sulje"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        },
+        "ga" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dún"
+          }
+        },
+        "ga-IE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dún"
+          }
+        },
+        "ha" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rufe"
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "סגור"
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "बंद करें"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zatvori"
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bezárás"
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutup"
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chiudi"
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "閉じる"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "닫기"
+          }
+        },
+        "ku" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bigre"
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uždaryti"
+          }
+        },
+        "lv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aizvērt"
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tutup"
+          }
+        },
+        "mt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Agħlaq"
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lukk"
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sluiten"
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਬੰਦ ਕਰੋ"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zamknij"
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fechar"
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fechar"
+          }
+        },
+        "qu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wisqay"
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Închide"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закрыть"
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zavrieť"
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zapri"
+          }
+        },
+        "sq" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mbyll"
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zatvori"
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stäng"
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funga"
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ปิด"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kapat"
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "uk-UA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закрити"
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بند کریں"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Đóng"
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "关闭"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "關閉"
           }
         }
       }
@@ -7759,6 +8691,7 @@
       }
     },
     "Debug parameters" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -9003,6 +9936,7 @@
       }
     },
     "Distance Filter: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -9625,6 +10559,7 @@
       }
     },
     "Heading Filter: %lld" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -10241,6 +11176,316 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "高"
+          }
+        }
+      }
+    },
+    "If the battery level goes below 25 percent, the app switches to maximum power-saving mode. In this mode, the app further reduces how often it updates GPS, uses even less accurate data, and may stop updating location if the device is not moving. This helps keep the device running as long as possible, but it greatly reduces the app performance and accuracy." : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "إذا انخفض مستوى البطارية إلى أقل من 25 بالمائة، يقوم التطبيق بالتبديل إلى وضع توفير الطاقة الأقصى. في هذا الوضع، يقلل التطبيق بشكل كبير من عدد مرات تحديث GPS، ويستخدم بيانات أقل دقة، وقد يتوقف عن تحديث الموقع إذا لم تكن الجهاز يتحرك. يساعد ذلك في تشغيل الجهاز لأطول فترة ممكنة، ولكنه يقلل بشكل كبير من أداء ودقة التطبيق."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ако нивото на батерията падне под 25 процента, приложението превключва в режим на максимално пестене на енергия. В този режим приложението допълнително намалява честотата на актуализации на GPS, използва дори по-малко точни данни и може да спре актуализирането на местоположението, ако устройството не се движи. Това помага устройството да работи възможно най-дълго, но значително намалява производителността и точността на приложението."
+          }
+        },
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si el nivell de bateria baixa per sota del 25 per cent, l'aplicació canvia al mode d'estalvi d'energia màxim. En aquest mode, l'aplicació redueix encara més la freqüència d'actualització del GPS, utilitza dades encara menys precises i pot deixar d'actualitzar la ubicació si el dispositiu no es mou. Això ajuda a mantenir el dispositiu funcionant tant de temps com sigui possible, però disminueix molt el rendiment i l'exactitud de l'aplicació."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pokud úroveň baterie klesne pod 25 procent, aplikace přepne do režimu maximální úspory energie. V tomto režimu aplikace dále snižuje frekvenci aktualizací GPS, používá méně přesná data a může přestat aktualizovat polohu, pokud se zařízení nepohybuje. To pomáhá udržet zařízení v chodu co nejdéle, ale značně to snižuje výkon a přesnost aplikace."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hvis batteriniveauet kommer under 25 procent, skifter appen til maksimal strømbesparelsestilstand. I denne tilstand reducerer appen yderligere, hvor ofte den opdaterer GPS, bruger endnu mindre nøjagtige data og kan stoppe med at opdatere placering, hvis enheden ikke bevæger sig. Dette hjælper med at holde enheden kørende så længe som muligt, men det reducerer i høj grad appens ydeevne og nøjagtighed."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn der Batteriestand unter 25 Prozent sinkt, wechselt die App in den maximalen Energiesparmodus. In diesem Modus verringert die App weiter, wie oft sie GPS aktualisiert, verwendet noch ungenauere Daten und kann die Standortaktualisierung einstellen, falls das Gerät sich nicht bewegt. Dies hilft, das Gerät so lange wie möglich am Laufen zu halten, verringert jedoch erheblich die Leistung und Genauigkeit der App."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Εάν το επίπεδο της μπαταρίας πέσει κάτω από 25 τοις εκατό, η εφαρμογή μεταβαίνει σε λειτουργία μέγιστης εξοικονόμησης ενέργειας. Σε αυτή τη λειτουργία, η εφαρμογή μειώνει περαιτέρω τη συχνότητα των ενημερώσεων του GPS, χρησιμοποιεί ακόμα λιγότερο ακριβή δεδομένα και μπορεί να σταματήσει η ενημέρωση της τοποθεσίας, εάν η συσκευή δεν κινείται. Αυτό βοηθάει στη διατήρηση της συσκευής σε λειτουργία για όσο το δυνατόν περισσότερο, αλλά μειώνει σημαντικά την απόδοση και την ακρίβεια της εφαρμογής."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If the battery level goes below 25 percent, the app switches to maximum power-saving mode. In this mode, the app further reduces how often it updates GPS, uses even less accurate data, and may stop updating location if the device is not moving. This helps keep the device running as long as possible, but it greatly reduces the app performance and accuracy."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si el nivel de la batería baja del 25 por ciento, la app cambia al modo de ahorro de energía máximo. En este modo, la app reduce aún más la frecuencia con la que actualiza el GPS, usa datos aún menos precisos y puede dejar de actualizar la ubicación si el dispositivo no se está moviendo. Esto ayuda a mantener el dispositivo funcionando el mayor tiempo posible, pero reduce en gran medida el rendimiento y la precisión de la app."
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kui aku tase langeb alla 25 protsendi, lülitub rakendus maksimaalsesse energiasäästurežiimi. Selles režiimis vähendab rakendus veelgi GPS-i uuendamise sagedust, kasutab veelgi ebatäpsemaid andmeid ja võib lõpetada asukoha uuendamise, kui seade ei liigu. See aitab hoida seadet töös võimalikult kaua, kuid vähendab oluliselt rakenduse jõudlust ja täpsust."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jos akun varaustaso laskee alle 25 prosentin, sovellus siirtyy maksimaaliseen virransäästötilaan. Tässä tilassa sovellus vähentää entisestään GPS-päivitysten tiheyttä, käyttää vähemmän tarkkaa dataa ja lopettaa sijainnin päivittämisen, aina kun  laite ei liiku. Tämä auttaa pitämään laitteen toiminnassa mahdollisimman pitkään, mutta heikentää merkittävästi sovelluksen suorituskykyä ja tarkkuutta."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Si le niveau de la batterie descend en dessous de 25 pour cent, l'application passe en mode d'économie d'énergie maximale. Dans ce mode, l'application réduit encore la fréquence des mises à jour GPS, utilise des données encore moins précises et peut arrêter la mise à jour de la localisation si l'appareil ne bouge pas. Cela aide à maintenir l'appareil en fonctionnement aussi longtemps que possible, mais réduit considérablement la performance et la précision de l'application."
+          }
+        },
+        "ga" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Má théann leibhéal na ceallraí faoi bhun 25 faoin gcéad, aistríonn an aip go mód uaschumhacht-sábhála. Sa mhód seo, laghdaíonn an aip tuilleadh cé chomh minic agus atá sé ag nuashonrú GPS, úsáideann sé sonraí atá níos lú cruinn, agus féadfaidh sé stop a chur le nuashonrú suímh má tá an gléas gan bogadh. Cabhraíonn sé seo leis an gléas a choinneáil ag rith chomh fada agus is féidir, ach laghdaíonn sé feidhmíocht agus cruinneas an aip go mór."
+          }
+        },
+        "ga-IE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Má théann leibhéal na ceallraí faoi bhun 25 faoin gcéad, aistríonn an aip go dtí an modh coigilte cumhachta uasta. Sa mhodh seo, laghdaíonn an aip chomh minic is a nuashonraíonn sé GPS, úsáideann sé sonraí níos neamhbhríonna fós agus féadfaidh sé stopadh ag nuashonrú suíomh má tá an gléas ina stad. Cuidíonn sé seo leis an ngléas a choinneáil ag feidhmiú chomh fada agus is féidir, ach laghdaíonn sé feidhmíocht agus cruinneas an aip go mór."
+          }
+        },
+        "ha" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Idan matakin baturi ya faɗi ƙasa da kashi 25 cikin ɗari, manhajar na canza zuwa yanayin ajiyar wuta mafi ƙarfi. A cikin wannan yanayin, manhajar na ƙara rage yawan lokacin da take sabunta GPS, tana amfani da bayanai marasa daidaito, kuma watakila ta daina sabunta wurin idan na'urar ba ta motsi. Wannan yana taimakawa wajen ci gaba da amfani da na'urar tsawon lokaci, amma yana rage aiki da daidaiton manhajar ƙwarai."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "אם רמת הסוללה יורדת מתחת ל-25 אחוזים, האפליקציה עוברת למצב חיסכון מירבי באנרגיה. במצב זה, האפליקציה מקטינה עוד יותר את תדירות עדכוני ה-GPS, משתמשת בנתונים פחות מדויקים, ועשויה להפסיק לעדכן מיקום אם המכשיר לא זז. זה עוזר לשמור על המכשיר פועל כמה שיותר זמן, אך זה פוגע משמעותית בביצועי היישום ובדיוק שלו."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "अगर बैटरी स्तर 25 प्रतिशत से कम हो जाता है, तो ऐप अधिकतम बिजली-बचत मोड में स्विच हो जाती है। इस मोड में, ऐप और कम बार GPS अपडेट करता है, और भी कम सटीक डेटा का उपयोग करता है, और यदि डिवाइस नहीं हिल रहा है तो स्थान अपडेट करना बंद भी कर सकता है। यह डिवाइस को यथासंभव लंबी अवधि तक चलने में मदद करता है, लेकिन यह ऐप के प्रदर्शन और सटीकता को बहुत कम कर देता है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ako razina baterije padne ispod 25 posto, aplikacija prelazi na maksimalni način uštede energije. U ovom načinu rada, aplikacija dodatno smanjuje učestalost ažuriranja GPS-a, koristi manje točne podatke, i može prestati ažurirati lokaciju ako se uređaj ne kreće. Ovo pomaže da uređaj radi što dulje moguće, ali uvelike smanjuje performanse i točnost aplikacije."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ha az akkumulátor töltöttségi szintje 25 százalék alá csökken, az alkalmazás maximális energiatakarékos módra vált. Ebben a módban az alkalmazás tovább csökkenti a GPS frissítések gyakoriságát, kevésbé pontos adatokat használ, és előfordulhat, hogy nem frissíti a helyzetet, ha az eszköz nem mozog. Ez segít az eszközt a lehető leghosszabb ideig működésben tartani, de jelentősen csökkenti az alkalmazás teljesítményét és pontosságát."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jika level baterai turun di bawah 25 persen, aplikasi akan beralih ke mode penghematan daya maksimum. Dalam mode ini, aplikasi akan mengurangi seberapa sering memperbarui GPS, menggunakan data yang kurang akurat, dan mungkin berhenti memperbarui lokasi jika perangkat tidak bergerak. Hal ini membantu menjaga perangkat tetap berjalan selama mungkin, tetapi sangat mengurangi kinerja dan akurasi aplikasi."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se il livello della batteria scende sotto il 25 percento, l'app passa alla modalità di risparmio energetico massimo. In questa modalità, l'app riduce ulteriormente la frequenza di aggiornamento del GPS, utilizza dati ancora meno precisi e può smettere di aggiornare la posizione se il dispositivo non si muove. Questo aiuta a mantenere il dispositivo in funzione il più a lungo possibile, ma riduce notevolmente le prestazioni e la precisione dell'app."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バッテリー残量が25％未満になると、アプリは最大限の省電力モードに切り替わります。このモードでは、GPSの更新頻度をさらに減らし、データの精度をさらに低下させ、デバイスが動いていない場合に位置情報の更新を停止することがあります。これにより、デバイスの稼働時間をできるだけ長く保つことができますが、アプリのパフォーマンスと精度は大幅に低下します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "배터리 수준이 25% 이하로 떨어지면 앱이 최대 전원 절약 모드로 전환됩니다. 이 모드에서는 GPS 업데이트 빈도를 더욱 줄이고, 덜 정확한 데이터를 사용하며, 장치가 이동하지 않으면 위치 업데이트를 중지할 수 있습니다. 이는 장치를 가능한 한 오래 실행시키는 데 도움이 되지만, 앱의 성능과 정확성이 크게 저하됩니다."
+          }
+        },
+        "ku" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eger asta la batri biçe jêrî 25 pirsent, bername dibêje herçeçerî pawan anî. Di vî moda de, bername dizî herçayî kêm bikeva GPS nûbele, têne pêşmêna kêm keçûva zaniyari, û dikare destjêy bikeva lokasyon nûbikîne eger amûre nikevin. Ev yeledemîdandina amûrê derbasde hemûîn rekey, lê serfirazî û razîbirkirina bername bi mezinî dipeyêje."
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jei akumuliatoriaus lygis nukrenta žemiau 25 procentų, programa pereina į maksimalų energijos taupymo režimą. Šiame režime programa dar labiau sumažina GPS atnaujinimų dažnį, naudoja dar mažiau tikslius duomenis ir gali nustoti atnaujinti vietovę, jei įrenginys nejuda. Tai padeda išlaikyti įrenginį veikiantį kuo ilgiau, bet žymiai sumažina programos veikimą ir tikslumą."
+          }
+        },
+        "lv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ja akumulatora līmenis nokrītas zem 25 procentiem, lietotne pārslēdzas uz maksimālo enerģijas taupīšanas režīmu. Šajā režīmā lietotne vēl vairāk samazina GPS atjaunināšanas biežumu, izmanto vēl mazāk precīzus datus un var pārtraukt atrašanās vietas atjaunināšanu, ja ierīce nepārvietojas. Tas palīdz ierīcei darboties pēc iespējas ilgāk, bet būtiski samazina lietotnes veiktspēju un precizitāti."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jika tahap bateri turun di bawah 25 peratus, aplikasi akan beralih ke mode penjimatan kuasa maksimum. Dalam mode ini, aplikasi mengurangkan kekerapan kemas kini GPS, menggunakan data yang kurang tepat, dan mungkin berhenti mengemas kini lokasi jika peranti tidak bergerak. Ini membantu peranti berfungsi selama mungkin, tetapi ia mengurangkan prestasi dan ketepatan aplikasi dengan ketara."
+          }
+        },
+        "mt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jekk il-livell tal-batterija jinżel taħt it-25 fil-mija, l-app tinbidel għall-mod massimu li jiffranka l-enerġija. F'dan il-mod, l-app tnaqqas aktar kemm-il darba taġġorna l-GPS, tuża data anqas preċiża, u tista' tieqaf taġġorna l-lokazzjoni jekk l-apparat ma jkunx qed jiċċaqlaq. Dan jgħin biex l-apparat jibqa' jaħdem kemm jista' jkun, iżda jnaqqas ħafna l-prestazzjoni u l-preċiżjoni tal-app."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hvis batterinivået går under 25 prosent, bytter appen til maksimal strømsparingsmodus. I denne modusen reduserer appen ytterligere hvor ofte den oppdaterer GPS, bruker enda mindre nøyaktige data, og kan slutte å oppdatere posisjonen hvis enheten ikke beveger seg. Dette hjelper enheten å kjøre så lenge som mulig, men det reduserer appens ytelse og nøyaktighet betydelig."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als het batterijniveau onder de 25 procent komt, schakelt de app over naar de maximale energiebesparingsmodus. In deze modus vermindert de app verder hoe vaak het GPS bijwerkt, gebruikt nog minder nauwkeurige gegevens en stopt mogelijk met het bijwerken van de locatie als het apparaat niet beweegt. Dit helpt het apparaat zo lang mogelijk te laten werken, maar het vermindert de prestaties en nauwkeurigheid van de app aanzienlijk."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਜੇ ਬੈਟਰੀ ਦੀ ਸਤਰ 25 ਫੀਸਦੀ ਤੋਂ ਘਟ ਜਾਂਦੀ ਹੈ, ਤਾਂ ਐਪ ਵੱਧ ਤੋਂ ਵੱਧ ਸ਼ਕਤੀ-ਬਚਤ ਮੋਡ ਵਿੱਚ ਸਵਿੱਚ ਕਰ ਦਿੰਦੀ ਹੈ। ਇਸ ਮੋਡ ਵਿੱਚ, ਐਪ ਗਲਾਇਕਸ਼ਨ ਨੂੰ ਅੱਪਡੇਟ ਕਰਨ ਦੀ ਆਵ੍ਰਿਤੀ ਹੋਰ ਘਟਾਉਂਦੀ ਹੈ, ਵੀ ਘੱਟ ਸਹੀ ਡਾਟਾ ਵਰਤਦੀ ਹੈ, ਅਤੇ ਜੇਕਰ ਡਿਵਾਈਸ ਨਹੀਂ ਹਿੱਲ ਰਿਹਾ ਹੈ ਤਾਂ ਸਥਿਤੀ ਅੱਪਡੇਟ ਕਰਨਾ ਬੰਦ ਕਰ ਸਕਦੀ ਹੈ। ਇਸ ਨਾਲ ਡਿਵਾਈਸ ਨੂੰ ਜਿੰਨਾ ਚਿਰ ਹੋ ਸਕੇ ਚਲਾਉਣ ਵਿੱਚ ਮਦਦ ਮਿਲਦੀ ਹੈ, ਪਰ ਇਹ ਐਪ ਦੀ ਕਾਰਗੁਜ਼ਾਰੀ ਅਤੇ ਸਹੀਯਤਾ ਨੂੰ ਬਹੁਤ ਘਟਾਉਂਦਾ ਹੈ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jeśli poziom baterii spadnie poniżej 25 procent, aplikacja przełącza się na maksymalny tryb oszczędzania energii. W tym trybie aplikacja jeszcze bardziej zmniejsza częstotliwość aktualizacji GPS, używa jeszcze mniej dokładnych danych i może przestać aktualizować lokalizację, jeśli urządzenie się nie porusza. To pomaga utrzymać działanie urządzenia tak długo, jak to możliwe, ale znacznie obniża wydajność i dokładność aplikacji."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se o nível da bateria cair abaixo de 25 por cento, o aplicativo muda para o modo de economia máxima de energia. Nesse modo, o aplicativo reduz ainda mais a frequência das atualizações de GPS, usa dados ainda menos precisos e pode parar de atualizar a localização se o dispositivo não estiver se movendo. Isso ajuda a manter o dispositivo funcionando pelo maior tempo possível, mas reduz consideravelmente o desempenho e a precisão do aplicativo."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se o nível da bateria descer abaixo de 25 por cento, a app muda para o modo máximo de poupança de energia. Neste modo, a app reduz ainda mais a frequência das atualizações do GPS, utiliza dados ainda menos precisos e pode parar de atualizar a localização se o dispositivo não estiver em movimento. Isto ajuda a manter o dispositivo a funcionar o máximo de tempo possível, mas reduz consideravelmente o desempenho e a precisão da app."
+          }
+        },
+        "qu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qan bateríta nivelqa huch'uy 25 paisjikunakun, appqa musuq simi ch'askipaymantan waqaychasqa kasqaykuy. Kay simipi, appqa wakinkunataña siqsiykamapayta huch'uyachin GPS, inachisqa datos apaykamaway, chaypipas siqsiykamapaña rik'iyta wakinchanchaqa mana maskapaspas purinman. Kaypas amachanchayta munan aparanasqa mach'a kasqa, icha suma uyarisqa app llinriskayniyu."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dacă nivelul bateriei scade sub 25%, aplicația comută la modul de economisire a energiei maxim. În acest mod, aplicația reduce și mai mult frecvența actualizărilor GPS, folosește date și mai puțin precise și poate opri actualizarea locației dacă dispozitivul nu se mișcă. Acest lucru ajută la menținerea funcționării dispozitivului cât mai mult posibil, dar reduce considerabil performanța și acuratețea aplicației."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если уровень заряда батареи опустится ниже 25 процентов, приложение переключится в режим максимальной экономии энергии. В этом режиме приложение ещё реже обновляет GPS, использует менее точные данные и может прекратить обновление местоположения, если устройство не двигается. Это помогает продлить работу устройства как можно дольше, но значительно снижает производительность и точность приложения."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ak úroveň batérie klesne pod 25 percent, aplikácia sa prepne do maximálneho úsporného režimu. V tomto režime aplikácia ďalej znižuje frekvenciu aktualizácií GPS, používa ešte menej presné údaje a môže prestať aktualizovať polohu, ak sa zariadenie nepohybuje. To pomáha udržiavať zariadenie v chode čo najdlhšie, ale značne znižuje výkon a presnosť aplikácie."
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Če raven baterije pade pod 25 odstotkov, aplikacija preklopi v način največjega varčevanja z energijo. V tem načinu aplikacija dodatno zmanjša pogostost posodabljanja GPS, uporablja še manj natančne podatke in lahko preneha posodabljati lokacijo, če se naprava ne premika. To pomaga napravi delovati čim dlje, vendar močno zmanjša zmogljivost in natančnost aplikacije."
+          }
+        },
+        "sq" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nëse niveli i baterisë bie nën 25 përqind, aplikacioni kalon në modalitetin e kursimit maksimal të energjisë. Në këtë modalitet, aplikacioni zvogëlon më tej sa shpesh azhurnon GPS, përdor të dhëna edhe më pak të sakta dhe mund të ndalojë azhurnimin e vendndodhjes nëse pajisja nuk po lëviz. Kjo ndihmon që pajisja të funksionojë sa më gjatë të jetë e mundur, por zvogëlon ndjeshëm performancën dhe saktësinë e aplikacionit."
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ako nivo baterije padne ispod 25 procenata, aplikacija prelazi u režim maksimalne uštede energije. U ovom režimu, aplikacija dodatno smanjuje učestalost ažuriranja GPS-a, koristi još manje precizne podatke, i može prestati sa ažuriranjem lokacije ako uređaj nije u pokretu. Ovo pomaže da uređaj radi što je duže moguće, ali značajno smanjuje performanse i tačnost aplikacije."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Om batterinivån sjunker under 25 procent, växlar appen till maximalt strömsparläge. I detta läge minskar appen ytterligare hur ofta den uppdaterar GPS, använder ännu mindre noggrann data och kan sluta uppdatera plats om enheten inte rör sig. Detta hjälper enheten att hålla igång så länge som möjligt, men det minskar avsevärt appens prestanda och noggrannhet."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ikiwa kiwango cha betri kimeshuka chini ya asilimia 25, programu hubadilisha hadi hali ya kuokoa nguvu zaidi. Katika hali hii, programu inapunguza zaidi mara ngapi inasasisha GPS, inatumia data isiyo sahihi zaidi, na inaweza kuacha kusasisha eneo ikiwa kifaa hakisogei. Hii husaidia kifaa kufanya kazi kwa muda mrefu iwezekanavyo, lakini inapunguza sana utendaji na usahihi wa programu."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "หากระดับแบตเตอรี่ต่ำกว่า 25 เปอร์เซ็นต์ แอปจะเปลี่ยนไปใช้โหมดประหยัดพลังงานสูงสุด ในโหมดนี้ แอปจะลดความถี่ในการอัพเดท GPS ลงอีก ใช้ข้อมูลที่ไม่แม่นยำมากขึ้น และอาจหยุดการอัพเดทตำแหน่งหากอุปกรณ์ไม่เคลื่อนไหว สิ่งนี้ช่วยให้อุปกรณ์ใช้งานได้นานที่สุด แต่มันจะลดประสิทธิภาพและความแม่นยำของแอปอย่างมาก"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pil düzeyi yüzde 25'in altına düşerse, uygulama maksimum güç tasarrufu moduna geçer. Bu modda, uygulama GPS güncellemelerinin sıklığını daha da azaltır, daha az doğru veriler kullanır ve cihaz hareket etmiyorsa konum güncellemeyi durdurabilir. Bu, cihazın mümkün olduğunca uzun süre çalışmasını sağlar, ancak uygulamanın performansını ve doğruluğunu büyük ölçüde azaltır."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If the battery level goes below 25 percent, the app switches to maximum power-saving mode. In this mode, the app further reduces how often it updates GPS, uses even less accurate data, and may stop updating location if the device is not moving. This helps keep the device running as long as possible, but it greatly reduces the app performance and accuracy."
+          }
+        },
+        "uk-UA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Якщо рівень заряду батареї опуститься нижче 25 відсотків, додаток перемикається на режим максимальної економії енергії. У цьому режимі додаток ще більше знижує частоту оновлення GPS, використовує ще менш точні дані та може припинити оновлення місцезнаходження, якщо пристрій не рухається. Це допомагає підтримувати роботу пристрою якомога довше, але значно знижує продуктивність і точність додатка."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "اگر بیٹری کا لیول 25 فیصد سے نیچے چلا جاتا ہے تو، ایپ زیادہ سے زیادہ بجلی بچانے کے موڈ پر منتقل ہو جاتی ہے۔ اس موڈ میں، ایپ جی پی ایس کو اپڈیٹ کرنے کی تعداد کو مزید کم کرتی ہے، کم درست ڈیٹا استعمال کرتی ہے، اور اگر ڈیوائس حرکت میں نہ ہو تو مقام کو اپڈیٹ کرنا بند کر سکتی ہے۔ اس سے ڈیوائس کو زیادہ دیر تک چلانے میں مدد ملتی ہے، لیکن یہ ایپ کی کارکردگی اور درستگی کو بہت کم کر دیتا ہے۔"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nếu mức pin giảm xuống dưới 25 phần trăm, ứng dụng sẽ chuyển sang chế độ tiết kiệm pin tối đa. Trong chế độ này, ứng dụng giảm tần suất cập nhật GPS, sử dụng dữ liệu kém chính xác hơn và có thể ngừng cập nhật vị trí nếu thiết bị không di chuyển. Điều này giúp thiết bị hoạt động càng lâu càng tốt, nhưng nó làm giảm hiệu suất và độ chính xác của ứng dụng đáng kể."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果电池电量低于25%，应用程序将切换到最大省电模式。在此模式下，应用程序进一步减少GPS更新频率，使用更不准确的数据，并且如果设备不移动，可能会停止更新位置。这有助于设备尽可能长时间运行，但大大降低了应用程序的性能和准确性。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "如果電池水平低於25%，應用程式會切換到最大省電模式。在這種模式下，應用程式會進一步減少更新GPS的頻率，使用更不準確的數據，並且如果設備沒有移動，可能會停止更新位置。這有助於使設備運行時間更長，但會大大降低應用程式的性能和準確性。"
           }
         }
       }
@@ -11487,6 +12732,7 @@
       }
     },
     "Lat, Lon: %.4f %.4f" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -19880,6 +21126,7 @@
       }
     },
     "Speed: %.3f km/h" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -21118,6 +22365,626 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "系統"
+          }
+        }
+      }
+    },
+    "The Auto-Record feature automatically starts recording your routes when start moving. This means you do not have to remember to start recording when you begin moving. However, Auto-Record only works when the app is starts up." : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تعمل ميزة التسجيل التلقائي على بدء تسجيل مساراتك تلقائيًا عند بدء التحرك. هذا يعني أنك لست بحاجة إلى تذكر بدء التسجيل عند بدء التحرك. ومع ذلك، تعمل ميزة التسجيل التلقائي فقط عندما يتم تشغيل التطبيق."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Функцията за автоматичен запис автоматично започва записването на вашите маршрути, когато започнете да се движите. Това означава, че не е нужно да помните да започнете запис, когато започнете да се движите. Въпреки това, автоматичният запис работи само когато приложението е стартирано."
+          }
+        },
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La funció Auto-Record comença automàticament a enregistrar les teves rutes quan comences a moure't. Això vol dir que no has de recordar-te de començar a enregistrar quan comences a moure't. Tanmateix, Auto-Record només funciona quan l'aplicació s'inicia."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkce automatického záznamu automaticky spustí nahrávání tras při zahájení pohybu. To znamená, že si nemusíte pamatovat, abyste při zahájení pohybu spustili nahrávání. Nicméně, automatický záznam funguje pouze při spuštění aplikace."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktionen Auto-Record begynder automatisk at optage dine ruter, når du begynder at bevæge dig. Dette betyder, at du ikke behøver at huske at starte optagelsen, når du begynder at bevæge dig. Dog fungerer Auto-Record kun, når appen starter op."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Funktion Auto-Record startet automatisch die Aufzeichnung Ihrer Routen, wenn Sie sich zu bewegen beginnen. Das bedeutet, dass Sie nicht daran denken müssen, die Aufzeichnung zu starten, wenn Sie sich in Bewegung setzen. Allerdings funktioniert Auto-Record nur, wenn die App gestartet wird."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η λειτουργία Auto-Record ξεκινά αυτόματα την καταγραφή των διαδρομών σας όταν αρχίσετε να κινείστε. Αυτό σημαίνει ότι δεν χρειάζεται να θυμάστε να ξεκινήσετε την καταγραφή όταν αρχίσετε να κινείστε. Ωστόσο, η Auto-Record λειτουργεί μόνο όταν η εφαρμογή ξεκινά."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Auto-Record feature automatically starts recording your routes when start moving. This means you do not have to remember to start recording when you begin moving. However, Auto-Record only works when the app is starts up."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La función de Auto-Grabación comienza a grabar automáticamente tus rutas cuando empiezas a moverte. Esto significa que no tienes que recordar iniciar la grabación cuando empiezas a moverte. Sin embargo, Auto-Grabación solo funciona cuando la aplicación se inicia."
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automaatne salvestamise funktsioon alustab automaatselt marsruutide salvestamist, kui hakkate liikuma. See tähendab, et te ei pea meeles pidama salvestamise alustamist, kui hakkate liikuma. Kuid automaatne salvestamine töötab ainult siis, kui rakendus käivitub."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automaattinen tallennustoiminto käynnistää reittien tallennuksen automaattisesti, kun alat liikkua. Tämä tarkoittaa, että sinun ei tarvitse muistaa aloittaa tallennusta, kun lähdet liikkeelle. Kuitenkin, Automaattitallennus toimii vain, kun sovellus käynnistyy."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La fonction Enregistrement-Auto commence automatiquement l'enregistrement de vos itinéraires lorsque vous commencez à vous déplacer. Cela signifie que vous n'avez pas à vous souvenir de commencer l'enregistrement lorsque vous commencez à bouger. Cependant, l'Enregistrement-Auto ne fonctionne que lorsque l'application démarre."
+          }
+        },
+        "ga" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tosaíonn an ghné Auto-Record ag taifeadadh do bhealaí go huathoibríoch nuair a thosaíonn tú ag bogadh. Ciallaíonn sé seo nach gá duit cuimhneamh ar thosú ag taifeadadh nuair a thosaíonn tú ag bogadh. Mar sin féin, ní oibríonn Auto-Record ach nuair a thosaíonn an aip suas."
+          }
+        },
+        "ga-IE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tosaíonn an ghné Auto-Record ag taifeadadh do bhealaí go huathoibríoch nuair a thosaíonn tú ag bogadh. Ciallaíonn sé seo nach gá duit cuimhneamh ar thosach a chur leis an taifeadadh nuair a thosaíonn tú ag bogadh. Mar sin féin, ní oibríonn Auto-Record ach nuair a chuirtear tús leis an aip."
+          }
+        },
+        "ha" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fasalin Auto-Record yana fara ɗaukar bayanan lokutan hanyarku ta atomatik lokacin da kake farawa motsawa. Wannan yana nufin ba dole ka tuna da yin rikodin lokacin da kake farawa motsawa. Duk da haka, Auto-Record yana aiki ne kawai lokacin da aka kunna manhajar."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "תכונת ההקלטה האוטומטית מתחילה להקליט את המסלולים שלך באופן אוטומטי כשאתה מתחיל לזוז. משמעות הדבר היא שאין צורך לזכור להתחיל להקליט כשמתחילים לזוז. עם זאת, ההקלטה האוטומטית פועלת רק כשהאפליקציה מופעלת."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ऑटो-रिकॉर्ड फीचर अपने आप आपके मार्गों को रिकॉर्ड करना शुरू कर देता है जब आप चलना शुरू करते हैं। इसका मतलब है कि जब आप चलना शुरू करते हैं, तो आपको रिकॉर्डिंग शुरू करने को याद नहीं रखना पड़ता। हालांकि, ऑटो-रिकॉर्ड केवल तब काम करता है जब ऐप चालू होता है।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Značajka automatskog snimanja automatski počinje snimati vaše rute kada počnete kretati. To znači da ne morate pamtiti započeti snimanje kada se počnete kretati. Međutim, automatsko snimanje radi samo kada se aplikacija pokrene."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Az automatikus felvétel funkció automatikusan elindítja útvonalainak rögzítését, amikor elindul. Ez azt jelenti, hogy nem kell emlékeznie arra, hogy elindítsd a felvételt, amikor elindulsz. Azonban az automatikus felvétel csak akkor működik, amikor az alkalmazás elindul."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fitur Auto-Record secara otomatis mulai merekam rute Anda saat mulai bergerak. Ini berarti Anda tidak perlu ingat untuk mulai merekam saat Anda mulai bergerak. Namun, Auto-Record hanya berfungsi saat aplikasi mulai dijalankan."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La funzione Auto-Record avvia automaticamente la registrazione dei tuoi percorsi quando inizi a muoverti. Questo significa che non devi ricordarti di avviare la registrazione quando inizi a muoverti. Tuttavia, Auto-Record funziona solo quando l'app viene avviata."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動記録機能は、動き始めるとルートの記録を自動的に開始します。これは、動き始めたときに記録を開始することを覚えておく必要がないことを意味します。ただし、自動記録はアプリが起動しているときにのみ動作します。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "자동 기록 기능은 이동을 시작할 때 경로 녹화를 자동으로 시작합니다. 이는 이동을 시작할 때 녹화를 시작할 것을 기억할 필요가 없다는 것을 의미합니다. 그러나 자동 기록은 앱이 시작될 때만 작동합니다."
+          }
+        },
+        "ku" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تایبەتمەندی فیدی تەمەنی ئۆتۆماتیکی دەستپێ دەکات بە تەنها دەرسکرنی ڕێڕەوەکانت کاتێک دەستپێ دەکەی بە جوڵاندن. ئەمە واتە پێویست نیە هەست بکەی بە دەستپێکردنی دەرسکرن کاتێک دەستپێدەکەیت بە جوڵاندن. بەڵام، تایبەتمەنی ئۆتۆماتیکی تەنها کاتێک کار دەکات کە ئەپەکە دەستپێ دەکات."
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Automatinio įrašymo funkcija automatiškai pradeda įrašinėti jūsų maršrutus, kai pradedate judėti. Tai reiškia, kad jums nereikės prisiminti, kada pradėti įrašymą. Tačiau automatinis įrašymas veikia tik tada, kai programa yra paleista."
+          }
+        },
+        "lv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-ierakstīšanas funkcija automātiski sāk ierakstīt jūsu maršrutus, kad sākat kustēties. Tas nozīmē, ka jums nav jāatceras sākt ierakstīšanu, kad sākat kustēties. Tomēr Auto-ieraksts darbojas tikai tad, kad lietotne ir palaista."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciri Rakaman-Auto mula merakam laluan anda secara automatik apabila mula bergerak. Ini bermakna anda tidak perlu ingat untuk mula merakam apabila anda mula bergerak. Walau bagaimanapun, Rakaman-Auto hanya berfungsi apabila aplikasi dimulakan."
+          }
+        },
+        "mt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il-karatteristika Auto-Record tibda awtomatikament tirreġistra l-rotot tiegħek meta tibda tiċċaqlaq. Dan ifisser li m'għandekx bżonn tiftakar biex tibda tirreġistra meta tibda tiċċaqlaq. Madankollu, Auto-Record jaħdem biss meta l-app tibda."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-Record-funksjonen starter automatisk opptak av rutene dine når du begynner å bevege deg. Dette betyr at du ikke trenger å huske å starte opptak når du begynner å bevege deg. Men Auto-Record fungerer kun når appen starter opp."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De Auto-Record functie start automatisch met opnemen van je routes wanneer je begint te bewegen. Dit betekent dat je niet hoeft te onthouden om het opnemen te starten wanneer je begint te bewegen. Echter, Auto-Record werkt alleen wanneer de app wordt opgestart."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਆਟੋ-ਰਿਕਾਰਡ ਫੀਚਰ ਆਪਣੇ ਰਸਤੇ ਰਿਕਾਰਡ ਕਰਨਾ ਆਪਣੇ ਆਪ ਅੱਗੇ ਵਧਦੇ ਹੋਇਆਂ ਸ਼ੁਰੂ ਕਰ ਦਿੰਦਾ ਹੈ। ਇਸਦਾ ਮਤਲਬ ਹੈ ਕਿ ਤੁਹਾਨੂੰ ਯਾਦ ਨਹੀਂ ਰੱਖਣਾ ਪਵੇਗਾ ਜਦੋਂ ਤੁਸੀਂ ਚਲਣਾ ਸ਼ੁਰੂ ਕਰਦੇ ਹੋ ਤਾਂ ਰਿਕਾਰਡਿੰਗ ਸ਼ੁਰੂ ਕਰੋ। ਹਾਲਾਂਕਿ, ਆਟੋ-ਰਿਕਾਰਡ ਤਦ ਹੀ ਕੰਮ ਕਰਦਾ ਹੈ ਜਦੋਂ ਐਪ ਸ਼ੁਰੂ ਹੁੰਦੀ ਹੈ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcja Auto-Record automatycznie rozpoczyna nagrywanie tras, gdy zaczynasz się poruszać. Oznacza to, że nie musisz pamiętać o rozpoczęciu nagrywania, gdy zaczynasz się poruszać. Jednak Auto-Record działa tylko wtedy, gdy aplikacja jest uruchomiona."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O recurso de Gravação Automática começa a gravar suas rotas automaticamente quando você começa a se mover. Isso significa que você não precisa se lembrar de iniciar a gravação quando começar a se mover. No entanto, a Gravação Automática só funciona quando o aplicativo é iniciado."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A funcionalidade de Gravação Automática começa a gravar as suas rotas automaticamente quando começa a movimentar-se. Isto significa que não precisa de se lembrar de iniciar a gravação quando começa a movimentar-se. No entanto, a Gravação Automática só funciona quando a aplicação é iniciada."
+          }
+        },
+        "qu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auto-Record munan ñit'iyta suyakuyta ñanqayki qallarinqa rikhuykuy ñanqaykita. Tukuy kunanqa ama kuyakuy allinayta ñit'iyta qallarinqa rikhuykuyta. Ichapas, Auto-Record llank'ani waqaychaypi qallarichkan chaykunapuni."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funcția Auto-Record începe automat înregistrarea traseelor tale când pornești. Acest lucru înseamnă că nu trebuie să îți amintești să începi înregistrarea când începi să te miști. Totuși, Auto-Record funcționează doar când aplicația este pornită."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Функция Автозаписи автоматически начинает запись ваших маршрутов при начале движения. Это значит, что вам не нужно помнить о начале записи при начале движения. Однако Автозапись работает только при запуске приложения."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcia Auto-Record automaticky začne nahrávať vaše trasy, keď sa začnete pohybovať. To znamená, že si nemusíte pamätať, aby ste začali nahrávať, keď sa začnete hýbať. Funkcia Auto-Record však funguje iba vtedy, keď sa aplikácia spustí."
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcija Samodejno-Snemanje samodejno začne snemati vaše poti, ko se začnete premikati. To pomeni, da se vam ni treba spomniti, da začnete snemati, ko se začnete premikati. Vendar pa Samodejno-Snemanje deluje le, ko se aplikacija zažene."
+          }
+        },
+        "sq" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funksioni Auto-Record fillon automatikisht regjistrimin e rrugëve tuaja kur filloni të lëvizni. Kjo do të thotë që nuk keni nevojë të mbani mend për të filluar regjistrimin kur filloni të lëvizni. Megjithatë, Auto-Record funksionon vetëm kur aplikacioni fillon."
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcija automatskog snimanja automatski počinje beleženje vaših ruta kada se počnete kretati. To znači da ne morate pamtiti da započnete snimanje kada se počnete kretati. Međutim, automatsko snimanje radi samo kada se aplikacija pokrene."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktionen Auto-Record börjar automatiskt spela in dina rutter när du börjar röra dig. Detta betyder att du inte behöver komma ihåg att starta inspelningen när du börjar röra dig. Dock fungerar Auto-Record endast när appen startas upp."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kipengele cha Kurekodi Kiotomatiki huanza kurekodi njia zako kiotomatisi unapoanza kusonga. Hii inamaanisha hauhitaji kukumbuka kuanza kurekodi unapoanza kusonga. Hata hivyo, Kurekodi Kiotomatiki hufanya kazi tu wakati programu inapowashwa."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "การบันทึกอัตโนมัติจะเริ่มบันทึกเส้นทางของคุณเมื่อเริ่มเคลื่อนที่โดยอัตโนมัติ ซึ่งหมายความว่าคุณไม่ต้องจำหรือเริ่มบันทึกเมื่อคุณเริ่มเคลื่อนที่ อย่างไรก็ตาม การบันทึกอัตโนมัติจะใช้งานได้เฉพาะเมื่อเปิดแอปเท่านั้น"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Otomatik Kayıt özelliği, hareket etmeye başladığınızda rotalarınızı otomatik olarak kaydetmeye başlar. Bu, hareket etmeye başladığınızda kaydı başlatmayı hatırlamanız gerekmediği anlamına gelir. Ancak, Otomatik Kayıt yalnızca uygulama başladığında çalışır."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Auto-Record feature automatically starts recording your routes when you start moving. This means you do not have to remember to start recording when you begin moving. However, Auto-Record only works when the app starts up."
+          }
+        },
+        "uk-UA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Функція автоматичного запису автоматично починає запис ваших маршрутів, коли ви починаєте рухатися. Це означає, що вам не потрібно пам’ятати про початок запису під час початку руху. Однак автоматичний запис працює лише при запуску додатку."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "آٹو ریکارڈ فیچر خود بخود آپ کے راستے ریکارڈ کرنا شروع کر دیتا ہے جب آپ حرکت کرتے ہیں۔ اس کا مطلب ہے کہ آپ کو ریکارڈنگ شروع کرنے یاد رکھنے کی ضرورت نہیں ہے۔ تاہم، آٹو ریکارڈ صرف ایپ شروع ہونے پر کام کرتا ہے۔"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tính năng Ghi tự động sẽ tự động bắt đầu ghi lại lộ trình của bạn khi bắt đầu di chuyển. Điều này có nghĩa là bạn không phải nhớ để bắt đầu ghi khi bạn bắt đầu di chuyển. Tuy nhiên, Ghi tự động chỉ hoạt động khi ứng dụng khởi động."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自动记录功能会在您开始移动时自动开始记录路线。这意味着您无需记得在开始移动时开始记录。不过，自动记录仅在应用程序启动时有效。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "自動記錄功能在你開始移動時自動開始記錄路線。這意味著你不必記住在開始移動時開始記錄。然而，自動記錄僅在應用程式啟動時才有效。"
+          }
+        }
+      }
+    },
+    "The Battery Threshold feature lets users save battery by setting a limit at which the app will start saving energy. When the battery drops below this limit, the app updates GPS less often, uses less accurate data, and turns off extra features, which helps save battery life. This means the device can last longer without charging, but the app might not be as accurate or quick. Users can set this limit in the app settings, choosing a value between 40 and 100 percent." : {
+      "localizations" : {
+        "ar" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تتيح ميزة حد البطارية للمستخدمين توفير البطارية عن طريق تحديد حد عنده يبدأ التطبيق في توفير الطاقة. عندما تنخفض البطارية تحت هذا الحد، يقلل التطبيق من تحديثات GPS، يستخدم بيانات أقل دقة، ويوقف الميزات الإضافية، مما يساعد في توفير عمر البطارية. هذا يعني أن الجهاز يمكن أن يدوم لفترة أطول دون شحن، ولكن التطبيق قد لا يكون دقيقًا أو سريعًا بنفس القدر. يمكن للمستخدمين تعيين هذا الحد في إعدادات التطبيق، اختيار قيمة بين 40 و100 بالمائة."
+          }
+        },
+        "bg" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Функцията за праг на батерията позволява на потребителите да пестят батерия, като задават лимит, при който приложението ще започне да пести енергия. Когато батерията падне под този лимит, приложението актуализира GPS по-рядко, използва по-малко точни данни и изключва допълнителни функции, което помага за спестяване на батерията. Това означава, че устройството може да издържа по-дълго без зареждане, но приложението може да не е толкова точно или бързо. Потребителите могат да зададат този лимит в настройките на приложението, избирайки стойност между 40 и 100 процента."
+          }
+        },
+        "ca" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La funció Llindar de la Bateria permet als usuaris estalviar bateria establint un límit a partir del qual l'aplicació començarà a estalviar energia. Quan la bateria cau per sota d'aquest límit, l'aplicació actualitza el GPS amb menys freqüència, utilitza dades menys precises i desactiva funcions addicionals, cosa que ajuda a estalviar bateria. Això significa que el dispositiu pot durar més temps sense carregar, però l'aplicació pot no ser tan precisa ni ràpida. Els usuaris poden establir aquest límit a la configuració de l'aplicació, triant un valor entre el 40 i el 100 per cent."
+          }
+        },
+        "cs" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkce Prah Baterie umožňuje uživatelům šetřit baterii nastavením limitu, při kterém aplikace začne šetřit energii. Když baterie klesne pod tento limit, aplikace aktualizuje GPS méně často, používá méně přesná data a vypíná další funkce, což pomáhá šetřit baterii. To znamená, že zařízení může vydržet déle bez nabíjení, ale aplikace nemusí být tak přesná nebo rychlá. Uživatelé mohou nastavit tento limit v nastavení aplikace, volbou hodnoty mezi 40 a 100 procenty."
+          }
+        },
+        "da" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktionen Batteritærskel giver brugerne mulighed for at spare batteri ved at indstille en grænse, hvor appen begynder at spare energi. Når batteriet falder under denne grænse, opdaterer appen GPS sjældnere, bruger mindre præcise data og slukker for ekstra funktioner, hvilket hjælper med at spare batterilevetid. Dette betyder, at enheden kan holde længere uden opladning, men appen er måske ikke lige så præcis eller hurtig. Brugerne kan indstille denne grænse i appens indstillinger og vælge en værdi mellem 40 og 100 procent."
+          }
+        },
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Funktion \"Batterielimit\" ermöglicht es Benutzern, Akku zu sparen, indem sie ein Limit festlegen, bei dem die App beginnt, Energie zu sparen. Wenn der Akku unter dieses Limit fällt, aktualisiert die App GPS seltener, verwendet weniger genaue Daten und deaktiviert zusätzliche Funktionen, was dabei hilft, Akkulaufzeit zu sparen. Das bedeutet, dass das Gerät länger ohne Aufladen auskommt, aber die App möglicherweise nicht so genau oder schnell ist. Benutzer können dieses Limit in den App-Einstellungen festlegen und einen Wert zwischen 40 und 100 Prozent wählen."
+          }
+        },
+        "el" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Η δυνατότητα Ορίου Μπαταρίας επιτρέπει στους χρήστες να εξοικονομούν μπαταρία ορίζοντας ένα όριο στο οποίο η εφαρμογή θα αρχίσει να εξοικονομεί ενέργεια. Όταν η μπαταρία πέσει κάτω από αυτό το όριο, η εφαρμογή ενημερώνει το GPS λιγότερο συχνά, χρησιμοποιεί λιγότερο ακριβή δεδομένα, και απενεργοποιεί επιπλέον δυνατότητες, βοηθώντας έτσι στην εξοικονόμηση μπαταρίας. Αυτό σημαίνει ότι η συσκευή μπορεί να διαρκέσει περισσότερο χωρίς φόρτιση, αλλά η εφαρμογή μπορεί να μην είναι τόσο ακριβής ή γρήγορη. Οι χρήστες μπορούν να ορίσουν αυτό το όριο στις ρυθμίσεις της εφαρμογής, επιλέγοντας μια τιμή μεταξύ 40 και 100 τοις εκατό."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Battery Threshold feature lets users save battery by setting a limit at which the app will start saving energy. When the battery drops below this limit, the app updates GPS less often, uses less accurate data, and turns off extra features, which helps save battery life. This means the device can last longer without charging, but the app might not be as accurate or quick. Users can set this limit in the app settings, choosing a value between 40 and 100 percent."
+          }
+        },
+        "es" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La función Umbral de Batería permite a los usuarios ahorrar batería estableciendo un límite en el cual la aplicación comenzará a ahorrar energía. Cuando la batería cae por debajo de este límite, la aplicación actualiza el GPS con menos frecuencia, utiliza datos menos precisos y desactiva funciones adicionales, lo que ayuda a ahorrar batería. Esto significa que el dispositivo puede durar más tiempo sin cargar, pero la aplicación podría no ser tan precisa o rápida. Los usuarios pueden establecer este límite en la configuración de la aplicación, eligiendo un valor entre el 40 y el 100 por ciento."
+          }
+        },
+        "et" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aku läve funktsioon võimaldab kasutajatel aku säästa, seades piiri, mille juures rakendus hakkab energiat säästma. Kui aku langeb allapoole seda piiri, uuendab rakendus GPS-i harvemini, kasutab vähem täpseid andmeid ja lülitab välja lisafunktsioonid, mis aitab akut säästa. See tähendab, et seade töötab kauem ilma laadimata, kuid rakendus ei pruugi olla nii täpne või kiire. Kasutajad saavad seada selle piiri rakenduse seadetes, valides väärtuse 40 ja 100 protsendi vahel."
+          }
+        },
+        "fi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akkukynnys-toiminnon avulla käyttäjät voivat säästää akkua asettamalla rajan, jossa sovellus alkaa säästää energiaa. Kun akku laskee tämän rajan alle, sovellus päivittää GPS:n harvemmin, käyttää vähemmän tarkkoja tietoja ja poistaa lisäominaisuudet käytöstä, mikä auttaa säästämään akkua. Tämä tarkoittaa, että laite kestää pidempään ilman latausta, mutta sovellus ei ehkä ole yhtä tarkka tai nopea. Käyttäjät voivat asettaa tämän rajan sovelluksen asetuksissa valitsemalla arvon 40 ja 100 prosentin väliltä."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La fonction de seuil de batterie permet aux utilisateurs d'économiser la batterie en définissant une limite à laquelle l'application commencera à économiser de l'énergie. Lorsque la batterie tombe en dessous de cette limite, l'application met à jour le GPS moins souvent, utilise des données moins précises et désactive des fonctionnalités supplémentaires, ce qui aide à économiser la batterie. Cela signifie que l'appareil peut durer plus longtemps sans être chargé, mais que l'application peut ne pas être aussi précise ou rapide. Les utilisateurs peuvent définir cette limite dans les paramètres de l'application, en choisissant une valeur entre 40 et 100 pour cent."
+          }
+        },
+        "ga" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligeann gné an Tairsí Ceallra d'úsáideoirí ceallra a shábháil trí theorainn a shocrú ag a dtosóidh an aip fuinneamh a shábháil. Nuair a thiteann an ceallra faoi bhun na teorann seo, déanann an aip GPS a nuashonrú níos lú minic, úsáideann sonraí nach bhfuil chomh cruinn, agus múchann gnéithe breise, rud a chabhraíonn le saol na ceallraí a shábháil. Ciallaíonn sé seo gur féidir leis an bhfeiste maireachtáil níos faide gan luchtú, ach b'fhéidir nach mbeidh an aip chomh cruinn nó chomh tapa. Is féidir le húsáideoirí an teorainn seo a shocrú i suímh an aip, agus luach idir 40 agus 100 faoin gcéad a roghnú."
+          }
+        },
+        "ga-IE" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ligeann an ghné Teorann Comhartha Ceallraí d’úsáideoirí ceallraí a shábháil trí teorainn a shocrú ag a dtosóidh an aip ag sábháil fuinnimh. Nuair a thiteann an ceallra faoi bhun na teorann seo, nuashonraíonn an aip GPS níos minice, úsáideann sé sonraí níos neamhchruinne agus múchann sé gnéithe breise, rud a chabhraíonn le saolré ceallraí a shábháil. Ciallaíonn sé seo go bhféadfadh an gléas maireachtáil níos faide gan luchtú, ach d’fhéadfadh an aip a bheith níos neamhchruinne nó níos moille. Is féidir le húsáideoirí an teorann seo a shocrú sna socruithe aip, ag roghnú luach idir 40 agus 100 faoin gcéad."
+          }
+        },
+        "ha" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nunin Batirin Threshold tanadi masu amfani damar ajiye batir ta hanyar saita iyaka da app din zai fara adana makamashi. Idan baturi ya sauka ƙasa da wannan iyaka, app din zai sabunta GPS sau da yawa, amfani da bayanai maras kyau, kuma kashe siffofin kari, wanda ke taimakawa wajen ajiye rayuwar batir. Wannan yana nufin cewa na'urar na iya kasancewa da tsawon lokaci ba tare da caji ba, amma app din bazai iya zama daidai ko sauri ba. Masu amfani za su iya saita wannan iyaka a cikin saitin app din, zabar ƙima tsakanin kashi 40 zuwa 100."
+          }
+        },
+        "he" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "תכונת סף הסוללה מאפשרת למשתמשים לחסוך בסוללה על ידי הגדרת גבול בו האפליקציה תתחיל לחסוך באנרגיה. כאשר הסוללה יורדת מתחת לגבול זה, האפליקציה מעדכנת GPS בתדירות נמוכה יותר, משתמשת בנתונים פחות מדויקים ומכבה תכונות נוספות, מה שעוזר לחסוך בסוללה. המשמעות היא שהמכשיר יכול להחזיק זמן רב יותר ללא טעינה, אך האפליקציה עשויה להיות פחות מדויקת או מהירה. משתמשים יכולים להגדיר את הגבול הזה בהגדרות האפליקציה, ובחירה ערך בין 40 ל-100 אחוז."
+          }
+        },
+        "hi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "बैटरी थ्रेशोल्ड फीचर उपयोगकर्ताओं को बैटरी बचाने की अनुमति देता है। जब बैटरी इस सीमा से नीचे चली जाती है, तो ऐप जीपीएस को कम अपडेट करता है, कम सटीक डेटा का उपयोग करता है, और अतिरिक्त फीचर्स को बंद कर देता है, जिससे बैटरी की जीवन अवधि बढ़ जाती है। इसका मतलब है कि डिवाइस बिना चार्ज किए अधिक समय तक चल सकता है, लेकिन ऐप उतना सटीक या तेज नहीं हो सकता। उपयोगकर्ता ऐप सेटिंग्स में इस सीमा को 40 से 100 प्रतिशत के बीच सेट कर सकते हैं।"
+          }
+        },
+        "hr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Značajka Praga Baterije omogućuje korisnicima uštedu baterije postavljanjem ograničenja na kojem će aplikacija početi štedjeti energiju. Kada baterija padne ispod tog ograničenja, aplikacija rjeđe ažurira GPS, koristi manje točne podatke i isključuje dodatne značajke, što pomaže uštedjeti trajanje baterije. To znači da uređaj može dulje trajati bez punjenja, ali aplikacija možda neće biti tako točna ili brza. Korisnici mogu postaviti ovo ograničenje u postavkama aplikacije, birajući vrijednost između 40 i 100 posto."
+          }
+        },
+        "hu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Az Akkukynnyksen ominosság lehetővé teszi a felhasználók számára, hogy akkumulátort takarítsanak meg egy olyan határ beállításával, amelynél az alkalmazás energiát kezd megtakarítani. Amikor az akkumulátor szintje ezen határ alá csökken, az alkalmazás ritkábban frissíti a GPS-t, kevésbé pontos adatokat használ és kikapcsolja a további funkciókat, ami segít az akkumulátor élettartamának meghosszabbításában. Ez azt jelenti, hogy az eszköz hosszabb ideig bírja töltés nélkül, de az alkalmazás lehet, hogy nem lesz olyan pontos vagy gyors. A felhasználók beállíthatják ezt a határt az alkalmazás beállításaiban, egy 40 és 100 százalék közötti érték kiválasztásával."
+          }
+        },
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fitur Batas Baterai memungkinkan pengguna menghemat baterai dengan menetapkan batas dimana aplikasi akan mulai menghemat energi. Ketika baterai turun di bawah batas ini, aplikasi memperbarui GPS lebih jarang, menggunakan data yang kurang akurat, dan mematikan fitur tambahan, yang membantu menghemat baterai. Ini berarti perangkat bisa bertahan lebih lama tanpa pengisian daya, tetapi aplikasi mungkin tidak seakurat atau secepat biasanya. Pengguna dapat menetapkan batas ini di pengaturan aplikasi, memilih nilai antara 40 hingga 100 persen."
+          }
+        },
+        "it" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La funzione Soglia della Batteria permette agli utenti di risparmiare batteria impostando un limite al quale l'app inizierà a risparmiare energia. Quando la batteria scende sotto questo limite, l'app aggiorna il GPS meno frequentemente, utilizza dati meno precisi e disattiva funzionalità extra, il che aiuta a risparmiare la durata della batteria. Questo significa che il dispositivo può durare più a lungo senza essere caricato, ma l'app potrebbe non essere altrettanto precisa o veloce. Gli utenti possono impostare questo limite nelle impostazioni dell'app, scegliendo un valore tra il 40 e il 100 percento."
+          }
+        },
+        "ja" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "バッテリーしきい値機能により、ユーザーはアプリがエネルギーを節約し始める限界を設定することでバッテリーを節約できます。バッテリーがこの限界を下回ると、アプリはGPSの更新頻度を減らし、データの精度を低下させ、追加機能をオフにしてバッテリー寿命を延ばします。これにより、デバイスは充電なしでより長く使用できますが、アプリの正確性や速度が低下する可能性があります。ユーザーはアプリの設定でこの限界を設定でき、40％から100％の間の値を選択できます。"
+          }
+        },
+        "ko" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "배터리 임계값 기능을 통해 사용자는 앱이 에너지를 절약하기 시작하는 한도를 설정하여 배터리를 절약할 수 있습니다. 배터리가 이 한도 이하로 떨어지면, 앱은 GPS를 덜 자주 업데이트하고 덜 정확한 데이터를 사용하며 추가 기능을 끄게 되어 배터리 수명을 절약합니다. 이는 장치가 충전 없이 더 오래 지속될 수 있음을 의미하지만, 앱이 덜 정확하거나 빠르지 않을 수 있습니다. 사용자는 앱 설정에서 이 한도를 40%에서 100% 사이의 값으로 설정할 수 있습니다."
+          }
+        },
+        "ku" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "تایبەتمەندی سنووری باتەری بەکارهێنەران دەیەوە لەکارەبەرەکەی تێکۆشانەوە بە ڕێکخستنی سنوورێک لە کاتێکەدا ئەپەکە دەستی بە پاراستنی هێزی با تەواوی بەرھەمینا دەکا بەرھەم ھێنانەی که. کاتێک با تەری خوارەوەی ئەم سنوورە دابەزێت، ئەپەکە زانیاری جی پی ئێس بە کەمی نوێ دەکات، زانیاری نادروست بەکاردەهێنێتەوە و تایبەتمەندی زیادە دەگرێتەوە، ئەمە بە بەکارهێندەکان یارمەتیدەدات تا ژێرپەڕە بەرھەلمەقەڵ ژمارەی پارامێتەری بەکارهێنەر بەدانەوە لە چوارچێوە ریخست وتەژمارەکان."
+          }
+        },
+        "lt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baterijos ribos funkcija leidžia vartotojams taupyti bateriją nustatant ribą, prie kurios programa pradės taupyti energiją. Kai baterija nukrenta žemiau šios ribos, programa rečiau atnaujina GPS, naudoja mažiau tikslius duomenis ir išjungia papildomas funkcijas, kas padeda taupyti baterijos energiją. Tai reiškia, kad įrenginys gali tarnauti ilgiau be įkrovimo, bet programa gali būti ne tokia tiksli ar greita. Vartotojai gali nustatyti šią ribą programos nustatymuose, pasirinkdami vertę tarp 40 ir 100 procentų."
+          }
+        },
+        "lv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Akumulatora sliekšņa funkcija ļauj lietotājiem taupīt akumulatoru, nosakot limitu, pie kura lietotne sāks taupīt enerģiju. Kad akumulatora līmenis nokrītas zem šī limita, lietotne retāk atjaunina GPS, izmanto mazāk precīzus datus un izslēdz papildu funkcijas, kas palīdz taupīt akumulatora darbības laiku. Tas nozīmē, ka ierīce var ilgt ilgāk bez uzlādes, taču lietotne var nebūt tik precīza vai ātra. Lietotāji var iestatīt šo limitu lietotnes iestatījumos, izvēloties vērtību no 40 līdz 100 procentiem."
+          }
+        },
+        "ms" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ciri Ambang Bateri membolehkan pengguna menjimatkan bateri dengan menetapkan had di mana aplikasi akan mula menjimatkan tenaga. Apabila bateri jatuh di bawah had ini, aplikasi mengemas kini GPS dengan kurang kerap, menggunakan data yang kurang tepat, dan mematikan ciri tambahan, yang membantu menjimatkan bateri. Ini bermakna peranti boleh bertahan lebih lama tanpa pengecasan, tetapi aplikasi mungkin tidak secepat atau setepat biasa. Pengguna boleh menetapkan had ini dalam tetapan aplikasi, memilih nilai antara 40 dan 100 peratus."
+          }
+        },
+        "mt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Il-karatteristika tal-Limitu tal-Batterija tippermetti lill-utenti jiffrankaw batterija billi jistabbilixxu limitu fejn l-app tibda tissalvagwardja l-enerġija. Meta l-batterija tinżel taħt dan il-limitu, l-app taġġorna l-GPS inqas spiss, tuża dejta inqas preċiża, u tgħalaq funzjonijiet żejda, li jgħin biex titfaddal il-batterija. Dan ifisser li l-apparat jista' jdum itwal mingħajr iċċarġjar, iżda l-app tista' ma tkunx daqstant preċiża jew veloċi. L-utenti jistgħu jistabbilixxu dan il-limitu fis-settings tal-app, billi jagħżlu valur bejn 40 u 100 fil-mija."
+          }
+        },
+        "nb" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batteriterskel-funksjonen lar brukerne spare batteri ved å sette en grense ved hvilken appen begynner å spare energi. Når batteriet faller under denne grensen, oppdaterer appen GPS sjeldnere, bruker mindre nøyaktige data, og slår av ekstra funksjoner, noe som hjelper med å spare batterilevetid. Dette betyr at enheten kan vare lengre uten lading, men appen kan være mindre nøyaktig eller rask. Brukerne kan sette denne grensen i appinnstillingene, og velge en verdi mellom 40 og 100 prosent."
+          }
+        },
+        "nl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "De Battery Threshold-functie stelt gebruikers in staat batterij te besparen door een limiet in te stellen waarbij de app zal beginnen met energie besparen. Wanneer de batterij onder deze limiet zakt, werkt de app GPS minder vaak bij, gebruikt het minder nauwkeurige gegevens en schakelt het extra functies uit, wat helpt om de batterijduur te verlengen. Dit betekent dat het apparaat langer kan meegaan zonder opladen, maar de app mogelijk niet zo nauwkeurig of snel is. Gebruikers kunnen deze limiet instellen in de app-instellingen, waarbij ze een waarde tussen 40 en 100 procent kunnen kiezen."
+          }
+        },
+        "pa" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ਬੈਟਰੀ ਥਰੈਸ਼ਹੋਲਡ ਫੀਚਰ ਉਪਭੋਗਤਾਵਾਂ ਨੂੰ ਬੈਟਰੀ ਬਚਾਉਣ ਦੀ ਆਗਿਆ ਦਿੰਦਾ ਹੈ, ਜਿਸ ਨਾਲ ਐਪ ਇਨਰਜੀ ਬਚਾਉਣ ਲਈ ਬੈਟਰੀ ਦੀ ਕਿਸੇ ਖਾਸ ਹੱਦ ਤੇ ਪਹੁੰਚ ਜਾਣ 'ਤੇ ਬਚਾਵ ਕਰਦੀ ਹੈ। ਜਦੋਂ ਬੈਟਰੀ ਇਸ ਹੱਦ ਤੋਂ ਹੇਠਾਂ ਡਿੱਗਦੀ ਹੈ, ਤਾਂ ਐਪ ਜੀ.ਪੀ.ਐੱਸ. ਨੂੰ ਘੱਟ ਅਪਡੇਟ ਕਰਦਾ ਹੈ, ਇੱਕੇ ਦਮ ਉਨ੍ਹਾਂ ਦਾ ਸਹੀ ਸੂਚਨਾ ਵਰਤਦਾ ਹੈ ਅਤੇ ਹੋਰ ਫੀਚਰ ਬੰਦ ਕਰਦਾ ਹੈ, ਜਿਸ ਨਾਲ ਬੈਟਰੀ ਲਾਈਫ ਬਚਾਉਣ ਵਿੱਚ ਮਦਦ ਮਿਲਦੀ ਹੈ। ਇਹ ਮਤਲਬ ਹੈ ਕਿ ਡਿਵਾਈਸ ਬਿਨਾਂ ਚਾਰਜ ਕੀਤੇ ਡਿੰਗਰ ਹੋ ਸਕਦੀ ਹੈ, ਪਰ ਐਪ ਸ਼ਾਇਦ ਇਸ ਨਾਲ ਥੋੜਾ ਘੱਟ ਸਹੀ ਜਾਂ ਤੇਜ਼ ਹੋਵੇ। ਉਪਭੋਗਤਾ ਇਸ ਹੱਦ ਨੂੰ ਐਪ ਸੈਟਿੰਗਵਾਂ ਵਿੱਚ ਸੈਟ ਕਰ ਸਕਦੇ ਹਨ, 40 ਅਤੇ 100 ਪ੍ਰਤੀਸ਼ਤ ਵਿਚਕਾਰ ਕੋਈ ਵੀ ਵੈਲਯੂ ਚੁਣਦੇ ਹੋਏ।"
+          }
+        },
+        "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcja Progu Baterii pozwala użytkownikom oszczędzać baterię poprzez ustawienie limitu, przy którym aplikacja zacznie oszczędzać energię. Gdy bateria spadnie poniżej tego limitu, aplikacja rzadziej aktualizuje GPS, używa mniej dokładnych danych i wyłącza dodatkowe funkcje, co pomaga oszczędzać baterię. Oznacza to, że urządzenie może działać dłużej bez ładowania, ale aplikacja może być mniej dokładna lub szybka. Użytkownicy mogą ustawić ten limit w ustawieniach aplikacji, wybierając wartość między 40 a 100 procent."
+          }
+        },
+        "pt" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "O recurso Limite de Bateria permite aos usuários economizar bateria definindo um limite a partir do qual o aplicativo começará a economizar energia. Quando a bateria cai abaixo desse limite, o aplicativo atualiza o GPS com menos frequência, usa dados menos precisos e desativa recursos extras, o que ajuda a economizar bateria. Isso significa que o dispositivo pode durar mais tempo sem carregar, mas o aplicativo pode não ser tão preciso ou rápido. Os usuários podem definir esse limite nas configurações do aplicativo, escolhendo um valor entre 40 e 100 por cento."
+          }
+        },
+        "pt-PT" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A funcionalidade Limite de Bateria permite que os utilizadores poupem bateria definindo um limite a partir do qual a aplicação começará a economizar energia. Quando a bateria desce abaixo desse limite, a aplicação atualiza o GPS com menos frequência, utiliza dados menos precisos e desativa funcionalidades adicionais, o que ajuda a poupar a vida útil da bateria. Isto significa que o dispositivo pode durar mais tempo sem carregar, mas a aplicação pode não ser tão precisa ou rápida. Os utilizadores podem definir este limite nas configurações da aplicação, escolhendo um valor entre 40 e 100 por cento."
+          }
+        },
+        "qu" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La función de Umbral de Batería permite a los usuarios ahorrar batería estableciendo un límite en el cual la aplicación comenzará a ahorrar energía. Cuando la batería cae por debajo de este límite, la aplicación actualiza el GPS con menos frecuencia, usa datos menos precisos y desactiva funciones adicionales para ayudar a ahorrar batería. Esto significa que el dispositivo puede durar más tiempo sin cargar, pero la aplicación podría no ser tan precisa o rápida. Los usuarios pueden establecer este límite en los ajustes de la aplicación, eligiendo un valor entre el 40 y el 100 por ciento."
+          }
+        },
+        "ro" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funcția Prag Baterie permite utilizatorilor să economisească baterie stabilind o limită la care aplicația va începe să economisească energie. Când bateria scade sub această limită, aplicația actualizează GPS-ul mai rar, folosește date mai puțin precise și dezactivează funcțiile suplimentare, ceea ce ajută la economisirea bateriei. Acest lucru înseamnă că dispozitivul poate rezista mai mult timp fără încărcare, dar aplicația ar putea să nu fie la fel de precisă sau rapidă. Utilizatorii pot stabili această limită în setările aplicației, alegând o valoare între 40 și 100 la sută."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Функция порога аккумулятора позволяет пользователям экономить заряд, установив предел, при котором приложение начнет экономить энергию. Когда заряд опускается ниже этого предела, приложение реже обновляет GPS, использует менее точные данные и отключает дополнительные функции, что помогает сэкономить заряд. Это значит, что устройство может работать дольше без подзарядки, но приложение может быть менее точным или быстрым. Пользователи могут задать этот предел в настройках приложения, выбирая значение от 40 до 100 процентов."
+          }
+        },
+        "sk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcia Práh Batérie umožňuje užívateľom šetriť batériu nastavením limitu, pri ktorom aplikácia začne šetriť energiu. Keď batéria klesne pod tento limit, aplikácia aktualizuje GPS menej často, používa menej presné údaje a vypne ďalšie funkcie, čo pomáha šetriť životnosť batérie. To znamená, že zariadenie môže vydržať dlhšie bez nabíjania, ale aplikácia nemusí byť taká presná alebo rýchla. Užívatelia môžu tento limit nastaviť v nastaveniach aplikácie, pričom si môžu vybrať hodnotu medzi 40 a 100 percentami."
+          }
+        },
+        "sl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcija Praga Baterije uporabnikom omogoča varčevanje z baterijo z nastavitvijo meje, pri kateri bo aplikacija začela varčevati z energijo. Ko baterija pade pod to mejo, aplikacija manj pogosto posodablja GPS, uporablja manj natančne podatke in izklopi dodatne funkcije, kar pomaga prihraniti baterijo. To pomeni, da naprava zdrži dlje brez polnjenja, vendar aplikacija morda ne bo tako natančna ali hitra. Uporabniki lahko to mejo nastavijo v nastavitvah aplikacije, z izbiranjem vrednosti med 40 in 100 odstotki."
+          }
+        },
+        "sq" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funksioni i Pragut të Baterisë lejon përdoruesit të kursejnë baterinë duke caktuar një kufi në të cilin aplikacioni do të fillojë të kursejë energji. Kur bateria bie nën këtë kufi, aplikacioni përditëson GPS-në më rrallë, përdor të dhëna më pak të sakta dhe fik funksione shtesë, gjë që ndihmon në kursimin e jetës së baterisë. Kjo do të thotë që pajisja mund të zgjasë më shumë pa u karikuar, por aplikacioni mund të mos jetë aq i saktë ose i shpejtë. Përdoruesit mund të caktojnë këtë kufi në cilësimet e aplikacionit, duke zgjedhur një vlerë midis 40 dhe 100 përqind."
+          }
+        },
+        "sr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funkcija Battery Threshold omogućava korisnicima da čuvaju bateriju postavljanjem ograničenja pri kojem će aplikacija početi štedeti energiju. Kada baterija padne ispod ovog ograničenja, aplikacija ređe ažurira GPS, koristi manje tačne podatke i isključuje dodatne funkcije, što pomaže uštedeti bateriju. To znači da uređaj može duže trajati bez punjenja, ali aplikacija možda neće biti tako tačna ili brza. Korisnici mogu postaviti ovo ograničenje u postavkama aplikacije, birajući vrednost između 40 i 100 procenata."
+          }
+        },
+        "sv" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Funktion Batteritröskel gör att användare kan spara batteri genom att ställa in en gräns vid vilken appen kommer att börja spara energi. När batteriet sjunker under denna gräns uppdaterar appen GPS mer sällan, använder mindre noggrann data och stänger av extra funktioner, vilket hjälper till att spara batteri. Detta innebär att enheten kan hålla längre utan att laddas, men appen kanske inte är lika exakt eller snabb. Användare kan ställa in denna gräns i appens inställningar och välja ett värde mellan 40 och 100 procent."
+          }
+        },
+        "sw" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kipengele cha Kizingiti cha Betri huruhusu watumiaji kuokoa betri kwa kuweka kikomo ambapo programu itaanza kuokoa nishati. Betri ikishuka chini ya kikomo hiki, programu husasisha GPS kidogo, hutumia data isiyo sahihi zaidi, na kuzima vipengele vya ziada, ambavyo husaidia kuokoa betri. Hii inamaanisha kifaa kinaweza kudumu zaidi bila kuchajiwa, lakini programu inaweza isiwe sahihi au ya haraka. Watumiaji wanaweza kuweka kikomo hiki katika mipangilio ya programu, wakichagua thamani kati ya asilimia 40 na 100."
+          }
+        },
+        "th" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ฟีเจอร์ขีดจำกัดแบตเตอรี่ให้ผู้ใช้ประหยัดแบตเตอรี่ โดยตั้งค่าขีดจำกัดที่แอปจะเริ่มประหยัดพลังงาน เมื่อแบตเตอรี่ลดลงต่ำกว่าขีดจำกัดนี้ แอปจะอัปเดต GPS น้อยลง ใช้ข้อมูลที่แม่นยำน้อยลง และปิดฟีเจอร์เสริม ช่วยให้ประหยัดแบตเตอรี่ อุปกรณ์สามารถใช้งานได้นานขึ้นโดยไม่ต้องชาร์จ แต่แอปอาจไม่แม่นยำหรือรวดเร็ว ผู้ใช้สามารถตั้งค่าขีดจำกัดนี้ในการตั้งค่าแอป โดยเลือกค่าระหว่าง 40 ถึง 100 เปอร์เซ็นต์"
+          }
+        },
+        "tr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Battery Threshold özelliği, kullanıcıların uygulamanın enerji tasarrufu yapmaya başlayacağı bir sınır belirleyerek pil tasarrufu yapmalarını sağlar. Pil bu sınırın altına düştüğünde, uygulama GPS'i daha az günceller, daha az doğru veriler kullanır ve ekstra özellikleri kapatır, bu da pil ömrünü uzatır. Bu, cihazın şarj etmeksizin daha uzun süre dayanabileceği anlamına gelir, ancak uygulama o kadar doğru veya hızlı olmayabilir. Kullanıcılar bu sınırı uygulama ayarlarında belirleyebilir, 40 ile 100 arasında bir değer seçerek."
+          }
+        },
+        "uk" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Battery Threshold feature lets users save battery by setting a limit at which the app will start saving energy. When the battery drops below this limit, the app updates GPS less often, uses less accurate data, and turns off extra features, which helps save battery life. This means the device can last longer without charging, but the app might not be as accurate or quick. Users can set this limit in the app settings, choosing a value between 40 and 100 percent."
+          }
+        },
+        "uk-UA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Функція порогу батареї дозволяє користувачам економити заряд батареї, встановлюючи межу, при якій додаток почне заощаджувати енергію. Коли батарея падає нижче цієї межі, додаток рідше оновлює GPS, використовує менш точні дані і вимикає додаткові функції, що допомагає зберегти заряд. Це означає, що пристрій може працювати довше без зарядки, але додаток може бути менш точним або більш повільним. Користувачі можуть встановити цю межу в налаштуваннях додатка, вибравши значення між 40 і 100 відсотками."
+          }
+        },
+        "ur" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "بیٹری تھریش ہولڈ فیچر صارفین کو بیٹری بچانے کی اجازت دیتا ہے جس میں محدود سیٹ کی جاتی ہے جس پر ایپ توانائی بچانا شروع کر دیتی ہے۔ جب بیٹری اس حد سے کم ہوتی ہے، ایپ GPS کم اپ ڈیٹ کرتی ہے، کم درست ڈیٹا استعمال کرتی ہے، اور اضافی خصوصیات بند کر دیتی ہے، جو بیٹری زندگی بچانے میں مدد دیتی ہے۔ اس کا مطلب ہے کہ ڈیوائس چارج کیے بغیر زیادہ دیر تک کارآمد ہو سکتی ہے، مگر ایپ اتنی صحیح یا تیز نہیں ہوگی۔ صارفین ایپ سیٹنگز میں یہ حد سیٹ کر سکتے ہیں، 40 تا 100 فیصد کے درمیان کوئی بھی ویلیو منتخب کر سکتے ہیں۔"
+          }
+        },
+        "vi" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tính năng Giới hạn Pin cho phép người dùng tiết kiệm pin bằng cách đặt giới hạn mà tại đó ứng dụng sẽ bắt đầu tiết kiệm năng lượng. Khi pin giảm dưới giới hạn này, ứng dụng sẽ cập nhật GPS ít thường xuyên hơn, sử dụng dữ liệu kém chính xác hơn và tắt các tính năng bổ sung, giúp tiết kiệm pin. Điều này có nghĩa là thiết bị có thể kéo dài thời gian sử dụng mà không cần sạc, nhưng ứng dụng có thể không chính xác hoặc nhanh nhạy như trước. Người dùng có thể đặt giới hạn này trong cài đặt ứng dụng, chọn giá trị từ 40 đến 100 phần trăm."
+          }
+        },
+        "zh" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "电池阈值功能使用户通过设置一个限制来节省电池，当电池电量低于此限制时，应用程序将启动节能模式。 当电池跌破该限制时，应用程序会减少GPS更新频率，使用不太精确的数据，并关闭额外功能，从而帮助节省电池寿命。 这意味着设备可以更长时间不充电，但应用程序可能不如平时准确或快速。 用户可以在应用程序设置中设置此限制，选择一个在40%到100%之间的值。"
+          }
+        },
+        "zh-Hant" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "電池閾值功能使用戶能通過設置應用程式開始節約能量的限制來節省電池。當電池降到此限制以下時，應用程式將降低GPS更新頻率，使用較不精確的數據，並關閉額外功能，以節省電池電量。這意味著設備在不充電的情況下可以使用更長時間，但應用程式可能不那麼精確或快速。用戶可以在應用程式設置中設置此限制，選擇40到100百分比之間的數值。"
           }
         }
       }

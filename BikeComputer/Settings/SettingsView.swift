@@ -9,7 +9,7 @@ struct SettingsView: View {
     @AppStorage("selectedColorScheme") private var selectedColorScheme: Int = 0
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h, 1 for mph
-    @AppStorage("autoRecord") private var autoRecord: Int = 0   // 0 = off, 1 = auto start when, BAC Start
+    @AppStorage("autoRecord") private var autoRecord: Int = 0 // 0 = off, 1 = auto start when, BAC Start
     @Environment(\.colorScheme) var colorScheme
 
     /// Retrieves the application version and build number from Info.plist.
@@ -35,9 +35,9 @@ struct SettingsView: View {
                 Section(header: Text("About")) {
                     Text(appVersion)
                 }
-#if DEBUG
+                #if DEBUG
                 DebugParametersView(locationManager: locationManager, batteryManager: batteryManager)
-#endif
+                #endif
             }
             .navigationTitle("Settings")
             .background(colorScheme == .dark ? Color.black : Color.white)
@@ -80,15 +80,74 @@ struct ColorSchemeView: View {
 /// Allows users to set a battery threshold for notifications.
 ///
 /// `@AppStorage` is used to persist the threshold value. Slider provides real-time adjustment of the threshold.
+/*
+ struct BatteryThresholdView: View {
+     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
+     var body: some View {
+         Section(header: Text("Battery Threshold")) {
+             Text("Battery Threshold: \(Int(batteryThreshold))%")
+             Slider(value: $batteryThreshold, in: 40 ... 100, step: 1) {
+                 Text("Battery Threshold")
+             }
+             .accessibilityValue(Text("\(Int(batteryThreshold))%"))
+         }
+     }
+ }
+ */
 struct BatteryThresholdView: View {
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
+    @State private var showingDetails = false
+    @Environment(\.colorScheme) var colorScheme
+
     var body: some View {
         Section(header: Text("Battery Threshold")) {
-            Text("Battery Threshold: \(Int(batteryThreshold))%")
-            Slider(value: $batteryThreshold, in: 40 ... 100, step: 1) {
-                Text("Battery Threshold")
+            VStack(alignment: .leading) {
+                HStack {
+                    Text("Battery Threshold: \(Int(batteryThreshold))%")
+                    Spacer()
+                    Button(action: {
+                        showingDetails.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    }
+                }
+                Slider(value: $batteryThreshold, in: 40 ... 100, step: 1) {
+                    Text("Battery Threshold")
+                }
+                .accessibilityValue(Text("\(Int(batteryThreshold))%"))
             }
-            .accessibilityValue(Text("\(Int(batteryThreshold))%"))
+            .sheet(isPresented: $showingDetails) {
+                BatteryThresholdDetailView()
+            }
+        }
+    }
+}
+
+/// Detail view for providing more information about the battery threshold.
+struct BatteryThresholdDetailView: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Battery Threshold Information")
+                    .font(.title2)
+                    .padding(.bottom, 10)
+                Text("The Battery Threshold feature lets users save battery by setting a limit at which the app will start saving energy. When the battery drops below this limit, the app updates GPS less often, uses less accurate data, and turns off extra features, which helps save battery life. This means the device can last longer without charging, but the app might not be as accurate or quick. Users can set this limit in the app settings, choosing a value between 40 and 100 percent.")
+                    .font(.footnote)
+                Text("If the battery level goes below 25 percent, the app switches to maximum power-saving mode. In this mode, the app further reduces how often it updates GPS, uses even less accurate data, and may stop updating location if the device is not moving. This helps keep the device running as long as possible, but it greatly reduces the app performance and accuracy.")
+                .font(.footnote)
+                Spacer()
+            }
+            .padding()
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Close") {
+                        dismiss()
+                    }
+                }
+            }
         }
     }
 }
@@ -115,22 +174,62 @@ struct UnitPreferenceView: View {
 /// This view uses `@AppStorage` to persist the auto record setting across app launches.
 struct AutoRecordView: View {
     @AppStorage("autoRecord") private var autoRecord: Int = 0
+    @State private var showingDetails = false
+    @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
         Section(header: Text("Auto Record (Beta)")) {
-            Picker("Auto Record", selection: $autoRecord) {
-                Text("Off").tag(0)
-                Text("On").tag(1)
+            VStack(alignment: .leading) {
+                HStack {
+                    Picker("Auto Record", selection: $autoRecord) {
+                        Text("Off").tag(0)
+                        Text("On").tag(1)
+                    }
+                    .pickerStyle(SegmentedPickerStyle())
+                    Spacer()
+                    Button(action: {
+                        showingDetails.toggle()
+                    }) {
+                        Image(systemName: "info.circle")
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    }
+                }
             }
-            .pickerStyle(SegmentedPickerStyle())
-            .onChange(of: autoRecord) {
-                print("autoRecord updated to: \(autoRecord)")
+            .sheet(isPresented: $showingDetails) {
+                AutoRecordDetailsView()
             }
         }
         .onAppear {
             let storedValue = UserDefaults.standard.integer(forKey: "autoRecord")
             print("Stored autoRecord value in UserDefaults: \(storedValue)")
             print("Initial autoRecord value: \(autoRecord)")
+        }
+    }
+}
+
+/// Detail view for providing more information about Auto-recording
+struct AutoRecordDetailsView: View {
+    @Environment(\.dismiss) var dismiss
+
+    var body: some View {
+        NavigationStack {
+            VStack(alignment: .leading, spacing: 20) {
+                Text("Auto Record Information")
+                    .font(.title2)
+                    .padding(.bottom, 10)
+                Text("The Auto-Record feature automatically starts recording your routes when start moving. This means you do not have to remember to start recording when you begin moving. However, Auto-Record only works when the app is starts up.")
+                    .font(.footnote)
+
+                Spacer()
+            }
+            .padding()
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Close") {
+                        dismiss()
+                    }
+                }
+            }
         }
     }
 }
@@ -143,17 +242,17 @@ struct ParametersView: View {
     @ObservedObject var batteryManager = BatteryManager.shared
     var body: some View {
         Section(header: Text("Parameters")) {
-            if(locationManager.powerSavingMode == .off) {
+            if locationManager.powerSavingMode == .off {
                 Text("Power saving mode: Off")
-            } else if(locationManager.powerSavingMode == .normal) {
+            } else if locationManager.powerSavingMode == .normal {
                 Text("Power saving mode: Normal")
-            } else if(locationManager.powerSavingMode == .max) {
+            } else if locationManager.powerSavingMode == .max {
                 Text("Power saving mode: Maximum")
             } else {
                 Text("Power saving mode: Unknown")
             }
-            
-            if(batteryManager.isCharging) {
+
+            if batteryManager.isCharging {
                 Text("Is charging: yes")
             } else {
                 Text("Is charging: no")
@@ -178,7 +277,7 @@ struct DebugParametersView: View {
             Text("Is Idle Timer Disabled: \(batteryManager.isIdleTimerDisabled) ")
             Text("Speed class: \(locationManager.currentSpeedClass)")
             Text("Speed: \(locationManager.speed, specifier: "%.3f") km/h")
-            Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? String(localized:"Yes") : String(localized:"No"))")
+            Text("Allows Background Location Updates: \(locationManager.manager.allowsBackgroundLocationUpdates ? String(localized: "Yes") : String(localized: "No"))")
             Text("Lat, Lon: \(locationManager.latitude, specifier: "%.4f") \(locationManager.longitude, specifier: "%.4f")")
         }
         #endif
