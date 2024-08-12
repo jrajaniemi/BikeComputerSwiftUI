@@ -156,6 +156,7 @@ struct DistanceView: View {
 ///   - alertMessage: A binding to a string that contains the alert message.
 struct RecordButtonView: View {
     @Binding var isRecording: Bool
+    @Binding var autoRecordCount: Int
     @ObservedObject var locationManager: LocationManager
     var routeName: String
     var routeDescription: String
@@ -179,6 +180,7 @@ struct RecordButtonView: View {
                     locationManager.routeManager.endCurrentRoute()
                     locationManager.isTracking = false
                 }
+                autoRecordCount += 1
             }
         }) {
             Text(isRecording ? "STOP" : "RECORD")
@@ -217,14 +219,12 @@ struct SpeedView: View {
     @AppStorage("autoRecord") private var storedAutoRecord: Int = 0 // 0 for manual, 1 for auto
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
 
-    
     @State private var showingAlert = false
     @State private var alertMessage = ""
     @State private var animationCount = 0
     @State private var autoRecordCount: Int = 0 // Autorecord not never started
     @State private var autoRecordTimer: Timer?
     @State private var autoRecord: Int = 0
-
 
     private func startRecording() {
         if !isRecording {
@@ -285,13 +285,14 @@ struct SpeedView: View {
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
                 
-                Text("BIKE App Computer")
+                Text("RIDE Computer")
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     .position(x: 80, y: 25)
                     .font(.custom("Barlow-SemiBold", size: 10))
                 
                 RecordButtonView(
                     isRecording: $isRecording,
+                    autoRecordCount: $autoRecordCount,
                     locationManager: locationManager,
                     routeName: routeName,
                     routeDescription: routeDescription,
@@ -330,9 +331,7 @@ struct SpeedView: View {
     /// and starts recording automatically if conditions are met.
     private func startAutoRecordTimer() {
         autoRecordTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
-#if DEBUG
-                print("startAutoRecordTimer / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
-#endif
+            debugPring(msg: "startAutoRecordTimer / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
             self.shouldStartRecording()
         }
     }
@@ -342,19 +341,14 @@ struct SpeedView: View {
     /// If the current Speedclass is not stationary and autoRecord is enabled, recording starts
     /// after a n-second delay. The timer is then invalidated.
     private func shouldStartRecording() {
-#if DEBUG
-                print("shouldStartRecording - AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
-#endif
-        if locationManager.currentSpeedClass != .stationary && autoRecord == 1 {
+        debugPring(msg: "shouldStartRecording - AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+        if locationManager.currentSpeedClass != .stationary && autoRecord == 1 && autoRecordCount == 0 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 autoRecordTimer?.invalidate()
                 autoRecordTimer = nil
                 autoRecordCount += 1
                 startRecording()
-#if DEBUG
-                print("shouldStartRecording / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
-#endif
-                
+                debugPring(msg: "shouldStartRecording / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
             }
         }
     }

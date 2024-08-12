@@ -16,8 +16,17 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 
 * Healt App support
 * Auto-odometer
+* Apple CarPlay support
 
-## What's new in version 0.1.7
+## What's new in versio 0.1.20
+
+
+
+### Fixed bugs
+
+* Auto Record newer stop bug fixed
+
+## What's new in version 0.1.13
 
 * Added Localization support for 22 new languages: Albanian, Bulgarian, Czech, Estonian, Hindi, Indonesian, Irish, Kurdish, Latvian, Lithuanian, Malay, Maltese, Polish, Punjabi, Quechua, Romanian, Russian, Serbian, Slovak, Slovenian, Urdu, Vietnamese
 * New auto-record beta feature, which start GPS-tracking always when app startup

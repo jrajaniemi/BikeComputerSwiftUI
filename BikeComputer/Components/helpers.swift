@@ -39,3 +39,15 @@ func formattedElapsedTime(for route: Route) -> String {
     formatter.unitsStyle = .abbreviated
     return formatter.string(from: totalTime) ?? "N/A"
 }
+
+func debugPring(msg: String) {
+#if DEBUG
+    print(msg)
+#endif
+}
+
+func debugPring(header: String, msg: String) {
+#if DEBUG
+    print("\(header): \(msg)")
+#endif
+}

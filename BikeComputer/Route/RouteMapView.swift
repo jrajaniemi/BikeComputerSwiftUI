@@ -194,7 +194,7 @@ struct RouteMapView: View {
 
                     Spacer()
                     if hideMapButtons {
-                        Text("BIKE App Computer")
+                        Text("RIDE Computer")
                             .padding(10)
                             .routeDetails()
                             .onTapGesture {

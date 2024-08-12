@@ -271,6 +271,7 @@ struct DebugParametersView: View {
     var body: some View {
         #if DEBUG
         Section(header: Text("Debug parameters")) {
+            Text("Total Acceleration: \(locationManager.totalAcceleration, specifier: "%.2f") G")
             Text("Heading Filter: \(locationManager.HF)")
             Text("Distance Filter: \(locationManager.DF)")
             Text("Battery Level: \(batteryManager.batteryLevel * 100, specifier: "%.0f") %")

@@ -35,7 +35,7 @@ struct ScreenshotHelper: UIViewRepresentable {
 #if DEBUG
                     print("Screenshot saved to Photos")
 #endif
-                } else if let error = error {
+                } else if error != nil {
 
                 }
             })

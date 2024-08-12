@@ -23,20 +23,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     var DF = 1
     var currentSpeedClass: SpeedClass = .stationary
 
-    enum SpeedClass {
-        case stationary
-        case walking
-        case running
-        case cycling
-        case riding
-        case flying
-    }
-    
-    enum PowerSavingMode {
-        case off
-        case normal
-        case max
-    }
+
 
     var isTracking: Bool = false
 
@@ -55,6 +42,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @Published var latitude: Double = 0.0
     @Published var powerSavingMode: PowerSavingMode = .off
     @Published var currentUserLocation: CLLocationCoordinate2D?
+    @Published var totalAcceleration: Double = 0.0
     
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
 
@@ -85,7 +73,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             .store(in: &cancellables)
         
         startSpeedUpdateTimer()
-        
+
     }
 
     deinit {
@@ -102,7 +90,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         guard let location = manager.location else { return }
         // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
         speed = max(location.speed, 0) * 3.6
-        
         altitude = location.altitude
 #if DEBUG
         print("\(Date()) Timer update: \(speed) : \(altitude)")
@@ -115,25 +102,30 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { [weak self] (data, error) in
                 guard let weakSelf = self else { return }
                 if let acceleration = data?.acceleration {
-                    let totalAcceleration = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
+                    self?.totalAcceleration = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
                     
-                    if totalAcceleration > 4 {
+                    if self?.totalAcceleration ?? 0 > 4 {
                         weakSelf.updateSpeedoMeterTime = 0.5
 #if DEBUG
-                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(totalAcceleration)")
+                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
 #endif
-                    } else if totalAcceleration > 3 {
+                    } else if self?.totalAcceleration ?? 0 > 3 {
+                        weakSelf.updateSpeedoMeterTime = 0.75
+#if DEBUG
+                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
+#endif
+                    } else if self?.totalAcceleration ?? 0 > 2 {
                         weakSelf.updateSpeedoMeterTime = 1.0
 #if DEBUG
-                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(totalAcceleration)")
+                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
 #endif
-                    } else if totalAcceleration > 2 {
-                        weakSelf.updateSpeedoMeterTime = 2.0
+                    } else if self?.totalAcceleration ?? 0 > 1.5 {
+                        weakSelf.updateSpeedoMeterTime = 1.5
 #if DEBUG
-                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(totalAcceleration)")
+                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
 #endif
-                    } else {
-                        weakSelf.updateSpeedoMeterTime = 4.0
+                    }else {
+                        weakSelf.updateSpeedoMeterTime = 3.0
                     }
                     
                 }
