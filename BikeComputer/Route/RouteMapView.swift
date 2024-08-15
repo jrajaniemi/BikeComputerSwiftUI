@@ -21,9 +21,7 @@ struct RouteMapView: View {
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
 
     private func takeScreenshot() {
-#if DEBUG
-        print("takeScreenshot() pressed")
-#endif
+        debugPrint(msg: "takeScreenshot() pressed")
         hideMapButtons = true
         NotificationCenter.default.post(name: Notification.Name("takeScreenshot"), object: nil)
     }

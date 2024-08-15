@@ -2,9 +2,7 @@ import CoreLocation
 import MapKit
 
 func cubicBezierInterpolatePoints(routePoints: [RoutePoint], steps: Int = 4) -> [CLLocationCoordinate2D] {
-#if DEBUG
-print("Original points count: \(routePoints.count)")
-#endif
+    debugPrint(msg: "Original points count: \(routePoints.count)")
     guard routePoints.count > 1 else {
         return []
     }
@@ -29,15 +27,11 @@ print("Original points count: \(routePoints.count)")
             let x = cubicBezierValue(t: t, p0: p0.longitude, p1: c0.longitude, p2: c1.longitude, p3: p1.longitude)
             let y = cubicBezierValue(t: t, p0: p0.latitude, p1: c0.latitude, p2: c1.latitude, p3: p1.latitude)
             
-#if DEBUG
-print("Interpolated point \(j) between (\(p0.latitude), \(p0.longitude)) and (\(p1.latitude), \(p1.longitude)): (\(x), \(y))")
-#endif
+            debugPrint(msg: "Interpolated point \(j) between (\(p0.latitude), \(p0.longitude)) and (\(p1.latitude), \(p1.longitude)): (\(x), \(y))")
             interpolatedPoints.append(CLLocationCoordinate2D(latitude: y, longitude: x))
         }
     }
-#if DEBUG
-print("Interpolated points count: \(interpolatedPoints.count)")
-#endif
+    debugPrint(msg: "Interpolated points count: \(interpolatedPoints.count)")
     return interpolatedPoints
 }
 
@@ -55,9 +49,9 @@ func linearInterpolatePoints(routePoints: [RoutePoint], steps: Int = 2) -> [CLLo
     var interpolatedPoints: [CLLocationCoordinate2D] = []
 
     #if DEBUG
-    print("Original points count: \(routePoints.count)")
+    debugPrint(msg: "Original points count: \(routePoints.count)")
     for point in routePoints {
-        print("Original point: (\(point.latitude), \(point.longitude))")
+        debugPrint(msg: "Original point: (\(point.latitude), \(point.longitude))")
     }
     #endif
     
@@ -74,9 +68,7 @@ func linearInterpolatePoints(routePoints: [RoutePoint], steps: Int = 2) -> [CLLo
             let lat = (1 - t) * startPoint.latitude + t * endPoint.latitude
             let lon = (1 - t) * startPoint.longitude + t * endPoint.longitude
             
-            #if DEBUG
-            print("Interpolated point \(j) between (\(startPoint.latitude), \(startPoint.longitude)) and (\(endPoint.latitude), \(endPoint.longitude)): (\(lat), \(lon))")
-            #endif
+            debugPrint(msg: "Interpolated point \(j) between (\(startPoint.latitude), \(startPoint.longitude)) and (\(endPoint.latitude), \(endPoint.longitude)): (\(lat), \(lon))")
             
             interpolatedPoints.append(CLLocationCoordinate2D(latitude: lat, longitude: lon))
         }
@@ -87,15 +79,14 @@ func linearInterpolatePoints(routePoints: [RoutePoint], steps: Int = 2) -> [CLLo
     }
     
     #if DEBUG
-    print("Interpolated points count: \(interpolatedPoints.count)")
+    debugPrint(msg: "Interpolated points count: \(interpolatedPoints.count)")
     for point in interpolatedPoints {
-        print("Interpolated point: (\(point.latitude), \(point.longitude))")
+        debugPrint(msg: "Interpolated point: (\(point.latitude), \(point.longitude))")
     }
     #endif
     
     return interpolatedPoints
 }
-
 
 func smoothInterpolatePoints(routePoints: [RoutePoint], windowSize: Int = 3) -> [CLLocationCoordinate2D] {
     var smoothedPoints: [CLLocationCoordinate2D] = []
@@ -109,7 +100,7 @@ func smoothInterpolatePoints(routePoints: [RoutePoint], windowSize: Int = 3) -> 
     for i in 0..<routePoints.count {
         var sumLat: Double = 0
         var sumLon: Double = 0
-        var count: Int = 0
+        var count = 0
         
         for j in max(0, i - halfWindow)...min(routePoints.count - 1, i + halfWindow) {
             sumLat += routePoints[j].latitude
@@ -125,7 +116,6 @@ func smoothInterpolatePoints(routePoints: [RoutePoint], windowSize: Int = 3) -> 
 
     return smoothedPoints
 }
-
 
 import CoreLocation
 
@@ -167,7 +157,6 @@ func hermiteSplineInterpolatePoints(routePoints: [RoutePoint], steps: Int = 3) -
     
     return interpolatedPoints
 }
-
 
 struct KalmanFilter {
     var processNoise: Double

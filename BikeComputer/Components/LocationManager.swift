@@ -11,33 +11,35 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     let routeManager = RouteManager()
     
     private var lastUpdate: Date = .init()
-    private var lastSpeedUpdate: Date = Date()
+    private var lastSpeedUpdate: Date = .init()
     private var headingLastUpdate: Date = .init()
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
-    private let updateInterval: TimeInterval = 1                // Päivitys n kertaa sekunnissa
-    private var updateSpeedTime:Double = 4.0                    // Päivitys n sekunnin välein
-    private var updateSpeedoMeterTime:Double = 4.0              // Päivitys n sekunnin välein
+    private let updateInterval: TimeInterval = 1 // Päivitys n kertaa sekunnissa
+    private var updateSpeedTime: Double = 4.0 // Päivitys n sekunnin välein
+    private var updateSpeedoMeterTime: Double = 4.0 // Päivitys n sekunnin välein
     
     var HF = 3
     var DF = 1
     var currentSpeedClass: SpeedClass = .stationary
 
-
-
     var isTracking: Bool = false
 
     // Published properties to update UI
     @Published var speed: Double = 0.0 {
-        didSet { imperialSpeed = speed / 1.6093 }
+        didSet {
+            imperialSpeed = speed / 1.6093
+        }
     }
+
     @Published var imperialSpeed: Double = 0.0
     @Published var heading: Double = 0.0
     @Published var altitude: Double = 0.0 {
         didSet { imperialAltitude = altitude * 3.2808 }
     }
+
     @Published var imperialAltitude: Double = 0.0
-    @Published var accuracyDescription: String = String(localized:"Unknown", comment: "When accuracy is unkown")
+    @Published var accuracyDescription: String = .init(localized: "Unknown", comment: "When accuracy is unkown")
     @Published var longitude: Double = 0.0
     @Published var latitude: Double = 0.0
     @Published var powerSavingMode: PowerSavingMode = .off
@@ -47,6 +49,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
 
     private var speedUpdateTimer: Timer?
+    private var previousAcceleration: Double = 0.0
+    private var previousTimestamp: Date?
+    private var accelerationHistory: [Double] = []
 
     override init() {
         super.init()
@@ -73,7 +78,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             .store(in: &cancellables)
         
         startSpeedUpdateTimer()
-
     }
 
     deinit {
@@ -91,43 +95,44 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
         speed = max(location.speed, 0) * 3.6
         altitude = location.altitude
-#if DEBUG
-        print("\(Date()) Timer update: \(speed) : \(altitude)")
-#endif
+        // debugPrint(msg: "\(Date()) Timer update: \(speed) : \(altitude)")
     }
 
     private func startMotionManager() {
-        if motionManager.isAccelerometerAvailable {
-            motionManager.accelerometerUpdateInterval = 0.25
-            motionManager.startAccelerometerUpdates(to: OperationQueue.current!) { [weak self] (data, error) in
+        if motionManager.isAccelerometerAvailable, motionManager.isDeviceMotionAvailable {
+            motionManager.deviceMotionUpdateInterval = 0.5
+            motionManager.startDeviceMotionUpdates(to: OperationQueue.current!) { [weak self] data, _ in
                 guard let weakSelf = self else { return }
-                if let acceleration = data?.acceleration {
-                    self?.totalAcceleration = sqrt(acceleration.x * acceleration.x + acceleration.y * acceleration.y + acceleration.z * acceleration.z)
+                if let motion = data {
+                    // Lasketaan liike-kiihtyvyys käyttämällä userAcceleration, joka on jo painovoimasta puhdistettu
+                    let userAcceleration = motion.userAcceleration
+                    let currentAcceleration = sqrt(userAcceleration.x * userAcceleration.x + userAcceleration.y * userAcceleration.y + userAcceleration.z * userAcceleration.z)
                     
-                    if self?.totalAcceleration ?? 0 > 4 {
-                        weakSelf.updateSpeedoMeterTime = 0.5
-#if DEBUG
-                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
-#endif
-                    } else if self?.totalAcceleration ?? 0 > 3 {
-                        weakSelf.updateSpeedoMeterTime = 0.75
-#if DEBUG
-                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
-#endif
-                    } else if self?.totalAcceleration ?? 0 > 2 {
-                        weakSelf.updateSpeedoMeterTime = 1.0
-#if DEBUG
-                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
-#endif
-                    } else if self?.totalAcceleration ?? 0 > 1.5 {
-                        weakSelf.updateSpeedoMeterTime = 1.5
-#if DEBUG
-                        print("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
-#endif
-                    }else {
-                        weakSelf.updateSpeedoMeterTime = 3.0
+                    weakSelf.accelerationHistory.append(currentAcceleration)
+                    if weakSelf.accelerationHistory.count > 2 {
+                        weakSelf.accelerationHistory.removeFirst()
                     }
+
+                    let averageAcceleration = weakSelf.accelerationHistory.reduce(0, +) / Double(weakSelf.accelerationHistory.count)
+
                     
+                    weakSelf.totalAcceleration = averageAcceleration
+
+                    if abs(averageAcceleration) > 2.0 {
+                        weakSelf.updateSpeedoMeterTime = 0.4
+                        debugPrint("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
+                    } else if abs(averageAcceleration) > 1.5 {
+                        weakSelf.updateSpeedoMeterTime = 0.8
+                        debugPrint("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
+                    } else if abs(averageAcceleration) > 1.0 {
+                        weakSelf.updateSpeedoMeterTime = 1.0
+                        debugPrint("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
+                    } else if abs(averageAcceleration) > 0.5 {
+                        weakSelf.updateSpeedoMeterTime = 1.2
+                        debugPrint("Updated updateSpeedoMeterTime to: \(weakSelf.updateSpeedoMeterTime), \(self?.totalAcceleration ?? 0)")
+                    } else {
+                        weakSelf.updateSpeedoMeterTime = 4.0
+                    }
                 }
             }
         }
@@ -137,8 +142,11 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         if motionManager.isAccelerometerActive {
             motionManager.stopAccelerometerUpdates()
         }
+        if motionManager.isDeviceMotionActive {
+            motionManager.stopDeviceMotionUpdates()
+        }
     }
-    
+
     private func checkSpeedClassChange(_ newSpeed: Double) {
         let newSpeedClass: SpeedClass
         
@@ -164,9 +172,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     }
     
     private func updateFilters(batteryLevel: Float, isCharging: Bool) {
-#if DEBUG
-        print("updateFilters called with batteryLevel: \(batteryLevel), isCharging: \(isCharging), batteryThreshold: \(batteryThreshold)")
-#endif
+        debugPrint(msg: "updateFilters called with batteryLevel: \(batteryLevel), isCharging: \(isCharging), batteryThreshold: \(batteryThreshold)")
         
         var distanceFilter: CLLocationDistance
         var headingFilter: CLLocationDegrees
@@ -182,6 +188,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             startMotionManager()
         } else {
             stopMotionManager()
+            totalAcceleration = 0.0
             powerSavingMode = .normal
             desiredAccuracy = kCLLocationAccuracyBest
             updateSpeedTime = 7.5
@@ -214,7 +221,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 distanceFilter *= 1.5
                 headingFilter *= 1.5
                 desiredAccuracy = kCLLocationAccuracyHundredMeters
-                if(speed < 400) {
+                if speed < 400 {
                     pausesLocationUpdatesAutomatically = true
                 }
             }
@@ -227,11 +234,9 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         manager.headingFilter = headingFilter
         manager.desiredAccuracy = desiredAccuracy
         manager.pausesLocationUpdatesAutomatically = pausesLocationUpdatesAutomatically
-#if DEBUG
         
-        print("Updated filters based on speed: \(speed) km/h, battery level: \(batteryLevel), isCharging: \(isCharging)")
-        print("Distance Filter: \(distanceFilter), Heading Filter: \(headingFilter)")
-#endif
+        debugPrint(msg: "Updated filters based on speed: \(speed) km/h, battery level: \(batteryLevel), isCharging: \(isCharging)")
+        debugPrint(msg: "Distance Filter: \(distanceFilter), Heading Filter: \(headingFilter)")
     }
     
     func startLocationUpdates() {
@@ -251,25 +256,17 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         case .authorizedWhenInUse, .authorizedAlways:
             startLocationUpdates()
         case .denied, .restricted:
-#if DEBUG
-            print("Location services are denied or restricted")
-#endif
+            debugPrint(msg: "Location services are denied or restricted")
         case .notDetermined:
-#if DEBUG
-            print("Location services are not determined")
-#endif
+            debugPrint(msg: "Location services are not determined")
         @unknown default:
-#if DEBUG
-            print("Unknown authorization status")
-#endif
+            debugPrint(msg: "Unknown authorization status")
         }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else {
-#if DEBUG
-            print("No locations available")
-#endif
+            debugPrint(msg: "No locations available")
             return
         }
         
@@ -289,9 +286,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
             // routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
             addRoutePoint()
-#if DEBUG
-            print("\(Date()) Location updated: \(speed):\(currentSpeedClass) -  \(latitude), \(longitude) = \(altitude)")
-#endif
+            debugPrint(msg: "\(Date()) Location updated: \(speed):\(currentSpeedClass) -  \(latitude), \(longitude) = \(altitude)")
         }
     }
     
@@ -312,7 +307,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             lastHeading = roundedNewHeading
             headingLastUpdate = Date()
 
-            
             if let location = manager.location {
                 // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
                 speed = max(location.speed, 0) * 3.6
@@ -321,18 +315,14 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 latitude = location.coordinate.latitude
                 accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
                 addRoutePoint()
-#if DEBUG
-            print("\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange), \(HF)")
-#endif
+                debugPrint(msg: "\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange), \(HF)")
             }
         }
     }
     
     func addRoutePoint() {
         if isTracking == true && speed > 0 {
-#if DEBUG
-            print("Route point added: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
-#endif
+            debugPrint(msg: "Route point added: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
             routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
         }
     }
@@ -342,22 +332,22 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         if let clError = error as? CLError {
             switch clError.code {
             case .denied:
-                print("Location services denied by the user")
+                debugPrint(msg: "Location services denied by the user")
             case .locationUnknown:
-                print("Location unknown")
+                debugPrint(msg: "Location unknown")
             case .network:
-                print("Network error")
+                debugPrint(msg: "Network error")
             default:
-                print("Location error: \(clError.code.rawValue)")
+                debugPrint(msg: "Location error: \(clError.code.rawValue)")
             }
         } else {
-            print("Location error: \(error.localizedDescription)")
+            debugPrint(msg: "Location error: \(error.localizedDescription)")
         }
 #endif
     }
 
     private func shouldUpdateLocation(timeInterval: TimeInterval, speed: CLLocationSpeed) -> Bool {
-        if abs(timeInterval) > (updateSpeedTime*3) || (abs(timeInterval) > (updateSpeedTime*2) && speed < 30 / 3.6) {
+        if abs(timeInterval) > (updateSpeedTime * 3) || (abs(timeInterval) > (updateSpeedTime * 2) && speed < 30 / 3.6) {
             return true
         }
         return false
@@ -366,7 +356,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private func getAccuracyDescription(horizontalAccuracy: CLLocationAccuracy) -> String {
         switch horizontalAccuracy {
         case _ where horizontalAccuracy < 0:
-            return  String(localized: "Invalid", comment: "Accuracy is invalid")
+            return String(localized: "Invalid", comment: "Accuracy is invalid")
         case 0...5:
             return String(localized: "Very High", comment: "Accuracy is very high")
         case 5...10:

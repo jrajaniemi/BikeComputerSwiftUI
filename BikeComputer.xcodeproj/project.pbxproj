@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4A311B2F2C557C4900A576B8 /* RouteMapTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A311B2E2C557C4900A576B8 /* RouteMapTests.swift */; };
 		4A311B312C558E9800A576B8 /* RouteMapView_Previews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A311B302C558E9800A576B8 /* RouteMapView_Previews.swift */; };
 		4A311B332C55993E00A576B8 /* BezierInterpolatePoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A311B322C55993E00A576B8 /* BezierInterpolatePoints.swift */; };
 		4A311B372C56AD8D00A576B8 /* Config.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = 4A311B362C56AD8D00A576B8 /* Config.xcconfig */; };
@@ -42,7 +41,6 @@
 		4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDD2C4AC3AC0065448C /* ContentView.swift */; };
 		4AA2DEE02C4AC3AE0065448C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AA2DEDF2C4AC3AE0065448C /* Assets.xcassets */; };
 		4AA2DEE32C4AC3AE0065448C /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4AA2DEE22C4AC3AE0065448C /* Preview Assets.xcassets */; };
-		4AA2DEED2C4AC3AE0065448C /* BikeComputerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEEC2C4AC3AE0065448C /* BikeComputerTests.swift */; };
 		4AA2DEF72C4AC3AE0065448C /* BikeComputerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEF62C4AC3AE0065448C /* BikeComputerUITests.swift */; };
 		4AA2DEF92C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */; };
 		4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */; };
@@ -56,28 +54,9 @@
 		4AE358E72C5E675F0007AC65 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */; };
 		4AE358E92C5F68810007AC65 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4AE358E82C5F68810007AC65 /* Localizable.xcstrings */; };
 		4AF97DC92C57731A00D5EE36 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DC82C57731A00D5EE36 /* Documentation.docc */; };
-		4AF97DCB2C57850F00D5EE36 /* LocationManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		4AA2DEE92C4AC3AE0065448C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AA2DED02C4AC3AC0065448C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4AA2DED72C4AC3AC0065448C;
-			remoteInfo = BikeComputer;
-		};
-		4AA2DEF32C4AC3AE0065448C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 4AA2DED02C4AC3AC0065448C /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 4AA2DED72C4AC3AC0065448C;
-			remoteInfo = BikeComputer;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
-		4A311B2E2C557C4900A576B8 /* RouteMapTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapTests.swift; sourceTree = "<group>"; };
 		4A311B302C558E9800A576B8 /* RouteMapView_Previews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteMapView_Previews.swift; sourceTree = "<group>"; };
 		4A311B322C55993E00A576B8 /* BezierInterpolatePoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BezierInterpolatePoints.swift; sourceTree = "<group>"; };
 		4A311B362C56AD8D00A576B8 /* Config.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Config.xcconfig; sourceTree = "<group>"; };
@@ -114,13 +93,11 @@
 		4AA2DEDF2C4AC3AE0065448C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4AA2DEE22C4AC3AE0065448C /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		4AA2DEE82C4AC3AE0065448C /* BikeComputerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BikeComputerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		4AA2DEEC2C4AC3AE0065448C /* BikeComputerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerTests.swift; sourceTree = "<group>"; };
 		4AA2DEF22C4AC3AE0065448C /* BikeComputerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BikeComputerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		4AA2DEF62C4AC3AE0065448C /* BikeComputerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerUITests.swift; sourceTree = "<group>"; };
 		4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BikeComputerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		4AABFE5A2C4D417D00CCFBDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4AABFE5B2C4D939C00CCFBDB /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
-		4AABFE5D2C4D957B00CCFBDB /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		4AABFE662C4E762200CCFBDB /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryManager.swift; sourceTree = "<group>"; };
 		4AAE43172C5051A9000DC321 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
@@ -131,7 +108,6 @@
 		4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
 		4AE358E82C5F68810007AC65 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4AF97DC82C57731A00D5EE36 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
-		4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,10 +259,6 @@
 		4AA2DEEB2C4AC3AE0065448C /* BikeComputerTests */ = {
 			isa = PBXGroup;
 			children = (
-				4AABFE5D2C4D957B00CCFBDB /* Info.plist */,
-				4AA2DEEC2C4AC3AE0065448C /* BikeComputerTests.swift */,
-				4A311B2E2C557C4900A576B8 /* RouteMapTests.swift */,
-				4AF97DCA2C57850F00D5EE36 /* LocationManagerTests.swift */,
 			);
 			path = BikeComputerTests;
 			sourceTree = "<group>";
@@ -339,7 +311,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4AA2DEEA2C4AC3AE0065448C /* PBXTargetDependency */,
 			);
 			name = BikeComputerTests;
 			productName = BikeComputerTests;
@@ -357,7 +328,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				4AA2DEF42C4AC3AE0065448C /* PBXTargetDependency */,
 			);
 			name = BikeComputerUITests;
 			productName = BikeComputerUITests;
@@ -425,6 +395,13 @@
 				et,
 				ga,
 				ha,
+				bs,
+				is,
+				mk,
+				ka,
+				hy,
+				"rm-CH",
+				la,
 			);
 			mainGroup = 4AA2DECF2C4AC3AC0065448C;
 			productRefGroup = 4AA2DED92C4AC3AC0065448C /* Products */;
@@ -519,9 +496,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4AF97DCB2C57850F00D5EE36 /* LocationManagerTests.swift in Sources */,
-				4A311B2F2C557C4900A576B8 /* RouteMapTests.swift in Sources */,
-				4AA2DEED2C4AC3AE0065448C /* BikeComputerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -535,19 +509,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		4AA2DEEA2C4AC3AE0065448C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4AA2DED72C4AC3AC0065448C /* BikeComputer */;
-			targetProxy = 4AA2DEE92C4AC3AE0065448C /* PBXContainerItemProxy */;
-		};
-		4AA2DEF42C4AC3AE0065448C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 4AA2DED72C4AC3AC0065448C /* BikeComputer */;
-			targetProxy = 4AA2DEF32C4AC3AE0065448C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		4AA2DEFA2C4AC3AE0065448C /* Debug */ = {
@@ -708,7 +669,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -749,7 +710,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -767,7 +728,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -792,7 +753,7 @@
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
-				IPHONEOS_DEPLOYMENT_TARGET = 17.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -811,6 +772,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = RK8VM8DD98;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -829,6 +791,7 @@
 				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = RK8VM8DD98;
 				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = jrajaniemi.BikeComputerUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

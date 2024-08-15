@@ -50,11 +50,10 @@ extension View {
             .shadow(color: Color.black, radius: 25, x: 1, y: 3)
             .padding(10)
     }
-    
+
     func routeDetails() -> some View {
         self
             .font(.custom("Barlow-Bold", size: 16))
             .frame(maxWidth: .infinity, alignment: .center)
-
     }
 }

@@ -28,6 +28,8 @@ final class BikeComputerUITests: XCTestCase {
         app.launch()
 
         // Use XCTAssert and related functions to verify your tests produce the correct results.
+        let homeTab = app.buttons["Computer"]
+        XCTAssertTrue(homeTab.exists)
     }
 
     func testLaunchPerformance() throws {

@@ -8,7 +8,8 @@
 import Foundation
 import HealthKit
 
-enum TrackableWorkoutActivityType: UInt, Codable, CaseIterable {
+public enum TrackableWorkoutActivityType: UInt, Codable, CaseIterable, Identifiable {
+    public var id: Self { self }
     case walking = 52
     case running = 37
     case hiking = 24
@@ -31,8 +32,10 @@ enum TrackableWorkoutActivityType: UInt, Codable, CaseIterable {
     case swimBikeRun = 82
     case other = 3000
     case motorcycling = 5000
-    case flying = 5001
-    
+    case driving = 5001
+    case flying = 5002
+    case stationary = 10000
+
     var activityName: String {
         switch self {
         case .walking:
@@ -79,13 +82,17 @@ enum TrackableWorkoutActivityType: UInt, Codable, CaseIterable {
             return "Other"
         case .motorcycling:
             return "Motorcycling"
+        case . driving:
+            return "Driving"
         case .flying:
             return "Flying"
+        case .stationary:
+            return "Stationary"
         }
     }
-    
+
     var hkWorkoutActivityType: HKWorkoutActivityType {
-        return HKWorkoutActivityType(rawValue: self.rawValue) ?? .other
+        return HKWorkoutActivityType(rawValue: self.rawValue) ?? HKWorkoutActivityType.other
     }
 }
 

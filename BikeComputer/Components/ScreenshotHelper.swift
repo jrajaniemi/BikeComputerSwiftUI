@@ -1,6 +1,6 @@
-import UIKit
 import Photos
 import SwiftUI
+import UIKit
 
 struct ScreenshotHelper: UIViewRepresentable {
     class Coordinator {
@@ -12,18 +12,16 @@ struct ScreenshotHelper: UIViewRepresentable {
         }
 
         @objc func captureScreenshot() {
-#if DEBUG
-            print("captureScreenshot() called")
-#endif
+            debugPrint(msg: "captureScreenshot() called")
             guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
                   let window = windowScene.windows.first,
-                  let rootView = window.rootViewController?.view else {
-
+                  let rootView = window.rootViewController?.view
+            else {
                 return
             }
 
             let renderer = UIGraphicsImageRenderer(size: rootView.bounds.size)
-            let image = renderer.image { ctx in
+            let image = renderer.image { _ in
                 rootView.drawHierarchy(in: rootView.bounds, afterScreenUpdates: true)
             }
 
@@ -32,12 +30,8 @@ struct ScreenshotHelper: UIViewRepresentable {
                 PHAssetChangeRequest.creationRequestForAsset(from: image)
             }, completionHandler: { success, error in
                 if success {
-#if DEBUG
-                    print("Screenshot saved to Photos")
-#endif
-                } else if error != nil {
-
-                }
+                    debugPrint(msg: "Screenshot saved to Photos")
+                } else if error != nil {}
             })
         }
     }
@@ -56,6 +50,6 @@ struct ScreenshotHelper: UIViewRepresentable {
 
 extension View {
     func screenshotHelper() -> some View {
-        self.background(ScreenshotHelper())
+        background(ScreenshotHelper())
     }
 }

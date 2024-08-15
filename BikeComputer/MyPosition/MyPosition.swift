@@ -5,27 +5,27 @@ struct MyPosition: View {
     @ObservedObject var locationManager: LocationManager
 
     /*
-    @State private var position: MapCameraPosition = .rect(
-        MKMapRect(
-            origin: MKMapPoint(.helsinki),
-            size: MKMapSize(width: 1, height: 1)
-        )
-    )
-     
-     init(locationManager: LocationManager) {
-            self.locationManager = locationManager
-            self._position = State(initialValue: .rect(
-                MKMapRect(
-                    origin: MKMapPoint(
-                        x: locationManager.latitude,
-                        y: locationManager.longitude
-                    ),
-                    size: MKMapSize(width: 0.5, height: 0.5)
-                )
-            ))
-        }
-    */
-    
+     @State private var position: MapCameraPosition = .rect(
+         MKMapRect(
+             origin: MKMapPoint(.helsinki),
+             size: MKMapSize(width: 1, height: 1)
+         )
+     )
+
+      init(locationManager: LocationManager) {
+             self.locationManager = locationManager
+             self._position = State(initialValue: .rect(
+                 MKMapRect(
+                     origin: MKMapPoint(
+                         x: locationManager.latitude,
+                         y: locationManager.longitude
+                     ),
+                     size: MKMapSize(width: 0.5, height: 0.5)
+                 )
+             ))
+         }
+     */
+
     @State private var position: MapCameraPosition
 
     init(locationManager: LocationManager) {
@@ -40,11 +40,10 @@ struct MyPosition: View {
             pitch: 45.0
         )))
     }
-    
+
     var body: some View {
         NavigationStack {
             Map(position: $position, interactionModes: [.all]) {
-                
                 /*
                  if let userPosition = locationManager.currentUserLocation {
                      Annotation("User Position", coordinate: userPosition, anchor: .center) {
@@ -91,9 +90,7 @@ struct MyPosition: View {
     private func updatePositionToUserLocation() {
         if let userLocation = locationManager.currentUserLocation {
             position = .userLocation(followsHeading: true, fallback: position)
-#if DEBUG
-            print("\(userLocation)")
-#endif
+            debugPrint(msg: "\(userLocation)")
         }
     }
 }
@@ -108,5 +105,3 @@ extension CLLocationCoordinate2D {
         latitude: 60.17132, longitude: 24.9415
     )
 }
-
-

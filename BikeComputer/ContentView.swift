@@ -15,7 +15,7 @@ struct ContentView: View {
     init(locationManager: LocationManager = LocationManager()) {
         _locationManager = StateObject(wrappedValue: locationManager)
     }
-    
+
     var body: some View {
         ZStack {
             TabView {
@@ -24,19 +24,18 @@ struct ContentView: View {
                         Image(systemName: "speedometer")
                         Text("Computer")
                     }
-                
+
                 RoutesView(locationManager: locationManager, selectedRoute: $selectedRoute)
                     .tabItem {
                         Image(systemName: "map")
                         Text("Routes")
                     }
-                
+
                 MyPosition(locationManager: locationManager)
                     .tabItem {
                         Image(systemName: "paperplane.fill")
                         Text("Position")
                     }
-
 
                 SettingsView(locationManager: locationManager)
                     .tabItem {
@@ -44,24 +43,24 @@ struct ContentView: View {
                         Text("Settings")
                     }
             }
-            .background(colorScheme == .dark ? Color.black: Color.white)
-            .accentColor(colorScheme == .dark ? Color.white: Color.black)
+            .background(colorScheme == .dark ? Color.black : Color.white)
+            .accentColor(colorScheme == .dark ? Color.white : Color.black)
             .onAppear {
                 UITabBar.appearance().unselectedItemTintColor = UIColor.gray
             }
-            .toolbarBackground(colorScheme == .dark ? Color.black: Color.white)
+            .toolbarBackground(colorScheme == .dark ? Color.black : Color.white)
 
             if let route = selectedRoute {
                 NavigationStack {
-                    FullScreenRouteMapView(route: route, mapType: .hybrid(elevation: .realistic),  selectedRoute: $selectedRoute)
+                    FullScreenRouteMapView(route: route, mapType: .hybrid(elevation: .realistic), selectedRoute: $selectedRoute)
                         .navigationBarTitleDisplayMode(.inline)
                         .navigationBarHidden(true)
-                        //.ignoresSafeArea(edges: .all)
+                    // .ignoresSafeArea(edges: .all)
                 }
                 // .navigationViewStyle(StackNavigationViewStyle())
                 .transition(.move(edge: .bottom))
-                .background(colorScheme == .dark ? Color.black: Color.white)
-                .foregroundColor(colorScheme == .dark ? Color.white: Color.black)
+                .background(colorScheme == .dark ? Color.black : Color.white)
+                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 .zIndex(1)
             }
         }

@@ -137,7 +137,7 @@ struct BatteryThresholdDetailView: View {
                 Text("The Battery Threshold feature lets users save battery by setting a limit at which the app will start saving energy. When the battery drops below this limit, the app updates GPS less often, uses less accurate data, and turns off extra features, which helps save battery life. This means the device can last longer without charging, but the app might not be as accurate or quick. Users can set this limit in the app settings, choosing a value between 40 and 100 percent.")
                     .font(.footnote)
                 Text("If the battery level goes below 25 percent, the app switches to maximum power-saving mode. In this mode, the app further reduces how often it updates GPS, uses even less accurate data, and may stop updating location if the device is not moving. This helps keep the device running as long as possible, but it greatly reduces the app performance and accuracy.")
-                .font(.footnote)
+                    .font(.footnote)
                 Spacer()
             }
             .padding()
@@ -201,8 +201,8 @@ struct AutoRecordView: View {
         }
         .onAppear {
             let storedValue = UserDefaults.standard.integer(forKey: "autoRecord")
-            print("Stored autoRecord value in UserDefaults: \(storedValue)")
-            print("Initial autoRecord value: \(autoRecord)")
+            debugPrint(msg: "Stored autoRecord value in UserDefaults: \(storedValue)")
+            debugPrint(msg: "Initial autoRecord value: \(autoRecord)")
         }
     }
 }

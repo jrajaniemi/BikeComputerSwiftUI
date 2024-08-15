@@ -11,6 +11,5 @@ class PreviewLocationManager: LocationManager {
         self.accuracyDescription = "High"
         self.imperialSpeed = 10.21
         self.imperialAltitude = 91
-        
     }
 }

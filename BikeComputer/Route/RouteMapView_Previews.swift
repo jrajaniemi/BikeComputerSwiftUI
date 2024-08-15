@@ -4,8 +4,8 @@
 //
 //  Created by Jussi Rajaniemi on 27.7.2024.
 //
-import SwiftUI
 import MapKit
+import SwiftUI
 
 struct RouteMapView_Previews: PreviewProvider {
     static let sampleRoute = Route(
@@ -67,7 +67,6 @@ struct RouteMapView_Previews: PreviewProvider {
             RoutePoint(speed: 5, heading: 0, altitude: 0.0, longitude: -73.97453, latitude: 40.77479, timestamp: Date().addingTimeInterval(305400.0)),
             RoutePoint(speed: 5, heading: 0, altitude: 0.0, longitude: -73.9763, latitude: 40.7734, timestamp: Date().addingTimeInterval(311400.0)),
             RoutePoint(speed: 5, heading: 0, altitude: 0.0, longitude: -73.97709, latitude: 40.77159, timestamp: Date().addingTimeInterval(317400.0)),
-
         ]
     )
 

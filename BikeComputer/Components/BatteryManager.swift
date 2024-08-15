@@ -27,24 +27,18 @@ class BatteryManager: ObservableObject {
         UIDevice.current.isBatteryMonitoringEnabled = true
         batteryLevel = UIDevice.current.batteryLevel
         isCharging = UIDevice.current.batteryState == .charging || UIDevice.current.batteryState == .full
-#if DEBUG
         updateIdleTimer()
-#endif
     }
     
     private func updateIdleTimer() {
         if isCharging && batteryLevel > 0.15 {
-#if DEBUG
-            print("Device is charging and battery level is above 15%. Keeping screen on.")
-            print("isIdleTimerDisabled is now \(UIApplication.shared.isIdleTimerDisabled)")
-#endif
+            debugPrint(msg: "Device is charging and battery level is above 15%. Keeping screen on.")
+            debugPrint(msg: "isIdleTimerDisabled is now \(UIApplication.shared.isIdleTimerDisabled)")
             UIApplication.shared.isIdleTimerDisabled = true
             isIdleTimerDisabled = true
         } else {
-#if DEBUG
-            print("Device is not charging or battery level is 15% or below. Allowing screen to turn off.")
-            print("isIdleTimerDisabled is now \(UIApplication.shared.isIdleTimerDisabled)")
-#endif
+            debugPrint(msg: "Device is not charging or battery level is 15% or below. Allowing screen to turn off.")
+            debugPrint(msg: "isIdleTimerDisabled is now \(UIApplication.shared.isIdleTimerDisabled)")
             UIApplication.shared.isIdleTimerDisabled = false
             isIdleTimerDisabled = false
         }

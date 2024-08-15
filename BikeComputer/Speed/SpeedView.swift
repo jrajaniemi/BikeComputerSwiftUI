@@ -65,30 +65,52 @@ struct SpeedTextView: View {
 ///   - altitude: The altitude in meters.
 ///   - imperialAltitude: The altitude in feet.
 ///   - altitudeFontSize: The font size for the altitude text.
+/// - G: totalAcceleration in G
 struct HeadingAndAltitudeView: View {
     var heading: Double
     var altitude: Double
     var imperialAltitude: Double
     var altitudeFontSize: CGFloat
+    var G: Double
+    
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
-
+    @AppStorage("rowTwoLeftView") private var rowTwoLeftView: Int = 2
+    
+    @State private var showGValue: Bool = false  // Togglaa G-arvon ja suunnan välillä
+    @State private var showTimeValue: Bool = false // Togglaa kellonajan ja muiden tietojen välillä
+    
+    
     var body: some View {
-        if unitPreference == 1 {
-            HStack(spacing: 0) {
-                Text("\(heading, specifier: "%.0f")°")
-                    .font(.custom("Barlow-Bold", size: 48))
+        HStack(spacing: 0) {
+            // Näytetään joko suunta, G-voima tai kellonaika riippuen togglesta
+            if rowTwoLeftView == 0 {
+                Text(Date(), style: .time)
+                    .font(.custom("Barlow-Bold", size: 46))
                     .frame(maxWidth: .infinity)
-                
+                    .onTapGesture {
+                        rowTwoLeftView += 1 // Vaihda takaisin suunnan ja G-arvon välillä
+                    }
+            } else if rowTwoLeftView == 1 {
+                Text("\(G, specifier: "%.2f") G")
+                    .font(.custom("Barlow-Bold", size: 46))
+                    .frame(maxWidth: .infinity)
+                    .onTapGesture {
+                        rowTwoLeftView += 1
+                    }
+            } else {
+                Text("\(heading, specifier: "%.0f")°")
+                    .font(.custom("Barlow-Bold", size: 46))
+                    .frame(maxWidth: .infinity)
+                    .onTapGesture {
+                        rowTwoLeftView = 0
+                    }
+            }
+
+            if unitPreference == 1 {
                 Text("\(imperialAltitude, specifier: "%.0f") ft")
                     .font(.custom("Barlow-Light", size: altitudeFontSize))
                     .frame(maxWidth: .infinity)
-            }
-        } else {
-            HStack(spacing: 0) {
-                Text("\(heading, specifier: "%.0f")°")
-                    .font(.custom("Barlow-Bold", size: 48))
-                    .frame(maxWidth: .infinity)
-                
+            } else {
                 Text("\(altitude, specifier: "%.0f") m")
                     .font(.custom("Barlow-Light", size: altitudeFontSize))
                     .frame(maxWidth: .infinity)
@@ -96,6 +118,7 @@ struct HeadingAndAltitudeView: View {
         }
     }
 }
+
 
 /// A SwiftUI view that displays distance information.
 ///
@@ -109,6 +132,7 @@ struct DistanceView: View {
     var odometer: Double
     var imperialTotalDistance: Double
     var imperialOdometer: Double
+
     
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
 
@@ -252,7 +276,8 @@ struct SpeedView: View {
                         heading: locationManager.heading,
                         altitude: locationManager.altitude,
                         imperialAltitude: locationManager.imperialAltitude,
-                        altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40
+                        altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40,
+                        G: locationManager.totalAcceleration
                     )
                     .frame(height: geometry.size.height * 3 / 12)
                     .background(colorScheme == .dark ? Color.black : Color.white)
@@ -274,21 +299,21 @@ struct SpeedView: View {
                     
                     autoRecord = storedAutoRecord
                     
-                    print("onAppear - autoRecord: \(autoRecord),  \(autoRecordCount)")
+                    // debugPring(msg: "onAppear - autoRecord: \(autoRecord),  \(autoRecordCount)")
                     if autoRecord == 1 && autoRecordCount == 0 {
                         startAutoRecordTimer()
                     }
                 }
                 .onChange(of: storedAutoRecord) {
                     autoRecord = storedAutoRecord
-                    print("onChange - autoRecord updated: \(autoRecord)")
+                    // debugPring(msg: "onChange - autoRecord updated: \(autoRecord)")
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
                 
                 Text("RIDE Computer")
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                    .position(x: 80, y: 25)
-                    .font(.custom("Barlow-SemiBold", size: 10))
+                    .position(x: 60, y: 30)
+                    .font(.custom("Barlow-SemiBold", size: 11))
                 
                 RecordButtonView(
                     isRecording: $isRecording,
@@ -331,7 +356,7 @@ struct SpeedView: View {
     /// and starts recording automatically if conditions are met.
     private func startAutoRecordTimer() {
         autoRecordTimer = Timer.scheduledTimer(withTimeInterval: 10, repeats: true) { _ in
-            debugPring(msg: "startAutoRecordTimer / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+            // debugPring(msg: "startAutoRecordTimer / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
             self.shouldStartRecording()
         }
     }
@@ -341,14 +366,14 @@ struct SpeedView: View {
     /// If the current Speedclass is not stationary and autoRecord is enabled, recording starts
     /// after a n-second delay. The timer is then invalidated.
     private func shouldStartRecording() {
-        debugPring(msg: "shouldStartRecording - AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+        // debugPring(msg: "shouldStartRecording - AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
         if locationManager.currentSpeedClass != .stationary && autoRecord == 1 && autoRecordCount == 0 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 autoRecordTimer?.invalidate()
                 autoRecordTimer = nil
                 autoRecordCount += 1
                 startRecording()
-                debugPring(msg: "shouldStartRecording / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
+                // debugPring(msg: "shouldStartRecording / AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
             }
         }
     }
@@ -357,9 +382,9 @@ struct SpeedView: View {
     func listAllFonts() {
         /*
          for family in UIFont.familyNames.sorted() {
-             print("Family: \(family)")
+         debugPring(msg:"Family: \(family)")
              for name in UIFont.fontNames(forFamilyName: family) {
-                 print("  Font: \(name)")
+                debugPring(msg:"  Font: \(name)")
              }
          }
           */

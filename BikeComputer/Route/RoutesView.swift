@@ -1,4 +1,5 @@
 import CoreLocation
+import Foundation
 import MapKit
 import SwiftUI
 
@@ -136,9 +137,21 @@ struct RouteEditForm: View {
     @Environment(\.presentationMode) var presentationMode
     @Environment(\.colorScheme) var colorScheme
 
-    @State private var selectedActivity: TrackableWorkoutActivityType = .other
-
     var onSave: () -> Void
+
+    init(locationManager: LocationManager, route: Route, onSave: @escaping () -> Void) {
+        self.locationManager = locationManager
+        var modifiedRoute = route
+
+        // Tarkista, onko activityType .other ja aseta se tarvittaessa uudelleen
+        if modifiedRoute.activityType == .other {
+            modifiedRoute.activityType = getSpeedClass(route: modifiedRoute)
+            debugPrint(msg: "getSpeedClass: \(getSpeedClass(route: modifiedRoute))")
+        }
+
+        self._route = State(initialValue: modifiedRoute)
+        self.onSave = onSave
+    }
 
     var body: some View {
         NavigationStack {
@@ -149,23 +162,68 @@ struct RouteEditForm: View {
                             .font(.caption)
                             .foregroundColor(.gray)
                         TextField("Route Name", text: $route.name)
+                            .padding()
+                            .background(colorScheme == .dark ? Color(hex: "#222222") : Color(hex: "#f1f1f1"))
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                            .cornerRadius(20)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.gray, lineWidth: 1) // Mukautettu reuna
+                            )
                     }
+
                     VStack(alignment: .leading) {
                         Text("Description")
                             .font(.caption)
                             .foregroundColor(.gray)
                         TextEditor(text: $route.description)
+                            .padding()
                             .frame(height: 150) // Määritetään korkeus
-                            .border(Color.gray, width: 1) // Reuna korostaa kenttää
-                            .padding(.top, -8) // Vähennetään ylimääräinen tila
+                            .background(colorScheme == .dark ? Color(hex: "#222222") : Color(hex: "#f1f1f1"))
+                            .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                            .cornerRadius(20)
+                            .overlay(
+                                RoundedRectangle(cornerRadius: 20)
+                                    .stroke(Color.gray, lineWidth: 1) // Mukautettu reuna
+                            )
                     }
 
-                    Picker("Activity Type", selection: $selectedActivity) {
-                        ForEach(TrackableWorkoutActivityType.allCases, id: \.self) { activity in
-                            Text(activity.activityName).tag(activity)
-                        }
+                    Picker("Activity Type", selection: $route.activityType) {
+                        Text("Cross Country Skiing").tag(TrackableWorkoutActivityType.crossCountrySkiing)
+                        Text("Cycling").tag(TrackableWorkoutActivityType.cycling)
+                        Text("Downhill Skiing").tag(TrackableWorkoutActivityType.downhillSkiing)
+                        Text("Equestrian Sports").tag(TrackableWorkoutActivityType.equestrianSports)
+                        Text("Flying").tag(TrackableWorkoutActivityType.flying)
+                        Text("Golf").tag(TrackableWorkoutActivityType.golf)
+                        Text("Hand Cycling").tag(TrackableWorkoutActivityType.handCycling)
+                        Text("Hiking").tag(TrackableWorkoutActivityType.hiking)
+                        Text("Hunting").tag(TrackableWorkoutActivityType.hunting)
+                        Text("Motorcycling").tag(TrackableWorkoutActivityType.motorcycling)
+                        Text("Driving").tag(TrackableWorkoutActivityType.driving)
+                        Text("Other").tag(TrackableWorkoutActivityType.other)
+                        Text("Paddling").tag(TrackableWorkoutActivityType.paddling)
+                        Text("Rowing").tag(TrackableWorkoutActivityType.rowing)
+                        Text("Running").tag(TrackableWorkoutActivityType.running)
+                        Text("Sailing").tag(TrackableWorkoutActivityType.sailing)
+                        Text("Snow Sports").tag(TrackableWorkoutActivityType.snowSports)
+                        Text("Snowboarding").tag(TrackableWorkoutActivityType.snowboarding)
+                        Text("Stationary").tag(TrackableWorkoutActivityType.stationary)
+                        Text("Surfing Sports").tag(TrackableWorkoutActivityType.surfingSports)
+                        Text("Swimming").tag(TrackableWorkoutActivityType.swimming)
+                        Text("Triathlon").tag(TrackableWorkoutActivityType.swimBikeRun)
+                        Text("Walking").tag(TrackableWorkoutActivityType.walking)
+                        Text("Wheelchair Run Pace").tag(TrackableWorkoutActivityType.wheelchairRunPace)
+                        Text("Wheelchair Walk Pace").tag(TrackableWorkoutActivityType.wheelchairWalkPace)
                     }
-                    .pickerStyle(WheelPickerStyle())
+                    .pickerStyle(.wheel)
+                    /*
+                     Picker("Activity Type", selection: $route.activityType) {
+                         ForEach(TrackableWorkoutActivityType.allCases.sorted(by: { $0.activityName < $1.activityName }), id: \.self) { activity in
+                             Text(activity.activityName).tag(activity)
+                         }
+                     }
+                     .pickerStyle(.menu)
+                     */
                 }
             }
             .navigationTitle("Edit Route")
@@ -178,12 +236,14 @@ struct RouteEditForm: View {
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Button("Save") {
-                        // route.activityType = selectedActivity.activity
                         locationManager.routeManager.updateRoute(route)
                         onSave()
                     }
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                 }
+            }
+            .onChange(of: route.activityType) {
+                debugPrint(msg: "onChange of activity: \(route.activityType)")
             }
         }
     }
