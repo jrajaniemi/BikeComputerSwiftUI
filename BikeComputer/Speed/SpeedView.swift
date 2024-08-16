@@ -32,27 +32,92 @@ struct SpeedTextView: View {
     var speed: Double
     var imperialSpeed: Double
     var speedFontSize: CGFloat
+    var totalDistance: Double
+    var imperialTotalDistance: Double
     
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
+    
+    @Binding var isZoomed: Bool // Binding muuttuja, joka seuraa, onko zoomaus päällä
+    
     var body: some View {
-        if unitPreference == 1 {
-            VStack(spacing: 0) {
-                Text(imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
-                    .font(.custom("Barlow-Black", size: speedFontSize))
-                    .multilineTextAlignment(.center)
+        ZStack {
+            if isZoomed {
+                // Zoomattu näkymä, joka näyttää vain nopeuden suurella fontilla
+                VStack {
+                    if unitPreference == 1 {
+                        Text(imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
+                            .font(.custom("Barlow-Black", size: 200))
+                            .multilineTextAlignment(.center)
+                            .onTapGesture {
+                                isZoomed.toggle() // Palataan alkuperäiseen näkymään
+                            }
+                    } else {
+                        Text(speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
+                            .font(.custom("Barlow-Black", size: 200))
+                            .multilineTextAlignment(.center)
+                            .onTapGesture {
+                                isZoomed.toggle() // Palataan alkuperäiseen näkymään
+                            }
+                    }
                     
-                Text("mph")
-                    .font(.custom("Barlow-ExtraLight", size: 32))
-            }
-                
-        } else {
-            VStack(spacing: 0) {
-                Text(speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
-                    .font(.custom("Barlow-Black", size: speedFontSize))
-                    .multilineTextAlignment(.center)
+                    Text(unitPreference == 1 ? "mph" : "km/h")
+                        .font(.custom("Barlow-ExtraLight", size: 32))
+                        .onTapGesture {
+                            isZoomed.toggle() // Palataan alkuperäiseen näkymään
+                        }
                     
-                Text("km/h")
-                    .font(.custom("Barlow-ExtraLight", size: 32))
+                    Spacer()
+                    
+                    Spacer()
+
+                    if unitPreference == 1 {
+                        if imperialTotalDistance < 5280 {
+                            Text("\(imperialTotalDistance, specifier: "%.0f") ft")
+                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .multilineTextAlignment(.center)
+                                .onTapGesture {
+                                    isZoomed.toggle() // Palataan alkuperäiseen näkymään
+                                }
+                        } else {
+                            Text("\(imperialTotalDistance / 5280, specifier: "%.2f") mi")
+                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .multilineTextAlignment(.center)
+                                .onTapGesture {
+                                    isZoomed.toggle() // Palataan alkuperäiseen näkymään
+                                }
+                        }
+                    } else {
+                        if totalDistance < 1000 {
+                            Text("\(totalDistance, specifier: "%.0f") m")
+                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .multilineTextAlignment(.center)
+                                .onTapGesture {
+                                    isZoomed.toggle() // Palataan alkuperäiseen näkymään
+                                }
+                        } else {
+                            Text("\(totalDistance / 1000, specifier: "%.2f") km")
+                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .multilineTextAlignment(.center)
+                                .onTapGesture {
+                                    isZoomed.toggle() // Palataan alkuperäiseen näkymään
+                                }
+                        }
+                    }
+                    
+                }
+            } else {
+                // Alkuperäinen näkymä
+                VStack(spacing: 0) {
+                    Text(unitPreference == 1 ? (imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed)) : (speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed)))
+                        .font(.custom("Barlow-Black", size: speedFontSize))
+                        .multilineTextAlignment(.center)
+                        .onTapGesture {
+                            isZoomed.toggle() // Näytetään suurennettu näkymä
+                        }
+                        
+                    Text(unitPreference == 1 ? "mph" : "km/h")
+                        .font(.custom("Barlow-ExtraLight", size: 32))
+                }
             }
         }
     }
@@ -76,9 +141,8 @@ struct HeadingAndAltitudeView: View {
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
     @AppStorage("rowTwoLeftView") private var rowTwoLeftView: Int = 2
     
-    @State private var showGValue: Bool = false  // Togglaa G-arvon ja suunnan välillä
+    @State private var showGValue: Bool = false // Togglaa G-arvon ja suunnan välillä
     @State private var showTimeValue: Bool = false // Togglaa kellonajan ja muiden tietojen välillä
-    
     
     var body: some View {
         HStack(spacing: 0) {
@@ -119,7 +183,6 @@ struct HeadingAndAltitudeView: View {
     }
 }
 
-
 /// A SwiftUI view that displays distance information.
 ///
 /// - Parameters:
@@ -133,7 +196,6 @@ struct DistanceView: View {
     var imperialTotalDistance: Double
     var imperialOdometer: Double
 
-    
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
 
     var body: some View {
@@ -249,6 +311,7 @@ struct SpeedView: View {
     @State private var autoRecordCount: Int = 0 // Autorecord not never started
     @State private var autoRecordTimer: Timer?
     @State private var autoRecord: Int = 0
+    @State private var isZoomed = false // Seuraa, onko nopeusnäyttö zoomattu
 
     private func startRecording() {
         if !isRecording {
@@ -266,32 +329,37 @@ struct SpeedView: View {
                     SpeedTextView(
                         speed: locationManager.speed,
                         imperialSpeed: locationManager.imperialSpeed,
-                        speedFontSize: locationManager.speed < 100 ? 140 : 130
+                        speedFontSize: locationManager.speed < 100 ? 140 : 130,
+                        totalDistance: locationManager.routeManager.totalDistance,
+                        imperialTotalDistance: locationManager.routeManager.imperialTotalDistance,
+                        isZoomed: $isZoomed // Binding tilan hallintaan
                     )
                     .frame(width: geometry.size.width, height: geometry.size.height * 6 / 12)
                     .background(colorScheme == .dark ? Color.black : Color.white)
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     
-                    HeadingAndAltitudeView(
-                        heading: locationManager.heading,
-                        altitude: locationManager.altitude,
-                        imperialAltitude: locationManager.imperialAltitude,
-                        altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40,
-                        G: locationManager.totalAcceleration
-                    )
-                    .frame(height: geometry.size.height * 3 / 12)
-                    .background(colorScheme == .dark ? Color.black : Color.white)
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                    
-                    DistanceView(
-                        totalDistance: locationManager.routeManager.totalDistance,
-                        odometer: locationManager.routeManager.odometer,
-                        imperialTotalDistance: locationManager.routeManager.imperialTotalDistance,
-                        imperialOdometer: locationManager.routeManager.imperialOdometer
-                    )
-                    .frame(height: geometry.size.height * 3 / 12)
-                    .background(colorScheme == .dark ? Color.black : Color.white)
-                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    if !isZoomed { // Näytetään muut näkymät vain, jos zoomaus ei ole päällä
+                        HeadingAndAltitudeView(
+                            heading: locationManager.heading,
+                            altitude: locationManager.altitude,
+                            imperialAltitude: locationManager.imperialAltitude,
+                            altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40,
+                            G: locationManager.totalAcceleration
+                        )
+                        .frame(height: geometry.size.height * 3 / 12)
+                        .background(colorScheme == .dark ? Color.black : Color.white)
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                        
+                        DistanceView(
+                            totalDistance: locationManager.routeManager.totalDistance,
+                            odometer: locationManager.routeManager.odometer,
+                            imperialTotalDistance: locationManager.routeManager.imperialTotalDistance,
+                            imperialOdometer: locationManager.routeManager.imperialOdometer
+                        )
+                        .frame(height: geometry.size.height * 3 / 12)
+                        .background(colorScheme == .dark ? Color.black : Color.white)
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    }
                 }
                 .onAppear {
                     routeName = "Default Route"
@@ -314,22 +382,23 @@ struct SpeedView: View {
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     .position(x: 60, y: 30)
                     .font(.custom("Barlow-SemiBold", size: 11))
-                
-                RecordButtonView(
-                    isRecording: $isRecording,
-                    autoRecordCount: $autoRecordCount,
-                    locationManager: locationManager,
-                    routeName: routeName,
-                    routeDescription: routeDescription,
-                    showingAlert: $showingAlert,
-                    alertMessage: $alertMessage
-                )
-                .frame(width: geometry.size.width / 2, height: geometry.size.height * 1 / 12)
-                .background(colorScheme == .dark ? Color(hex: "#333333") : Color(hex: "#eeeeee"))
-                .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                .cornerRadius(geometry.size.height * 1 / 24)
-                
-                if isRecording == true {
+                if !isZoomed {
+                    RecordButtonView(
+                        isRecording: $isRecording,
+                        autoRecordCount: $autoRecordCount,
+                        locationManager: locationManager,
+                        routeName: routeName,
+                        routeDescription: routeDescription,
+                        showingAlert: $showingAlert,
+                        alertMessage: $alertMessage
+                    )
+                    .frame(width: geometry.size.width / 2, height: geometry.size.height * 1 / 12)
+                    .background(colorScheme == .dark ? Color(hex: "#333333") : Color(hex: "#eeeeee"))
+                    .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                    .cornerRadius(geometry.size.height * 1 / 24)
+                }
+                    
+                if isRecording == true  {
                     VStack {
                         HStack {
                             Spacer()
@@ -339,8 +408,6 @@ struct SpeedView: View {
                                 .foregroundColor(.red)
                                 .font(.title)
                                 .frame(width: 55, height: 55, alignment: .center)
-                            
-                            // .breathe
                         }
                              
                         Spacer()

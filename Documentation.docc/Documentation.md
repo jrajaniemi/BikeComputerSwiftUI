@@ -20,6 +20,12 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 
 ## What's new in versio 0.1.20
 
+## What's new in versio 0.1.19
+
+## What's new in versio 0.1.18
+
+* Lisäsimmen uuden ajonäkymän, jossa näkyy vain nopeus ja matkamittari suurella fonttikoolla. Voit vaihtaa näkymiä koskettamalla nopeus näkymää.
+
 ## What's new in versio 0.1.17
 
 * Nyt käyttäjä voi muokata reitin nimeä, lisätä kuvaus reitistä sekä vaihtaa aktiivisuustyyppiä. Aktiivisuustyypit ovat Apple Health yhteensopivia, joten tulevaisuudessa lisäämme sille tuen.
@@ -95,9 +101,49 @@ Barlow is a slightly rounded, low-contrast, grotesk type family. Drawing from th
 The Barlow project is led by Jeremy Tribby, a designer based in San Francisco, USA. To contribute, see github.com/jpt/barlow
 
 
-# Detailed Version history
 
-# 1.1.1 Aug 10, 2024
+# RIDE Computer
+
+Minimalistic Ride Dashboard
+
+## Promote Text
+
+RIDE Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer.
+
+## Description
+
+RIDE Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer. The super simple interface offers two colour themes: Black/White and White/Black. The app allows you to record your route, which is saved on your phone. You can review your route after the ride is complete. This app has no adverts, paywalls, or additional features, so you can just ride! 
+
+RIDE Computer is available in more than 60 languages!
+
+# Public Version history
+
+## 1.1.2 
+
+We are excited to introduce the latest update to the RIDE Computer app, packed with new features and improvements to enhance your cycling experience!
+
+New Features
+
+
+Route Editing: You can now rename your saved routes, add descriptions, and change the activity type directly from the app. The activity types are Apple Health compatible, and we plan to add support for this in the future.
+
+
+Customizable Display: Users can now replace the direction view with a clock or a G-meter. Simply tap the direction view to test this new feature! The G-meter will only function when your iPhone’s power-saving mode is turned off. You can adjust this setting by modifying the battery threshold in the app settings.
+
+
+Added Localization Support: We’ve added support for the following languages: Armenian (hy), Bosnian (bs), Georgian (ka), Icelandic (is), Latin (la), Macedonian (mk), and Romansh (rm-CH).
+
+
+Bug Fixes
+
+
+Auto Record Fix: We have fixed the bug where Auto Record would not stop correctly.
+
+
+Update your RIDE Computer now to enjoy these new features and improvements. Happy riding!
+
+## 1.1.1 Aug 10, 2024
+
 We are excited to bring you the latest update to RIDE Computer, packed with new features and enhancements to elevate your cycling experience!
 
 
@@ -134,7 +180,8 @@ Odometer Bug Fix in Tracking: The odometer tracking bug has been fixed, providin
 
 Update your RIDE Computer now to enjoy these improvements and continue to enhance your cycling adventures. Happy riding!
 
-# 1.1 Aug 6, 2024
+## 1.1 Aug 6, 2024
+
 We are delighted to announce the release of version 1.1 of the re-named RIDE Computer, bringing you exciting new features and improvements designed to enhance your cycling experience.
 
 
@@ -155,7 +202,8 @@ We have redesigned the main dashboard to provide an even more intuitive and user
 
 Upgrade your RIDE Computer today to take advantage of these innovative features and improvements. Keep exploring, riding, and sharing your journeys with ease. Happy riding!
 
-# 1.0.4 Aug 3, 2024
+## 1.0.4 Aug 3, 2024
+
 Exciting New Features and Enhancements
 
 
@@ -180,7 +228,8 @@ Experience your routes before you ride! Our new Route Simulator feature allows y
 
 Upgrade your BIKE App Computer today to enjoy these innovative new features and improvements. Keep riding, exploring, and sharing your adventures with ease. Happy cycling!
 
-# 1.0.3 Jul 31, 2024
+## 1.0.3 Jul 31, 2024
+
 We're thrilled to announce some new features and improvements to your BIKE App Computer, making your cycling experience better than ever.
 
 
@@ -201,7 +250,8 @@ New Heading Driven Route Points for Better Routes: Navigating has never been eas
 
 Upgrade your BIKE App Computer today and experience these incredible new features and improvements. Happy riding!
 
-# 1.0.2 Jul 30, 2024
+## 1.0.2 Jul 30, 2024
+
 We're excited to bring you the latest update to Bike App Computer! Here are the new features and improvements in this version:
 
 
@@ -225,8 +275,11 @@ Introducing the Barlow font! We've updated the app with a new, more readable fon
 
 Update now and enjoy these new features and improvements. Thank you for choosing Bike App Computer!
 
-# 1.0.1 Jul 29, 2024
+## 1.0.1 Jul 29, 2024
+
 We are excited to introduce a new feature in the Bike App Computer: battery consumption control! Now you can directly adjust battery usage from the settings. With the new battery threshold slider, ranging from 40-100%, you have full control over your device’s performance. When your battery level is above the threshold or your device is charging, GPS updates will be frequent and precise, ensuring optimal location accuracy and route tracking. If the battery level falls below your set threshold, the app will automatically reduce update frequency and accuracy to conserve battery life. This innovative feature allows you to balance location precision and battery longevity, ensuring your app performs exactly as you need it to during your rides. Optimize your experience with the new battery management settings today!
 
 
-# 1.0 Jul 27, 2024
+## 1.0 Jul 27, 2024
+
+Markkinointipäällikkönä kirjoita maksimissaan 400 merkin mittainen englanninkielinen julkaisutiedote versiosta 1.1.3 kehittäjän kommenttien perusteella:
