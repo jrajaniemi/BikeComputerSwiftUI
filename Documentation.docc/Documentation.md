@@ -22,6 +22,8 @@ Bike App Computer provides a clear black-and-white dashboard interface displayin
 
 ## What's new in versio 0.1.19
 
+* uusi app iconÇ
+
 ## What's new in versio 0.1.18
 
 * Lisäsimmen uuden ajonäkymän, jossa näkyy vain nopeus ja matkamittari suurella fonttikoolla. Voit vaihtaa näkymiä koskettamalla nopeus näkymää.
