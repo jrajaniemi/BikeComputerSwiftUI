@@ -103,7 +103,6 @@ struct SpeedTextView: View {
                                 }
                         }
                     }
-                    
                 }
             } else {
                 // Alkuperäinen näkymä
@@ -137,9 +136,12 @@ struct HeadingAndAltitudeView: View {
     var imperialAltitude: Double
     var altitudeFontSize: CGFloat
     var G: Double
+    var elapsedTime: TimeInterval
+    var elapsedTimeTimer: Timer?
     
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
     @AppStorage("rowTwoLeftView") private var rowTwoLeftView: Int = 2
+    @AppStorage("rowTwoRightView") private var rowTwoRightView: Int = 0
     
     @State private var showGValue: Bool = false // Togglaa G-arvon ja suunnan välillä
     @State private var showTimeValue: Bool = false // Togglaa kellonajan ja muiden tietojen välillä
@@ -169,15 +171,38 @@ struct HeadingAndAltitudeView: View {
                         rowTwoLeftView = 0
                     }
             }
-
-            if unitPreference == 1 {
-                Text("\(imperialAltitude, specifier: "%.0f") ft")
-                    .font(.custom("Barlow-Light", size: altitudeFontSize))
-                    .frame(maxWidth: .infinity)
+            if rowTwoRightView == 0 {
+                if unitPreference == 1 {
+                    Text("\(imperialAltitude, specifier: "%.0f") ft")
+                        .font(.custom("Barlow-Light", size: altitudeFontSize))
+                        .frame(maxWidth: .infinity)
+                        .onTapGesture {
+                            rowTwoRightView = 1 // Vaihda takaisin suunnan ja G-arvon välillä
+                        }
+                } else {
+                    Text("\(altitude, specifier: "%.0f") m")
+                        .font(.custom("Barlow-Light", size: altitudeFontSize))
+                        .frame(maxWidth: .infinity)
+                        .onTapGesture {
+                            rowTwoRightView = 1 // Vaihda takaisin suunnan ja G-arvon välillä
+                        }
+                }
             } else {
-                Text("\(altitude, specifier: "%.0f") m")
-                    .font(.custom("Barlow-Light", size: altitudeFontSize))
-                    .frame(maxWidth: .infinity)
+                if elapsedTimeTimer == nil {
+                    Text("0:00")
+                        .font(.custom("Barlow-Light", size: altitudeFontSize))
+                        .frame(maxWidth: .infinity)
+                        .onTapGesture {
+                            rowTwoRightView = 0
+                        }
+                } else {
+                    (Text("+") + Text(Date(timeIntervalSinceNow: -elapsedTime), style: .timer))
+                        .font(.custom("Barlow-Light", size: altitudeFontSize))
+                        .frame(maxWidth: .infinity)
+                        .onTapGesture {
+                            rowTwoRightView = 0
+                        }
+                }
             }
         }
     }
@@ -249,25 +274,19 @@ struct RecordButtonView: View {
     @Binding var showingAlert: Bool
     @Binding var alertMessage: String
 
+    var startRecording: () -> Void // Lisää funktio
+    var stopRecording: () -> Void // Lisää funktio
+    
     var body: some View {
         Button(action: {
             isRecording.toggle()
             if isRecording {
-                locationManager.routeManager.startNewRoute(name: routeName, description: routeDescription)
-                locationManager.startLocationUpdates()
-                locationManager.isTracking = true
+                startRecording() // Käytä välitettyä funktiota
             } else {
-                if locationManager.routeManager.currentRoute?.points.isEmpty ?? true {
-                    alertMessage = "No points in current route to save."
-                    showingAlert = true
-                    isRecording = false
-                    locationManager.routeManager.totalDistance = 0
-                } else {
-                    locationManager.routeManager.endCurrentRoute()
-                    locationManager.isTracking = false
-                }
+                stopRecording() // Käytä välitettyä funktiota
                 autoRecordCount += 1
             }
+            
         }) {
             Text(isRecording ? "STOP" : "RECORD")
                 .font(.custom("Barlow-Black", size: 24))
@@ -312,16 +331,60 @@ struct SpeedView: View {
     @State private var autoRecordTimer: Timer?
     @State private var autoRecord: Int = 0
     @State private var isZoomed = false // Seuraa, onko nopeusnäyttö zoomattu
-
-    private func startRecording() {
-        if !isRecording {
-            isRecording = true
-            locationManager.routeManager.startNewRoute(name: routeName, description: routeDescription)
-            locationManager.startLocationUpdates()
-            locationManager.isTracking = true
-        }
-    }
     
+    @State private var elapsedTime: TimeInterval = 0 // Kulunut aika
+    @State private var elapsedTimeTimer: Timer? // Ajastin
+
+    func startRecording() {
+        isRecording = true
+        locationManager.routeManager.startNewRoute(name: routeName, description: routeDescription)
+        locationManager.startLocationUpdates()
+        locationManager.isTracking = true
+
+        debugPrint(msg: "startRecording()")
+        startElapsedTimeTimer()
+    }
+
+    func stopRecording() {
+        stopElapsedTimeTimer()
+
+        if locationManager.routeManager.currentRoute?.points.isEmpty ?? true {
+            alertMessage = "No points in current route to save."
+            showingAlert = true
+            isRecording = false
+            locationManager.routeManager.totalDistance = 0
+            locationManager.isTracking = false
+        } else {
+            locationManager.routeManager.endCurrentRoute()
+            locationManager.isTracking = false
+        }
+        autoRecordCount += 1
+
+        debugPrint(msg: "stopRecording()")
+    }
+   
+    func startElapsedTimeTimer() {
+        if elapsedTimeTimer != nil {
+            elapsedTimeTimer?.invalidate() // Varmista, että vanha ajastin on pysäytetty
+        }
+        elapsedTime = 0 // Nollaa aika vain tallennuksen alkaessa
+        elapsedTimeTimer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            elapsedTime += 1
+        }
+        debugPrint(msg: "startElapsedTimeTimer()")
+        debugPrint(msg: String(elapsedTime))
+        debugPrint(msg: String(elapsedTimeTimer.debugDescription))
+    }
+
+    func stopElapsedTimeTimer() {
+        elapsedTimeTimer?.invalidate()
+        elapsedTimeTimer = nil
+        elapsedTime = 0
+        debugPrint(msg: "stopElapsedTimeTimer()")
+        debugPrint(msg: String(elapsedTime))
+        debugPrint(msg: String(elapsedTimeTimer.debugDescription))
+    }
+
     var body: some View {
         GeometryReader { geometry in
             ZStack {
@@ -344,7 +407,9 @@ struct SpeedView: View {
                             altitude: locationManager.altitude,
                             imperialAltitude: locationManager.imperialAltitude,
                             altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40,
-                            G: locationManager.totalAcceleration
+                            G: locationManager.totalAcceleration,
+                            elapsedTime: elapsedTime,
+                            elapsedTimeTimer: elapsedTimeTimer
                         )
                         .frame(height: geometry.size.height * 3 / 12)
                         .background(colorScheme == .dark ? Color.black : Color.white)
@@ -390,7 +455,9 @@ struct SpeedView: View {
                         routeName: routeName,
                         routeDescription: routeDescription,
                         showingAlert: $showingAlert,
-                        alertMessage: $alertMessage
+                        alertMessage: $alertMessage,
+                        startRecording: startRecording, // Välitä funktio
+                        stopRecording: stopRecording // Välitä funktio
                     )
                     .frame(width: geometry.size.width / 2, height: geometry.size.height * 1 / 12)
                     .background(colorScheme == .dark ? Color(hex: "#333333") : Color(hex: "#eeeeee"))
@@ -398,7 +465,7 @@ struct SpeedView: View {
                     .cornerRadius(geometry.size.height * 1 / 24)
                 }
                     
-                if isRecording == true  {
+                if isRecording == true {
                     VStack {
                         HStack {
                             Spacer()
@@ -434,7 +501,7 @@ struct SpeedView: View {
     /// after a n-second delay. The timer is then invalidated.
     private func shouldStartRecording() {
         // debugPring(msg: "shouldStartRecording - AutoRecord: \(autoRecord) AutoRecordCount: \(autoRecordCount)")
-        if locationManager.currentSpeedClass != .stationary && autoRecord == 1 && autoRecordCount == 0 {
+        if locationManager.currentSpeedClass != .stationary && locationManager.speed > 0.5 && autoRecord == 1 && autoRecordCount == 0 {
             DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                 autoRecordTimer?.invalidate()
                 autoRecordTimer = nil

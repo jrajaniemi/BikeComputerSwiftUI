@@ -53,7 +53,14 @@ extension View {
 
     func routeDetails() -> some View {
         self
-            .font(.custom("Barlow-Bold", size: 16))
-            .frame(maxWidth: .infinity, alignment: .center)
+            .font(.custom("Barlow-Bold", size: 18))
+            .shadow(color: Color.black.opacity(0.85), radius: 5, x: 3, y: 3) // Lisää varjo kuvakkeelle
+    }
+    
+    func routeHeaders() -> some View {
+        self
+            .font(.custom("Barlow-Light", size: 18))
+            .shadow(color: Color.black.opacity(0.85), radius: 5, x: 3, y: 3) // Lisää varjo kuvakkeelle
+            .padding(.top, 5)
     }
 }

@@ -76,8 +76,8 @@
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
-         identifier = "../../route.gpx"
-         referenceType = "0">
+         identifier = "Moscow, Russia"
+         referenceType = "1">
       </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction

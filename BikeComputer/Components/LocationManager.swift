@@ -16,7 +16,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
     private let updateInterval: TimeInterval = 1 // Päivitys n kertaa sekunnissa
-    private var updateSpeedTime: Double = 4.0 // Päivitys n sekunnin välein
+    private var updateSpeedTime: Double = 3.0 // Päivitys n sekunnin välein
     private var updateSpeedoMeterTime: Double = 4.0 // Päivitys n sekunnin välein
     
     var HF = 3
@@ -115,7 +115,6 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
 
                     let averageAcceleration = weakSelf.accelerationHistory.reduce(0, +) / Double(weakSelf.accelerationHistory.count)
 
-                    
                     weakSelf.totalAcceleration = averageAcceleration
 
                     if abs(averageAcceleration) > 2.0 {
@@ -285,7 +284,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
             latitude = location.coordinate.latitude
             accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
             // routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
-            addRoutePoint()
+            addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
             debugPrint(msg: "\(Date()) Location updated: \(speed):\(currentSpeedClass) -  \(latitude), \(longitude) = \(altitude)")
         }
     }
@@ -314,19 +313,55 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
                 longitude = location.coordinate.longitude
                 latitude = location.coordinate.latitude
                 accuracyDescription = getAccuracyDescription(horizontalAccuracy: location.horizontalAccuracy)
-                addRoutePoint()
+                addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
                 debugPrint(msg: "\(Date()) Heading updated: \(heading) \(roundedNewHeading) - \(roundedLastHeading) = \(headingChange), \(HF)")
             }
         }
     }
+
+    /*
+     func addRoutePoint() {
+         if isTracking == true && speed > 0.25 {
+             debugPrint(msg: "Route point added: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
+             routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
+         }
+     }
+     */
     
-    func addRoutePoint() {
-        if isTracking == true && speed > 0 {
-            debugPrint(msg: "Route point added: Speed: \(speed), Altitude: \(altitude), Heading: \(heading), Accuracy: \(accuracyDescription)")
+    func addRoutePoint(speed: Double, heading: Double, altitude: Double, longitude: Double, latitude: Double) {
+        guard isTracking, speed > 0.1, accuracyDescription != "Invalid", let route = routeManager.currentRoute else { return }
+        debugPrint(msg: "addRoutePoint()")
+        let newPoint = RoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude, timestamp: Date())
+        debugPrint(msg: "addRoutePoint() / newPoint: \(newPoint)")
+        if let lastPoint = route.points.last {
+            debugPrint(msg: "addRoutePoint() / lastPoint found")
+            let distance = calculateDistance(from: lastPoint, to: newPoint)
+            debugPrint(msg: "addRoutePoint() / distance: \(distance)")
+            
+            var radius = 3.0
+            if accuracyDescription == "High" {
+                radius = 7.5
+            } else if accuracyDescription == "Medium" {
+                radius = 15
+            } else if accuracyDescription == "Low" {
+                radius = 70
+            } else if accuracyDescription == "Very Low" {
+                radius = 100
+            }
+            
+            if distance > radius {
+                routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
+            } else {
+                return
+            }
+        } else {
+            // Jos ei ole viimeistä pistettä, lisää uusi piste
             routeManager.addRoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude)
         }
+
+        // debugPrint(msg: "addRoutePoint() / distance now: \(String(describing: ))")
     }
-    
+
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
 #if DEBUG
         if let clError = error as? CLError {

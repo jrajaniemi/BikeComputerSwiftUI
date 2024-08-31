@@ -120,6 +120,16 @@ RIDE Computer is available in more than 60 languages!
 
 # Public Version history
 
+## 1.1.4 Aug 21, 2024
+
+This update introduces a new App Icon designed to stand out more clearly on your phone screen, enhancing visibility and accessibility.
+
+## 1.1.3 Aug 16, 2024
+
+We are excited to introduce RIDE Computer version 1.1.3!
+
+This update features a new minimalistic ride view, displaying only speed and odometer with a large font size for easy readability. Simply tap on the speed display to switch between views. Download now to enjoy a cleaner, more focused cycling experience. Happy riding!
+
 ## 1.1.2 
 
 We are excited to introduce the latest update to the RIDE Computer app, packed with new features and improvements to enhance your cycling experience!

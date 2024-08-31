@@ -6,6 +6,8 @@
 //
 import CoreLocation
 import Foundation
+import UIKit
+import SwiftUI
 
 func calculateTotalDistance(for route: Route) -> Double {
     var totalDistance = 0.0
@@ -76,6 +78,37 @@ func getSpeedClass(route: Route) -> TrackableWorkoutActivityType {
         newSpeedClass = .other
     }
     return newSpeedClass
+}
+
+func calculateElapsedTime(for route: Route) -> TimeInterval {
+    guard let firstTimestamp = route.points.first?.timestamp,
+          let lastTimestamp = route.points.last?.timestamp else {
+        return 0.0
+    }
+    return lastTimestamp.timeIntervalSince(firstTimestamp)
+}
+
+func imageOrientation(from uiOrientation: UIImage.Orientation) -> Image.Orientation {
+    switch uiOrientation {
+    case .up:
+        return .up
+    case .down:
+        return .down
+    case .left:
+        return .left
+    case .right:
+        return .right
+    case .upMirrored:
+        return .upMirrored
+    case .downMirrored:
+        return .downMirrored
+    case .leftMirrored:
+        return .leftMirrored
+    case .rightMirrored:
+        return .rightMirrored
+    @unknown default:
+        return .up // Palautetaan oletuksena "up", jos tuntematon orientaatio
+    }
 }
 
 

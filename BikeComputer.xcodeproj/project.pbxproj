@@ -50,9 +50,11 @@
 		4AB7E4E42C6887A500BE2E23 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB7E4E32C6887A500BE2E23 /* Enums.swift */; };
 		4AB7E4E62C68883600BE2E23 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB7E4E52C68883600BE2E23 /* Structs.swift */; };
 		4AC46AB12C5AA66C0085CE5C /* MyPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */; };
+		4ACE45EA2C810B310077F93A /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4ACE45E92C810B310077F93A /* ImagePicker.swift */; };
 		4AE358A72C5D0C410007AC65 /* helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE358A62C5D0C410007AC65 /* helpers.swift */; };
 		4AE358E72C5E675F0007AC65 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */; };
 		4AE358E92C5F68810007AC65 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4AE358E82C5F68810007AC65 /* Localizable.xcstrings */; };
+		4AF796D32C7674B000C69AAF /* route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF796D22C7674B000C69AAF /* route.json */; };
 		4AF97DC92C57731A00D5EE36 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DC82C57731A00D5EE36 /* Documentation.docc */; };
 /* End PBXBuildFile section */
 
@@ -104,9 +106,12 @@
 		4AB7E4E32C6887A500BE2E23 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4AB7E4E52C68883600BE2E23 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPosition.swift; sourceTree = "<group>"; };
+		4ACE45E92C810B310077F93A /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
 		4AE358A62C5D0C410007AC65 /* helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = helpers.swift; sourceTree = "<group>"; };
 		4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotHelper.swift; sourceTree = "<group>"; };
 		4AE358E82C5F68810007AC65 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		4AF796D12C7646F500C69AAF /* route.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = route.gpx; sourceTree = "<group>"; };
+		4AF796D22C7674B000C69AAF /* route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = route.json; sourceTree = "<group>"; };
 		4AF97DC82C57731A00D5EE36 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -188,6 +193,7 @@
 				4A92EF5B2C51B52F005083C5 /* RouteMapView.swift */,
 				4A311B302C558E9800A576B8 /* RouteMapView_Previews.swift */,
 				4A311B322C55993E00A576B8 /* BezierInterpolatePoints.swift */,
+				4ACE45E92C810B310077F93A /* ImagePicker.swift */,
 			);
 			path = Route;
 			sourceTree = "<group>";
@@ -211,6 +217,8 @@
 		4AA2DECF2C4AC3AC0065448C = {
 			isa = PBXGroup;
 			children = (
+				4AF796D12C7646F500C69AAF /* route.gpx */,
+				4AF796D22C7674B000C69AAF /* route.json */,
 				4AF97DC82C57731A00D5EE36 /* Documentation.docc */,
 				4A311B362C56AD8D00A576B8 /* Config.xcconfig */,
 				4AA2DEDA2C4AC3AC0065448C /* BikeComputer */,
@@ -421,6 +429,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4A34AC6A2C57B11C0098EDE1 /* Univers LT 45 Light.ttf in Resources */,
+				4AF796D32C7674B000C69AAF /* route.json in Resources */,
 				4A34AC562C57B10D0098EDE1 /* Barlow-LightItalic.ttf in Resources */,
 				4A34AC592C57B10D0098EDE1 /* Barlow-Medium.ttf in Resources */,
 				4A34AC422C57B0FA0098EDE1 /* Orbitron-VariableFont_wght.ttf in Resources */,
@@ -472,6 +481,7 @@
 				4A311B312C558E9800A576B8 /* RouteMapView_Previews.swift in Sources */,
 				4A92EF502C50759C005083C5 /* SpeedView.swift in Sources */,
 				4A92EF522C5075C5005083C5 /* SettingsView.swift in Sources */,
+				4ACE45EA2C810B310077F93A /* ImagePicker.swift in Sources */,
 				4AE358A72C5D0C410007AC65 /* helpers.swift in Sources */,
 				4AABFE5C2C4D939C00CCFBDB /* LocationManager.swift in Sources */,
 				4AA2DEDE2C4AC3AC0065448C /* ContentView.swift in Sources */,
@@ -669,7 +679,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -710,7 +720,7 @@
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};

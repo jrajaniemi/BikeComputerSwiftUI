@@ -34,6 +34,9 @@ class RouteManager: ObservableObject {
     
     init() {
         self.odometer = userDefaults.double(forKey: odometerKey)
+        #if DEBUG
+        // copyJsonToDocumentsAndRename()
+        #endif
         migrateOldRoutes()
         loadRoutes()
     }
@@ -62,7 +65,9 @@ class RouteManager: ObservableObject {
             currentRoute = nil
             return
         }
-        currentRoute?.endDate = Date()
+        
+        currentRoute?.endDate = Date() // Ensure endDate is set
+
         saveCurrentRoute()
         lastRoute = currentRoute
         updateOdometer()
@@ -73,7 +78,7 @@ class RouteManager: ObservableObject {
     func addRoutePoint(speed: Double, heading: Double, altitude: Double, longitude: Double, latitude: Double) {
         guard var route = currentRoute else { return }
         let newPoint = RoutePoint(speed: speed, heading: heading, altitude: altitude, longitude: longitude, latitude: latitude, timestamp: Date())
-        
+                
         // Calculate distance from the last point to the new point
         if let lastPoint = route.points.last {
             let distance = calculateDistance(from: lastPoint, to: newPoint)
@@ -83,7 +88,7 @@ class RouteManager: ObservableObject {
         route.points.append(newPoint)
         currentRoute = route
         routeLength = currentRoute?.points.count ?? 0
-        debugPrint(msg: "distance now: \(String(describing: currentRoute?.distance)) m")
+        debugPrint(msg: "RouteManager / distance now: \(String(describing: currentRoute?.distance)) m")
     }
     
     func getLastFivePoints() -> [RoutePoint] {
@@ -98,7 +103,7 @@ class RouteManager: ObservableObject {
     }
 
     func loadRoutes() {
-        // showAllFilesAndFolders()
+        showAllFilesAndFolders()
 
         let directory = getDocumentsDirectory()
 
@@ -136,7 +141,7 @@ class RouteManager: ObservableObject {
                     let updatedData = try JSONSerialization.data(withJSONObject: jsonObject ?? [:], options: .prettyPrinted)
                     try updatedData.write(to: fileUrl)
 
-#if DEBUG
+                    #if DEBUG
                     // Tulostetaan tiedoston sisältö
                     if let jsonString = String(data: updatedData, encoding: .utf8) {
                         // debugPrint(msg: "Updated file content for \(fileUrl.lastPathComponent):")
@@ -153,14 +158,14 @@ class RouteManager: ObservableObject {
                             }
                         }
                     }
-#endif
+                    #endif
                     let decoder = JSONDecoder()
                     let route = try decoder.decode(Route.self, from: updatedData)
                     loadedRoutes.append(route)
                     
                     // debugPrint(msg: "Successfully decoded route: \(route.name)")
                 } catch {
-                    // debugPrint(header: "Failed to decode route from \(fileUrl):", msg: error.localizedDescription)
+                    debugPrint(header: "Failed to decode route from \(fileUrl):", msg: error.localizedDescription)
                 }
             }
             
@@ -171,7 +176,7 @@ class RouteManager: ObservableObject {
                 // debugPrint(msg: String(self.routes.count))
             }
         } catch {
-            // debugPrint(header: "Failed to load routes: ", msg: error.localizedDescription)
+            debugPrint(header: "Failed to load routes: ", msg: error.localizedDescription)
         }
     }
 
@@ -280,7 +285,8 @@ class RouteManager: ObservableObject {
                         
                         // Uusi migraatio: Poista ActivityType-kääre ja päivitä suoraan TrackableWorkoutActivityType-tyyppiin
                         if let activityTypeDict = jsonObject["activityType"] as? [String: Any],
-                           let activityRawValue = activityTypeDict["activity"] as? UInt {
+                           let activityRawValue = activityTypeDict["activity"] as? UInt
+                        {
                             jsonObject["activityType"] = activityRawValue
                         }
                         
@@ -296,6 +302,40 @@ class RouteManager: ObservableObject {
             }
         } catch {
             debugPrint(msg: "Failed to read directory contents: \(error.localizedDescription)")
+        }
+    }
+    
+    func copyJsonToDocumentsAndRename() {
+        let fileManager = FileManager.default
+        let documentsDirectory = fileManager.urls(for: .documentDirectory, in: .userDomainMask).first!
+        
+        // Tarkistetaan ensin, onko tiedosto jo siirretty ja uudelleennimetty
+        guard let bundleURL = Bundle.main.url(forResource: "route", withExtension: "json"),
+              let data = try? Data(contentsOf: bundleURL),
+              let jsonObject = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
+              let id = jsonObject["id"] as? String
+        else {
+            print("Failed to load route.json from bundle or parse its contents.")
+            return
+        }
+        
+        let newFilename = "\(UUID(uuidString: id)).json"
+        let newDestinationURL = documentsDirectory.appendingPathComponent(newFilename)
+        
+        // Jos tiedosto on jo olemassa, ei tehdä mitään
+        if fileManager.fileExists(atPath: newDestinationURL.path) {
+            print("File already exists: \(newFilename). No action taken.")
+            return
+        }
+        
+        // Kopiointi ja uudelleennimeäminen
+        let originalDestinationURL = documentsDirectory.appendingPathComponent("route.json")
+        do {
+            try fileManager.copyItem(at: bundleURL, to: originalDestinationURL)
+            try fileManager.moveItem(at: originalDestinationURL, to: newDestinationURL)
+            print("File successfully copied and renamed to \(newFilename)")
+        } catch {
+            print("Error during file operations: \(error)")
         }
     }
 }

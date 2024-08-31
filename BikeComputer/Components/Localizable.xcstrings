@@ -1076,6 +1076,7 @@
       }
     },
     "%.1f %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -5013,6 +5014,12 @@
           }
         }
       }
+    },
+    "+" : {
+
+    },
+    "0:00" : {
+
     },
     "About" : {
       "localizations" : {
@@ -33328,6 +33335,9 @@
         }
       }
     },
+    "Select Image" : {
+
+    },
     "Settings" : {
       "comment" : "ContentView",
       "extractionState" : "manual",
@@ -35123,6 +35133,9 @@
           }
         }
       }
+    },
+    "Speed" : {
+
     },
     "Speed: %.3f km/h" : {
       "localizations" : {
@@ -38349,6 +38362,9 @@
         }
       }
     },
+    "Time" : {
+
+    },
     "Total Acceleration: %.2f G" : {
       "localizations" : {
         "ar" : {
@@ -39064,6 +39080,9 @@
           }
         }
       }
+    },
+    "Trip" : {
+
     },
     "Unit Preference" : {
       "extractionState" : "manual",

@@ -7,5 +7,5 @@
 
 // Configuration settings file format documentation can be found at:
 // https://help.apple.com/xcode/#/dev745c5c974
-VERSION = 0.1.19
-BUILD_NUMBER = 2024081604
+VERSION = 0.1.21
+BUILD_NUMBER = 2024083101

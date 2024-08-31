@@ -7,12 +7,14 @@ struct MapButtons: View {
     var lastPoint: CLLocationCoordinate2D
     @Binding var selectedRoute: Route?
     @Binding var position: MapCameraPosition
+    @Binding var backgroundImage: UIImage? // New binding for background image
+    @Binding var showImagePicker: Bool // New binding to show image picker
     @Environment(\.colorScheme) var colorScheme
     let startSimulation: () -> Void
     let takeScreenshot: () -> Void
 
     var body: some View {
-        HStack(spacing: 25) {
+        HStack(spacing: 20) {
             Button {
                 selectedRoute = nil // Sulkee karttanäkymän
             } label: {
@@ -30,7 +32,7 @@ struct MapButtons: View {
             }
             .buttonStyle(.bordered)
             .foregroundColor(.white)
-
+            /*
             Button {
                 startSimulation()
             } label: {
@@ -39,11 +41,21 @@ struct MapButtons: View {
             }
             .buttonStyle(.bordered)
             .foregroundColor(.white)
-
+             */
+            
             Button {
                 takeScreenshot()
             } label: {
-                Label("Screenshot", systemImage: "photo")
+                Label("Screenshot", systemImage: "camera.viewfinder")
+                    .font(.title3)
+            }
+            .buttonStyle(.bordered)
+            .foregroundColor(.white)
+            
+            Button {
+                showImagePicker = true // Show image picker
+            } label: {
+                Label("Select Image", systemImage: "photo.fill")
                     .font(.title3)
             }
             .buttonStyle(.bordered)
@@ -69,8 +81,19 @@ struct VisualEffectBlur: UIViewRepresentable {
 struct MapButtons_Previews: PreviewProvider {
     @State static var searchResults: [MKMapItem] = []
     @State static var position: MapCameraPosition = .automatic
+    @State static var backgroundImage: UIImage? = nil // Add state for background image
+    @State static var showImagePicker = false // Add state for image picker visibility
 
     static var previews: some View {
-        MapButtons(searchResults: $searchResults, lastPoint: CLLocationCoordinate2D(latitude: 60.1699, longitude: 24.9384), selectedRoute: .constant(nil), position: $position, startSimulation: {}, takeScreenshot: {})
+        MapButtons(
+            searchResults: $searchResults,
+            lastPoint: CLLocationCoordinate2D(latitude: 60.1699, longitude: 24.9384),
+            selectedRoute: .constant(nil),
+            position: $position,
+            backgroundImage: $backgroundImage, // Provide binding for background image
+            showImagePicker: $showImagePicker, // Provide binding for image picker visibility
+            startSimulation: {},
+            takeScreenshot: {}
+        )
     }
 }
