@@ -120,6 +120,25 @@ RIDE Computer is available in more than 60 languages!
 
 # Public Version history
 
+## 1.1.6 Aug 31, 2024
+
+
+We're excited to introduce RIDE Computer 1.1.6, bringing you enhanced features for a better riding experience! 
+
+Now, you can customize your route snapshots by selecting a background image from your Photos app. Additionally, route details like distance, average speed, and time offer an alternative display format by tapping the logo. 
+
+Ride time tracking has been added to the Computer view, visible by tapping altitude. Note: the simulator feature has been removed. Update now for an improved ride!
+
+## 1.1.5 Aug 23, 2024
+
+We are thrilled to announce the release of RIDE Computer 1.1.5!
+
+
+This update improves your cycling experience with a fix for the auto-recording startup issue and enhanced speedometer sensitivity.
+
+
+Enjoy smoother, more accurate ride tracking with this latest version. Update now to keep riding seamlessly!
+
 ## 1.1.4 Aug 21, 2024
 
 This update introduces a new App Icon designed to stand out more clearly on your phone screen, enhancing visibility and accessibility.
@@ -294,4 +313,7 @@ We are excited to introduce a new feature in the Bike App Computer: battery cons
 
 ## 1.0 Jul 27, 2024
 
-Markkinointipäällikkönä kirjoita maksimissaan 400 merkin mittainen englanninkielinen julkaisutiedote versiosta 1.1.3 kehittäjän kommenttien perusteella:
+Markkinointipäällikkönä kirjoita maksimissaan 400 merkin mittainen englanninkielinen julkaisutiedote versiosta 1.1.7 kehittäjän kommenttien perusteella:
+* Reittinäkymän kuvankaappausta on paranneltu. Nyt voit valita Photos-sovelluksen kuvista taustakuvan karttakuvan sijasta ja ottaa siitä kuvakaappauksen. Tähän liittyen rettitiedoille (matka, keskinopeus ja aika), on vaihtoehtoinen esitystapa. Voi vaihtaa sitä koskettamalla logoa.
+* Simulaattori on poistettu :(
+* Computer näkymään on lisätty ride time, josta näkee kuinka kauan reittiä on tallennettu. Sen saa näkyviin koskettamalla korkeutta (altitude)

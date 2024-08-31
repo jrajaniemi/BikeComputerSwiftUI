@@ -133,7 +133,7 @@ struct RouteMapView: View {
     }
 
     var body: some View {
-        let gradient = Gradient(colors: [.green, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .red])
+        let gradient = Gradient(colors: [.green, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .red])
         let stroke = StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round)
 
         GeometryReader { geometry in
@@ -171,24 +171,15 @@ struct RouteMapView: View {
                                 let canvasPoints = convertCoordinatesToCanvas(points: coordinates, size: size, minLat: minLat, maxLat: maxLat, minLon: minLon, maxLon: maxLon, margin: 0.1)
                                 let smoothPath = createSmoothPath(points: canvasPoints)
 
-                                // 1. Piirretään varjo reittiviivalle
-                                context.withCGContext { cgContext in
-                                    cgContext.setShadow(offset: CGSize(width: 4, height: 4), blur: 5, color: UIColor.black.withAlphaComponent(0.3).cgColor)
-                                    cgContext.addPath(smoothPath.cgPath)
-                                    cgContext.setStrokeColor(UIColor.gray.cgColor)
-                                    cgContext.setLineWidth(5)
-                                    cgContext.strokePath()
-                                }
-
-                                // 2. Piirretään itse reittiviiva varjon päälle
-                                context.stroke(smoothPath, with: .color(.white), lineWidth: 5)
 
                                 // Convert the start and end points using the same bounds with margins
                                 if let startPointCoordinate = CLLocationCoordinate2D.startPoint(from: route),
                                    let endPointCoordinate = CLLocationCoordinate2D.endPoint(from: route)
                                 {
                                     let startPoint = convertCoordinatesToCanvas(points: [startPointCoordinate], size: size, minLat: minLat, maxLat: maxLat, minLon: minLon, maxLon: maxLon, margin: 0.1).first
+                                    
                                     let endPoint = convertCoordinatesToCanvas(points: [endPointCoordinate], size: size, minLat: minLat, maxLat: maxLat, minLon: minLon, maxLon: maxLon, margin: 0.1).first
+                                    
                                     let imageSize = CGSize(width: 40, height: 40)
 
                                     if let startPoint = startPoint, startPoint.x >= 0, startPoint.y >= 0, startPoint.x <= size.width, startPoint.y <= size.height {
@@ -199,6 +190,20 @@ struct RouteMapView: View {
                                         drawCustomIcon(in: context, at: endPoint, size: imageSize, colorScheme: colorScheme)
                                     }
 
+                                    // 1. Piirretään varjo reittiviivalle
+                                    context.withCGContext { cgContext in
+                                        cgContext.setShadow(offset: CGSize(width: 4, height: 4), blur: 5, color: UIColor.black.withAlphaComponent(0.3).cgColor)
+                                        cgContext.addPath(smoothPath.cgPath)
+                                        cgContext.setStrokeColor(UIColor.gray.cgColor)
+                                        cgContext.setLineWidth(5)
+                                        cgContext.strokePath()
+                                    }
+
+                                    // 2. Piirretään itse reittiviiva varjon päälle
+                                    // context.stroke(smoothPath, with: .color(.orange), lineWidth: 5)
+                                    context.stroke(smoothPath, with: .color(.orange), lineWidth: 5)
+                                    
+                                    
                                 } else {
                                     debugPrint("Could not calculate startPoint or endPoint for Canvas.")
                                 }
@@ -392,6 +397,7 @@ struct RouteMapView: View {
                     }
                     .padding(.bottom, 70)       // alareunan marginaali
                     .padding(.leading, 20)      // yläreunan marginaali
+                    .shadow(color: Color.black.opacity(0.5), radius: 15, x: 0, y: 0) // Lisää varjo kuvakkeelle
                 }
 
                 // MapButtons-komponentti pysyy ruudun alaosassa
@@ -434,7 +440,7 @@ struct RouteMapView: View {
                 }
                 .ignoresSafeArea()
                 .background(Color.clear) // Varmistaa, että painikkeet eivät katoa
-                .padding(.bottom, 50)
+                .padding(.bottom, showDetails ? 0 : 50)
 
                 if showFlash {
                     Color.white
