@@ -443,10 +443,35 @@ struct SpeedView: View {
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
                 
+                /*
                 Text("RIDE Computer")
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     .position(x: 60, y: 30)
                     .font(.custom("Barlow-SemiBold", size: 11))
+                */
+                
+                HStack(alignment: .center) { // HStack asettaa kuvan ja tekstin samalle riville
+                    if let image = UIImage(named: "AppIcon") {
+                        Image(uiImage: image)
+                            .resizable()
+                            .aspectRatio(contentMode: .fit)
+                            .clipShape(RoundedRectangle(cornerRadius: 25))
+                            .frame(width: 40, height: 40    ) // Määritä kuvan koko
+                            .padding(.leading, 20)
+                            .padding(.top, 15)
+                            .shadow(color: Color.black.opacity(0.4), radius: 5, x: 4, y: 4) // Lisää varjo kuvakkeelle
+  
+                    }
+
+                    Text("RIDE Computer")
+                        .font(.headline) // Valitse fonttikoko ja tyyli
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
+                        .padding(.top, 15) // Sama marginaali kuin kuvakkeella
+                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 4, y: 4) // Lisää varjo kuvakkeelle
+                    Spacer() // Lisää tyhjää tilaa oikealle
+                }.position(x: 225, y: 30)
+
+                
                 if !isZoomed {
                     RecordButtonView(
                         isRecording: $isRecording,
