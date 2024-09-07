@@ -10,7 +10,6 @@ struct MapButtons: View {
     @Binding var backgroundImage: UIImage? // New binding for background image
     @Binding var showImagePicker: Bool // New binding to show image picker
     @Environment(\.colorScheme) var colorScheme
-    let startSimulation: () -> Void
     let takeScreenshot: () -> Void
 
     var body: some View {
@@ -32,16 +31,7 @@ struct MapButtons: View {
             }
             .buttonStyle(.bordered)
             .foregroundColor(.white)
-            /*
-            Button {
-                startSimulation()
-            } label: {
-                Label("Simulator", systemImage: "play.circle.fill")
-                    .font(.title3)
-            }
-            .buttonStyle(.bordered)
-            .foregroundColor(.white)
-             */
+
             
             Button {
                 takeScreenshot()
@@ -92,7 +82,6 @@ struct MapButtons_Previews: PreviewProvider {
             position: $position,
             backgroundImage: $backgroundImage, // Provide binding for background image
             showImagePicker: $showImagePicker, // Provide binding for image picker visibility
-            startSimulation: {},
             takeScreenshot: {}
         )
     }

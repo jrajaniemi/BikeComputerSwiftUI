@@ -47,6 +47,8 @@
 		4AABFE672C4E762200CCFBDB /* RouteManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AABFE662C4E762200CCFBDB /* RouteManager.swift */; };
 		4AAE43162C4FDFC6000DC321 /* BatteryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */; };
 		4AAE43182C5051A9000DC321 /* RoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AAE43172C5051A9000DC321 /* RoutesView.swift */; };
+		4AB0A4F52C857CBB00FF49AA /* Snapfile in Resources */ = {isa = PBXBuildFile; fileRef = 4AB0A4F22C857CBB00FF49AA /* Snapfile */; };
+		4AB0A4F72C85E34B00FF49AA /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB0A4F32C857CBB00FF49AA /* SnapshotHelper.swift */; };
 		4AB7E4E42C6887A500BE2E23 /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB7E4E32C6887A500BE2E23 /* Enums.swift */; };
 		4AB7E4E62C68883600BE2E23 /* Structs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AB7E4E52C68883600BE2E23 /* Structs.swift */; };
 		4AC46AB12C5AA66C0085CE5C /* MyPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */; };
@@ -103,6 +105,8 @@
 		4AABFE662C4E762200CCFBDB /* RouteManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteManager.swift; sourceTree = "<group>"; };
 		4AAE43152C4FDFC6000DC321 /* BatteryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BatteryManager.swift; sourceTree = "<group>"; };
 		4AAE43172C5051A9000DC321 /* RoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutesView.swift; sourceTree = "<group>"; };
+		4AB0A4F22C857CBB00FF49AA /* Snapfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Snapfile; sourceTree = "<group>"; };
+		4AB0A4F32C857CBB00FF49AA /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapshotHelper.swift; sourceTree = "<group>"; };
 		4AB7E4E32C6887A500BE2E23 /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		4AB7E4E52C68883600BE2E23 /* Structs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Structs.swift; sourceTree = "<group>"; };
 		4AC46AB02C5AA66C0085CE5C /* MyPosition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPosition.swift; sourceTree = "<group>"; };
@@ -217,6 +221,7 @@
 		4AA2DECF2C4AC3AC0065448C = {
 			isa = PBXGroup;
 			children = (
+				4AB0A4F42C857CBB00FF49AA /* fastlane */,
 				4AF796D12C7646F500C69AAF /* route.gpx */,
 				4AF796D22C7674B000C69AAF /* route.json */,
 				4AF97DC82C57731A00D5EE36 /* Documentation.docc */,
@@ -274,10 +279,19 @@
 		4AA2DEF52C4AC3AE0065448C /* BikeComputerUITests */ = {
 			isa = PBXGroup;
 			children = (
+				4AB0A4F32C857CBB00FF49AA /* SnapshotHelper.swift */,
 				4AA2DEF62C4AC3AE0065448C /* BikeComputerUITests.swift */,
 				4AA2DEF82C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift */,
 			);
 			path = BikeComputerUITests;
+			sourceTree = "<group>";
+		};
+		4AB0A4F42C857CBB00FF49AA /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				4AB0A4F22C857CBB00FF49AA /* Snapfile */,
+			);
+			path = fastlane;
 			sourceTree = "<group>";
 		};
 		4AC46AAF2C5AA6510085CE5C /* MyPosition */ = {
@@ -446,6 +460,7 @@
 				4AA2DEE32C4AC3AE0065448C /* Preview Assets.xcassets in Resources */,
 				4A34AC572C57B10D0098EDE1 /* Barlow-BoldItalic.ttf in Resources */,
 				4A34AC5A2C57B10D0098EDE1 /* Barlow-Light.ttf in Resources */,
+				4AB0A4F52C857CBB00FF49AA /* Snapfile in Resources */,
 				4A34AC632C57B10D0098EDE1 /* Barlow-SemiBoldItalic.ttf in Resources */,
 				4A34AC552C57B10D0098EDE1 /* Barlow-ExtraBold.ttf in Resources */,
 				4A34AC582C57B10D0098EDE1 /* Barlow-MediumItalic.ttf in Resources */,
@@ -515,6 +530,7 @@
 			files = (
 				4AA2DEF92C4AC3AE0065448C /* BikeComputerUITestsLaunchTests.swift in Sources */,
 				4AA2DEF72C4AC3AE0065448C /* BikeComputerUITests.swift in Sources */,
+				4AB0A4F72C85E34B00FF49AA /* SnapshotHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -659,11 +675,11 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show speed, heading and altitude even when the app is in the background.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show speed, heading and altitude.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -675,11 +691,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -700,11 +716,11 @@
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "The app requires your location data while it is in use to provide GPS features.";
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "We need your location to show speed, heading and altitude even when the app is in the background.";
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "We need your location to show speed, heading and altitude.";
 				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UIRequiresFullScreen = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -716,11 +732,11 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
-				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = YES;
 				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};

@@ -10,8 +10,6 @@ struct RouteMapView: View {
     @Binding var selectedRoute: Route?
     @State private var searchResults: [MKMapItem] = []
     @State private var position: MapCameraPosition = .automatic
-    @State private var isSimulating = false
-    @State private var simulationIndex = 0
     @State private var timer: Timer?
     @State private var showDetails = false
     @State private var hideMapButtons = false
@@ -28,44 +26,12 @@ struct RouteMapView: View {
         NotificationCenter.default.post(name: Notification.Name("takeScreenshot"), object: nil)
     }
 
-    private func startSimulation() {
-        guard let points = selectedRoute?.points, points.count > 1 else { return }
-        isSimulating.toggle()
-        if isSimulating {
-            simulationIndex = 0
-            scheduleNextUpdate()
-        } else {
-            timer?.invalidate()
-            timer = nil
-        }
-    }
-
-    private func scheduleNextUpdate() {
-        guard let points = selectedRoute?.points, simulationIndex < points.count else {
-            isSimulating = false
-            timer?.invalidate()
-            timer = nil
-            return
-        }
-
-        let point = points[simulationIndex]
-        position = .camera(.init(centerCoordinate: CLLocationCoordinate2D(latitude: point.latitude, longitude: point.longitude), distance: 2000, heading: point.heading, pitch: 45.0))
-
-        if simulationIndex < points.count - 1 {
-            simulationIndex += 1
-            let nextPoint = points[simulationIndex]
-            let interval = nextPoint.timestamp.timeIntervalSince(point.timestamp)
-            timer = Timer.scheduledTimer(withTimeInterval: interval / 4, repeats: false) { [self] _ in
-                self.scheduleNextUpdate()
-            }
-        }
-    }
-
     private func convertCoordinatesToCanvas(points: [CLLocationCoordinate2D], size: CGSize, minLat: CLLocationDegrees, maxLat: CLLocationDegrees, minLon: CLLocationDegrees, maxLon: CLLocationDegrees, margin: CGFloat = 0.1) -> [CGPoint] {
         guard maxLat != minLat, maxLon != minLon else {
             debugPrint("Min/Max values are not valid, returning empty.")
             return []
         }
+        debugPrint("convertCoordinatesToCanvas / MinLat: \(minLat), MaxLat: \(maxLat), MinLon: \(minLon), MaxLon: \(maxLon)")
 
         // Laske marginaalin vaikutus Canvaksen kokoon
         let xMargin = size.width * margin
@@ -76,6 +42,7 @@ struct RouteMapView: View {
         return points.map { coordinate in
             let x = ((coordinate.longitude - minLon) / (maxLon - minLon)) * adjustedWidth + xMargin
             let y = (1 - (coordinate.latitude - minLat) / (maxLat - minLat)) * adjustedHeight + yMargin
+            debugPrint(msg: "Points \(x), \(y)")
             return CGPoint(x: x, y: y)
         }
     }
@@ -136,6 +103,7 @@ struct RouteMapView: View {
         let gradient = Gradient(colors: [.green, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .orange, .red])
         let stroke = StrokeStyle(lineWidth: 5, lineCap: .round, lineJoin: .round)
 
+        
         GeometryReader { geometry in
             ZStack(alignment: .topLeading) {
                 if let backgroundImage = backgroundImage {
@@ -149,11 +117,13 @@ struct RouteMapView: View {
 
                         Canvas { context, size in
                             debugPrint(msg: "Width: \(UIScreen.main.bounds.width), height: \(UIScreen.main.bounds.height)")
-                            debugPrint(msg: "Width: \(UIScreen.main.bounds.width * 0.8), height: \(UIScreen.main.bounds.height * 0.7)")
+                            debugPrint(msg: "Width: \(UIScreen.main.bounds.width * 0.9), height: \(UIScreen.main.bounds.height * 0.7)")
                             debugPrint(msg: "Width: \(size)")
 
                             if let selectedRoute = selectedRoute {
                                 let coordinates = selectedRoute.polyline.coordinates
+
+                                
                                 if coordinates.isEmpty {
                                     debugPrint("Coordinates are empty!")
                                     return
@@ -232,27 +202,6 @@ struct RouteMapView: View {
 
                             MapPolyline(coordinates: coordinates, contourStyle: MapPolyline.ContourStyle.geodesic)
                                 .stroke(gradient, style: stroke)
-                        }
-
-                        if isSimulating, simulationIndex < selectedRoute?.points.count ?? 0 {
-                            let simulationPoint = selectedRoute!.points[simulationIndex]
-                            Annotation("Simulation", coordinate: CLLocationCoordinate2D(latitude: simulationPoint.latitude, longitude: simulationPoint.longitude), anchor: .bottom) {
-                                ZStack {
-                                    Circle()
-                                        .fill(Color.blue)
-                                        .opacity(0.3)
-                                        .frame(width: simulationPoint.speed < 40 ? 60 : 40, height: simulationPoint.speed < 20 ? 60 : 40)
-                                    Circle()
-                                        .fill(Color.blue)
-                                        .opacity(0.5)
-                                        .frame(width: 20, height: 20)
-                                    Circle()
-                                        .fill(Color.white)
-                                        .opacity(1)
-                                        .frame(width: 10, height: 10)
-                                }
-                            }
-                            .annotationTitles(.hidden)
                         }
 
                         if let endPoint = CLLocationCoordinate2D.endPoint(from: route) {
@@ -339,8 +288,9 @@ struct RouteMapView: View {
                                 }
                             }
                         }
-                        .padding(10) // Lisää marginaalia
+                        .padding(.bottom, 20) // Lisää marginaalia
                         .background(colorScheme == .dark ? Color.black.opacity(0.9) : Color.white.opacity(0.9))
+                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
                     }
                     .ignoresSafeArea(edges: .bottom)
                 }
@@ -352,52 +302,55 @@ struct RouteMapView: View {
                         VStack {
                             if unitPreference == 1 {
                                 Text("Trip")
-                                    .routeHeaders()
+                                    .routeHeaders(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(calculateTotalDistance(for: route) / 1609.34, specifier: "%.1f") mi")
-                                    .routeDetails()
+                                    .routeDetails(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading) // Keskitetään arvot
 
                                 Text("Speed")
-                                    .routeHeaders()
+                                    .routeHeaders(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(calculateAverageSpeed(for: route) / 1.60934, specifier: "%.1f") mph")
-                                    .routeDetails()
+                                    .routeDetails(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("Time")
-                                    .routeHeaders()
+                                    .routeHeaders(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(formattedElapsedTime(for: route))")
-                                    .routeDetails()
+                                    .routeDetails(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             } else {
                                 Text("Trip")
-                                    .routeHeaders()
+                                    .routeHeaders(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(calculateTotalDistance(for: route) / 1000, specifier: "%.1f") km")
-                                    .routeDetails()
+                                    .routeDetails(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading) // Keskitetään arvot
 
                                 Text("Speed")
-                                    .routeHeaders()
+                                    .routeHeaders(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(calculateAverageSpeed(for: route), specifier: "%.1f") km/h")
-                                    .routeDetails()
+                                    .routeDetails(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
 
                                 Text("Time")
-                                    .routeHeaders()
+                                    .routeHeaders(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                                 Text("\(formattedElapsedTime(for: route))")
-                                    .routeDetails()
+                                    .routeDetails(showShadow: true)
                                     .frame(maxWidth: .infinity, alignment: .leading)
                             }
                         }
+                        .foregroundColor(.white)
+                        .shadow(color: Color.black.opacity(0.15), radius: 5, x: 3, y: 3)
+                        
                     }
                     .padding(.bottom, 70)       // alareunan marginaali
                     .padding(.leading, 20)      // yläreunan marginaali
-                    .shadow(color: Color.black.opacity(0.5), radius: 15, x: 0, y: 0) // Lisää varjo kuvakkeelle
+                    .shadow(color: Color.gray, radius: 15, x: 0, y: 0) // Lisää varjo kuvakkeelle
                 }
 
                 // MapButtons-komponentti pysyy ruudun alaosassa
@@ -413,7 +366,6 @@ struct RouteMapView: View {
                                 position: $position,
                                 backgroundImage: $backgroundImage,
                                 showImagePicker: $showImagePicker,
-                                startSimulation: startSimulation,
                                 takeScreenshot: takeScreenshot
                             )
                             .padding(.vertical)
@@ -458,7 +410,6 @@ struct RouteMapView: View {
 }
 
 // FullScreenRouteMapView ja MKPolyline-laajennukset pysyvät samoina...
-
 struct FullScreenRouteMapView: View {
     var route: Route
     var mapType: MapStyle = .hybrid(elevation: .realistic)
@@ -481,3 +432,4 @@ extension MKPolyline {
         return coords
     }
 }
+

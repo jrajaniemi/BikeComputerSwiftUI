@@ -17,7 +17,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var cancellables = Set<AnyCancellable>()
     private let updateInterval: TimeInterval = 1 // Päivitys n kertaa sekunnissa
     private var updateSpeedTime: Double = 3.0 // Päivitys n sekunnin välein
-    private var updateSpeedoMeterTime: Double = 4.0 // Päivitys n sekunnin välein
+    private var updateSpeedoMeterTime: Double = 2.0 // Päivitys n sekunnin välein
     
     var HF = 3
     var DF = 1

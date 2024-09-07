@@ -51,16 +51,29 @@ extension View {
             .padding(10)
     }
 
-    func routeDetails() -> some View {
+    func routeDetails(showShadow: Bool = false) -> some View {
         self
             .font(.custom("Barlow-Bold", size: 18))
-            .shadow(color: Color.black.opacity(0.85), radius: 5, x: 3, y: 3) // Lisää varjo kuvakkeelle
+            .modifier(RouteShadowModifier(showShadow: showShadow))
     }
     
-    func routeHeaders() -> some View {
+    func routeHeaders(showShadow: Bool = false) -> some View {
         self
             .font(.custom("Barlow-Light", size: 18))
-            .shadow(color: Color.black.opacity(0.85), radius: 5, x: 3, y: 3) // Lisää varjo kuvakkeelle
+            .modifier(RouteShadowModifier(showShadow: showShadow))
             .padding(.top, 5)
+    }
+}
+
+struct RouteShadowModifier: ViewModifier {
+    var showShadow: Bool
+    
+    func body(content: Content) -> some View {
+        if showShadow {
+            content
+                .shadow(color: Color.black.opacity(0.85), radius: 5, x: 3, y: 3)
+        } else {
+            content
+        }
     }
 }

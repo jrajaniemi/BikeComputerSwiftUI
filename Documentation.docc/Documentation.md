@@ -1,100 +1,8 @@
-# ``BikeComputer``
-
-Bike App Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer.
-
-## Description
-
-Bike App Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer. The super simple interface offers two colour themes: Black/White and White/Black. The app allows you to record your route, which is saved on your phone. You can review your route after the ride is complete. This app has no adverts, paywalls, or additional features, so you can just ride! 
-
-
-## What's new in version 0.3.0
-
-- Canvas route
-- Photo-support
-
-## What's ne in version 0.2.
+## What's new in future version 2.0
 
 * Healt App support
 * Auto-odometer
 * Apple CarPlay support
-
-## What's new in versio 0.1.20
-
-## What's new in versio 0.1.19
-
-* uusi app iconÇ
-
-## What's new in versio 0.1.18
-
-* Lisäsimmen uuden ajonäkymän, jossa näkyy vain nopeus ja matkamittari suurella fonttikoolla. Voit vaihtaa näkymiä koskettamalla nopeus näkymää.
-
-## What's new in versio 0.1.17
-
-* Nyt käyttäjä voi muokata reitin nimeä, lisätä kuvaus reitistä sekä vaihtaa aktiivisuustyyppiä. Aktiivisuustyypit ovat Apple Health yhteensopivia, joten tulevaisuudessa lisäämme sille tuen.
-* Käyttäjä voi vaihtaa suunta-näkymän tilalle kellon tai G-mittarin. Kosketa suuntanäkymää ja testaa uutta ominaisuutta! G-mittari toimii vain kun iPhonen virransäätötila on pois päältä! Voit säätää sitä astuksista akun kynnysarvoa muutttamalla.
-* Added localization support for Armenian(hy), Bosnian(bs), Georgian(ka), Icelandic(is), Latin(la), Macedonian(mk), Romansh(rm), Romansh(rm-CH)
-
-### Fixed bugs
-
-* Auto Record newer stop bug fixed
-
-## What's new in version 0.1.13
-
-* Added Localization support for 22 new languages: Albanian, Bulgarian, Czech, Estonian, Hindi, Indonesian, Irish, Kurdish, Latvian, Lithuanian, Malay, Maltese, Polish, Punjabi, Quechua, Romanian, Russian, Serbian, Slovak, Slovenian, Urdu, Vietnamese
-* New auto-record beta feature, which start GPS-tracking always when app startup
-* Add info-boxes in the Setting
-** Auto Record
-** Battery Threshold
-
-### Fixed bugs
-
-* The color bug in the routa map-view has been fixed
-* The odometer bug in tracking has been fixed
-
-## What's new in version 0.1.6
-
-* Added Localization support for Arabic, Catalan, Chinese, Croatian, Danish, Dutch, Finnish, French, German, Greek, Hebrew, Hungarian, Italian, Japanese, Korean, Norwegian, Portugese, Spanish, Swahili, Swedish, Thai, Turkish and Ukrainian.
-* New main dashboar, where Record-button is move from bottom to center of screen
-* New record indicator, which show that recordig is on
-
-## What's new in version 0.1.5
-
-* My Position view show user current position on the map (beta)
-* Route Simulator feature
-* Screenshot from route
-
-## What's new in version 0.1.3
-
-* More reliable speed and altitude updates
-* New heading driven route point make better routes
-
-## What's new in version 0.1.2
-
-* Support for the British Imperial System
-* More space for the odometer reading, using a larger font
-* A new, more readable Barlow font
-
-We're excited to bring you the latest update to Bike App Computer! Here are the new features and improvements in this version:
-
-Support for the British Imperial System
-
-We have added full support for the British Imperial System. Now you can view your cycling stats in miles per hours, miles, and feets, providing greater flexibility and convenience for our users in regions that use these units.
-
-Enhanced Odometer Display
-
-We've increased the space allocated for the odometer reading and updated it to a larger font size. This enhancement ensures that you can easily read your distance traveled at a glance, even while on the move.
-
-New and Improved Font
-
-Introducing the Barlow font! We've updated the app with a new, more readable font to improve your overall user experience. The Barlow font is clean, modern, and designed to make your on-screen text clearer and more pleasant to read.
-
-Update now and enjoy these new features and improvements. Thank you for choosing Bike App Computer!
-
-
-## What's new in version 0.1.1
-
-We are excited to introduce a new feature in the Bike App Computer: battery consumption control! Now you can directly adjust battery usage from the settings. With the new battery threshold slider, ranging from 40-100%, you have full control over your device’s performance. When your battery level is above the threshold or your device is charging, GPS updates will be frequent and precise, ensuring optimal location accuracy and route tracking. If the battery level falls below your set threshold, the app will automatically reduce update frequency and accuracy to conserve battery life. This innovative feature allows you to balance location precision and battery longevity, ensuring your app performs exactly as you need it to during your rides. Optimize your experience with the new battery management settings today!
-
 
 ## Fonts
 
@@ -102,32 +10,22 @@ Barlow is a slightly rounded, low-contrast, grotesk type family. Drawing from th
 
 The Barlow project is led by Jeremy Tribby, a designer based in San Francisco, USA. To contribute, see github.com/jpt/barlow
 
-
-
 # RIDE Computer
 
 Minimalistic Ride Dashboard
 
 ## Promote Text
 
-RIDE Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer.
+RIDE Computer provides a clear black-and-white dashboard interface displaying GPS speed, direction, altitude, and odometer.
 
 ## Description
 
-RIDE Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer. The super simple interface offers two colour themes: Black/White and White/Black. The app allows you to record your route, which is saved on your phone. You can review your route after the ride is complete. This app has no adverts, paywalls, or additional features, so you can just ride! 
+RIDE Computer provides a clear black-and-white dashboard interface displaying speed, direction, altitude, and odometer. The super simple interface offers two colour themes: Black/White and White/Black. The app allows you to record your route, which is saved on your phone. You can review your route after the ride is complete. This app has no adverts, paywalls, or additional features, so you can just ride!
+
 
 RIDE Computer is available in more than 60 languages!
 
 # Public Version history
-
-## 1.1.6 Aug 31, 2024
-
-
-We're excited to introduce RIDE Computer 1.1.6, bringing you enhanced features for a better riding experience! 
-
-Now, you can customize your route snapshots by selecting a background image from your Photos app. Additionally, route details like distance, average speed, and time offer an alternative display format by tapping the logo. 
-
-Ride time tracking has been added to the Computer view, visible by tapping altitude. Note: the simulator feature has been removed. Update now for an improved ride!
 
 ## 1.1.5 Aug 23, 2024
 
@@ -316,4 +214,5 @@ We are excited to introduce a new feature in the Bike App Computer: battery cons
 Markkinointipäällikkönä kirjoita maksimissaan 400 merkin mittainen englanninkielinen julkaisutiedote versiosta 1.1.7 kehittäjän kommenttien perusteella:
 * Reittinäkymän kuvankaappausta on paranneltu. Nyt voit valita Photos-sovelluksen kuvista taustakuvan karttakuvan sijasta ja ottaa siitä kuvakaappauksen. Tähän liittyen rettitiedoille (matka, keskinopeus ja aika), on vaihtoehtoinen esitystapa. Voi vaihtaa sitä koskettamalla logoa.
 * Simulaattori on poistettu :(
-* Computer näkymään on lisätty ride time, josta näkee kuinka kauan reittiä on tallennettu. Sen saa näkyviin koskettamalla korkeutta (altitude)
+* Computer näkymään on lisätty ajoaika-näkymä, josta näkee kuinka kauan reittiä on tallennettu. Sen saa näkyviin koskettamalla korkeutta (altitude)
+* Automaattinen tallennusta on paranneltu ja se ei ole enää Beta ominaisuus!

@@ -338,4 +338,84 @@ class RouteManager: ObservableObject {
             print("Error during file operations: \(error)")
         }
     }
+    
+    func convertGPXToJSON(gpxFileUrl: URL, outputFileName: String) {
+        // Ladataan GPX-tiedoston data
+        guard let gpxData = try? Data(contentsOf: gpxFileUrl),
+              let gpxString = String(data: gpxData, encoding: .utf8)
+        else {
+            debugPrint(msg: "Failed to read GPX file.")
+            return
+        }
+
+        // Parsitaan GPX-tiedoston sisältö
+        let parser = GPXParser(gpxString: gpxString)
+        guard let routePoints = parser.parseGPX() else {
+            debugPrint(msg: "Failed to parse GPX file.")
+            return
+        }
+
+        // Luodaan uusi Route-objekti
+        let newRoute = Route(
+            name: outputFileName,
+            description: "Converted from GPX",
+            startDate: Date(),
+            endDate: nil,
+            points: routePoints
+        )
+
+        // Tallennetaan Route JSON-tiedostoon
+        let encoder = JSONEncoder()
+        encoder.outputFormatting = .prettyPrinted
+        do {
+            let jsonData = try encoder.encode(newRoute)
+            let outputUrl = getDocumentsDirectory().appendingPathComponent("\(outputFileName).json")
+            try jsonData.write(to: outputUrl)
+            debugPrint(msg: "GPX converted to JSON and saved to \(outputUrl.path)")
+        } catch {
+            debugPrint(msg: "Failed to save JSON file: \(error.localizedDescription)")
+        }
+    }
+}
+
+
+class GPXParser: NSObject, XMLParserDelegate {
+    var gpxString: String
+    var currentElement: String = ""
+    var currentPoint: RoutePoint?
+    var routePoints: [RoutePoint] = []
+    
+    init(gpxString: String) {
+        self.gpxString = gpxString
+    }
+    
+    func parseGPX() -> [RoutePoint]? {
+        guard let data = gpxString.data(using: .utf8) else { return nil }
+        
+        let parser = XMLParser(data: data)
+        parser.delegate = self
+        if parser.parse() {
+            return routePoints
+        } else {
+            return nil
+        }
+    }
+    
+    // XMLParserDelegate-metodit
+    func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String : String]) {
+        currentElement = elementName
+        
+        if currentElement == "trkpt" {
+            if let latString = attributeDict["lat"], let lonString = attributeDict["lon"],
+               let latitude = Double(latString), let longitude = Double(lonString) {
+                currentPoint = RoutePoint(speed: 0.0, heading: 0.0, altitude: 0.0, longitude: longitude, latitude: latitude, timestamp: Date())
+            }
+        }
+    }
+    
+    func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
+        if elementName == "trkpt", let point = currentPoint {
+            routePoints.append(point)
+        }
+    }
 }

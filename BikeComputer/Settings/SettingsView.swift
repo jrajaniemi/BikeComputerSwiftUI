@@ -178,7 +178,7 @@ struct AutoRecordView: View {
     @Environment(\.colorScheme) var colorScheme
 
     var body: some View {
-        Section(header: Text("Auto Record (Beta)")) {
+        Section(header: Text("Auto Record")) {
             VStack(alignment: .leading) {
                 HStack {
                     Picker("Auto Record", selection: $autoRecord) {
