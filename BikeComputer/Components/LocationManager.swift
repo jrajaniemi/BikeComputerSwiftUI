@@ -16,8 +16,8 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
     private var lastHeading: Double = -1
     private var cancellables = Set<AnyCancellable>()
     private let updateInterval: TimeInterval = 1 // Päivitys n kertaa sekunnissa
-    private var updateSpeedTime: Double = 3.0 // Päivitys n sekunnin välein
-    private var updateSpeedoMeterTime: Double = 2.0 // Päivitys n sekunnin välein
+    private var updateSpeedTime: Double = 4.0 // Päivitys n sekunnin välein
+    private var updateSpeedoMeterTime: Double = 4.0 // Päivitys n sekunnin välein
     
     var HF = 3
     var DF = 1
@@ -95,7 +95,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         // speed = (speed < zeroSpeed) ? 0 : speed * 3.6   // 0.111 * 3.6 = 0.4 km/h
         speed = max(location.speed, 0) * 3.6
         altitude = location.altitude
-        // debugPrint(msg: "\(Date()) Timer update: \(speed) : \(altitude)")
+        debugPrint(msg: "\(Date()) Timer update: \(speed) : \(altitude)")
     }
 
     private func startMotionManager() {
@@ -254,10 +254,16 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         switch manager.authorizationStatus {
         case .authorizedWhenInUse, .authorizedAlways:
             startLocationUpdates()
+            debugPrint(msg: "Location services are enabled")
         case .denied, .restricted:
             debugPrint(msg: "Location services are denied or restricted")
         case .notDetermined:
             debugPrint(msg: "Location services are not determined")
+            if CLLocationManager.locationServicesEnabled() {
+                manager.requestAlwaysAuthorization()
+            } else {
+                debugPrint("Location services are not enabled on this device.")
+            }
         @unknown default:
             debugPrint(msg: "Unknown authorization status")
         }

@@ -62,3 +62,44 @@ ios/xcuserdata/
 # Other
 #
 .DS_Store
+
+# macOS-käyttöjärjestelmään liittyvät väliaikaiset tiedostot
+.DS_Store
+
+# Xcode -projektitiedostot ja väliaikaiset tiedostot
+*.xcworkspace
+*.xcuserdata
+*.xccheckout
+*.xcscmblueprint
+
+# Xcode automaattisesti generoimat build- ja derived data -hakemistot
+DerivedData/
+build/
+
+# Carthage-kirjaston väliaikaiset tiedostot
+Carthage/Build/
+
+# CocoaPods-tiedostot
+Pods/
+Podfile.lock
+
+# Swift Package Manager -tiedostot
+.swiftpm/
+Package.resolved
+
+# Fastlane-kansion väliaikaiset tiedostot
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/
+fastlane/test_output/
+fastlane/report.xml
+
+# Käsittelytiedostot ja väliaikaiset tallennustiedostot
+*.moved-aside
+*.xcuserstate
+
+# Codecov-tiedostot
+# .codecov/
+
+# Manuaaliset lisäykset (valinnainen)
+# Voit lisätä tähän muita tiedostoja, joita et halua mukaan versionhallintaan.

@@ -6448,7 +6448,6 @@
       }
     },
     "Allows Background Location Updates: %@" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -8242,7 +8241,6 @@
       }
     },
     "Battery Level: %.0f %%" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -12185,7 +12183,6 @@
       }
     },
     "Debug parameters" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -13980,7 +13977,6 @@
       }
     },
     "Distance Filter: %lld" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -17921,7 +17917,6 @@
       }
     },
     "Heading Filter: %lld" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -21146,7 +21141,6 @@
       }
     },
     "Lat, Lon: %.4f %.4f" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -36206,7 +36200,6 @@
       }
     },
     "Speed: %.3f km/h" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
@@ -39790,7 +39783,6 @@
       }
     },
     "Total Acceleration: %.2f G" : {
-      "extractionState" : "stale",
       "localizations" : {
         "ar" : {
           "stringUnit" : {
