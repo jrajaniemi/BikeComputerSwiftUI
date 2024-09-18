@@ -46,15 +46,17 @@ struct SpeedTextView: View {
                 VStack {
                     if unitPreference == 1 {
                         Text(imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
-                            .font(.custom("Barlow-Black", size: 200))
+                            .font(.custom("ChivoMono-Medium_Black", size: 180))
                             .multilineTextAlignment(.center)
+                            .tracking(-3)
                             .onTapGesture {
                                 isZoomed.toggle() // Palataan alkuperäiseen näkymään
                             }
                     } else {
                         Text(speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
-                            .font(.custom("Barlow-Black", size: 200))
+                            .font(.custom("ChivoMono-Medium_Black", size: 180))
                             .multilineTextAlignment(.center)
+                            .tracking(-3)
                             .onTapGesture {
                                 isZoomed.toggle() // Palataan alkuperäiseen näkymään
                             }
@@ -73,14 +75,14 @@ struct SpeedTextView: View {
                     if unitPreference == 1 {
                         if imperialTotalDistance < 5280 {
                             Text("\(imperialTotalDistance, specifier: "%.0f") ft")
-                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .font(.custom("ChivoMono-Medium_SemiBold", size: 55))
                                 .multilineTextAlignment(.center)
                                 .onTapGesture {
                                     isZoomed.toggle() // Palataan alkuperäiseen näkymään
                                 }
                         } else {
                             Text("\(imperialTotalDistance / 5280, specifier: "%.2f") mi")
-                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .font(.custom("ChivoMono-Medium_SemiBold", size: 55))
                                 .multilineTextAlignment(.center)
                                 .onTapGesture {
                                     isZoomed.toggle() // Palataan alkuperäiseen näkymään
@@ -89,15 +91,17 @@ struct SpeedTextView: View {
                     } else {
                         if totalDistance < 1000 {
                             Text("\(totalDistance, specifier: "%.0f") m")
-                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .font(.custom("ChivoMono-Medium_SemiBold", size: 55))
                                 .multilineTextAlignment(.center)
+                                .tracking(-2)
                                 .onTapGesture {
                                     isZoomed.toggle() // Palataan alkuperäiseen näkymään
                                 }
                         } else {
                             Text("\(totalDistance / 1000, specifier: "%.2f") km")
-                                .font(.custom("Barlow-SemiBold", size: 50))
+                                .font(.custom("ChivoMono-Medium_SemiBold", size: 55))
                                 .multilineTextAlignment(.center)
+                                .tracking(-2)
                                 .onTapGesture {
                                     isZoomed.toggle() // Palataan alkuperäiseen näkymään
                                 }
@@ -108,7 +112,7 @@ struct SpeedTextView: View {
                 // Alkuperäinen näkymä
                 VStack(spacing: 0) {
                     Text(unitPreference == 1 ? (imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed)) : (speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed)))
-                        .font(.custom("Barlow-Black", size: speedFontSize))
+                        .font(.custom("ChivoMono-Medium_Black", size: speed < 100 ? 140 : 125))
                         .multilineTextAlignment(.center)
                         .onTapGesture {
                             isZoomed.toggle() // Näytetään suurennettu näkymä
@@ -128,13 +132,11 @@ struct SpeedTextView: View {
 ///   - heading: The heading in degrees.
 ///   - altitude: The altitude in meters.
 ///   - imperialAltitude: The altitude in feet.
-///   - altitudeFontSize: The font size for the altitude text.
 /// - G: totalAcceleration in G
 struct HeadingAndAltitudeView: View {
     var heading: Double
     var altitude: Double
     var imperialAltitude: Double
-    var altitudeFontSize: CGFloat
     var G: Double
     var elapsedTime: TimeInterval
     var elapsedTimeTimer: Timer?
@@ -151,21 +153,24 @@ struct HeadingAndAltitudeView: View {
             // Näytetään joko suunta, G-voima tai kellonaika riippuen togglesta
             if rowTwoLeftView == 0 {
                 Text(Date(), style: .time)
-                    .font(.custom("Barlow-Bold", size: 46))
+                    .font(.custom("ChivoMono-Medium_Bold", size: 45))
                     .frame(maxWidth: .infinity)
+                    .tracking(-2)
+
                     .onTapGesture {
                         rowTwoLeftView += 1 // Vaihda takaisin suunnan ja G-arvon välillä
                     }
             } else if rowTwoLeftView == 1 {
                 Text("\(G, specifier: "%.2f") G")
-                    .font(.custom("Barlow-Bold", size: 46))
+                    .font(.custom("ChivoMono-Medium_Bold", size: 45))
+                    .tracking(-2)
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
                         rowTwoLeftView += 1
                     }
             } else {
                 Text("\(heading, specifier: "%.0f")°")
-                    .font(.custom("Barlow-Bold", size: 46))
+                    .font(.custom("ChivoMono-Medium_Bold", size: 45))
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
                         rowTwoLeftView = 0
@@ -174,15 +179,17 @@ struct HeadingAndAltitudeView: View {
             if rowTwoRightView == 0 {
                 if unitPreference == 1 {
                     Text("\(imperialAltitude, specifier: "%.0f") ft")
-                        .font(.custom("Barlow-Light", size: altitudeFontSize))
+                        .font(.custom("ChivoMono-Medium_Light", size: altitude < 10000 ? 45 : 42))
+                        .tracking(-2)
                         .frame(maxWidth: .infinity)
                         .onTapGesture {
                             rowTwoRightView = 1 // Vaihda takaisin suunnan ja G-arvon välillä
                         }
                 } else {
                     Text("\(altitude, specifier: "%.0f") m")
-                        .font(.custom("Barlow-Light", size: altitudeFontSize))
+                        .font(.custom("ChivoMono-Medium_Thin", size: altitude < 10000 ? 45 : 42))
                         .frame(maxWidth: .infinity)
+                        .tracking(-2)
                         .onTapGesture {
                             rowTwoRightView = 1 // Vaihda takaisin suunnan ja G-arvon välillä
                         }
@@ -190,18 +197,22 @@ struct HeadingAndAltitudeView: View {
             } else {
                 if elapsedTimeTimer == nil {
                     Text("0:00")
-                        .font(.custom("Barlow-Light", size: altitudeFontSize))
+                        .font(.custom("ChivoMono-Medium_Light", size: 45))
                         .frame(maxWidth: .infinity)
+                        .tracking(-2)
                         .onTapGesture {
                             rowTwoRightView = 0
                         }
                 } else {
-                    (Text("+") + Text(Date(timeIntervalSinceNow: -elapsedTime), style: .timer))
-                        .font(.custom("Barlow-Light", size: altitudeFontSize))
-                        .frame(maxWidth: .infinity)
-                        .onTapGesture {
-                            rowTwoRightView = 0
-                        }
+                    let fontSize: CGFloat = elapsedTime >= 3600 ? 38 : 45
+                        (Text("+") + Text(Date(timeIntervalSinceNow: -elapsedTime), style: .timer))
+                            .font(.custom("ChivoMono-Medium_Thin", size: fontSize)) // Muutetaan fonttikoko ehtoon perustuen
+                            .frame(maxWidth: .infinity)
+                            .tracking(-2)
+
+                            .onTapGesture {
+                                rowTwoRightView = 0
+                            }
                 }
             }
         }
@@ -392,7 +403,7 @@ struct SpeedView: View {
                     SpeedTextView(
                         speed: locationManager.speed,
                         imperialSpeed: locationManager.imperialSpeed,
-                        speedFontSize: locationManager.speed < 100 ? 140 : 130,
+                        speedFontSize: locationManager.speed < 100 ? 140 : 125,
                         totalDistance: locationManager.routeManager.totalDistance,
                         imperialTotalDistance: locationManager.routeManager.imperialTotalDistance,
                         isZoomed: $isZoomed // Binding tilan hallintaan
@@ -406,7 +417,6 @@ struct SpeedView: View {
                             heading: locationManager.heading,
                             altitude: locationManager.altitude,
                             imperialAltitude: locationManager.imperialAltitude,
-                            altitudeFontSize: locationManager.altitude < 10000 ? 48 : 40,
                             G: locationManager.totalAcceleration,
                             elapsedTime: elapsedTime,
                             elapsedTimeTimer: elapsedTimeTimer
@@ -436,6 +446,7 @@ struct SpeedView: View {
                     if autoRecord == 1 && autoRecordCount == 0 {
                         startAutoRecordTimer()
                     }
+                    listAllFonts()
                 }
                 .onChange(of: storedAutoRecord) {
                     autoRecord = storedAutoRecord
@@ -443,35 +454,11 @@ struct SpeedView: View {
                 }
                 .background(colorScheme == .dark ? Color.black : Color.white)
                 
-                /*
                 Text("RIDE Computer")
                     .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                    .position(x: 60, y: 30)
-                    .font(.custom("Barlow-SemiBold", size: 11))
-                */
-                
-                HStack(alignment: .center) { // HStack asettaa kuvan ja tekstin samalle riville
-                    if let image = UIImage(named: "AppIcon") {
-                        Image(uiImage: image)
-                            .resizable()
-                            .aspectRatio(contentMode: .fit)
-                            .clipShape(RoundedRectangle(cornerRadius: 25))
-                            .frame(width: 40, height: 40    ) // Määritä kuvan koko
-                            .padding(.leading, 20)
-                            .padding(.top, 15)
-                            .shadow(color: Color.black.opacity(0.4), radius: 5, x: 4, y: 4) // Lisää varjo kuvakkeelle
-  
-                    }
+                    .position(x: 65, y: 30)
+                    .font(.custom("Barlow-SemiBold", size: 14))
 
-                    Text("RIDE Computer")
-                        .font(.headline) // Valitse fonttikoko ja tyyli
-                        .foregroundColor(colorScheme == .dark ? Color.white : Color.black)
-                        .padding(.top, 15) // Sama marginaali kuin kuvakkeella
-                        .shadow(color: Color.black.opacity(0.2), radius: 5, x: 4, y: 4) // Lisää varjo kuvakkeelle
-                    Spacer() // Lisää tyhjää tilaa oikealle
-                }.position(x: 225, y: 30)
-
-                
                 if !isZoomed {
                     RecordButtonView(
                         isRecording: $isRecording,
@@ -539,13 +526,11 @@ struct SpeedView: View {
 
     /// Lists all available fonts in the console.
     func listAllFonts() {
-        /*
          for family in UIFont.familyNames.sorted() {
-         debugPring(msg:"Family: \(family)")
+         debugPrint(msg:"Family: \(family)")
              for name in UIFont.fontNames(forFamilyName: family) {
-                debugPring(msg:"  Font: \(name)")
+                debugPrint(msg: "  Font: \(name)")
              }
          }
-          */
     }
 }

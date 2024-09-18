@@ -179,7 +179,7 @@ class LocationManager: NSObject, ObservableObject, CLLocationManagerDelegate {
         var pausesLocationUpdatesAutomatically = false
         
         if isCharging || batteryLevel > Float(batteryThreshold / 100) {
-            updateSpeedTime = 5.0
+            updateSpeedTime = 5.0       // tallennusväli kertoin
             distanceFilter = 0
             headingFilter = 3
             desiredAccuracy = kCLLocationAccuracyBestForNavigation

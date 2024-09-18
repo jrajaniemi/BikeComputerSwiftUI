@@ -56,6 +56,9 @@
 		4AE358E72C5E675F0007AC65 /* ScreenshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4AE358E62C5E675F0007AC65 /* ScreenshotHelper.swift */; };
 		4AE358E92C5F68810007AC65 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 4AE358E82C5F68810007AC65 /* Localizable.xcstrings */; };
 		4AF796D32C7674B000C69AAF /* route.json in Resources */ = {isa = PBXBuildFile; fileRef = 4AF796D22C7674B000C69AAF /* route.json */; };
+		4AF90BC72C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AF90BC62C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf */; };
+		4AF90BC82C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AF90BC62C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf */; };
+		4AF90BC92C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 4AF90BC62C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf */; };
 		4AF97DC92C57731A00D5EE36 /* Documentation.docc in Sources */ = {isa = PBXBuildFile; fileRef = 4AF97DC82C57731A00D5EE36 /* Documentation.docc */; };
 /* End PBXBuildFile section */
 
@@ -115,6 +118,7 @@
 		4AE358E82C5F68810007AC65 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		4AF796D12C7646F500C69AAF /* route.gpx */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = route.gpx; sourceTree = "<group>"; };
 		4AF796D22C7674B000C69AAF /* route.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = route.json; sourceTree = "<group>"; };
+		4AF90BC62C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "ChivoMono-VariableFont_wght.ttf"; path = "../../../../git/BikeComputerSwiftUI/BikeComputer/fonts/ChivoMono-VariableFont_wght.ttf"; sourceTree = "<group>"; };
 		4AF97DC82C57731A00D5EE36 /* Documentation.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = Documentation.docc; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -146,6 +150,7 @@
 		4A34AC402C57B0320098EDE1 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
+				4AF90BC62C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf */,
 				4A34AC682C57B11C0098EDE1 /* Univers LT 45 Light.ttf */,
 				4A34AC672C57B11B0098EDE1 /* Univers LT 75 Black.ttf */,
 				4A34AC492C57B10C0098EDE1 /* Barlow-Black.ttf */,
@@ -450,6 +455,7 @@
 				4A34AC692C57B11C0098EDE1 /* Univers LT 75 Black.ttf in Resources */,
 				4A34AC5F2C57B10D0098EDE1 /* Barlow-ExtraLight.ttf in Resources */,
 				4A34AC662C57B10D0098EDE1 /* Barlow-Thin.ttf in Resources */,
+				4AF90BC72C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf in Resources */,
 				4A34AC5D2C57B10D0098EDE1 /* Barlow-Regular.ttf in Resources */,
 				4A34AC612C57B10D0098EDE1 /* Barlow-BlackItalic.ttf in Resources */,
 				4AE358E92C5F68810007AC65 /* Localizable.xcstrings in Resources */,
@@ -474,6 +480,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF90BC82C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -481,6 +488,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4AF90BC92C8CBCD000D91A8B /* ChivoMono-VariableFont_wght.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

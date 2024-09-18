@@ -114,7 +114,7 @@ struct RouteMapView: View {
                             .frame(width: geometry.size.width, height: geometry.size.height)
                             .clipped()
                             .ignoresSafeArea()
-
+                        /*
                         Canvas { context, size in
                             debugPrint(msg: "Width: \(UIScreen.main.bounds.width), height: \(UIScreen.main.bounds.height)")
                             debugPrint(msg: "Width: \(UIScreen.main.bounds.width * 0.9), height: \(UIScreen.main.bounds.height * 0.7)")
@@ -180,6 +180,7 @@ struct RouteMapView: View {
                             }
                         }
                         .frame(width: geometry.size.width * 0.9, height: geometry.size.height * 0.7)
+                         */
                     }
                 } else {
                     Map(position: $position, interactionModes: .all) {
