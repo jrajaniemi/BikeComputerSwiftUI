@@ -16,7 +16,7 @@ class Formatters {
     static let speedFormatter: NumberFormatter = {
         let formatter = NumberFormatter()
         formatter.numberStyle = .decimal
-        formatter.maximumFractionDigits = 1
+        formatter.maximumFractionDigits = 0
         formatter.decimalSeparator = "."
         return formatter
     }()
@@ -46,7 +46,7 @@ struct SpeedTextView: View {
                 VStack {
                     if unitPreference == 1 {
                         Text(imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed))
-                            .font(.custom("ChivoMono-Medium_Black", size: 180))
+                            .font(.custom("ChivoMono-Medium_Black", size: 165))
                             .multilineTextAlignment(.center)
                             .tracking(-3)
                             .onTapGesture {
@@ -54,7 +54,7 @@ struct SpeedTextView: View {
                             }
                     } else {
                         Text(speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed))
-                            .font(.custom("ChivoMono-Medium_Black", size: 180))
+                            .font(.custom("ChivoMono-Medium_Black", size: 165))
                             .multilineTextAlignment(.center)
                             .tracking(-3)
                             .onTapGesture {
@@ -112,7 +112,7 @@ struct SpeedTextView: View {
                 // Alkuperäinen näkymä
                 VStack(spacing: 0) {
                     Text(unitPreference == 1 ? (imperialSpeed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: imperialSpeed)) ?? "0.0" : String(format: "%.0f", imperialSpeed)) : (speed < 10 ? Formatters.speedFormatter.string(from: NSNumber(value: speed)) ?? "0.0" : String(format: "%.0f", speed)))
-                        .font(.custom("ChivoMono-Medium_Black", size: speed < 100 ? 140 : 125))
+                        .font(.custom("ChivoMono-Medium_Black", size: speed < 100 ? 150 : 130))
                         .multilineTextAlignment(.center)
                         .onTapGesture {
                             isZoomed.toggle() // Näytetään suurennettu näkymä
@@ -153,7 +153,7 @@ struct HeadingAndAltitudeView: View {
             // Näytetään joko suunta, G-voima tai kellonaika riippuen togglesta
             if rowTwoLeftView == 0 {
                 Text(Date(), style: .time)
-                    .font(.custom("ChivoMono-Medium_Bold", size: 45))
+                    .font(.custom("ChivoMono-Medium_Bold", size: 42))
                     .frame(maxWidth: .infinity)
                     .tracking(-2)
 
@@ -162,7 +162,7 @@ struct HeadingAndAltitudeView: View {
                     }
             } else if rowTwoLeftView == 1 {
                 Text("\(G, specifier: "%.2f") G")
-                    .font(.custom("ChivoMono-Medium_Bold", size: 45))
+                    .font(.custom("ChivoMono-Medium_Bold", size: 42))
                     .tracking(-2)
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
@@ -170,7 +170,7 @@ struct HeadingAndAltitudeView: View {
                     }
             } else {
                 Text("\(heading, specifier: "%.0f")°")
-                    .font(.custom("ChivoMono-Medium_Bold", size: 45))
+                    .font(.custom("ChivoMono-Medium_Bold", size: 42))
                     .frame(maxWidth: .infinity)
                     .onTapGesture {
                         rowTwoLeftView = 0
@@ -197,14 +197,14 @@ struct HeadingAndAltitudeView: View {
             } else {
                 if elapsedTimeTimer == nil {
                     Text("0:00")
-                        .font(.custom("ChivoMono-Medium_Light", size: 45))
+                        .font(.custom("ChivoMono-Medium_Light", size: 42))
                         .frame(maxWidth: .infinity)
                         .tracking(-2)
                         .onTapGesture {
                             rowTwoRightView = 0
                         }
                 } else {
-                    let fontSize: CGFloat = elapsedTime >= 3600 ? 38 : 45
+                    let fontSize: CGFloat = elapsedTime >= 3600 ? 34 : 42
                         (Text("+") + Text(Date(timeIntervalSinceNow: -elapsedTime), style: .timer))
                             .font(.custom("ChivoMono-Medium_Thin", size: fontSize)) // Muutetaan fonttikoko ehtoon perustuen
                             .frame(maxWidth: .infinity)
@@ -403,7 +403,7 @@ struct SpeedView: View {
                     SpeedTextView(
                         speed: locationManager.speed,
                         imperialSpeed: locationManager.imperialSpeed,
-                        speedFontSize: locationManager.speed < 100 ? 140 : 125,
+                        speedFontSize: locationManager.speed < 100 ? 150 : 130,
                         totalDistance: locationManager.routeManager.totalDistance,
                         imperialTotalDistance: locationManager.routeManager.imperialTotalDistance,
                         isZoomed: $isZoomed // Binding tilan hallintaan
