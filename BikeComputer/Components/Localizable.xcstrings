@@ -1,6 +1,9 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "%.0f" : {
+
+    },
     "%.0f ft" : {
       "localizations" : {
         "ar" : {
@@ -4653,6 +4656,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
           }
         }
       }
@@ -18279,6 +18292,9 @@
         }
       }
     },
+    "Heart Rate Settings" : {
+
+    },
     "High" : {
       "comment" : "Accuracy is high",
       "localizations" : {
@@ -23655,6 +23671,9 @@
           }
         }
       }
+    },
+    "N/A" : {
+
     },
     "Name" : {
       "localizations" : {
@@ -41940,6 +41959,9 @@
           }
         }
       }
+    },
+    "Use Apple Watch Heart Rate" : {
+
     },
     "User Location" : {
       "comment" : "MapButtons",

@@ -10,6 +10,8 @@ struct SettingsView: View {
     @AppStorage("batteryThreshold") private var batteryThreshold: Double = 100.0
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h, 1 for mph
     @AppStorage("autoRecord") private var autoRecord: Int = 0 // 0 = off, 1 = auto start when, BAC Start
+    @AppStorage("useAppleWatchHeartRate") private var useAppleWatchHeartRate: Bool = false
+
     @Environment(\.colorScheme) var colorScheme
 
     /// Retrieves the application version and build number from Info.plist.
@@ -30,6 +32,10 @@ struct SettingsView: View {
 
                 AutoRecordView()
 
+                Section(header: Text("Heart Rate Settings")) {
+                    Toggle("Use Apple Watch Heart Rate", isOn: $useAppleWatchHeartRate)
+                }
+                
                 ParametersView(locationManager: locationManager, batteryManager: batteryManager)
 
                 Section(header: Text("About")) {

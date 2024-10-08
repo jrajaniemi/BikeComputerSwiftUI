@@ -140,6 +140,7 @@ struct HeadingAndAltitudeView: View {
     var G: Double
     var elapsedTime: TimeInterval
     var elapsedTimeTimer: Timer?
+    var heartRate: Double?
     
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
     @AppStorage("rowTwoLeftView") private var rowTwoLeftView: Int = 2
@@ -156,7 +157,6 @@ struct HeadingAndAltitudeView: View {
                     .font(.custom("ChivoMono-Medium_Bold", size: 42))
                     .frame(maxWidth: .infinity)
                     .tracking(-2)
-
                     .onTapGesture {
                         rowTwoLeftView += 1 // Vaihda takaisin suunnan ja G-arvon välillä
                     }
@@ -194,25 +194,39 @@ struct HeadingAndAltitudeView: View {
                             rowTwoRightView = 1 // Vaihda takaisin suunnan ja G-arvon välillä
                         }
                 }
-            } else {
+            } else if rowTwoRightView == 1 {
                 if elapsedTimeTimer == nil {
                     Text("0:00")
                         .font(.custom("ChivoMono-Medium_Light", size: 42))
                         .frame(maxWidth: .infinity)
                         .tracking(-2)
                         .onTapGesture {
-                            rowTwoRightView = 0
+                            rowTwoRightView = 2
                         }
                 } else {
                     let fontSize: CGFloat = elapsedTime >= 3600 ? 34 : 42
-                        (Text("+") + Text(Date(timeIntervalSinceNow: -elapsedTime), style: .timer))
-                            .font(.custom("ChivoMono-Medium_Thin", size: fontSize)) // Muutetaan fonttikoko ehtoon perustuen
-                            .frame(maxWidth: .infinity)
-                            .tracking(-2)
+                    (Text("+") + Text(Date(timeIntervalSinceNow: -elapsedTime), style: .timer))
+                        .font(.custom("ChivoMono-Medium_Thin", size: fontSize)) // Muutetaan fonttikoko ehtoon perustuen
+                        .frame(maxWidth: .infinity)
+                        .tracking(-2)
+                        .onTapGesture {
+                            rowTwoRightView = 2
+                        }
+                }
+            } else {
+                HStack(alignment: .center)  {
+                    Spacer()
+                    Text(heartRate != nil ? "\(heartRate!, specifier: "%.0f")" : "N/A")
+                        .font(.custom("ChivoMono-Medium_Thin", size: 42))
+                        .onTapGesture {
+                            rowTwoRightView = 0
+                        }
+                    Spacer()
 
-                            .onTapGesture {
-                                rowTwoRightView = 0
-                            }
+                    Image(systemName: "heart.fill")
+                        .foregroundColor(.white) // Voit muuttaa väriä halutessasi
+                        .font(.system(size: 24))
+                    Spacer()
                 }
             }
         }
@@ -334,6 +348,7 @@ struct SpeedView: View {
     @Environment(\.colorScheme) var colorScheme
     @AppStorage("autoRecord") private var storedAutoRecord: Int = 0 // 0 for manual, 1 for auto
     @AppStorage("unitPreference") private var unitPreference: Int = 0 // 0 for km/h and meters, 1 for mph and miles
+    @AppStorage("useAppleWatchHeartRate") private var useAppleWatchHeartRate: Bool = false // Uusi asetus
 
     @State private var showingAlert = false
     @State private var alertMessage = ""
@@ -346,6 +361,9 @@ struct SpeedView: View {
     @State private var elapsedTime: TimeInterval = 0 // Kulunut aika
     @State private var elapsedTimeTimer: Timer? // Ajastin
 
+    // Lisää sykemanageri ja syke-tilamuuttuja
+    @StateObject private var healthKitManager = HealthKitManager()
+    
     func startRecording() {
         isRecording = true
         locationManager.routeManager.startNewRoute(name: routeName, description: routeDescription)
@@ -419,7 +437,9 @@ struct SpeedView: View {
                             imperialAltitude: locationManager.imperialAltitude,
                             G: locationManager.totalAcceleration,
                             elapsedTime: elapsedTime,
-                            elapsedTimeTimer: elapsedTimeTimer
+                            elapsedTimeTimer: elapsedTimeTimer,
+                            heartRate: useAppleWatchHeartRate ? healthKitManager.heartRate : nil // Käytetään asetusta
+
                         )
                         .frame(height: geometry.size.height * 3 / 12)
                         .background(colorScheme == .dark ? Color.black : Color.white)
@@ -446,7 +466,23 @@ struct SpeedView: View {
                     if autoRecord == 1 && autoRecordCount == 0 {
                         startAutoRecordTimer()
                     }
-                    listAllFonts()
+                    // listAllFonts()
+                    
+                    // Haetaan syke HealthKitManagerin kautta
+                    // Käynnistetään tai pysäytetään sykkeen haku käyttäjän asetuksen mukaan
+                    if useAppleWatchHeartRate {
+                        healthKitManager.requestAuthorization { success, _ in
+                            if success {
+                                healthKitManager.fetchHeartRateData()
+                                healthKitManager.startHeartRateUpdates()
+                            }
+                        }
+                    } else {
+                        healthKitManager.stopHeartRateUpdates()
+                    }
+                }
+                .onDisappear {
+                    healthKitManager.stopHeartRateUpdates() // Pysäytä sykkeen päivitys, kun näkymä katoaa
                 }
                 .onChange(of: storedAutoRecord) {
                     autoRecord = storedAutoRecord
@@ -526,11 +562,11 @@ struct SpeedView: View {
 
     /// Lists all available fonts in the console.
     func listAllFonts() {
-         for family in UIFont.familyNames.sorted() {
-         debugPrint(msg:"Family: \(family)")
-             for name in UIFont.fontNames(forFamilyName: family) {
+        for family in UIFont.familyNames.sorted() {
+            debugPrint(msg: "Family: \(family)")
+            for name in UIFont.fontNames(forFamilyName: family) {
                 debugPrint(msg: "  Font: \(name)")
-             }
-         }
+            }
+        }
     }
 }

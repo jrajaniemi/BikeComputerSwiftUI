@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>CFBundleGetInfoString</key>
+	<string></string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>Univers LT 45 Light.ttf</string>
@@ -20,6 +22,11 @@
 	<key>UIBackgroundModes</key>
 	<array>
 		<string>location</string>
+		<string>audio</string>
+		<string>external-accessory</string>
 	</array>
+	<key>NSHealthUpdateUsageDescription</key>
+	<string>This app needs access to health data to track your bike rides and provide personalized fitness insights.</string>
+
 </dict>
 </plist>
