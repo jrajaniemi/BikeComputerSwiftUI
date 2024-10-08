@@ -18,7 +18,6 @@ build/
 xcuserdata/
 *.xccheckout
 *.moved-aside
-DerivedData/
 *.hmap
 *.ipa
 *.xcuserstate
@@ -59,10 +58,6 @@ ios/DerivedSources/
 ios/Pods/
 ios/xcuserdata/
 
-# Other
-#
-.DS_Store
-
 # macOS-käyttöjärjestelmään liittyvät väliaikaiset tiedostot
 .DS_Store
 
@@ -87,12 +82,6 @@ Podfile.lock
 .swiftpm/
 Package.resolved
 
-# Fastlane-kansion väliaikaiset tiedostot
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/
-fastlane/test_output/
-fastlane/report.xml
 
 # Käsittelytiedostot ja väliaikaiset tallennustiedostot
 *.moved-aside
@@ -103,3 +92,5 @@ fastlane/report.xml
 
 # Manuaaliset lisäykset (valinnainen)
 # Voit lisätä tähän muita tiedostoja, joita et halua mukaan versionhallintaan.
+.env
+*.p8

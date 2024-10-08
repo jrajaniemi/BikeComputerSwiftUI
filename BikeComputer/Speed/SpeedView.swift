@@ -222,9 +222,7 @@ struct HeadingAndAltitudeView: View {
                             rowTwoRightView = 0
                         }
                     Spacer()
-
                     Image(systemName: "heart.fill")
-                        .foregroundColor(.white) // Voit muuttaa väriä halutessasi
                         .font(.system(size: 24))
                     Spacer()
                 }
